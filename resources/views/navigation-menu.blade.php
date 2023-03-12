@@ -17,7 +17,16 @@
                     </x-nav-link>
                 </div>
             </div>
-
+            @guest
+                
+            <div class="flex">
+                <x-nav-link href="{{route('login')}}" class="ml-3">Login
+                </x-nav-link>
+                <x-nav-link href="{{route('login')}}" class="ml-3">Register
+                </x-nav-link>
+            </div>
+            @endguest
+           @auth
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -68,7 +77,7 @@
                         </x-dropdown>
                     </div>
                 @endif
-
+         
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-dropdown align="right" width="48">
@@ -212,4 +221,5 @@
             </div>
         </div>
     </div>
+    @endauth
 </nav>
