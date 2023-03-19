@@ -18,4 +18,8 @@ class Place extends Model
     {
         return $this->belongsToMany('App\Models\Bookmark', 'bookmarks');
     }
+
+    public function getImageAttribute($image){
+        return asset('storage/images/'.$image);
+    }
 }
