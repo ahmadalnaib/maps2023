@@ -58,4 +58,28 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function places()
+    {
+        return $this->hasMany('App\Models\Place');
+    }
+
+    public function bookmarks()
+    {
+        return $this->belongsToMany('App\Models\Place', 'bookmarks');
+    }
+
+    public function alreadyBookmarked($place)
+    {
+        return $this->bookmarks()->wherePlace_id($place)->exists();
+    }
+
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
+    public function hasRole($role)
+    {
+        return $this->role()->whereName($role)->first() ? true : false;
+    }
 }
