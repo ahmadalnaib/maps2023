@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-       @include('includes/header')
+       @include('includes.header')
     </x-slot>
 
     <div class="py-12">
