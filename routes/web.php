@@ -30,7 +30,7 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
-
+Route::post('search',[SearchController::class,'show'])->name('search');
 Route::get('/{category:slug}',[CategoryController::class,'show'])->name('category.show');
 
 Route::get('/',[PlaceController::class,'index'])->name('home');
