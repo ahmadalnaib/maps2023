@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
 
 Route::get('/{category:slug}',[CategoryController::class,'show'])->name('category.show');
 
