@@ -13,4 +13,9 @@ class PlaceController extends Controller
         $places=Place::orderBy('view_count','desc')->take(3)->get();
         return view('welcome',compact('places'));
     }
+
+    public function show(Place $place)
+    {
+      return view('details',compact('place'));
+    }
 }

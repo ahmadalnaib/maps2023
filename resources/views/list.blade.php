@@ -12,7 +12,7 @@
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div>
           @foreach ($places as $place)
-          <div class="flex mb-5 bg-white">
+          <a href="{{route('place.show',[$place->id,$place->slug])}}" class="flex mb-5 bg-white">
             <div class="flex-none w-48 relative">
               <img src="{{$place->image}}" alt="" class="absolute inset-0 w-full object-cover">
             </div>
@@ -26,7 +26,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </a>
               
           @endforeach
         </div>
