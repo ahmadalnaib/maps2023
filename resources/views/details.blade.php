@@ -27,16 +27,16 @@
           <h3>{{$place->user->name}}</h3>
           <p></p>
           <ul class="mt-3">
-            <li><i class="fa fa-envelope"></i>{{$place->user->email}}</li>
+            <li><i class="fa fa-envelope"></i> {{$place->user->email}}</li>
           </ul>
         </div>
         <hr>
         <div class="p-3">
-          <a href="" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded ml-3 p-1">
+          <a href="" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
             <span class=""><i class="fa fa-bookmark  fa-lg"></i></span> Bookmark
           </a>
-          <a href="{" class="border border-red-500 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
-            <span class=""><i class="fa fa-warning"></i></span>  Rorbot 
+          <a href="{{route('report.create')}}" class="border border-red-500 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
+            <span class=""><i class="fa fa-exclamation-triangle"></i></span>  Rorbot 
           </a>
         </div>
       </div>
