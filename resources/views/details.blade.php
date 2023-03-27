@@ -53,7 +53,7 @@ let latitude=$('#latitude').val();
 
 let map=L.map('mapid',{
   center:[latitude,longitude],
-  zoom:13
+  zoom:6
 });
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 let greenIcon = L.icon({
