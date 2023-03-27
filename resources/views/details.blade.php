@@ -17,9 +17,9 @@
         <div class="mt-5">
           <h3 class="mb-4 text-2xl">Address</h3>
           <div id="mapid" style="height: 350px"></div>
-          <input type="hidden" id="name" value="">
-          <input type="hidden" id="latitude" value="">
-          <input type="hidden" id="longitude" value="">
+          <input type="hidden" id="name" value="{{$place->name}}">
+          <input type="hidden" id="latitude" value="{{$place->latitude}}">
+          <input type="hidden" id="longitude" value="{{$place->longitude}}">
         </div>
       </div>
       <div class="bg-white shadow-lg rounded p-4 h-52">
@@ -43,3 +43,29 @@
     </div>
   </div>
 </x-app-layout>
+
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script>
+
+let longitude=$('#longitude').val();
+let latitude=$('#latitude').val();
+
+let map=L.map('mapid',{
+  center:[latitude,longitude],
+  zoom:13
+});
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+let greenIcon = L.icon({
+  iconUrl: 'http://127.0.0.1:8000/icons/bike-map.svg',
+  iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+L.marker([latitude,longitude],{icon: greenIcon}).bindPopup($('#name').val()).addTo(map).openPopup();
+
+
+
+</script>
