@@ -11,7 +11,7 @@
     <div class="grid grid-col-2 gap-4">
         <div>
             <label for="name">Place Name</label>
-            <input type="text" class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-400">
+            <input name="name" type="text" class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-400">
         </div>
         <div>
             <label for="catg">Choose Category</label>

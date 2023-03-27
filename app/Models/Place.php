@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\Slug;
 
 class Place extends Model
 {
     use HasFactory;
+   protected $guarded=['id','view_count'];
 
+   
     public function user()
     {
         return $this->belongsTo('App\Models\User');
@@ -37,5 +40,11 @@ class Place extends Model
 
         return $query;
 
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name']=$value;
+        $this->attributes['slug']=Slug::uniqueSlug($value,'places');
     }
 }
