@@ -14,7 +14,7 @@
           @foreach ($places as $place)
           <a href="{{route('place.show',[$place->id,$place->slug])}}" class="flex mb-5 bg-white">
             <div class="flex-none w-48 relative">
-              <img src="{{$place->image}}" alt="" class="absolute inset-0 w-full object-cover">
+              <img src="{{$place->image}}" alt="" class="absolute inset-0 w-full object-contain h-full">
             </div>
             <div class="flex-auto p-6">
               <div class="flex flex-wrap">
@@ -31,11 +31,38 @@
           @endforeach
         </div>
 
-        <div>
-
+        <div class="me-3">
+        <div id="mapid" style="height:500px"></div>
         </div>
           
       </div>
       @endif
   </div>
 </x-app-layout>
+
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<script>
+let longitude={!! $places->pluck('longitude') !!}
+let latitude={!! $places->pluck('latitude') !!}
+
+let map=L.map('mapid');
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+let greenIcon = L.icon({
+  iconUrl: 'http://127.0.0.1:8000/icons/bike-map.svg',
+  iconSize:     [40, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+let markers=[];
+for(let i=0; i < longitude.length; i++){
+  markers.push(new L.marker([latitude[i],longitude[i]],{icon: greenIcon}).addTo(map));
+
+  let group=new L.featureGroup(markers).getBounds();
+  map.fitBounds([
+    group
+  ])
+}
+</script>

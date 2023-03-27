@@ -58,7 +58,7 @@ let map=L.map('mapid',{
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 let greenIcon = L.icon({
   iconUrl: 'http://127.0.0.1:8000/icons/bike-map.svg',
-  iconSize:     [38, 95], // size of the icon
+  iconSize:     [40, 95], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
     shadowAnchor: [4, 62],  // the same for the shadow
