@@ -3,7 +3,7 @@
     @include('includes/header')
     </x-slot>
 
-    <div class="container my-12 mx-auto md:px-12 bg-white border px-4">
+    <div class="container my-12 mx-auto md:px-12 p-5">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">            
             @foreach($places as $place)
             <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">

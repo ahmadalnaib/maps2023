@@ -36,6 +36,8 @@ Route::get('/{category:slug}',[CategoryController::class,'show'])->name('categor
 
 Route::resource('report',ReportController::class,['only'=>['create','store']]);
 
+Route::get('/place/create',[PlaceController::class,'create'])->name('place.create');
+Route::post('/place/store',[PlaceController::class,'store'])->name('place.store');
 Route::get('/',[PlaceController::class,'index'])->name('home');
 Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show');
 

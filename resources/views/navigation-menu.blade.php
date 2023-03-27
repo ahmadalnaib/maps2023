@@ -27,6 +27,11 @@
             </div>
             @endguest
            @auth
+           <div class="flex" style="width: 70%">
+            <x-nav-link href="{{route('place.create')}}">
+                Create New Place
+            </x-nav-link>
+        </div>
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())

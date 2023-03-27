@@ -14,8 +14,18 @@ class PlaceController extends Controller
         return view('welcome',compact('places'));
     }
 
+    public function create()
+    {
+      return view('add_place');
+    }
+
     public function show(Place $place)
     {
       return view('details',compact('place'));
+    }
+
+    public function store(Request $request)
+    {
+
     }
 }
