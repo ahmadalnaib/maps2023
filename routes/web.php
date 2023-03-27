@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::middleware([
 });
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
 Route::post('search',[SearchController::class,'show'])->name('search');
+Route::get('bookmark/{place_id}',[BookmarkController::class,'bookmark'])->name('bookmark');
 Route::get('/{category:slug}',[CategoryController::class,'show'])->name('category.show');
 
 Route::resource('report',ReportController::class,['only'=>['create','store']]);

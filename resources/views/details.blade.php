@@ -32,12 +32,18 @@
         </div>
         <hr>
         <div class="p-3">
-          <a href="" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
-            <span class=""><i class="fa fa-bookmark  fa-lg"></i></span> Bookmark
+          @auth
+          <a href="{{route('bookmark',$place->id)}}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
+            <span class=""><i class="fa {{Auth::user()->alreadyBookmarked($place->id)? 'fa-bookmark':'fa-bookmark-o'}}  fa-lg"></i></span> Bookmark
           </a>
           <a href="{{route('report.create')}}" class="border border-red-500 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
             <span class=""><i class="fa fa-exclamation-triangle"></i></span>  Rorbot 
           </a>
+          @else
+          <a href="{{route('login')}}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
+            <span class=""><i class="fa bookmark-o  fa-lg"></i></span> Bookmark
+          </a>
+          @endauth
         </div>
       </div>
     </div>
