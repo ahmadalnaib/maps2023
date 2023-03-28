@@ -11,8 +11,9 @@
                 </div>
 
                 <!-- Navigation Links -->
+                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                   <x-nav-link href="" :active="request()->routeIs('dashboard')">
                         {{ __('Find a Locker') }}
                     </x-nav-link>
                     <x-nav-link href="" :active="request()->routeIs('dashboard')">
@@ -23,7 +24,7 @@
                     </x-nav-link>
                     <x-nav-link href="" :active="request()->routeIs('dashboard')">
                         {{ __('FAQ') }}
-                    </x-nav-link>
+                    </x-nav-link> 
                 </div>
             </div>
             @guest
@@ -36,11 +37,7 @@
             </div>
             @endguest
            @auth
-           <div class="flex" style="width: 70%">
-            <x-nav-link href="{{route('place.create')}}">
-                Create New Place
-            </x-nav-link>
-        </div>
+    
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -119,7 +116,9 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
-
+                            <x-dropdown-link href="{{route('place.create')}}">
+                                Create New Place
+                            </x-dropdown-link>
                             <x-dropdown-link href="{{ route('bookmarks') }}">
                                 {{ __('Bookmarks') }}
                             </x-dropdown-link>

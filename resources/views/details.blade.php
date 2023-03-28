@@ -1,7 +1,5 @@
 <x-app-layout>
-  <x-slot name="header">
-  @include('includes/header')
-  </x-slot>
+
 
   <div class="py-12">
     <div class="text-center mt-5 p-5">

@@ -1,7 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-    @include('includes/header')
-    </x-slot>
+
 
     <div class="container my-12 mx-auto md:px-12 p-5">
          <h3 class="mb-4 mt-4 text-2xl">Bookmarks</h3>
