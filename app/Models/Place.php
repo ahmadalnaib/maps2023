@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Helpers\Slug;
+use App\Models\Locker;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Place extends Model
 {
@@ -16,11 +17,17 @@ class Place extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+    
 
     public function bookmarks()
     {
         return $this->belongsToMany('App\Models\Bookmark', 'bookmarks');
     }
+
+    public function lockers()
+{
+    return $this->hasMany(Locker::class);
+}
 
     public function getImageAttribute($image){
         return asset('storage/images/'.$image);

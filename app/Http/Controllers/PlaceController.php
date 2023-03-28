@@ -21,7 +21,9 @@ class PlaceController extends Controller
 
     public function show(Place $place)
     {
-      return view('details',compact('place'));
+      $lockers = $place->lockers()->with('doors')->get();
+      return view('details', compact('place', 'lockers'));
+ 
     }
 
     public function store(Request $request)

@@ -23,6 +23,7 @@
       <div class="bg-white shadow-lg rounded p-4 h-52">
         <div class="p-5 bg-white shadow-sm">
           <h3>{{$place->user->name}}</h3>
+        
           <p></p>
           <ul class="mt-3">
             <li><i class="fa fa-envelope"></i> {{$place->user->email}}</li>
@@ -46,6 +47,39 @@
       </div>
     </div>
   </div>
+  @foreach ($lockers as $locker)
+  <div class="text-center my-24">
+    <h3>Locker {{ $locker->locker_number }}</h3>
+
+    <form action="/rent" method="post">
+        @csrf
+
+        <input type="hidden" name="locker_id" value="{{ $locker->id }}">
+
+        <label for="door_id">Select a door:</label>
+        <select name="door_id" id="door_id">
+            @foreach ($locker->doors as $door)
+            @if ($door->rentals->isEmpty())
+                <option value="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
+                    Door {{ $door->door_number }} 
+                  </option>
+                  @endif
+            @endforeach
+        </select>
+
+        <label for="rental_period">Select rental period:</label>
+        <select name="rental_period" id="rental_period">
+            <option value="1">1 day</option>
+            <option value="7">1 week</option>
+            <option value="30">1 month</option>
+            <option value="365">1 year</option>
+        </select>
+
+        <button type="submit">Rent</button>
+    </form>
+@endforeach
+</div>
+
 </x-app-layout>
 
 
