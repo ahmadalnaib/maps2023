@@ -9,11 +9,12 @@
           <span class="inline-block align-middle mr-8">There are no Locker in this time</span>
           </div> 
     @else
-      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div>
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 " >
+        <div style="height: calc(100vh - 260px);
+        overflow-y: scroll;">
           @foreach ($places as $place)
-          <a href="{{route('place.show',[$place->id,$place->slug])}}" class="flex mb-5 bg-white">
-            <div class="flex-none w-48 relative">
+          <a href="{{route('place.show',[$place->id,$place->slug])}}" class="flex mb-5 bg-white border hover:bg-gray-400">
+            <div class="flex-none w-48 relative ">
               <img src="{{$place->image}}" alt="" class="absolute inset-0 w-full object-contain h-full">
             </div>
             <div class="flex-auto p-6">
@@ -32,7 +33,7 @@
         </div>
 
         <div class="me-3">
-        <div id="mapid" style="height:500px"></div>
+        <div id="mapid" style="height:720px"></div>
         </div>
           
       </div>

@@ -19,15 +19,22 @@
         <script src="https://kit.fontawesome.com/ca11177b7a.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     </head>
-    <body class="font-sans antialiased">
+    <body >
         <x-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white">
             @livewire('navigation-menu')
 
+            <div class="bg-white  mt-20">
+
+                <h1 class="text-7xl text-center font-black">Find a Bike locker near you</h1>
+                <p class="text-center text-3xl text-gray-400 mt-4">Enter a street, Address or postcode and we’ll show your nearest lockers
+                   </p>
+                   <p class="text-center text-3xl text-gray-400 mt-2">Lockers are available 24 hours a day, 7 days a week</p>
+            </div>
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-white mt-8">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>

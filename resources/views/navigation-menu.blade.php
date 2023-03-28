@@ -1,19 +1,28 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-red-700 border-b border-gray-100 text-white p-4">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('home') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                        {{ __('Find a Locker') }}
+                    </x-nav-link>
+                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                        {{ __('How it works') }}
+                    </x-nav-link>
+                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                        {{ __('Prices') }}
+                    </x-nav-link>
+                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                        {{ __('FAQ') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -22,7 +31,7 @@
             <div class="flex">
                 <x-nav-link href="{{route('login')}}" class="ml-3">Login
                 </x-nav-link>
-                <x-nav-link href="{{route('login')}}" class="ml-3">Register
+                <x-nav-link href="{{route('register')}}" class="ml-3  border-b-4 border-white ">GET A BOX
                 </x-nav-link>
             </div>
             @endguest
