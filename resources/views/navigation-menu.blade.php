@@ -13,16 +13,16 @@
                 <!-- Navigation Links -->
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                   <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                   <x-nav-link href="" >
                         {{ __('Find a Locker') }}
                     </x-nav-link>
-                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="" >
                         {{ __('How it works') }}
                     </x-nav-link>
-                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="" >
                         {{ __('Prices') }}
                     </x-nav-link>
-                    <x-nav-link href="" :active="request()->routeIs('dashboard')">
+                    <x-nav-link href="" >
                         {{ __('FAQ') }}
                     </x-nav-link> 
                 </div>
@@ -116,11 +116,17 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
+                            <x-dropdown-link href="{{route('dashboard')}}">
+                                Dashboard
+                            </x-dropdown-link>
                             <x-dropdown-link href="{{route('place.create')}}">
                                 Create New Place
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('bookmarks') }}">
                                 {{ __('Bookmarks') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('category.admin.index') }}">
+                                {{ __('Statas') }}
                             </x-dropdown-link>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">

@@ -1,7 +1,5 @@
 <x-app-layout>
-  <x-slot name="header">
-  @include('includes/header')
-  </x-slot>
+
 
   <div class="container my-12 mx-auto md:px-12 bg-white border px-4">
     @if (session('success'))

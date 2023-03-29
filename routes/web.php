@@ -35,6 +35,12 @@ Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-compl
 Route::post('search',[SearchController::class,'show'])->name('search');
 Route::get('bookmark/{place_id}',[BookmarkController::class,'bookmark'])->name('bookmark');
 Route::get('bookmarks',[BookmarkController::class,'getByUser'])->name('bookmarks');
+Route::get('/admin/category',[CategoryController::class,'index'])->name('category.admin.index');
+Route::get('/admin/category/create',[CategoryController::class,'create'])->name('category.admin.create');
+Route::post('/admin/category/store',[CategoryController::class,'store'])->name('category.admin.store');
+Route::get('/admin/{category}',[CategoryController::class,'edit'])->name('category.admin.edit');
+Route::post('/admin/{category}',[CategoryController::class,'update'])->name('category.admin.update');
+Route::delete('/admin/{category}',[CategoryController::class,'destroy'])->name('category.admin.destroy');
 Route::get('/{category:slug}',[CategoryController::class,'show'])->name('category.show');
 
 Route::resource('report',ReportController::class,['only'=>['create','store']]);

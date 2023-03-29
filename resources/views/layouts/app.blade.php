@@ -37,6 +37,31 @@
 
             <!-- Page Content -->
             <main>
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    @if (Auth::check() && Auth::user()->role_id == 2)
+                            @if(session()->has('message'))
+                            <div class="bg-green-200 text-green-800 px-3 py-2 rounded all-succ">
+                                {{ session('message') }}
+                            </div>
+                            @elseif(session()->has('warning'))
+                            <div class="bg-red-200 text-red-800 px-3 py-2 rounded">
+                                <strong> {{ session()->get('warning') }}</strong>
+                               
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                        <div class="bg-red-200 text-red-800 px-3 py-2 rounded all-err">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                 
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @endif
+                   
+                </div>
                 {{ $slot }}
             </main>
         </div>
@@ -65,6 +90,15 @@
                 })
             })
             
+
+         
+                        setTimeout(function() {
+                            document.querySelector('.all-succ').remove();
+                        }, {{ session('timeout', 3000) }});
+                        setTimeout(function() {
+                            document.querySelector('.all-err').remove();
+                        }, {{ session('timeout', 5000) }});
+                  
         </script>
     </body>
 </html>
