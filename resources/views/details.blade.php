@@ -19,7 +19,7 @@
           class="inline-block m-0 py-20 px-5 border-2 rounded-md text-center 
                  {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}"
       >
-          Door {{ $door->door_number }}
+          0 {{ $door->door_number }}
       </li>
         
       @endforeach
