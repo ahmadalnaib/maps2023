@@ -54,7 +54,7 @@
                                     </button>
                                 </span>
                             </x-slot>
-
+                            @if (Auth::check() && Auth::user()->role_id == 2)
                             <x-slot name="content">
                                 <div class="w-60">
                                     <!-- Team Management -->
@@ -88,6 +88,7 @@
                         </x-dropdown>
                     </div>
                 @endif
+                @endif
          
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
@@ -119,19 +120,22 @@
                             <x-dropdown-link href="{{route('dashboard')}}">
                                 Dashboard
                             </x-dropdown-link>
-                            <x-dropdown-link href="{{route('place.create')}}">
-                                Create New Place
+                            <x-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('bookmarks') }}">
                                 {{ __('Bookmarks') }}
                             </x-dropdown-link>
+                            @if (Auth::check() && Auth::user()->role_id == 2)
+                            <x-dropdown-link href="{{route('place.create')}}">
+                                Create New Place
+                            </x-dropdown-link>
                             <x-dropdown-link href="{{ route('category.admin.index') }}">
                                 {{ __('Statas') }}
                             </x-dropdown-link>
+                            @endif
 
-                            <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
+                          
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Rentals extends Model
 {
     use HasFactory;
+    protected $guarded=[];
 
     public function user()
 {

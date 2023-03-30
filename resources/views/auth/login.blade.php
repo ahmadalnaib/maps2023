@@ -1,7 +1,12 @@
 <x-guest-layout>
+
     <x-authentication-card>
+        
         <x-slot name="logo">
-            <x-authentication-card-logo />
+          
+                <div class="">
+                    <img class="object-cover h-100 w-96  rounded-sm" src="{{ url('icons/login.jpg') }}" alt="">
+                </div>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -45,4 +50,5 @@
             </div>
         </form>
     </x-authentication-card>
+
 </x-guest-layout>

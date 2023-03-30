@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CategoryController;
 
@@ -51,3 +52,5 @@ Route::get('/',[PlaceController::class,'index'])->name('home');
 Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show');
 
 
+
+Route::post('/rent', [RentalsController::class,'rent'])->name('rent');

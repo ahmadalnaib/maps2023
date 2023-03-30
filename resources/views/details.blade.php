@@ -6,8 +6,60 @@
       <h1 class="text-2xl mb-2">{{$place->name}}</h1>
       <small>{{$place->address}}</small>
     </div>
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 mt-5 gap-5">
-      <div class="bg-white shadow-lg rounded p-5 col-span-2">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+
+   
+      
+        @foreach ($lockers as $locker)
+    <div class="text-center border p-4 rounded-md">
+      <h3>Locker {{ $locker->locker_number }}</h3>
+      <ul  style="list-style: none; padding: 0;">
+        @foreach ($locker->doors as $door)
+        <li data-door-id="{{ $door->id }}" 
+          class="inline-block m-0 py-20 px-5 border-2 rounded-md text-center 
+                 {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}"
+      >
+          Door {{ $door->door_number }}
+      </li>
+        
+      @endforeach
+    </ul>
+    
+    
+  
+      <form action="/rent" method="post">
+          @csrf
+  
+          <input class="" type="hidden" name="locker_id" value="{{ $locker->id }}">
+          <div class="form-group col-lg-6 mb-6 mt-5">
+          <label for="door_id">Select a door:</label>
+          <select name="door_id" id="door_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              @foreach ($locker->doors as $door)
+              @if ($door->rentals->isEmpty())
+                  <option value="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
+                      Door {{ $door->door_number }} 
+                    </option>
+                    @endif
+              @endforeach
+          </select>
+          </div>
+          <div class="form-group col-lg-6 mb-6">
+          <label for="rental_period">Select rental period:</label>
+          <select name="rental_period" id="rental_period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="1">1 day</option>
+              <option value="7">1 week</option>
+              <option value="30">1 month</option>
+              <option value="365">1 year</option>
+          </select>
+          </div>
+        
+          <button id="rental-form" type="submit" class="text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 ">Rent</button>
+      </form>
+  @endforeach
+      </div>
+
+      <div class="rounded-md">
+      <div class="bg-white shadow-lg rounded p-5 mb-2">
         <div>
           <h1 class="mb-4 text-2xl">About the Place</h1>
           <p class="text-sm">{{$place->overview}}</p>
@@ -46,39 +98,12 @@
         </div>
       </div>
     </div>
+
+ 
+   
   </div>
-  @foreach ($lockers as $locker)
-  <div class="text-center my-24">
-    <h3>Locker {{ $locker->locker_number }}</h3>
+ 
 
-    <form action="/rent" method="post">
-        @csrf
-
-        <input type="hidden" name="locker_id" value="{{ $locker->id }}">
-
-        <label for="door_id">Select a door:</label>
-        <select name="door_id" id="door_id">
-            @foreach ($locker->doors as $door)
-            @if ($door->rentals->isEmpty())
-                <option value="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
-                    Door {{ $door->door_number }} 
-                  </option>
-                  @endif
-            @endforeach
-        </select>
-
-        <label for="rental_period">Select rental period:</label>
-        <select name="rental_period" id="rental_period">
-            <option value="1">1 day</option>
-            <option value="7">1 week</option>
-            <option value="30">1 month</option>
-            <option value="365">1 year</option>
-        </select>
-
-        <button type="submit">Rent</button>
-    </form>
-@endforeach
-</div>
 
 </x-app-layout>
 
@@ -104,6 +129,19 @@ let greenIcon = L.icon({
 });
 L.marker([latitude,longitude],{icon: greenIcon}).bindPopup($('#name').val()).addTo(map).openPopup();
 
+const liElements = document.querySelectorAll('li[data-door-id]');
+const selectElement = document.querySelector('#door_id');
+
+liElements.forEach(li => {
+  if (li.dataset.rented === 'true') {
+    li.classList.add('text-gray-400', 'cursor-not-allowed');
+  } else {
+    li.addEventListener('click', () => {
+      selectElement.value = li.dataset.doorId;
+    });
+  }
+});
 
 
 </script>
+
