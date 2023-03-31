@@ -47,7 +47,7 @@
 let longitude={!! $places->pluck('longitude') !!}
 let latitude={!! $places->pluck('latitude') !!}
 
-let map=L.map('mapid');
+let map=L.map('mapid',{ maxZoom: 6 });
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 let greenIcon = L.icon({
   iconUrl: 'http://127.0.0.1:8000/icons/bike-map.svg',
