@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('rental_id');
-            $table->enum('payment_status', ['pending', 'completed', 'failed'])->default('pending');
+            $table->string('payment_id');
+            $table->string('payer_id');
+            $table->string('payer_email');
+            $table->float('amount', 10, 2);
+            $table->string('currency');
+            $table->string('payment_status');
        
             $table->timestamps();
         });
