@@ -53,4 +53,6 @@ Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show'
 
 
 
-Route::post('/rent', [RentalsController::class,'rent'])->name('rent');
+Route::post('/rent', [RentalsController::class,'rent'])->name('success');
+Route::get('/cancel', [RentalsController::class,'cancel'])->name('cancel');
+Route::get('/success', [RentalsController::class,'success'])->name('success');

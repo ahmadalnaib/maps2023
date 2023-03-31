@@ -6,6 +6,9 @@ use App\Models\Door;
 use App\Models\Locker;
 use App\Models\Rentals;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use Srmklive\PayPal\Services\ExpressCheckout;
 
 class RentalsController extends Controller
 {
@@ -64,7 +67,35 @@ class RentalsController extends Controller
         'price' => $price,
     ]);
 
-//  $rental->save();   
+    // $rental->save();
+
+    $data=[];
+    $data['items']=[
+        [
+            'name'=>'s',
+            'price'=>$locker->price,
+            'description'=>'Rent locker door',
+            'qty'=>1,
+        ]
+    ];
+    $data['invoice_id']=1;
+    $data['invoice_description']='Door rent';
+    $data['return_url']=route('success');
+    $data['cancel_url']=route('cancel');
+    $data['total']=$locker->price;
+
+    $provider=new ExpressCheckout;
+    $response=$provider->setExpressCheckout($data);
+    $response=$provider->setExpressCheckout($data,true);
+
+  
+    if (isset($response['paypal_link'])) {
+        return Redirect::away($response['paypal_link']);
+    } else {
+        return Redirect::back()->withErrors(['msg', 'There was an error processing your payment. Please try again.']);
+    }
+
+
 
     $locker = Locker::find($request->locker_id);
 
@@ -81,5 +112,34 @@ class RentalsController extends Controller
 
     
 }
+
+public function cancel()
+{
+    dd('fuck');
+}
+
+   public function success(Request $request)
+    {
+        $provider = new ExpressCheckout;
+        $response = $provider->getExpressCheckoutDetails($request->token);
+
+        if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
+            // Save rental data
+            $rental = new Rentals([
+                "locker_id" => $locker->id,
+                "user_id" => auth()->id(),
+                'door_id' => $door->id,
+                'start_time' => $start_time,
+                'end_time' => $end_time,
+                'duration' => $duration,
+                'price' => $price,
+            ]);
+            // $rental->save();
+
+            return view('success', ['rental' => $rental]);
+        } else {
+            return Redirect::back()->withErrors(['msg', 'There was an error processing your payment. Please try again.']);
+        }
+    }
 
 }

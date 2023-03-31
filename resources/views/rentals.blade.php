@@ -50,9 +50,9 @@
                         <div class="bg-white px-4 py-5 sm:px-6 flex justify-end">
                             <form method="POST">
                                 @csrf
-                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Pay with PayPal</button>
+                                <a href="{{route('success')}}" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Pay with PayPal</a>
                             </form>
-                            <button class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Cancel</button>
+                            <a href="{{route('cancel')}}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Cancel</a>
                         </div>
                     </dl>
                 </div>

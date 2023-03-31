@@ -185,9 +185,10 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class,
         /*
          * Application Service Providers...
+         *    Srmklive\PayPal\Providers\PayPalServiceProvider::class
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
