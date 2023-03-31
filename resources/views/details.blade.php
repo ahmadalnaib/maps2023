@@ -27,7 +27,7 @@
     
     
   
-      <form action="/rent" method="post">
+      <form action="/rent" method="post" >
           @csrf
   
           <input class="" type="hidden" name="locker_id" value="{{ $locker->id }}">
@@ -53,7 +53,7 @@
           </select>
           </div>
         
-          <button id="rental-form" type="submit" class="text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 ">Rent</button>
+          <button @click.prevent="showModal = true"   id="rental-form" type="submit" class="text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Rent</button>
       </form>
   @endforeach
       </div>

@@ -64,7 +64,7 @@ class RentalsController extends Controller
         'price' => $price,
     ]);
 
-    $rental->save();
+//  $rental->save();   
 
     $locker = Locker::find($request->locker_id);
 
@@ -78,6 +78,8 @@ class RentalsController extends Controller
         'start_time' => $start_time,
         'end_time' => $end_time,
     ]);
+
+    
 }
 
 }
