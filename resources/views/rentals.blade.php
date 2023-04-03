@@ -61,4 +61,4 @@
     </div>
 </x-app-layout>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AXujH-xXR7rjztxpiuctDcudi681FXyiolBFQjtJWhReXGi1hmlvif7TNqZRFuyynQ7ZTRqvvQdhzoX-&currency=USD"></script>
+
