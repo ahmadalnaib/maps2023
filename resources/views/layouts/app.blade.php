@@ -12,8 +12,14 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js','resources/css/custom.css'])
+
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
         <!-- Styles -->
         @livewireStyles
         <script src="https://kit.fontawesome.com/ca11177b7a.js" crossorigin="anonymous"></script>
@@ -71,6 +77,7 @@
         @livewireScripts
 
         <script>
+            
             $(function(){
                 $('#address').on('keyup',function(){
                 
@@ -92,12 +99,49 @@
             
 
          
-                        setTimeout(function() {
-                            document.querySelector('.all-succ').remove();
-                        }, {{ session('timeout', 3000) }});
-                        setTimeout(function() {
-                            document.querySelector('.all-err').remove();
-                        }, {{ session('timeout', 5000) }});
+                        // setTimeout(function() {
+                        //     document.querySelector('.all-succ').remove();
+                        // }, {{ session('timeout', 3000) }});
+                        // setTimeout(function() {
+                        //     document.querySelector('.all-err').remove();
+                        // }, {{ session('timeout', 5000) }});
+
+
+                        // swiper
+
+
+const swiper = new Swiper('.swiper', {
+  slidesPerView: 1,
+  spaceBetween: 10,
+ 
+  breakpoints: {
+    500: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    800: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+  },
+//   autoplay: {
+//    delay: 5000,
+//    pauseOnMouseEnter:true, 
+//     disableOnInteraction: false,
+//     reverseDirection: true,
+    
+//  },
+ 
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
                   
         </script>
     </body>

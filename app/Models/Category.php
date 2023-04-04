@@ -15,6 +15,10 @@ class Category extends Model
         return $this->hasMany('App\Models\Place');
     }
 
+
+    public function getImageAttribute($image){
+        return asset('storage/'.$image);
+    }
     
     public function setNameAttribute($value)
     {

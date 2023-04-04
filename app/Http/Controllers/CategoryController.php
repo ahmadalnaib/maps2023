@@ -29,7 +29,8 @@ class CategoryController extends Controller
  
         Category::create([
            'title'=>request('title'),
-           'slug'=>request('title')
+           'slug'=>request('title'),
+           'image'=> $request->image->store('images','public'),
         ]);
         return  redirect()->route('category.admin.index')->with('message','State wurde aktualisiert 🎉')->with('timeout', 3000);
     }

@@ -11,6 +11,9 @@
                 <th scope="col" class="px-6 py-3">
                     State/City name
                 </th>
+                <th scope="col" class="px-6 py-3">
+                   Image
+                </th>
           
                 <th scope="col" class="px-6 py-3 ">
                     Action
@@ -24,6 +27,10 @@
             <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$category->title}}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              
+                <img class="h-10" src="{{$category->image}}" alt="">
                 </th>
               
                 <td class="px-6 py-4 flex  flex-wrap">

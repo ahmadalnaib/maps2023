@@ -3,15 +3,44 @@
     <x-slot name="header">
     @include('includes/header')
     </x-slot>
-
     <div class="container my-12 mx-auto md:px-12 p-5">
-        <div class="mb-8">
-            <div id="mapid" style="height:600px"></div>
-            </div> 
+      <div class="mb-8">
+          <div id="mapid" style="height:600px"></div>
+          </div> 
+        </div>
+        <div class=" bg-slate-100 p-40">
+          <h2 class="text-6xl font-black">Premium Lockers</h2>
+          <div class="container my-12 mx-auto md:px-12 p-5">
+          
+     
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            @foreach($categories as $category)
+            <div class="swiper-slide"  data-swiper-autoplay="2000">
+          <a href="{{route('category.show',$category->slug)}}" style="background-image: url({{ $category->image }});"  class="app-gallery-item same"
+          ><div>
+            <h2 class="text-5xl font-black truncate overflow-hidden">{{$category->title}}</h2>
+           
+          </div></a
+        >
+  
+
+      </div>
+          @endforeach
+        </div>
+        
+        <div class="swiper-button-next text-red-500" style="color: red"></div>
+        <div class="swiper-button-prev text-red-500" style="color: red"></div>
+      </div>
+
+      </div>   
+    </div>
+    <div class="container my-12 mx-auto md:px-12 p-5">
+      
+      <h1 class="text-6xl font-black mb-4">Recently Added</h1>
             <div class="m-8">
-                <h1 class="text-4xl ">Recently Added</h1>
                 </div>   
-        <div class="flex flex-wrap -mx-1 lg:-mx-4">    
+        <div class="flex flex-wrap -mx-1 lg:-mx-4 ">    
             @foreach($places as $place)
     
 
