@@ -19,7 +19,7 @@
             <div class="swiper-slide"  data-swiper-autoplay="2000">
           <a href="{{route('category.show',$category->slug)}}" style="background-image: url({{ $category->image }});"  class="app-gallery-item same"
           ><div>
-            <h2 class="text-5xl font-black truncate overflow-hidden">{{$category->title}}</h2>
+            <h2 class="text-3xl font-black truncate overflow-hidden">{{$category->title}}</h2>
            
           </div></a
         >
