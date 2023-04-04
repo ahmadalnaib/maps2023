@@ -84,33 +84,5 @@ class RentalsController extends Controller
     
 }
 
-// public function cancel()
-// {
-//     dd('fuck');
-// }
-
-//    public function success(Request $request)
-//     {
-//         $provider = new ExpressCheckout;
-//         $response = $provider->getExpressCheckoutDetails($request->token);
-
-//         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-//             // Save rental data
-//             $rental = new Rentals([
-//                 "locker_id" => $locker->id,
-//                 "user_id" => auth()->id(),
-//                 'door_id' => $door->id,
-//                 'start_time' => $start_time,
-//                 'end_time' => $end_time,
-//                 'duration' => $duration,
-//                 'price' => $price,
-//             ]);
-//             // $rental->save();
-
-//             return view('success', ['rental' => $rental]);
-//         } else {
-//             return Redirect::back()->withErrors(['msg', 'There was an error processing your payment. Please try again.']);
-//         }
-//     }
 
 }

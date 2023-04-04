@@ -50,6 +50,7 @@ let latitude={!! $places->pluck('latitude') !!}
 let address={!! $places->pluck('address') !!}
 let lockerUrl = "{{route('place.show',[$place->id,$place->slug])}}";
 
+
 let map=L.map('mapid');
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 map.locate({setView:true,maxZoom:6});
@@ -63,6 +64,7 @@ let greenIcon = L.icon({
 });
 let markers=[];
 @foreach($places as $i => $place)
+
   // Create the link that opens the locker dynamically using the Laravel route function
    placeSlug = '{{ Str::slug($place->address) }}';
    lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', '{{ $place->slug }}');
