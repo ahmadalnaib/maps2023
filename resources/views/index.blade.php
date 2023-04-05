@@ -16,7 +16,7 @@
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             @foreach($categories as $category)
-            <div class="swiper-slide"  data-swiper-autoplay="2000">
+            <div class="swiper-slide"  >
           <a href="{{route('category.show',$category->slug)}}" style="background-image: url({{ $category->image }});"  class="app-gallery-item same"
           ><div>
             <h2 class="text-3xl font-black truncate overflow-hidden">{{$category->title}}</h2>
@@ -47,7 +47,7 @@
             @foreach($places as $place)
     
 
-    <div class='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden mb-4 swiper-slide'>
+    <div class='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden mb-4 swiper-slide' data-swiper-autoplay="5000">
         <div class='max-w-md mx-auto'>
           <div class='h-[236px]' style='background-image:url({{ $place->image }});background-size:cover;background-position:center'>
            </div>

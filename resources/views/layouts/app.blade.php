@@ -132,13 +132,13 @@ const swiper = new Swiper('.swiper', {
       spaceBetween: 10,
     },
   },
-//   autoplay: {
-//    delay: 5000,
-//    pauseOnMouseEnter:true, 
-//     disableOnInteraction: false,
-//     reverseDirection: true,
+  autoplay: {
+   delay: 5000,
+   pauseOnMouseEnter:true, 
+    disableOnInteraction: true,
+    reverseDirection: true,
     
-//  },
+ },
  
   // Navigation arrows
   navigation: {
