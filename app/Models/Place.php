@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\Slug;
 use App\Models\Locker;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -17,7 +18,11 @@ class Place extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
-    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
 
     public function bookmarks()
     {

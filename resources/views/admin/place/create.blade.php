@@ -4,7 +4,7 @@
     <div class="container my-12 mx-auto md:px-12 p-5">
         <h1 class="text-2xl p-5 mb-2">Add New Place</h1>
    <hr class="mb-5"/>
-   <form class="form-contact" action="{{route('place.store')}}" method="post" enctype="multipart/form-data">
+   <form class="form-contact" action="{{route('admin.place.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="grid grid-col-2 gap-4">
         <div>

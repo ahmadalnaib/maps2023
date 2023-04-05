@@ -119,8 +119,8 @@
                                 {{ __('Bookmarks') }}
                             </x-dropdown-link>
                             @if (Auth::check() && Auth::user()->role_id == 2)
-                            <x-dropdown-link href="{{route('place.create')}}">
-                                Create New Place
+                            <x-dropdown-link href="{{route('admin.place.index')}}">
+                                 Places
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('category.admin.index') }}">
                                 {{ __('Statas') }}

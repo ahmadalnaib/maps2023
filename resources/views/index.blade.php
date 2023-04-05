@@ -40,11 +40,14 @@
       <h1 class="text-6xl font-black mb-4">Recently Added</h1>
             <div class="m-8">
                 </div>   
+                
         <div class="flex flex-wrap -mx-1 lg:-mx-4 ">    
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
             @foreach($places as $place)
     
 
-    <div class='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden'>
+    <div class='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden mb-4 swiper-slide'>
         <div class='max-w-md mx-auto'>
           <div class='h-[236px]' style='background-image:url({{ $place->image }});background-size:cover;background-position:center'>
            </div>
@@ -66,6 +69,10 @@
     </div>
 
             @endforeach
+            </div>
+            <div class="swiper-button-next text-red-600" style="color:  rgb(220 38 38)"></div>
+            <div class="swiper-button-prev text-red-600" style="color:  rgb(220 38 38)"></div>
+          </div>
         </div>
     </div>
 </x-app-layout>

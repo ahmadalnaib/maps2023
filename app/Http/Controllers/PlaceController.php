@@ -10,14 +10,11 @@ class PlaceController extends Controller
     //
     public function index()
     {
-        $places=Place::orderBy('view_count','desc')->take(3)->get();
+        $places=Place::orderBy('view_count','desc')->get();
         return view('index',compact('places'));
     }
 
-    public function create()
-    {
-      return view('add_place');
-    }
+
 
     public function show(Place $place)
     {
@@ -26,17 +23,5 @@ class PlaceController extends Controller
  
     }
 
-    public function store(Request $request)
-    {
-      if($request->image){
-        $imageName=time().'.'.$request->image->extension();
-        $request->image->storeAs('public\images',$imageName);
-        $request->user()->places()->create($request->except('image') + ['image' => $imageName]);
-      }else{
-         $request->user()->places()->create($request->all());
-      }
-
-      return back();
-         
-    }
+   
 }

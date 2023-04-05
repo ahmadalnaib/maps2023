@@ -7,6 +7,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\Place\PlaceAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,11 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// ad
+Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
+Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
+Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,8 +52,8 @@ Route::get('/{category:slug}',[CategoryController::class,'show'])->name('categor
 
 Route::resource('report',ReportController::class,['only'=>['create','store']]);
 
-Route::get('/place/create',[PlaceController::class,'create'])->name('place.create');
-Route::post('/place/store',[PlaceController::class,'store'])->name('place.store');
+
+
 Route::get('/',[PlaceController::class,'index'])->name('home');
 Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show');
 
@@ -56,3 +62,6 @@ Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show'
 Route::post('/rent', [RentalsController::class,'rent'])->name('rent');
 Route::get('/cancel', [RentalsController::class,'cancel'])->name('cancel');
 Route::get('/success', [RentalsController::class,'success'])->name('success');
+
+
+
