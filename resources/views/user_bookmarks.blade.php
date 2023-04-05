@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin>
 
 
     <div class="container my-12 mx-auto md:px-12 p-5">
@@ -31,5 +31,5 @@
              
          @endforeach
     </div>
-</x-app-layout>
+</x-admin>
 

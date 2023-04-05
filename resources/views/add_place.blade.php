@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin>
 
 
     <div class="container my-12 mx-auto md:px-12 p-5">
@@ -48,7 +48,7 @@
 
    </form>
     </div>
-</x-app-layout>
+</x-admin>
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"></script>

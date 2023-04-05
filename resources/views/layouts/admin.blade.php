@@ -23,7 +23,7 @@
         <x-banner />
 
         <div class="min-h-screen bg-white">
-            @livewire('navigation-menu')
+            @include('includes.navigation-menu-admin')
 
 
             <!-- Page Heading -->
@@ -68,27 +68,7 @@
 
         @livewireScripts
 
-        <script>
-            $(function(){
-                $('#address').on('keyup',function(){
-                
-                    let address=$(this).val();
-                    $('#address-list').fadeIn();
-                    $.ajax({
-                        url:"{{route('auto-complete')}}",
-                        type:'GET',
-                        data:{"address":address}
-                    }).done(function(data){
-                        $('#address-list').html(data);
-                    })
-                    $('#address-list').on('click','li',function(){
-                        $('#address').val($(this).text());
-                        $('#address-list').fadeOut();
-                    })
-                })
-            })
-            
-
+     <script>
          
                         setTimeout(function() {
                             document.querySelector('.all-succ').remove();
