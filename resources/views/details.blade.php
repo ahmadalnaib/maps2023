@@ -53,7 +53,7 @@
           </select>
           </div>
         
-          <button id="rental-form" type="submit" class="text-white bg-red-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Rent</button>
+          <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Rent</button>
       </form>
   @endforeach
       </div>
@@ -85,9 +85,9 @@
         <div class="p-3">
           @auth
           <a href="{{route('bookmark',$place->id)}}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
-            <span class=""><i class="fa {{Auth::user()->alreadyBookmarked($place->id)? 'fa-bookmark':'fa-bookmark-o'}}  fa-lg"></i></span> Bookmark
+            <span class=""><i class="fa {{Auth::user()->alreadyBookmarked($place->id)? 'fa-bookmark':'fa-bookmark-o'}}  fa-lg text-amber-300"></i></span> Bookmark
           </a>
-          <a href="{{route('report.create')}}" class="border border-red-500 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
+          <a href="{{route('report.create')}}" class="border border-red-600 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
             <span class=""><i class="fa fa-exclamation-triangle"></i></span>  Rorbot 
           </a>
           @else

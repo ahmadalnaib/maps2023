@@ -5,7 +5,7 @@
         <x-slot name="logo">
           
                 <div class="">
-                    <img class="object-cover h-100 w-96  rounded-sm" src="{{ url('icons/login.jpg') }}" alt="">
+                    <img class="object-cover h-100 w-96  rounded-xl" src="{{ url('icons/login.jpg') }}" alt="">
                 </div>
         </x-slot>
 

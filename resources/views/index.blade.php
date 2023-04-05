@@ -5,7 +5,7 @@
     </x-slot>
     <div class="container my-12 mx-auto md:px-12 p-5">
       <div class="mb-8">
-          <div id="mapid" style="height:600px"></div>
+          <div id="mapid" style="height:700px" class="rounded-lg"></div>
           </div> 
         </div>
         <div class=" bg-slate-100 p-40">
@@ -29,8 +29,8 @@
           @endforeach
         </div>
         
-        <div class="swiper-button-next text-red-500" style="color: red"></div>
-        <div class="swiper-button-prev text-red-500" style="color: red"></div>
+        <div class="swiper-button-next text-red-600" style="color:  rgb(220 38 38)"></div>
+        <div class="swiper-button-prev text-red-600" style="color:  rgb(220 38 38)"></div>
       </div>
 
       </div>   
