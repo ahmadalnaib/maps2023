@@ -9,7 +9,7 @@
   @csrf
   <div class="flex flex-row p-5">
     <div class="w-6/12">
-      <input type="text" id="address" name="address" autocomplete="off" class="p-4 w-full bg-gray-100 rounded-md border-none focus:ring-transparent" placeholder="Search" placeholder="ex:Johann-Georg-Herzog-Str. 19">
+      <input type="text" id="address" name="address" autocomplete="off" class="p-4 w-full bg-gray-100 rounded-md border-none focus:ring-transparent" placeholder="Enter Address or Postcode" placeholder="ex:Johann-Georg-Herzog-Str. 19">
       <div  id="address-list" class="mt-2" ></div>
     </div>
     <div class="w-6/12">
