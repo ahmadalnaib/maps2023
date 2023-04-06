@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Locker;
 
 
+use App\Models\Place;
 use App\Models\Locker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,7 @@ class LockerAdminController extends Controller
     {
        
         $locker= Locker::create([
-            "locker_number" =>$request->locker_number,
+            "locker_name" =>$request->locker_name,
             "place_id"=>$request->place_id
         ]);
 

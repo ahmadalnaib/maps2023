@@ -35,6 +35,8 @@ Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('
 
 // admin -- Door
 Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.index');
+Route::get('admin/door/create',[DoorAdminController::class,'create'])->name('admin.door.create');
+Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('admin.door.store');
 
 Route::get('/', function () {
     return view('welcome');

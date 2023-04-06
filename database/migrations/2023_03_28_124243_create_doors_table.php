@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('locker_id');
             $table->integer('door_number');
             $table->boolean('is_big')->default(false);
-            $table->string('rental_status')->default('available');
+            $table->string('rental_status')->default(false);
             $table->timestamps();
     
          

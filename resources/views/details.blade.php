@@ -12,7 +12,7 @@
       
         @foreach ($lockers as $locker)
     <div class="text-center border p-4 rounded-md">
-      <h3>Locker {{ $locker->locker_number }}</h3>
+      <h3>Locker {{ $locker->locker_name }}</h3>
       <ul  style="list-style: none; padding: 0;">
         @foreach ($locker->doors as $door)
         <li data-door-id="{{ $door->id }}" 

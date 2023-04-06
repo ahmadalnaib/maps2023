@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lockers', function (Blueprint $table) {
             $table->id();
             $table->integer('place_id');
-            $table->string('locker_number');
+            $table->string('locker_name');
             $table->timestamps();
     
         });
