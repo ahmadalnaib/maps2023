@@ -128,6 +128,9 @@
                             <x-dropdown-link href="{{ route('admin.locker.index') }}">
                                 {{ __('Lockers') }}
                             </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('admin.door.index') }}">
+                                {{ __('Doors') }}
+                            </x-dropdown-link>
                             @endif
 
                           

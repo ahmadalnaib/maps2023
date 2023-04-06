@@ -7,6 +7,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
 
@@ -31,6 +32,9 @@ Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('ad
 Route::get('admin/locker',[LockerAdminController::class,'index'])->name('admin.locker.index');
 Route::get('admin/locker/create',[LockerAdminController::class,'create'])->name('admin.locker.create');
 Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('admin.locker.store');
+
+// admin -- Door
+Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.index');
 
 Route::get('/', function () {
     return view('welcome');
