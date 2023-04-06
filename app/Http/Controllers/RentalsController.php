@@ -43,6 +43,14 @@ class RentalsController extends Controller
     $price_per_month = 15;
     $price_per_year = 90;
 
+    if ($door->is_big) {
+        // Double the prices if the door is big
+        $price_per_day *= 2;
+        $price_per_week *= 2;
+        $price_per_month *= 2;
+        $price_per_year *= 2;
+    }
+
    $duration = '1 day'; // default duration value
         if ($rental_period >= 7 && $rental_period < 30) {
             $duration = '1 week';
@@ -64,7 +72,7 @@ class RentalsController extends Controller
         'duration' => $duration,
         'price' => $price,
     ]);
-
+$rental->save();
 
 
 

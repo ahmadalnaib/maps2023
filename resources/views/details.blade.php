@@ -13,16 +13,18 @@
         @foreach ($lockers as $locker)
     <div class="text-center border p-4 rounded-md">
       <h3>Locker {{ $locker->locker_name }}</h3>
-      <ul  style="list-style: none; padding: 0;">
+      <ul style="list-style: none; padding: 0;">
         @foreach ($locker->doors as $door)
-        <li data-door-id="{{ $door->id }}" 
-          class="inline-block m-0 py-20 px-5 border-2 rounded-md text-center 
-                 {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}"
-      >
-          0 {{ $door->door_number }}
-      </li>
-        
-      @endforeach
+            @if ($door->is_big)
+                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-10 border-2 rounded-md text-center {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
+                    {{ $door->door_number }} (BIG)
+                </li>
+            @else
+                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-5 border-2 rounded-md text-center {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
+                    {{ $door->door_number }} 
+                </li>
+            @endif
+        @endforeach
     </ul>
     
     
@@ -39,6 +41,7 @@
                   <option value="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
                       Door {{ $door->door_number }} 
                     </option>
+                    
                     @endif
               @endforeach
           </select>

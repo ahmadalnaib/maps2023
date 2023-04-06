@@ -17,9 +17,7 @@
                 <th scope="col" class="px-6 py-3">
                   Door Size
                 </th>
-                <th scope="col" class="px-6 py-3">
-                  Rental Status
-                </th>
+             
            
                 <th scope="col" class="px-6 py-3 ">
                     Action
@@ -39,9 +37,6 @@
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$door->is_big ? 'Big' :"Small" }}
-                </th>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$door->rentals->isEmpty() ? 'Not Rental' : 'Rental'  }}
                 </th>
              
                

@@ -28,8 +28,8 @@ class DoorAdminController extends Controller
          $door= Door::create([
              "door_number" =>$request->door_number,
              "locker_id"=>$request->locker_id,
-             "is_big"=>$request->is_big ?? false,
-             "rental_status"=>$request->rental_status ??  false,
+             "is_big"=>boolval($request->is_big) ?? false,
+          
          ]);
  
          return redirect()->route('admin.door.index');
