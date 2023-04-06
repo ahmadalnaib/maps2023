@@ -4,9 +4,9 @@
         
         <x-slot name="logo">
           
-                <div class="">
+                <a href="{{route('home')}}" title="Home">
                     <img class="object-cover h-100 w-96  rounded-xl" src="{{ url('icons/login.jpg') }}" alt="">
-                </div>
+                </a>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
