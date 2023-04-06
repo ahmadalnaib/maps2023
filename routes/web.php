@@ -8,6 +8,7 @@ use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
+use App\Http\Controllers\Admin\Locker\LockerAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,16 @@ use App\Http\Controllers\Admin\Place\PlaceAdminController;
 |
 */
 
-// ad
+// admin -- place
 Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
 Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
 Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
+
+
+// admin -- Locker
+Route::get('admin/locker',[LockerAdminController::class,'index'])->name('admin.locker.index');
+Route::get('admin/locker/create',[LockerAdminController::class,'create'])->name('admin.locker.create');
+Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('admin.locker.store');
 
 Route::get('/', function () {
     return view('welcome');
