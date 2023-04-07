@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Rentals;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ReportController;
@@ -10,7 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
-use App\Models\Rentals;
+use App\Models\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +51,9 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-       
+    
+ 
+      
 
         return view('dashboard');
     })->name('dashboard');
