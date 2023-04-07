@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
+use App\Models\Rentals;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,13 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $thisYearOrders=Rentals::query()
+        ->whereYear('created_at',date('Y'))
+        ->groupByMonth();
+        $lastYearOrders=Rentals::query()
+        ->whereYear('created_at',date('Y')- 1)
+        ->groupByMonth();
+        return view('dashboard',compact('thisYearOrders','lastYearOrders'));
     })->name('dashboard');
 });
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
