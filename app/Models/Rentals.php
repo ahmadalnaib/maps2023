@@ -40,5 +40,10 @@ public function scopeGroupByMonth(Builder $query)
     ->toArray();
 }
 
+public function scopeGetYearOrders(Builder $query,$year)
+{
+    return $query->whereYear('created_at',$year);
+}
+
 
 }
