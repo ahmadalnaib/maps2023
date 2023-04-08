@@ -6,17 +6,18 @@ wire:ignore
          lastYearOrders: @entangle('lastYearOrders'),
          thisYearOrders: @entangle('thisYearOrders'),
          init() {
-             const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+             const labels = [];
              const data = {
                  labels: labels,
                  datasets: [{
-                     label: `${this.selectedYear - 1} Orders`,
+                     label: `${this.selectedYear - 1} Rentals`,
                      backgroundColor: 'lightgray',
                      data: this.lastYearOrders,
                  }, {
-                     label: `${this.selectedYear} Orders`,
+                     label: `${this.selectedYear} Rentals`,
                      backgroundColor: 'lightgreen',
                      data: this.thisYearOrders,
+                     
                  }]
              };
              const config = {
@@ -29,8 +30,8 @@ wire:ignore
                  config
              );
              Livewire.on('updateTheChart', () => {
-                 myChart.data.datasets[0].label = `${this.selectedYear - 1} Orders`;
-                 myChart.data.datasets[1].label = `${this.selectedYear} Orders`;
+                 myChart.data.datasets[0].label = `${this.selectedYear - 1} Rentals`;
+                 myChart.data.datasets[1].label = `${this.selectedYear} Rentals`;
                  myChart.data.datasets[0].data = this.lastYearOrders;
                  myChart.data.datasets[1].data = this.thisYearOrders;
                  myChart.update();
@@ -39,14 +40,15 @@ wire:ignore
      }">
     <span>Year:</span>
     <select name="selectedYear" id="selectedYear" class="border" wire:model="selectedYear" wire:change='updateOrdersCount'>
-        @foreach ($availableYear as $year)
+        @foreach ($availableYears as $year)
         <option value="{{$year}}">{{$year}}</option>
             
         @endforeach
     </select>
     <div class="my-6">
-        <div><span x-text="selectedYear -1"></span> Rentals :  <span x-text="lastYearOrders.reduce((a, b) => a + b)"></span></div>
-        <div><span x-text="selectedYear"></span> Rentals:   <span x-text="thisYearOrders.reduce((a, b) => a + b)"></span></div>
+        <div><span x-text="selectedYear -1"></span> Rentals :  <span x-text="lastYearOrders.January + lastYearOrders.February + lastYearOrders.March + lastYearOrders.April + lastYearOrders.May + lastYearOrders.June + lastYearOrders.July + lastYearOrders.August + lastYearOrders.September + lastYearOrders.October + lastYearOrders.November + lastYearOrders.December"></span></div>
+        <div><span x-text="selectedYear"></span> Rentals:   <span x-text="thisYearOrders.January + thisYearOrders.February + thisYearOrders.March + thisYearOrders.April + thisYearOrders.May + thisYearOrders.June + thisYearOrders.July + thisYearOrders.August + thisYearOrders.September + thisYearOrders.October + thisYearOrders.November + thisYearOrders.December"></span></div>
     </div>
+    
     <canvas id="myChart" x-ref="canvas"></canvas>
 </div>

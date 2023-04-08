@@ -31,13 +31,36 @@ public function door()
 
 public function scopeGroupByMonth(Builder $query)
 {
-    return $query->selectRaw('month(created_at) as month')
-    ->selectRaw('count(*) as count')
-    ->groupBy('month')
-    ->groupBy('month')
-    ->pluck('count','month')
-    ->values()
-    ->toArray();
+    $months = [
+        1 => 'January',
+        2 => 'February',
+        3 => 'March',
+        4 => 'April',
+        5 => 'May',
+        6 => 'June',
+        7 => 'July',
+        8 => 'August',
+        9 => 'September',
+        10 => 'October',
+        11 => 'November',
+        12 => 'December',
+    ];
+
+    $counts = array_fill_keys(array_values($months), 0);
+
+    $results = $query->selectRaw('monthname(created_at) as month')
+        ->selectRaw('count(*) as count')
+        ->groupBy('month')
+        ->orderByRaw('month(created_at)')
+        ->get();
+
+    foreach ($results as $result) {
+        $counts[$result->month] = $result->count;
+    }
+
+    return $counts;
+
+    
 }
 
 public function scopeGetYearOrders(Builder $query,$year)

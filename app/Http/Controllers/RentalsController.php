@@ -71,6 +71,7 @@ class RentalsController extends Controller
         'end_time' => $end_time,
         'duration' => $duration,
         'price' => $price,
+        'created_at' => Carbon::now(),
     ]);
 $rental->save();
 
