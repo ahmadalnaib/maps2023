@@ -39,7 +39,7 @@ wire:ignore
          }
      }">
     <span>Year:</span>
-    <select name="selectedYear" id="selectedYear" class="border" wire:model="selectedYear" wire:change='updateOrdersCount'>
+    <select name="selectedYear" id="selectedYear" class="border-solid border-2 border-red-200" wire:model="selectedYear" wire:change='updateOrdersCount'>
         @foreach ($availableYears as $year)
         <option value="{{$year}}">{{$year}}</option>
             

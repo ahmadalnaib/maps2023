@@ -28,7 +28,7 @@
     </ul>
     
     
-  
+    @if ($locker->doors->filter(function($door) { return $door->rentals->isEmpty(); })->count() > 0)
       <form action="/rent" method="post">
           @csrf
   
@@ -58,6 +58,9 @@
         
           <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Rent</button>
       </form>
+      @else
+      <p class="mt-10 bg-gray-100 p-5 rounded">We're sorry, but there are currently no locker doors available for rent. Please check back later or contact our customer service for further assistance.</p>
+      @endif
   @endforeach
       </div>
 

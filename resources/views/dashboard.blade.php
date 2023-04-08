@@ -5,20 +5,19 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-   
-    
+    <div class="py-8 bg-gray-100">
    
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-4 gap-10 mt-5 mb-24">
            <livewire:stats.users-count/>
            <livewire:stats.rentals-count/>
            <livewire:stats.revenue-count/>
+           <livewire:stats.revenue-count/>
               
               
               
         </div>
-            <div class="bg-gray-100 overflow-hidden shadow-xl sm:rounded-lg p-5">
+            <div class="bg-white border overflow-hidden shadow-xl sm:rounded-lg p-5">
             
                <livewire:chart-orders/>
          
