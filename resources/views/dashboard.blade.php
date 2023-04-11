@@ -8,11 +8,11 @@
     <div class="py-8 bg-gray-100">
    
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="grid grid-cols-4 gap-10 mt-5 mb-24">
+            <div class="grid grid-cols-3 gap-10 mt-5 mb-24">
            <livewire:stats.users-count/>
            <livewire:stats.rentals-count/>
            <livewire:stats.revenue-count/>
-           <livewire:stats.revenue-count/>
+           
               
               
               

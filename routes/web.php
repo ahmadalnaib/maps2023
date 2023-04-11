@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\Rentals;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
@@ -11,8 +12,8 @@ use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
+use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
-use App\Models\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,9 @@ Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('
 Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.index');
 Route::get('admin/door/create',[DoorAdminController::class,'create'])->name('admin.door.create');
 Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('admin.door.store');
+
+// admin users
+Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');
 
 Route::get('/', function () {
     return view('welcome');
