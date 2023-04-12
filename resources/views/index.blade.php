@@ -81,38 +81,42 @@
 
 <!-- JavaScript code to create the map -->
 <script>
-let longitude={!! $places->pluck('longitude') !!}
-let latitude={!! $places->pluck('latitude') !!}
-let address={!! $places->pluck('address') !!}
-let lockerUrl = "{{route('place.show',[$place->id,$place->slug])}}";
-
-
-let map=L.map('mapid');
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-map.locate({setView:true,maxZoom:6});
-let greenIcon = L.icon({
-  iconUrl: 'http://127.0.0.1:8000/icons/bike-map.svg',
-  iconSize:     [40, 95], // size of the icon
-    shadowSize:   [50, 64], // size of the shadow
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-let markers=[];
-@foreach($places as $i => $place)
-
-  // Create the link that opens the locker dynamically using the Laravel route function
-   placeSlug = '{{ Str::slug($place->address) }}';
-   lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', '{{ $place->slug }}');
+  let longitude={!! $places->pluck('longitude') !!}
+  let latitude={!! $places->pluck('latitude') !!}
+  let address={!! $places->pluck('address') !!}
   
-  // Add the link to the marker's popup
-   popupContent = '<p>' + '{{ $place->address }}' + '</p>' + '<a href="' + lockerLink + '">Open Locker</a>';
+  let map=L.map('mapid');
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+  map.locate({setView:true,maxZoom:6});
   
-  markers.push(new L.marker([{{ $place->latitude }},{{ $place->longitude }}],{icon: greenIcon}).addTo(map).bindPopup(popupContent).openPopup());
-@endforeach
-
-let group=new L.featureGroup(markers).getBounds();
-map.fitBounds([
-  group
-])
+  let greenIcon = L.icon({
+    iconUrl: 'http://127.0.0.1:8000/icons/bike-map.svg',
+    iconSize: [40, 95],
+    shadowSize: [50, 64],
+    iconAnchor: [22, 94],
+    shadowAnchor: [4, 62],
+    popupAnchor: [-3, -76]
+  });
+  
+  let markers=[];
+  
+  @foreach($places as $place)
+    // Create the link that opens the locker dynamically using the Laravel route function
+    let placeSlug = '{{ Str::slug($place->address) }}';
+    let lockerUrl = "{{route('place.show',[$place->id,$place->slug])}}";
+    let lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', '{{ $place->slug }}');
+    
+    // Add the link to the marker's popup
+    let popupContent = '<p>' + '{{ $place->address }}' + '</p>' + '<a href="' + lockerLink + '">Open Locker</a>';
+    
+    markers.push(new L.marker([{{ $place->latitude }},{{ $place->longitude }}], {icon: greenIcon})
+      .addTo(map)
+      .bindPopup(popupContent)
+      .openPopup()
+    );
+  @endforeach
+  
+  let group=new L.featureGroup(markers).getBounds();
+  map.fitBounds([group]);
 </script>
+
