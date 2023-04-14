@@ -13,7 +13,7 @@
         @foreach ($lockers as $locker)
     <div class="text-center border p-4 rounded-md">
       <h3>Locker {{ $locker->locker_name }}</h3>
-      <ul style="list-style: none; padding: 0;">
+      <ul  class="flex flex-wrap list-none p-0">
         @foreach ($locker->doors as $door)
             @if ($door->is_big)
                 <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-10 border-2 rounded-md text-center {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
