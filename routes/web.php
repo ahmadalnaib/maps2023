@@ -5,6 +5,7 @@ use App\Models\Payment;
 use App\Models\Rentals;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
@@ -14,6 +15,8 @@ use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +29,14 @@ use App\Http\Controllers\Admin\Locker\LockerAdminController;
 |
 */
 
+
+// lang route
+Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
+
 // admin -- place
+
+Route::middleware(['web'])->group(function(){
+
 Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
 Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
 Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
@@ -55,9 +65,7 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-    
- 
-      
+
 
         return view('dashboard');
     })->name('dashboard');
@@ -89,3 +97,9 @@ Route::get('/success', [RentalsController::class,'success'])->name('success');
 
 
 
+
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
+});

@@ -26,12 +26,15 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->routes(function () {
+        $locale=\request()->segment(1);
+
+        $this->routes(function () use ($locale) {
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
+                ->prefix($locale)
                 ->group(base_path('routes/web.php'));
         });
     }

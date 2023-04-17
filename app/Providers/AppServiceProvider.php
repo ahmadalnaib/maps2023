@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use Laravel\Fortify\Fortify;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+ 
+        app()->setLocale(request()->segment(1));
         view()->composer(['includes.header','includes.category_list','index'],'App\Http\ViewComposers\CategoryComposer');
+
+   
     }
 }

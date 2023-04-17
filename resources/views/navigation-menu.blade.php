@@ -8,6 +8,7 @@
                     <a href="{{ route('home') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
+                  
                 </div>
 
                 <!-- Navigation Links -->
@@ -25,6 +26,12 @@
                     <x-nav-link href="" >
                         {{ __('FAQ') }}
                     </x-nav-link> 
+               
+                    <x-nav-link>
+                              <x-lang-switcher />
+                            </x-nav-link> 
+                       
+
                 </div>
             </div>
             @guest
