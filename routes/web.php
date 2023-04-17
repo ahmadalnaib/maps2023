@@ -99,7 +99,5 @@ Route::get('/success', [RentalsController::class,'success'])->name('success');
 
 
 
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->middleware('auth')
-    ->name('logout');
+
 });
