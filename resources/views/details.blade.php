@@ -29,7 +29,7 @@
     
     
     @if ($locker->doors->filter(function($door) { return $door->rentals->isEmpty(); })->count() > 0)
-      <form action="/rent" method="post">
+      <form action="{{route('rent')}}" method="post">
           @csrf
   
           <input class="" type="hidden" name="locker_id" value="{{ $locker->id }}">
