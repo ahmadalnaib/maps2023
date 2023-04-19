@@ -36,8 +36,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->prefix($locale)
                 ->group(base_path('routes/web.php'));
-
-        
+    
         });
     }
 

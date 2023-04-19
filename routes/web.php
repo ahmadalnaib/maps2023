@@ -19,6 +19,7 @@ use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,7 @@ Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name
 
 Route::middleware(['web'])->group(function(){
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
+    
 Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
 Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
 Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
@@ -99,6 +101,7 @@ Route::get('/success', [RentalsController::class,'success'])->name('success');
 
 
 
+// require_once __DIR__ . '/jetstream.php';
 
 
 });
