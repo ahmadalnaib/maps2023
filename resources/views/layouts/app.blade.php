@@ -71,7 +71,10 @@
                 {{ $slot }}
             </main>
         </div>
+        <div class="mt-60">
 
+            @include('includes.footer')
+        </div>
         @stack('modals')
 
         @livewireScripts
