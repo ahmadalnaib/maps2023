@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name
 // admin -- place
 
 Route::middleware(['web'])->group(function(){
-
+    Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
 Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
 Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
 Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
