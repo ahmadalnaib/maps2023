@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lockers', function (Blueprint $table) {
-            $table->id();
-            $table->integer('place_id');
+            $table->uuid('id');
+            $table->uuid('place_id');
             $table->string('locker_name');
             $table->timestamps();
     

@@ -6,11 +6,12 @@ use App\Helpers\Slug;
 use App\Models\Locker;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Place extends Model
 {
-    use HasFactory;
+    use HasFactory,HasUuids;
    protected $guarded=['id','view_count'];
 
    

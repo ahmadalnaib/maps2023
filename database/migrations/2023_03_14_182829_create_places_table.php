@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('places', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image')->default('default.png');

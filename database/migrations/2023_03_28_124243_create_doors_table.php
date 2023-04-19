@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('doors', function (Blueprint $table) {
-            $table->id();
-            $table->integer('locker_id');
+            $table->uuid('id');
+            $table->uuid('locker_id');
             $table->integer('door_number');
             $table->boolean('is_big')->default(false);
             $table->timestamps();
