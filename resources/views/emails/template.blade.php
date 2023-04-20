@@ -1,10 +1,11 @@
 <x-mail::message>
-#username {{$data['name']}}
+    > #### Info
+    > - Name {{$data['name']}}.
+    > - Email  {{$data['email']}}.
 
-#url page {{$data['place_url']}}
 
-<x-mail::button :url="''">
-Error
+<x-mail::button :url="$data['place_url']">
+Show the Error
 </x-mail::button>
 
 Thanks,<br>
