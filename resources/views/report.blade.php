@@ -14,11 +14,11 @@
       
      </div>
      <div class="">
-      <input type="text" class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-400" name="name" placeholder="Name">
+      <input type="text" class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-400" name="name" placeholder="Name" value="{{auth()->user()->name}}" readonly>
       
      </div>
      <div class="">
-      <input type="email" class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-400" name="email" placeholder="Email">
+      <input type="email" class="w-full mt-2 mb-6 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-400" name="email" placeholder="Email" value="{{auth()->user()->email}}" readonly>
       
      </div>
      <input type="submit" class="mt-3 bg-blue-600 text-gray-200 rounded hover:bg-blue-500 px-4 py-2 focus:outline-none mb-3" value="Report">

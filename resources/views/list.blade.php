@@ -13,7 +13,7 @@
         <div style="height: calc(100vh - 260px);
         overflow-y: scroll;">
           @foreach ($places as $place)
-          <a href="{{route('place.show',[$place->id,$place->slug])}}" class="flex mb-5 bg-white border hover:bg-gray-100">
+          <a href="{{route('place.show',[$place,$place->slug])}}" class="flex mb-5 bg-white border hover:bg-gray-100">
             <div class="flex-none w-48 relative ">
               <img src="{{$place->image}}" alt="" class="absolute inset-0 w-full object-contain h-full">
             </div>
