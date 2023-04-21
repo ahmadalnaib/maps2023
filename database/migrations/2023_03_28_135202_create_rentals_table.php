@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('tenant_id');
+            $table->unsignedBigInteger('tenant_id')->index();
             $table->uuid('locker_id');
             $table->uuid('door_id');
             $table->enum('duration', ['1 day', '1 week', '1 month', '1 year']);

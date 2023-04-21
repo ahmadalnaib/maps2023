@@ -3,9 +3,10 @@
 namespace App\Models;
 
 
+use App\Scopes\TenantScope;
+use App\Traits\BelongsToTenant;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
-use App\Scopes\TenantScope;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -20,6 +21,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use HasTeams;
     use Notifiable;
+    use BelongsToTenant;
     use TwoFactorAuthenticatable;
 
 
@@ -87,14 +89,5 @@ class User extends Authenticatable
     }
 
 
-    protected static function booted(): void
-    {
-        static::addGlobalScope(new TenantScope);
-
-        static::creating(function($model){
-            if(session()->has('tenant_id')){
-                $model->tenant_id=session()->get('tenant_id');
-            }
-        });
-    }
+   
 }

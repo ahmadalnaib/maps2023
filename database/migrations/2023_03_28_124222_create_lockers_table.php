@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lockers', function (Blueprint $table) {
             $table->uuid('id');
             $table->uuid('place_id');
-            $table->unsignedBigInteger('tenant_id');
+            $table->unsignedBigInteger('tenant_id')->index();
             $table->string('locker_name');
             $table->timestamps();
     
