@@ -12,7 +12,8 @@
         <div class=" bg-slate-100 p-40">
           <h2 class="text-6xl font-black">Premium Lockers</h2>
           <div class="container my-12 mx-auto md:px-12 p-5">
-       
+        {{App\Models\User::count()}} <br>
+        {{App\Models\User::where('tenant_id',1)->count()}}
      
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">

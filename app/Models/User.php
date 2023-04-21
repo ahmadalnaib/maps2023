@@ -5,6 +5,7 @@ namespace App\Models;
 
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use App\Scopes\TenantScope;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -83,5 +84,11 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return $this->role()->whereName($role)->first() ? true : false;
+    }
+
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new TenantScope);
     }
 }
