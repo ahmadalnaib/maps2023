@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tenant_id');
             $table->uuid('user_id');
             $table->uuid('place_id');
             $table->timestamps();

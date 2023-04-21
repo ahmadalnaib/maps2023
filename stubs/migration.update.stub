@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lockers', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->uuid('place_id');
-            $table->unsignedBigInteger('tenant_id');
-            $table->string('locker_name');
-            $table->timestamps();
-    
+        Schema::table('{{ table }}', function (Blueprint $table) {
+            //
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lockers');
+        Schema::table('{{ table }}', function (Blueprint $table) {
+            //
+        });
     }
 };
