@@ -13,7 +13,7 @@
           <h2 class="text-6xl font-black">Premium Lockers</h2>
           <div class="container my-12 mx-auto md:px-12 p-5">
    
-     
+     <livewire:department-form/>
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             @foreach($categories as $category)
