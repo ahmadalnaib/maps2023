@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
+use App\Http\Controllers\ImpersonationController;
+use App\Http\Controllers\SuperController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -34,6 +36,10 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
+
+Route::get('/super', [SuperController::class, 'show'])->name('super');
+Route::view('/team', 'team')->name('team.index');
+Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');
 
 // admin -- place
 
@@ -97,6 +103,7 @@ Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show'
 Route::post('/rent', [RentalsController::class,'rent'])->name('rent');
 Route::get('/cancel', [RentalsController::class,'cancel'])->name('cancel');
 Route::get('/success', [RentalsController::class,'success'])->name('success');
+
 
 
 

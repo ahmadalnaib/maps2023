@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Listeners\ClearTenantIdFromSession;
+use App\Listeners\RecordLogin;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -22,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
         ],
       Login::class=> [
         SetTenantIdInSession::class,
+        RecordLogin::class,
+      ],
+      Logout::class=>[
+        ClearTenantIdFromSession::class,
       ]
     ];
 

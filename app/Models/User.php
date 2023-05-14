@@ -86,6 +86,17 @@ class User extends Authenticatable
         return $this->role()->whereName($role)->first() ? true : false;
     }
 
+    public function isAdmin()
+    {
+        return $this->role == 'Admin';
+    }
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%');
+    }
+
 
    
 }

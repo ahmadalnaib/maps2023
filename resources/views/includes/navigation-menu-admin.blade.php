@@ -16,6 +16,12 @@
                    <x-nav-link href="" >
                         {{ __('Find a Locker') }}
                     </x-nav-link>
+                    <x-nav-link href="{{route('super')}}" >
+                        super
+                    </x-nav-link>
+                    <x-nav-link href="{{route('team.index')}}" >
+                        teams
+                    </x-nav-link>
                 
                 </div>
             </div>
