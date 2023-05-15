@@ -121,9 +121,7 @@
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="{{ route('bookmarks') }}">
-                                {{ __('Bookmarks') }}
-                            </x-dropdown-link>
+                           
                             @if (Auth::check() && Auth::user()->role_id == 2)
                             <x-dropdown-link href="{{route('admin.place.index')}}">
                                  Places

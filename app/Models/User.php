@@ -72,10 +72,8 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Place', 'bookmarks');
     }
 
-    public function alreadyBookmarked($place)
-    {
-        return $this->bookmarks()->wherePlace_id($place)->exists();
-    }
+
+    
 
     public function role()
     {

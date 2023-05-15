@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Models\Door;
 use App\Models\Place;
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Locker extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory,HasUuids,BelongsToTenant ;
     protected $guarded=[];
     public function place()
 {

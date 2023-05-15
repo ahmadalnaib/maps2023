@@ -5,13 +5,14 @@ namespace App\Models;
 use App\Models\Door;
 use App\Models\User;
 use App\Models\Locker;
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Rentals extends Model
 {
-    use HasFactory;
+    use HasFactory,BelongsToTenant ;
     protected $guarded=[];
 
     public function user()
