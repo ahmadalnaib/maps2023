@@ -13,7 +13,7 @@
           <h2 class="text-6xl font-black">Premium Lockers</h2>
           <div class="container my-12 mx-auto md:px-12 p-5">
    
-     <livewire:department-form/>
+   
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             @foreach($categories as $category)
@@ -80,13 +80,10 @@
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-<!-- JavaScript code to create the map -->
 <script>
-  let longitude={!! $places->pluck('longitude') !!}
-  let latitude={!! $places->pluck('latitude') !!}
-  let address={!! $places->pluck('address') !!}
+  let places = {!! $places !!};
   
-  let map=L.map('mapid');
+  let map = L.map('mapid');
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
   map.locate({setView:true,maxZoom:6});
   
@@ -101,23 +98,19 @@
   
   let markers=[];
   
-  @foreach($places as $place)
-    // Create the link that opens the locker dynamically using the Laravel route function
+  places.forEach(function(place) {
     let placeSlug = '{{ Str::slug($place->address) }}';
-    let lockerUrl = "{{route('place.show',[$place->id,$place->slug])}}";
-    let lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', '{{ $place->slug }}');
+    let lockerUrl = "{{ route('place.show', [$place->id, $place->slug]) }}";
+    let lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', place.slug);
+    let popupContent = '<p>' + place.address + '</p>' + '<a href="' + lockerLink + '">Open Locker</a>';
     
-    // Add the link to the marker's popup
-    let popupContent = '<p>' + '{{ $place->address }}' + '</p>' + '<a href="' + lockerLink + '">Open Locker</a>';
-    
-    markers.push(new L.marker([{{ $place->latitude }},{{ $place->longitude }}], {icon: greenIcon})
+    markers.push(new L.marker([place.latitude, place.longitude], {icon: greenIcon})
       .addTo(map)
       .bindPopup(popupContent)
       .openPopup()
     );
-  @endforeach
+  });
   
   let group=new L.featureGroup(markers).getBounds();
   map.fitBounds([group]);
 </script>
-
