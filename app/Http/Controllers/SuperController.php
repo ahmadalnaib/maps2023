@@ -21,6 +21,7 @@ class SuperController extends Controller
             }
             $subscribersCount = Tenant::count();
             $usersCount = User::count();
+            // $usersCount = User::where('role_id', 1)->count();
             $loginsCount = Login::count();
             return view('super.dashboard', [
                 'subscribersCount' => $subscribersCount,
