@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
     
     public function index()
     {
-        $categories=Category::latest()->paginate(8);
+
+        $tenant = Auth::user();
+
+        $categories=Category::where('tenant_id', $tenant->id)
+        ->latest()
+        ->paginate(8);
         return view('admin.category.index',compact('categories'));
     }
 
