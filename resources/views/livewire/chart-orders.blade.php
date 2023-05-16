@@ -1,6 +1,5 @@
 <div class="mt-4"
-wire:ignore
-     class="mt-4"
+     wire:ignore
      x-data="{
          selectedYear: @entangle('selectedYear'),
          lastYearOrders: @entangle('lastYearOrders'),
@@ -41,14 +40,19 @@ wire:ignore
     <span>Year:</span>
     <select name="selectedYear" id="selectedYear" class="border-solid border-2 border-red-200" wire:model="selectedYear" wire:change='updateOrdersCount'>
         @foreach ($availableYears as $year)
-        <option value="{{$year}}">{{$year}}</option>
-            
+            <option value="{{$year}}">{{$year}}</option>
         @endforeach
     </select>
     <div class="my-6">
-        <div><span x-text="selectedYear -1"></span> Rentals :  <span x-text="lastYearOrders.January + lastYearOrders.February + lastYearOrders.March + lastYearOrders.April + lastYearOrders.May + lastYearOrders.June + lastYearOrders.July + lastYearOrders.August + lastYearOrders.September + lastYearOrders.October + lastYearOrders.November + lastYearOrders.December"></span></div>
-        <div><span x-text="selectedYear"></span> Rentals:   <span x-text="thisYearOrders.January + thisYearOrders.February + thisYearOrders.March + thisYearOrders.April + thisYearOrders.May + thisYearOrders.June + thisYearOrders.July + thisYearOrders.August + thisYearOrders.September + thisYearOrders.October + thisYearOrders.November + thisYearOrders.December"></span></div>
+        <div><span x-text="selectedYear - 1"></span> Rentals:  <span x-text="calculateTotalRentals(lastYearOrders)"></span></div>
+        <div><span x-text="selectedYear"></span> Rentals:   <span x-text="calculateTotalRentals(thisYearOrders)"></span></div>
     </div>
     
     <canvas id="myChart" x-ref="canvas"></canvas>
+
+    <script>
+        function calculateTotalRentals(monthlyOrders) {
+            return Object.values(monthlyOrders).reduce((total, count) => total + count, 0);
+        }
+    </script>
 </div>

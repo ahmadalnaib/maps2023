@@ -18,7 +18,9 @@ class UsersCount extends Component
 
     public function updateStat()
     {
-        $this->usersCount=User::where('created_at','>=',now()->subDays($this->selectedDays))->count();
+      $this->usersCount = User::where('tenant_id', session('tenant_id'))
+        ->where('created_at', '>=', now()->subDays($this->selectedDays))
+        ->count();
     }
     public function render()
     {

@@ -19,7 +19,13 @@ class RentalsCount extends Component
 
     public function updateStat()
     {
-        $this->rentalsCount=Rentals::where('created_at','>=',now()->subDays($this->selectedDays))->count();
+        $user = auth()->user(); // get the current authenticated user
+
+    $this->rentalsCount = Rentals::where('created_at', '>=', now()->subDays($this->selectedDays))
+                                  ->whereHas('locker', function ($query) use ($user) {
+                                      $query->where('tenant_id', $user->id);
+                                  })
+                                  ->count();
     }
     public function render()
     {
