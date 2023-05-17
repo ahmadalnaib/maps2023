@@ -40,6 +40,10 @@ Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
 
+Route::get('/price', function () {
+    return view('price');
+})->name('price');
+
 Route::get('/super', [SuperController::class, 'show'])->name('super');
 Route::view('/team', 'team')->name('team.index');
 Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');

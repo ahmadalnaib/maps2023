@@ -20,7 +20,7 @@
                     <x-nav-link href="" >
                         {{ __('How it works') }}
                     </x-nav-link>
-                    <x-nav-link href="" >
+                    <x-nav-link href="{{route('price')}}" >
                         {{ __('Prices') }}
                     </x-nav-link>
                     <x-nav-link href="{{route('faq')}}" >
