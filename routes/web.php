@@ -31,6 +31,9 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
+Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
+Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
 
 
 // lang route
@@ -56,9 +59,6 @@ Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->nam
 Route::middleware(['web'])->group(function(){
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
     
-Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
-Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
-Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
 
 
 // admin -- Locker
