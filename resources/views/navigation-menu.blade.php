@@ -17,7 +17,7 @@
                    <x-nav-link href="" >
                         {{ __('Find a Locker') }}
                     </x-nav-link>
-                    <x-nav-link href="" >
+                    <x-nav-link href="{{route('how')}}" >
                         {{ __('How it works') }}
                     </x-nav-link>
                     <x-nav-link href="{{route('price')}}" >

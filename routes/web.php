@@ -43,6 +43,9 @@ Route::get('/faq', function () {
 Route::get('/price', function () {
     return view('price');
 })->name('price');
+Route::get('/how', function () {
+    return view('how');
+})->name('how');
 
 Route::get('/super', [SuperController::class, 'show'])->name('super');
 Route::view('/team', 'team')->name('team.index');
