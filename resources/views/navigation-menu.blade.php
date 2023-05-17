@@ -23,7 +23,7 @@
                     <x-nav-link href="" >
                         {{ __('Prices') }}
                     </x-nav-link>
-                    <x-nav-link href="" >
+                    <x-nav-link href="{{route('faq')}}" >
                         {{ __('FAQ') }}
                     </x-nav-link> 
                

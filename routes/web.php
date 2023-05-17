@@ -36,6 +36,10 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
 
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
 Route::get('/super', [SuperController::class, 'show'])->name('super');
 Route::view('/team', 'team')->name('team.index');
 Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');
@@ -63,9 +67,6 @@ Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('adm
 // admin users
 Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware([
     'auth:sanctum',

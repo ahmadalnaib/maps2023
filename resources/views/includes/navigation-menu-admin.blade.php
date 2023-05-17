@@ -13,9 +13,7 @@
                 <!-- Navigation Links -->
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                   <x-nav-link href="" >
-                        {{ __('Find a Locker') }}
-                    </x-nav-link>
+                 
                     <x-nav-link href="{{route('super')}}" >
                         super
                     </x-nav-link>
@@ -203,6 +201,9 @@
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link href="{{ route('super') }}" :active="request()->routeIs('super')">
+                    {{ __('Super') }}
                 </x-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin>
 
 
 
@@ -109,4 +109,4 @@
     </div>
 
 
-  </x-app-layout>
+  </x-admin>
