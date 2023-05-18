@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use App\Models\Locker;
+use App\Models\Rental;
 use App\Scopes\TenantScope;
 use App\Traits\BelongsToTenant;
 use Laravel\Jetstream\HasTeams;
@@ -68,9 +70,19 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\Place');
     }
 
+    public function lockers()
+{
+    return $this->hasMany(Locker::class);
+}
+
     public function bookmarks()
     {
         return $this->belongsToMany('App\Models\Place', 'bookmarks');
+    }
+
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class);
     }
 
 

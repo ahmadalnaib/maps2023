@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Stats;
 
-use App\Models\Rentals;
 use App\Models\User;
+use App\Models\Rental;
+use App\Models\Rentals;
 use Livewire\Component;
 
 class RentalsCount extends Component
@@ -21,7 +22,7 @@ class RentalsCount extends Component
     {
         $user = auth()->user(); // get the current authenticated user
 
-    $this->rentalsCount = Rentals::where('created_at', '>=', now()->subDays($this->selectedDays))
+    $this->rentalsCount = Rental::where('created_at', '>=', now()->subDays($this->selectedDays))
                                   ->whereHas('locker', function ($query) use ($user) {
                                       $query->where('tenant_id', $user->id);
                                   })
