@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Place extends Model
 {
     use HasFactory,HasUuids,BelongsToTenant ;
-   protected $guarded=['id','view_count'];
+   protected $guarded=[];
 
    
     public function user()
