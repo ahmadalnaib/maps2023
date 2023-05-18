@@ -1,6 +1,6 @@
 <div class="bg-white  mt-20">
 
-  <h1 class="text-7xl text-center font-black">Find a Bike locker near you</h1>
+  <h1 class="text-7xl text-center font-black">{{__('index.find')}}</h1>
   <p class="text-center text-3xl text-gray-400 mt-4">Enter a street, Address or postcode and we’ll show your nearest lockers
      </p>
      <p class="text-center text-3xl text-gray-400 mt-2 mb-8">Lockers are available 24 hours a day, 7 days a week</p>
