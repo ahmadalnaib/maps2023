@@ -2,7 +2,7 @@
     <x-authentication-card>
         <x-slot name="logo">
             <a href="{{route('home')}}" title="Home">
-                <img class="object-cover h-100 w-96  rounded-xl" src="{{ url('icons/register.jpg') }}" alt="">
+                <img class="object-cover h-100 w-96  rounded-xl hidden md:block" src="{{ url('icons/register.jpg') }}" alt="">
             </a>
         </x-slot>
 

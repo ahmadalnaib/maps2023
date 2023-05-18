@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('tenant_id')->index();
             $table->string('title');      
             $table->string('image')->default('default.png');	
             $table->string('slug')->unique(); 

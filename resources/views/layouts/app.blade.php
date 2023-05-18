@@ -43,6 +43,7 @@
 
             <!-- Page Content -->
             <main>
+             
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     @if (Auth::check() && Auth::user()->role_id == 2)
                             @if(session()->has('message'))

@@ -5,13 +5,14 @@ namespace App\Models;
 use App\Helpers\Slug;
 use App\Models\Locker;
 use App\Models\Category;
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Place extends Model
 {
-    use HasFactory,HasUuids;
+    use HasFactory,HasUuids,BelongsToTenant ;
    protected $guarded=['id','view_count'];
 
    
@@ -25,10 +26,7 @@ class Place extends Model
     }
 
 
-    public function bookmarks()
-    {
-        return $this->belongsToMany('App\Models\Bookmark', 'bookmarks');
-    }
+
 
     public function lockers()
 {

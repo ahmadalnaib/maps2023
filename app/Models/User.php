@@ -3,6 +3,10 @@
 namespace App\Models;
 
 
+use App\Models\Locker;
+use App\Models\Rental;
+use App\Scopes\TenantScope;
+use App\Traits\BelongsToTenant;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -12,14 +16,16 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use HasTeams;
     use Notifiable;
+    use BelongsToTenant;
     use TwoFactorAuthenticatable;
+  
 
 
     /**
@@ -27,9 +33,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded=[];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -66,15 +70,23 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Place');
     }
 
+    public function lockers()
+{
+    return $this->hasMany(Locker::class);
+}
+
     public function bookmarks()
     {
         return $this->belongsToMany('App\Models\Place', 'bookmarks');
     }
 
-    public function alreadyBookmarked($place)
+    public function rentals()
     {
-        return $this->bookmarks()->wherePlace_id($place)->exists();
+        return $this->hasMany(Rental::class);
     }
+
+
+    
 
     public function role()
     {
@@ -84,4 +96,18 @@ class User extends Authenticatable
     {
         return $this->role()->whereName($role)->first() ? true : false;
     }
+
+    public function isAdmin()
+    {
+        return $this->role == 'Admin';
+    }
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('name', 'like', '%'.$query.'%')
+                ->orWhere('email', 'like', '%'.$query.'%');
+    }
+
+
+   
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Rental;
 use App\Models\Rentals;
 use Livewire\Component;
 
@@ -18,8 +19,20 @@ class ChartOrders extends Component
     }
 
     public function updateOrdersCount(){
-        $this->thisYearOrders=Rentals::getYearOrders($this->selectedYear)->groupByMonth();
-        $this->lastYearOrders=Rentals::getYearOrders($this->selectedYear - 1)->groupByMonth();
+        $user = auth()->user(); // get the current authenticated user
+
+        $this->thisYearOrders = Rental::whereHas('locker', function ($query) use ($user) {
+                                       $query->where('tenant_id', $user->id);
+                                   })
+                                   ->getYearOrders($this->selectedYear)
+                                   ->groupByMonth();
+    
+        $this->lastYearOrders = Rental::whereHas('locker', function ($query) use ($user) {
+                                       $query->where('tenant_id', $user->id);
+                                   })
+                                   ->getYearOrders($this->selectedYear - 1)
+                                   ->groupByMonth();
+    
         $this->emit('updateTheChart');
     }
     public function render()

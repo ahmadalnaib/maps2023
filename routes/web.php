@@ -9,12 +9,13 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
-use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
+use App\Http\Controllers\ImpersonationController;
+use App\Http\Controllers\SuperController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -30,19 +31,34 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
+Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
+Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
 
 
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
+
+Route::get('/faq', function () {
+    return view('faq');
+})->name('faq');
+
+Route::get('/price', function () {
+    return view('price');
+})->name('price');
+Route::get('/how', function () {
+    return view('how');
+})->name('how');
+
+Route::get('/super', [SuperController::class, 'show'])->name('super');
+Route::view('/team', 'team')->name('team.index');
+Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');
 
 // admin -- place
 
 Route::middleware(['web'])->group(function(){
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
     
-Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
-Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
-Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
 
 
 // admin -- Locker
@@ -58,9 +74,6 @@ Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('adm
 // admin users
 Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::middleware([
     'auth:sanctum',
@@ -75,8 +88,7 @@ Route::middleware([
 });
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
 Route::post('search',[SearchController::class,'show'])->name('search');
-Route::get('bookmark/{place_id}',[BookmarkController::class,'bookmark'])->name('bookmark');
-Route::get('bookmarks',[BookmarkController::class,'getByUser'])->name('bookmarks');
+
 Route::get('/admin/category',[CategoryController::class,'index'])->name('category.admin.index');
 Route::get('/admin/category/create',[CategoryController::class,'create'])->name('category.admin.create');
 Route::post('/admin/category/store',[CategoryController::class,'store'])->name('category.admin.store');
@@ -97,6 +109,7 @@ Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show'
 Route::post('/rent', [RentalsController::class,'rent'])->name('rent');
 Route::get('/cancel', [RentalsController::class,'cancel'])->name('cancel');
 Route::get('/success', [RentalsController::class,'success'])->name('success');
+
 
 
 

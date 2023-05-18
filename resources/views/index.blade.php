@@ -12,8 +12,8 @@
         <div class=" bg-slate-100 p-40">
           <h2 class="text-6xl font-black">Premium Lockers</h2>
           <div class="container my-12 mx-auto md:px-12 p-5">
-       
-     
+   
+   
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             @foreach($categories as $category)
@@ -80,7 +80,6 @@
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-<!-- JavaScript code to create the map -->
 <script>
   let longitude={!! $places->pluck('longitude') !!}
   let latitude={!! $places->pluck('latitude') !!}
@@ -120,4 +119,3 @@
   let group=new L.featureGroup(markers).getBounds();
   map.fitBounds([group]);
 </script>
-

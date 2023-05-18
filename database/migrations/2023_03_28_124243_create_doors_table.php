@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('doors', function (Blueprint $table) {
             $table->uuid('id');
             $table->uuid('locker_id');
+            $table->unsignedBigInteger('tenant_id')->index();
             $table->integer('door_number');
+            $table->string('name');
             $table->boolean('is_big')->default(false);
             $table->timestamps();
     

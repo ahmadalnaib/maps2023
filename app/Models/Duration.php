@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Scopes\TenantScope;
+use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bookmark extends Model
+class Duration extends Model
 {
-    use HasFactory;
+    use HasFactory,BelongsToTenant ;
+   
 }
