@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Locker;
+use App\Models\Rental;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -19,7 +20,7 @@ class Door extends Model
 
 public function rentals()
     {
-        return $this->hasMany(Rentals::class);
+        return $this->hasMany(Rental::class);
     }
 
     public function isAvailable()

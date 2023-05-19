@@ -1,5 +1,6 @@
 <x-app-layout>
     <div class="container my-12 mx-auto md:px-12 p-5">
+        <div id="success" style="display: none">success okkkk</div>
         <div class="bg-white rounded-lg shadow-xl overflow-hidden">
             @if(isset($rental))
                 <div class="px-4 py-5 sm:px-6">
@@ -48,11 +49,11 @@
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:px-6 flex justify-end">
-                            <form method="POST">
-                                @csrf
-                                <a href="{{route('success')}}" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Pay with PayPal</a>
-                            </form>
-                            <a href="{{route('cancel')}}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Cancel</a>
+                         
+                                {{-- <a href="" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Pay with PayPal</a> --}}
+                                <div  id="paypal-button-container"></div>
+                      
+                            <a href="{{route('home')}}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Cancel</a>
                         </div>
                     </dl>
                 </div>
@@ -60,5 +61,39 @@
         </div>
     </div>
 </x-app-layout>
+ <!-- Replace "test" with your own sandbox Business account app client ID -->
+ <script src="https://www.paypal.com/sdk/js?client-id=AVkELTVSTm95KMgxyRhuxuWInYolxp9SBPaGYkEYJYF_A2F6PBzwdXsPNeEvQolhV1eMhYb8smdNX3ct&currency=USD"></script>
+ <!-- Set up a container element for the button -->
 
-
+ <script>
+    paypal.Buttons({
+      // Sets up the transaction when a payment button is clicked
+      createOrder: (data, actions) => {
+          return fetch('/api/paypal/create-payment', {
+              method: 'POST',
+              body:JSON.stringify({
+                  'userId' : "{{auth()->user()->id}}",
+              })
+          }).then(function(res) {
+              return res.json();
+          }).then(function(orderData) {
+              return orderData.id;
+          });
+      },
+      // Finalize the transaction after payer approval
+      onApprove: (data, actions) => {
+          return fetch('/api/paypal/execute-payment' , {
+              method: 'POST',
+              body :JSON.stringify({
+                  orderId : data.orderID,
+                  userId: "{{ auth()->user()->id }}",
+              })
+          }).then(function(res) {
+              return res.json();
+          }).then(function(orderData) {
+              $('#success').slideDown(200);
+              $('.card-body').slideUp(0);
+          });
+      }
+    }).render('#paypal-button-container');
+  </script>

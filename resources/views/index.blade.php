@@ -80,42 +80,44 @@
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
+
 <script>
-  let longitude={!! $places->pluck('longitude') !!}
-  let latitude={!! $places->pluck('latitude') !!}
-  let address={!! $places->pluck('address') !!}
-  
-  let map=L.map('mapid');
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-  map.locate({setView:true,maxZoom:6});
-  
+  // Define the data
+  let places = {!! json_encode($places) !!};
+
+  let map = L.map('mapid').setView([51.505, -0.09], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+    maxZoom: 6,
+  }).addTo(map);
+
   let greenIcon = L.icon({
-    iconUrl: 'http://127.0.0.1:8000/icons/bike-map.svg',
+    iconUrl: 'https://127.0.0.1:8000/icons/bike-map.svg',
     iconSize: [40, 95],
     shadowSize: [50, 64],
     iconAnchor: [22, 94],
     shadowAnchor: [4, 62],
     popupAnchor: [-3, -76]
   });
-  
-  let markers=[];
-  
-  @foreach($places as $place)
-    // Create the link that opens the locker dynamically using the Laravel route function
-    let placeSlug = '{{ Str::slug($place->address) }}';
-    let lockerUrl = "{{route('place.show',[$place->id,$place->slug])}}";
-    let lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', '{{ $place->slug }}');
-    
-    // Add the link to the marker's popup
-    let popupContent = '<p>' + '{{ $place->address }}' + '</p>' + '<a href="' + lockerLink + '">Open Locker</a>';
-    
-    markers.push(new L.marker([{{ $place->latitude }},{{ $place->longitude }}], {icon: greenIcon})
-      .addTo(map)
+
+  let markers = [];
+
+  places.forEach(place => {
+    let placeSlug = encodeURIComponent(place.address);
+    let lockerUrl = "{{ route('place.show', [':id', ':slug']) }}";
+    lockerUrl = lockerUrl.replace(':id', place.id).replace(':slug', place.slug);
+    let lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', place.slug);
+
+    let popupContent = '<p>' + place.address + '</p>' + '<a href="' + lockerLink + '">Open Locker</a>';
+
+    let marker = L.marker([place.latitude, place.longitude], { icon: greenIcon })
       .bindPopup(popupContent)
-      .openPopup()
-    );
-  @endforeach
-  
-  let group=new L.featureGroup(markers).getBounds();
-  map.fitBounds([group]);
+      .openPopup();
+
+    markers.push(marker);
+  });
+
+  let group = new L.featureGroup(markers).getBounds();
+  map.fitBounds(group);
 </script>

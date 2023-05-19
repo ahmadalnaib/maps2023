@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Door;
 use App\Models\Locker;
+use App\Models\Rental;
 use App\Models\Rentals;
 use Illuminate\Http\Request;
 
@@ -63,7 +64,7 @@ class RentalsController extends Controller
             $price_per_day = $price_per_year / 365;
         }
     $price = $rental_period * $price_per_day;
-    $rental = new Rentals([
+    $rental = new Rental([
         "locker_id"=>$locker->id,
         "user_id"=>auth()->id(),
         'door_id' => $door->id,
@@ -73,7 +74,7 @@ class RentalsController extends Controller
         'price' => $price,
         'created_at' => Carbon::now(),
     ]);
-$rental->save();
+
 
 
 
