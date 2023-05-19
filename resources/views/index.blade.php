@@ -80,43 +80,59 @@
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-
 <script>
-  // Define the data
-  let places = {!! json_encode($places) !!};
+  let places = {!! $places !!};
 
-  let map = L.map('mapid').setView([51.505, -0.09], 13);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-    maxZoom: 6,
-  }).addTo(map);
+  let map = L.map('mapid', { maxZoom: 6 });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
   let greenIcon = L.icon({
-    iconUrl: 'https://127.0.0.1:8000/icons/bike-map.svg',
+    iconUrl: '{{ asset("icons/bike-map.svg") }}',
     iconSize: [40, 95],
     shadowSize: [50, 64],
-    iconAnchor: [22, 94],
+    iconAnchor: [22, 40],
     shadowAnchor: [4, 62],
     popupAnchor: [-3, -76]
   });
 
   let markers = [];
 
-  places.forEach(place => {
-    let placeSlug = encodeURIComponent(place.address);
-    let lockerUrl = "{{ route('place.show', [':id', ':slug']) }}";
-    lockerUrl = lockerUrl.replace(':id', place.id).replace(':slug', place.slug);
-    let lockerLink = lockerUrl.replace(':place', placeSlug).replace(':slug', place.slug);
-
-    let popupContent = '<p>' + place.address + '</p>' + '<a href="' + lockerLink + '">Open Locker</a>';
-
+  for (let i = 0; i < places.length; i++) {
+    let place = places[i];
     let marker = L.marker([place.latitude, place.longitude], { icon: greenIcon })
-      .bindPopup(popupContent)
-      .openPopup();
+      .addTo(map);
+
+    // Create a tooltip element with the address
+    let tooltip = L.tooltip({
+      permanent: true,
+      direction: 'top',
+      className: 'address-tooltip',
+     
+    
+
+    }).setContent(place.address);
+
+    // Show the tooltip when hovering over the marker
+    marker.on('mouseover', function () {
+      this.bindTooltip(tooltip).openTooltip();
+    });
+
+    // Hide the tooltip when the mouse leaves the marker
+    marker.on('mouseout', function () {
+      this.unbindTooltip();
+    });
+
+    // Replace the placeholders in the URL with the actual values
+    let detailsUrl = `{{ route('place.show', [':place', ':slug']) }}`;
+    detailsUrl = detailsUrl.replace(':place', place.id).replace(':slug', place.slug);
+
+    // Add click event listener to open the details page when marker is clicked
+    marker.on('click', function () {
+      window.location.href = detailsUrl;
+    });
 
     markers.push(marker);
-  });
+  }
 
   let group = new L.featureGroup(markers).getBounds();
   map.fitBounds(group);
