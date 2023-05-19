@@ -2,7 +2,7 @@
     <div class="container my-12 mx-auto md:px-12 p-5">
         <div id="success" style="display: none">success okkkk</div>
         <div class="bg-white rounded-lg shadow-xl overflow-hidden">
-            @if(isset($rental))
+       
                 <div class="px-4 py-5 sm:px-6">
                     <h4 class="mt-2 text-lg font-bold">Rental Details</h4>
                 </div>
@@ -13,7 +13,15 @@
                                 Door Number
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                0 {{ $rental->door->door_number }}
+                                0 {{ $door->door_number }}
+                            </dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Locker Name
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                <p>Locker: {{ $locker->locker_name }}</p>
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -21,7 +29,8 @@
                                 Start Date
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $rental->start_time }}
+                                {{-- {{ $rental->start_time }} --}}
+                                {{ $startTime }}
                             </dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -29,7 +38,8 @@
                                 End Date
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $rental->end_time}}
+                                {{-- {{ $rental->end_time}} --}}
+                                {{ $endTime }}
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -37,7 +47,7 @@
                                 Period
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $rental->duration }}
+                                {{ $duration->name }}
                             </dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -45,7 +55,7 @@
                                 Price
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $rental->price }} &#8364;
+                                {{ $duration->price }} &#8364;
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:px-6 text-center mt-4 items-center">
@@ -58,9 +68,10 @@
                         
                     </dl>
                 </div>
-            @endif
+        
         </div>
     </div>
+   
 </x-app-layout>
  <!-- Replace "test" with your own sandbox Business account app client ID -->
  <script src="https://www.paypal.com/sdk/js?client-id=AVkELTVSTm95KMgxyRhuxuWInYolxp9SBPaGYkEYJYF_A2F6PBzwdXsPNeEvQolhV1eMhYb8smdNX3ct&currency=USD"></script>
