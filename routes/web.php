@@ -5,17 +5,18 @@ use App\Models\Payment;
 use App\Models\Rentals;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SuperController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
+use App\Http\Controllers\Admin\Duration\DurationController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
-use App\Http\Controllers\ImpersonationController;
-use App\Http\Controllers\SuperController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -70,6 +71,13 @@ Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('
 Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.index');
 Route::get('admin/door/create',[DoorAdminController::class,'create'])->name('admin.door.create');
 Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('admin.door.store');
+
+
+// Duration
+
+Route::get('admin/duration',[DurationController::class,'index'])->name('admin.duration.index');
+Route::get('admin/duration/create',[DurationController::class,'create'])->name('admin.duration.create');
+Route::post('admin/duration/create',[DurationController::class,'store'])->name('admin.duration.store');
 
 // admin users
 Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');

@@ -27,4 +27,10 @@ public function rentals()
     {
         return $this->rental_status === 'available';
     }
+
+    public function durations()
+{
+    return $this->belongsToMany(Duration::class);
+}
+
 }

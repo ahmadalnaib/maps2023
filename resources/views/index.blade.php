@@ -99,41 +99,48 @@
 
   for (let i = 0; i < places.length; i++) {
     let place = places[i];
-    let marker = L.marker([place.latitude, place.longitude], { icon: greenIcon })
-      .addTo(map);
 
-    // Create a tooltip element with the address
-    let tooltip = L.tooltip({
-      permanent: true,
-      direction: 'top',
-      className: 'address-tooltip',
-     
-    
+    // Filter places for Germany
 
-    }).setContent(place.address);
+      let marker = L.marker([place.latitude, place.longitude], { icon: greenIcon })
+        .addTo(map);
 
-    // Show the tooltip when hovering over the marker
-    marker.on('mouseover', function () {
-      this.bindTooltip(tooltip).openTooltip();
-    });
+      // Create a tooltip element with the address
+      let tooltip = L.tooltip({
+        permanent: true,
+        direction: 'top',
+        className: 'address-tooltip',
+      }).setContent(place.address);
 
-    // Hide the tooltip when the mouse leaves the marker
-    marker.on('mouseout', function () {
-      this.unbindTooltip();
-    });
+      // Show the tooltip when hovering over the marker
+      marker.on('mouseover', function () {
+        this.bindTooltip(tooltip).openTooltip();
+      });
 
-    // Replace the placeholders in the URL with the actual values
-    let detailsUrl = `{{ route('place.show', [':place', ':slug']) }}`;
-    detailsUrl = detailsUrl.replace(':place', place.id).replace(':slug', place.slug);
+      // Hide the tooltip when the mouse leaves the marker
+      marker.on('mouseout', function () {
+        this.unbindTooltip();
+      });
 
-    // Add click event listener to open the details page when marker is clicked
-    marker.on('click', function () {
-      window.location.href = detailsUrl;
-    });
+      // Replace the placeholders in the URL with the actual values
+      let detailsUrl = `{{ route('place.show', [':place', ':slug']) }}`;
+      detailsUrl = detailsUrl.replace(':place', place.id).replace(':slug', place.slug);
 
-    markers.push(marker);
+      // Add click event listener to open the details page when marker is clicked
+      marker.on('click', function () {
+        window.location.href = detailsUrl;
+      });
+
+      markers.push(marker);
+    }
+  
+
+  if (markers.length > 0) {
+    let group = new L.featureGroup(markers).getBounds();
+    map.fitBounds(group);
+  } else {
+    // No places to display in Germany, show a default location on the map
+    map.setView([51.1657, 10.4515], 6);
   }
-
-  let group = new L.featureGroup(markers).getBounds();
-  map.fitBounds(group);
 </script>
+

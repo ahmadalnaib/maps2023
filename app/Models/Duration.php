@@ -10,5 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Duration extends Model
 {
     use HasFactory,BelongsToTenant ;
+    protected $guarded=[];
+    public function doors()
+{
+    return $this->belongsToMany(Door::class);
+}
+
    
 }
