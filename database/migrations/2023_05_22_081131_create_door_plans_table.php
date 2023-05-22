@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('durations', function (Blueprint $table) {
+        Schema::create('door_plans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tenant_id')->index();
-            $table->string('name'); 
-            $table->decimal('price');
+            $table->unsignedBigInteger('door_id');
+            $table->unsignedBigInteger('plan_id');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('durations');
+        Schema::dropIfExists('door_plans');
     }
 };

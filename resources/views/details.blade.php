@@ -15,7 +15,7 @@
       <h3>Locker {{ $locker->locker_name }}</h3>
       <ul  class="flex flex-wrap list-none p-0">
         @foreach ($locker->doors as $door)
-            @if ($door->is_big)
+            @if ($door->size==='big')
                 <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-10 border-2 rounded-md text-center {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
                     {{ $door->door_number }} (BIG)
                 </li>
@@ -49,8 +49,8 @@
           <div class="form-group col-lg-6 mb-6">
             <label for="rental_period">Select rental period:</label>
             <select name="rental_period" id="rental_period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                @foreach ($durations as $duration)
-                    <option value="{{ $duration->id }}">{{ $duration->name }}</option>
+                @foreach ($plans as $plan)
+                    <option value="{{ $plan->id }}">{{ $plan->name }} - {{$plan->price}}</option>
                 @endforeach
             </select>
         </div>

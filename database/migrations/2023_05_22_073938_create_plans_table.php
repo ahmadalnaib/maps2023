@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('door_duration', function (Blueprint $table) {
+        Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('door_id')->constrained();
-            $table->foreignId('duration_id')->constrained();
+            $table->string('name');
+            $table->integer('number_of_days');
+            $table->decimal('price',8,2);
+            $table->unsignedBigInteger('tenant_id')->index();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('door_duration');
+        Schema::dropIfExists('plans');
     }
 };

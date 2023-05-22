@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tenant_id')->index();
             $table->integer('door_number');
             $table->string('name')->nullable();
-            $table->boolean('is_big')->default(false);
+            $table->string('size');
             $table->timestamps();
     
          

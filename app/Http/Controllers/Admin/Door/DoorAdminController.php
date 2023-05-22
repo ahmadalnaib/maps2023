@@ -28,7 +28,7 @@ class DoorAdminController extends Controller
          $door= Door::create([
              "door_number" =>$request->door_number,
              "locker_id"=>$request->locker_id,
-             "is_big"=>boolval($request->is_big) ?? false,
+             'size' => $request->size,
           
          ]);
  

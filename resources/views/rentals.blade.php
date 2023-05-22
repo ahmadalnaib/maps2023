@@ -30,7 +30,7 @@
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 {{-- {{ $rental->start_time }} --}}
-                                {{ $startTime }}
+                                {{ $start_time }}
                             </dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -39,7 +39,7 @@
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 {{-- {{ $rental->end_time}} --}}
-                                {{ $endTime }}
+                                {{ $end_time }}
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -47,7 +47,7 @@
                                 Period
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $duration->name }}
+                                {{ $plan->name }}
                             </dd>
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -55,7 +55,7 @@
                                 Price
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $duration->price }} &#8364;
+                                {{ $plan->price }} &#8364;
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:px-6 text-center mt-4 items-center">
@@ -85,6 +85,7 @@
               method: 'POST',
               body:JSON.stringify({
                   'userId' : "{{auth()->user()->id}}",
+                  'rental_period': "{{ $plan->id }}"
               }), headers: {
                     'Content-Type': 'application/json',
                 }
@@ -101,6 +102,9 @@
               body :JSON.stringify({
                   orderId : data.orderID,
                   userId: "{{ auth()->user()->id }}",
+                  rental_period: "{{ $plan->id }}",
+                    locker_id: "{{ $locker->id }}",
+                    door_id: "{{ $door->id }}",
               }), headers: {
                     'Content-Type': 'application/json',
                 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Door;
+use App\Models\Plan;
 use App\Models\User;
 use App\Models\Locker;
 use App\Models\Duration;
@@ -31,9 +32,9 @@ public function door()
     return $this->belongsTo(Door::class);
 }
 
-public function rentalDuration()
+public function plan()
 {
-    return $this->belongsTo(Duration::class);
+    return $this->belongsTo(Plan::class);
 }
 
 public function scopeGroupByMonth(Builder $query)

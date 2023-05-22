@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Place;
-use App\Models\Duration;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
@@ -20,8 +20,8 @@ class PlaceController extends Controller
     public function show(Place $place)
     {
       $lockers = $place->lockers()->with('doors')->get();
-      $durations = Duration::all();
-      return view('details', compact('place', 'lockers','durations'));
+      $plans = Plan::all();
+      return view('details', compact('place', 'lockers','plans'));
  
     }
 

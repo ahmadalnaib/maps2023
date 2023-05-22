@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->uuid('locker_id');
             $table->uuid('door_id');
-            $table->enum('duration', ['1 day', '1 week', '1 month', '1 year']);
+            $table->unsignedBigInteger('plan_id');
+            $table->string('duration');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->decimal('price', 8, 2);

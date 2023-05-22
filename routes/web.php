@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\Rentals;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SuperController;
 use App\Http\Controllers\LocaleController;
@@ -72,12 +73,13 @@ Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.
 Route::get('admin/door/create',[DoorAdminController::class,'create'])->name('admin.door.create');
 Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('admin.door.store');
 
+// admin -- plans
+Route::get('admin/plan',[PlanController::class,'index'])->name('admin.plan.index');
+Route::get('admin/plan/create',[PlanController::class,'create'])->name('admin.plan.create');
+Route::post('admin/plan/create',[PlanController::class,'store'])->name('admin.plan.store');
 
-// Duration
 
-Route::get('admin/duration',[DurationController::class,'index'])->name('admin.duration.index');
-Route::get('admin/duration/create',[DurationController::class,'create'])->name('admin.duration.create');
-Route::post('admin/duration/create',[DurationController::class,'store'])->name('admin.duration.store');
+
 
 // admin users
 Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');

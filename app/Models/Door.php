@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Plan;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Traits\BelongsToTenant;
@@ -28,9 +29,9 @@ public function rentals()
         return $this->rental_status === 'available';
     }
 
-    public function durations()
-{
-    return $this->belongsToMany(Duration::class);
-}
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class, 'door_plans');
+    }
 
 }

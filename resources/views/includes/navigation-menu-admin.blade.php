@@ -133,9 +133,10 @@
                             <x-dropdown-link href="{{ route('admin.door.index') }}">
                                 {{ __('Doors') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="{{ route('admin.duration.index') }}">
-                                {{ __('Duration') }}
+                            <x-dropdown-link href="{{ route('admin.plan.index') }}">
+                                {{ __('Plans') }}
                             </x-dropdown-link>
+                          
                             <x-dropdown-link href="{{ route('admin.user.index') }}">
                                 {{ __('Users') }}
                             </x-dropdown-link>
