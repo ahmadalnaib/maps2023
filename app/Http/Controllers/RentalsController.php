@@ -31,6 +31,10 @@ class RentalsController extends Controller
         // Calculate price based on plan's price
         $price = $plan->price;
 
+        // if ($door->size==="big") {
+        //     $price *= 2;
+        // }
+
         // Create the rental record
         $rental = new Rental([
             "locker_id" => $locker->id,

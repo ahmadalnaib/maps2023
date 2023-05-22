@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Stats;
 
+use App\Models\Rental;
 use App\Models\Payment;
 use Livewire\Component;
 
@@ -19,8 +20,19 @@ class RevenueCount extends Component
     public function updateStat()
     {
         
-        $this->revenueCount=Payment::where('created_at','>=',now()->subDays($this->selectedDays))->sum('amount');
-    }
+        $user = auth()->user(); // Get the current authenticated user
+        $this->revenueCount = Rental::where('created_at', '>=', now()->subDays($this->selectedDays))
+        ->where(function ($query) use ($user) {
+            $query->whereHas('locker', function ($subQuery) use ($user) {
+                $subQuery->where('tenant_id', $user->id);
+            })->orWhereHas('door', function ($subQuery) use ($user) {
+                $subQuery->where('user_id', $user->id);
+            });
+        })
+        ->sum('price');
+}
+
+    
     public function render()
     {
         return view('livewire.stats.revenue-count');

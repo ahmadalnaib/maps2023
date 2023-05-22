@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Door extends Model
 {
     use HasFactory,HasUuids,BelongsToTenant ;
+    
     protected $guarded=[];
     public function locker()
 {

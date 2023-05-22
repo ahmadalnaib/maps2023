@@ -38,14 +38,14 @@
          }
      }">
     <span>Year:</span>
-    <select name="selectedYear" id="selectedYear" class="border-solid border-2 border-red-200" wire:model="selectedYear" wire:change='updateOrdersCount'>
+    <select name="selectedYear" id="selectedYear" class="border-solid border-2 border-red-200" wire:model="selectedYear" wire:change="updateOrdersCount">
         @foreach ($availableYears as $year)
             <option value="{{$year}}">{{$year}}</option>
         @endforeach
     </select>
     <div class="my-6">
-        <div><span x-text="selectedYear - 1"></span> Rentals:  <span x-text="calculateTotalRentals(lastYearOrders)"></span></div>
-        <div><span x-text="selectedYear"></span> Rentals:   <span x-text="calculateTotalRentals(thisYearOrders)"></span></div>
+        <div><span x-text="selectedYear - 1"></span> Rentals: <span x-text="calculateTotalRentals(lastYearOrders).toLocaleString()"></span></div>
+        <div><span x-text="selectedYear"></span> Rentals: <span x-text="calculateTotalRentals(thisYearOrders).toLocaleString()"></span></div>
     </div>
     
     <canvas id="myChart" x-ref="canvas"></canvas>

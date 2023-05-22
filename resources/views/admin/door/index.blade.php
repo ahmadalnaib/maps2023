@@ -36,7 +36,7 @@
                     {{$door->locker->locker_name }}
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{$door->is_big ? 'Big' :"Small" }}
+                    {{$door->size }}
                 </th>
              
                

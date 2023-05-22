@@ -27,6 +27,7 @@ class PlanController extends Controller
             "name" =>$request->name,
             "number_of_days"=>$request->number_of_days,
             'price' => $request->price,
+            'size' => $request->size,
          
         ]);
 
