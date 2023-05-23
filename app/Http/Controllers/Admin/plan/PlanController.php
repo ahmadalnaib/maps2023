@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Plan;
 
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\Locker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class PlanController extends Controller
 {
@@ -49,6 +50,40 @@ class PlanController extends Controller
         
          
         ]);
+
+        return redirect()->route('admin.plan.index');
+    }
+
+    public function edit(Plan $plan)
+    {
+        $tenant = Auth::user();
+        $lockers = Locker::where('tenant_id', $tenant->id)
+            ->latest()
+            ->get();
+
+        $doors = Door::where('tenant_id', $tenant->id)
+            ->latest()
+            ->get();
+
+        return view('admin.plan.edit', compact('plan', 'lockers', 'doors'));
+    }
+
+    public function update(Request $request, Plan $plan)
+    {
+        $plan->update([
+            "name" => $request->name,
+            "number_of_days" => $request->number_of_days,
+            'price' => $request->price,
+            "locker_id" => $request->locker_id,
+            'door_id' => $request->door_id
+        ]);
+
+        return redirect()->route('admin.plan.index');
+    }
+
+    public function destroy(Plan $plan)
+    {
+        $plan->delete();
 
         return redirect()->route('admin.plan.index');
     }

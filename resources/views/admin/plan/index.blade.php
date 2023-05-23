@@ -42,10 +42,10 @@
                 {{$plan->number_of_days}}
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{$plan->locker->locker_name}}
+                {{$plan->locker->locker_name ?? "Error"}}
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{$plan->door->door_number}}
+                {{$plan->door->door_number ?? "Error"}}
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$plan->price}}
@@ -55,10 +55,10 @@
              
             
               <td class="px-6 py-4 flex  flex-wrap">
-                  <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">Edit</a>
+                  <a href="{{route('admin.plan.edit',$plan)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">Edit</a>
                  
   
-                      <form action="" method="post">
+                      <form action="{{route('admin.plan.destroy',$plan)}}" method="post">
                           @csrf
                           @method('delete')
                           <button onclick="return confirm('Sind Sie sicher, dass du diesen Beitrag löschen möchtest? Es gibt keinen Weg zurück. 😯')"    class="font-medium text-red-600 dark:text-red-500 hover:underline m-2" type="submit">delete</button>

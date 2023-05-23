@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/paypal/create-payment',[PurchaseController::class,'createPayment']);
 Route::post('/paypal/execute-payment',[PurchaseController::class,'executePayment']);
+
+

@@ -20,11 +20,11 @@
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
                                     <dt class="text-sm leading-5 font-medium text-gray-500 truncate">
-                                        Total Subscribers
+                                        Basic Users
                                     </dt>
                                     <dd class="flex items-baseline">
                                         <div class="text-2xl leading-8 font-semibold text-gray-900">
-                                            {{$subscribersCount}}
+                                            {{$basicUsers}}
                                         </div>
                                     </dd>
                                 </dl>
@@ -52,11 +52,11 @@
                             <div class="ml-5 w-0 flex-1">
                                 <dl>
                                     <dt class="text-sm leading-5 font-medium text-gray-500 truncate">
-                                        Total Users
+                                        Tenant Users
                                     </dt>
                                     <dd class="flex items-baseline">
                                         <div class="text-2xl leading-8 font-semibold text-gray-900">
-                                            {{$usersCount}}
+                                            {{$tenantUsers}}
                                         </div>
                                     </dd>
                                 </dl>
@@ -89,6 +89,38 @@
                                     <dd class="flex items-baseline">
                                         <div class="text-2xl leading-8 font-semibold text-gray-900">
                                             {{$loginsCount}}
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                        <div class="text-sm leading-5">
+                            <a href="#"
+                               class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
+                                View all
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-indigo-500 rounded-md p-3">
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/>
+                                </svg>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm leading-5 font-medium text-gray-500 truncate">
+                                        Lockers
+                                    </dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl leading-8 font-semibold text-gray-900">
+                                            {{$lockersCount}}
                                         </div>
                                     </dd>
                                 </dl>

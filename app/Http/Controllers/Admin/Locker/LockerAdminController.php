@@ -36,11 +36,53 @@ class LockerAdminController extends Controller
     public function store(Request $request)
     {
        
-        $locker= Locker::create([
-            "locker_name" =>$request->locker_name,
-            "place_id"=>$request->place_id
+        $request->validate([
+            'locker_name' => 'required',
+            'place_id' => 'required|exists:places,id',
         ]);
 
-        return redirect()->route('admin.locker.index');
+        Locker::create([
+            'locker_name' => $request->locker_name,
+            'place_id' => $request->place_id,
+            'tenant_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('admin.locker.index')->with('message','Locker wurde aktualisiert 🎉')->with('timeout', 3000);
+    }
+
+
+    public function edit(Locker $locker)
+    {
+        $tenant = Auth::user();
+        $places = Place::where('tenant_id', $tenant->id)
+            ->latest()
+            ->get();
+
+        return view('admin.locker.edit', compact('locker', 'places'));
+    }
+
+
+    public function update(Request $request, Locker $locker)
+    {
+        $request->validate([
+            'locker_name' => 'required',
+            'place_id' => 'required|exists:places,id',
+        ]);
+
+        $locker->update([
+            'locker_name' => $request->locker_name,
+            'place_id' => $request->place_id,
+        ]);
+
+        return redirect()->route('admin.locker.index')->with('message','Locker wurde update 🎉')->with('timeout', 3000);;
+    }
+
+
+
+    public function destroy(Locker $locker)
+    {
+        $locker->delete();
+
+        return redirect()->route('admin.locker.index')->with('message','Locker wurde gelöscht 🗑');
     }
 }

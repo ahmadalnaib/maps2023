@@ -1,4 +1,5 @@
 <nav x-data="{ open: false }" class="bg-red-600 border-b border-gray-100 text-white p-4">
+
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -125,11 +126,9 @@
                             <x-dropdown-link href="{{ route('category.admin.index') }}">
                                 {{ __('Statas') }}
                             </x-dropdown-link>
-                            <x-dropdown-link href="{{ route('admin.user.index') }}">
-                                {{ __('Users') }}
-                            </x-dropdown-link>
+                          
                             @endif
-                            @if (Auth::check() && Auth::user()->role === 'admin' ||Auth::user()->role === 'super')
+                            @if (Auth::check() && Auth::user()->role === 'admin' )
                             <x-dropdown-link href="{{route('admin.place.index')}}">
                                  Places
                             </x-dropdown-link>
