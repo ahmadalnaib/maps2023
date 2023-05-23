@@ -7,12 +7,11 @@ use App\Models\Locker;
 use App\Models\Rental;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Door extends Model
 {
-    use HasFactory,HasUuids,BelongsToTenant ;
+    use HasFactory,BelongsToTenant ;
     
     protected $guarded=[];
     public function locker()
@@ -24,15 +23,16 @@ public function rentals()
     {
         return $this->hasMany(Rental::class);
     }
+public function plans()
+    {
+        return $this->hasMany(Plan::class);
+    }
 
     public function isAvailable()
     {
         return $this->rental_status === 'available';
     }
 
-    public function plans()
-    {
-        return $this->belongsToMany(Plan::class, 'door_plans');
-    }
+
 
 }

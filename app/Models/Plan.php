@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Door;
+use App\Models\Locker;
 use App\Models\Rental;
 use App\Scopes\TenantScope;
 use App\Traits\BelongsToTenant;
@@ -19,9 +20,14 @@ class Plan extends Model
         return $this->hasMany(Rental::class);
     }
 
-    public function doors()
+    public function locker()
     {
-        return $this->belongsToMany(Door::class, 'door_plans');
+        return $this->belongsTo(Locker::class);
+    }
+
+    public function door()
+    {
+        return $this->belongsTo(Door::class);
     }
    
 }

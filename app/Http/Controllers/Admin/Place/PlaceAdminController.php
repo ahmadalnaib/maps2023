@@ -18,7 +18,7 @@ class PlaceAdminController extends Controller
 
       // // Retrieve the places associated with the current tenant
      $places = Place::where('tenant_id', $tenant->id)
-        ->latest()
+         ->latest()
          ->paginate(8);
 
     

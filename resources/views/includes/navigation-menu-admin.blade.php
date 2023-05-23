@@ -50,7 +50,7 @@
                                     </button>
                                 </span>
                             </x-slot>
-                            @if (Auth::check() && Auth::user()->role_id == 2)
+                        
                             <x-slot name="content">
                                 <div class="w-60">
                                     <!-- Team Management -->
@@ -83,7 +83,7 @@
                             </x-slot>
                         </x-dropdown>
                     </div>
-                @endif
+            
                 @endif
          
                 <!-- Settings Dropdown -->
@@ -120,12 +120,18 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
                            
-                            @if (Auth::check() && Auth::user()->role_id == 2)
-                            <x-dropdown-link href="{{route('admin.place.index')}}">
-                                 Places
-                            </x-dropdown-link>
+                         
+                            @if (Auth::check() && Auth::user()->role === 'super')
                             <x-dropdown-link href="{{ route('category.admin.index') }}">
                                 {{ __('Statas') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ route('admin.user.index') }}">
+                                {{ __('Users') }}
+                            </x-dropdown-link>
+                            @endif
+                            @if (Auth::check() && Auth::user()->role === 'admin' ||Auth::user()->role === 'super')
+                            <x-dropdown-link href="{{route('admin.place.index')}}">
+                                 Places
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('admin.locker.index') }}">
                                 {{ __('Lockers') }}
@@ -137,9 +143,7 @@
                                 {{ __('Plans') }}
                             </x-dropdown-link>
                           
-                            <x-dropdown-link href="{{ route('admin.user.index') }}">
-                                {{ __('Users') }}
-                            </x-dropdown-link>
+                         
                             @endif
 
                           

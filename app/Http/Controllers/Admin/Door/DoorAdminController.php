@@ -6,19 +6,28 @@ use App\Models\Door;
 use App\Models\Locker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DoorAdminController extends Controller
 {
     
      public function index()
      {
-        $doors=Door::latest()->paginate(8);
-        return view('admin.door.index',compact('doors'));
+        $tenant = Auth::user();
+        $doors = Door::where('tenant_id', $tenant->id)
+        ->latest()
+        ->paginate(8);
+
+   
+     return view('admin.door.index',compact('doors'));
      }
 
      public function create()
      {
-      $lockers=Locker::all();
+        $tenant = Auth::user();
+        $lockers = Locker::where('tenant_id', $tenant->id)
+        ->latest()
+        ->get();
       return view('admin.door.create',compact('lockers'));
      }
 

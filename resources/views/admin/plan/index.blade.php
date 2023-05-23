@@ -15,6 +15,12 @@
                 Number of Days
               </th>
               <th scope="col" class="px-6 py-3">
+               Locker Name
+              </th>
+              <th scope="col" class="px-6 py-3">
+            Door Number
+              </th>
+              <th scope="col" class="px-6 py-3">
                 Plan Price
               </th>
            
@@ -34,6 +40,12 @@
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$plan->number_of_days}}
+              </th>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{$plan->locker->locker_name}}
+              </th>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{$plan->door->door_number}}
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$plan->price}}

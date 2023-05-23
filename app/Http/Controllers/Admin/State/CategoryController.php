@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\State;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,6 @@ class CategoryController extends Controller
     {
 
         $tenant = Auth::user();
-
         $categories=Category::where('tenant_id', $tenant->id)
         ->latest()
         ->paginate(8);
@@ -36,6 +36,7 @@ class CategoryController extends Controller
         Category::create([
            'title'=>request('title'),
            'slug'=>request('title'),
+           'user_id'=> auth()->user()->id,
            'image'=> $request->image->store('images','public'),
         ]);
         return  redirect()->route('category.admin.index')->with('message','State wurde aktualisiert 🎉')->with('timeout', 3000);

@@ -7,6 +7,7 @@ use App\Models\Place;
 use App\Models\Locker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LockerAdminController extends Controller
 {
@@ -14,13 +15,21 @@ class LockerAdminController extends Controller
 
     public function index()
     {
-        $lockers=Locker::latest()->paginate(8);
-        return view('admin.locker.index',compact('lockers'));
+        $tenant = Auth::user();
+        $lockers = Locker::where('tenant_id', $tenant->id)
+        ->latest()
+        ->paginate(8);
+
+   
+     return view('admin.locker.index',compact('lockers'));
     }
 
     public function create()
     {
-        $places=Place::all();
+        $tenant = Auth::user();
+        $places = Place::where('tenant_id', $tenant->id)
+        ->latest()
+        ->get();
         return view('admin.locker.create',compact('places'));
     }
 

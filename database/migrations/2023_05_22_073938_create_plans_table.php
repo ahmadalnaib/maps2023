@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('locker_id');
+            $table->unsignedBigInteger('door_id');
             $table->string('name');
             $table->integer('number_of_days');
             $table->decimal('price',8,2);

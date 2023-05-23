@@ -11,9 +11,9 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
+use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Duration\DurationController;
@@ -33,13 +33,53 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+
+// lang route
+Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
+
 Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
 Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
 Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
 
 
-// lang route
-Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
+// admin -- plans
+Route::get('admin/plan',[PlanController::class,'index'])->name('admin.plan.index');
+Route::get('admin/plan/create',[PlanController::class,'create'])->name('admin.plan.create');
+Route::post('admin/plan/create',[PlanController::class,'store'])->name('admin.plan.store');
+// admin -- Door
+Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.index');
+Route::get('admin/door/create',[DoorAdminController::class,'create'])->name('admin.door.create');
+Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('admin.door.store');
+// admin -- Locker
+Route::get('admin/locker',[LockerAdminController::class,'index'])->name('admin.locker.index');
+Route::get('admin/locker/create',[LockerAdminController::class,'create'])->name('admin.locker.create');
+Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('admin.locker.store');
+// super citys  *****
+
+Route::get('/admin/category',[CategoryController::class,'index'])->name('category.admin.index')
+->middleware(['auth', 'role:super']);
+Route::get('/admin/category/create',[CategoryController::class,'create'])->name('category.admin.create')->middleware(['auth', 'role:super']);
+Route::post('/admin/category/store',[CategoryController::class,'store'])->name('category.admin.store')->middleware(['auth', 'role:super']);
+Route::get('/admin/{category}',[CategoryController::class,'edit'])->name('category.admin.edit')
+->middleware(['auth', 'role:super']);
+Route::post('/admin/{category}',[CategoryController::class,'update'])->name('category.admin.update')->middleware(['auth', 'role:super']);
+Route::delete('/admin/{category}',[CategoryController::class,'destroy'])->name('category.admin.destroy')->middleware(['auth', 'role:super']);
+
+
+
+// super users *****
+Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')
+->middleware(['auth', 'role:super']);
+
+
+
+
+// admin -- Locker
+Route::get('admin/locker',[LockerAdminController::class,'index'])->name('admin.locker.index');
+Route::get('admin/locker/create',[LockerAdminController::class,'create'])->name('admin.locker.create');
+Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('admin.locker.store');
 
 Route::get('/faq', function () {
     return view('faq');
@@ -63,20 +103,9 @@ Route::middleware(['web'])->group(function(){
     
 
 
-// admin -- Locker
-Route::get('admin/locker',[LockerAdminController::class,'index'])->name('admin.locker.index');
-Route::get('admin/locker/create',[LockerAdminController::class,'create'])->name('admin.locker.create');
-Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('admin.locker.store');
 
-// admin -- Door
-Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.index');
-Route::get('admin/door/create',[DoorAdminController::class,'create'])->name('admin.door.create');
-Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('admin.door.store');
 
-// admin -- plans
-Route::get('admin/plan',[PlanController::class,'index'])->name('admin.plan.index');
-Route::get('admin/plan/create',[PlanController::class,'create'])->name('admin.plan.create');
-Route::post('admin/plan/create',[PlanController::class,'store'])->name('admin.plan.store');
+
 
 
 
@@ -99,14 +128,11 @@ Route::middleware([
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
 Route::post('search',[SearchController::class,'show'])->name('search');
 
-Route::get('/admin/category',[CategoryController::class,'index'])->name('category.admin.index');
-Route::get('/admin/category/create',[CategoryController::class,'create'])->name('category.admin.create');
-Route::post('/admin/category/store',[CategoryController::class,'store'])->name('category.admin.store');
-Route::get('/admin/{category}',[CategoryController::class,'edit'])->name('category.admin.edit');
-Route::post('/admin/{category}',[CategoryController::class,'update'])->name('category.admin.update');
-Route::delete('/admin/{category}',[CategoryController::class,'destroy'])->name('category.admin.destroy');
-Route::get('/{category:slug}',[CategoryController::class,'show'])->name('category.show');
 
+
+
+
+Route::get('/{category:slug}',[CategoryController::class,'show'])->name('category.show');
 Route::resource('report',ReportController::class,['only'=>['create','store']]);
 
 
@@ -116,7 +142,9 @@ Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show'
 
 
 
-Route::post('/rent', [RentalsController::class,'rent'])->name('rent');
+Route::post('/rent', [RentalsController::class,'rent'])->name('rent')->middleware('auth');
+
+
 
 
 
