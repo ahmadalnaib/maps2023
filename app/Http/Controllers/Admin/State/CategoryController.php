@@ -13,10 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
 
-        $tenant = Auth::user();
-        $categories=Category::where('tenant_id', $tenant->id)
-        ->latest()
-        ->paginate(8);
+        $categories = Category::paginate(8);
+
         return view('admin.category.index',compact('categories'));
     }
 

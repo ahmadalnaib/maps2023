@@ -14,19 +14,21 @@ class Door extends Model
     use HasFactory,BelongsToTenant ;
     
     protected $guarded=[];
-    public function locker()
-{
-    return $this->belongsTo(Locker::class);
-}
 
-public function rentals()
+
+        public function locker()
     {
-        return $this->hasMany(Rental::class);
+        return $this->belongsTo(Locker::class);
     }
-public function plans()
-    {
-        return $this->hasMany(Plan::class);
-    }
+
+    public function rentals()
+        {
+            return $this->hasMany(Rental::class);
+        }
+    public function plans()
+        {
+            return $this->belongsToMany(Plan::class);
+        }
 
     public function isAvailable()
     {

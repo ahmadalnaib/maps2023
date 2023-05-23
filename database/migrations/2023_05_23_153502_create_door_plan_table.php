@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('door_plan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('title');      
-            $table->string('image')->default('default.png');	
-            $table->string('slug')->unique(); 
+            $table->unsignedBigInteger('door_id');
+            $table->unsignedBigInteger('plan_id');
+            $table->unsignedBigInteger('tenant_id')->index();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('door_plan');
     }
 };

@@ -54,7 +54,26 @@
                 @endforeach
             </select>
         </div>
+
         
+        <label for="door_id">Select a door:</label>
+<select name="door_id" id="door_id">
+    @foreach ($locker->doors as $door)
+        <option value="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
+            Door {{ $door->door_number }}
+        </option>
+    @endforeach
+</select>
+
+<label for="plan_id">Select a plan:</label>
+<select name="plan_id" id="plan_id">
+    @foreach ($locker->doors as $door)
+        @foreach ($door->plans as $plan)
+            <option value="{{ $plan->id }}">{{ $plan->name }} - {{ $plan->price }} &#x20AC;</option>
+        @endforeach
+    @endforeach
+</select>
+
         
           <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Rent</button>
       </form>

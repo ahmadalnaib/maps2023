@@ -16,9 +16,12 @@ class PlanController extends Controller
     public function index()
     {
         $tenant = Auth::user();
-        $plans = Plan::where('tenant_id', $tenant->id)
-        ->latest()
-        ->paginate(8);
+        $plans = Plan::with(['locker', 'doors']) // Eager load the locker and doors relationships
+            ->where('tenant_id', $tenant->id)
+            ->latest()
+            ->paginate(8);
+
+            // dd($plans[1]->doors);
 
    
      return view('admin.plan.index',compact('plans'));
@@ -30,10 +33,8 @@ class PlanController extends Controller
         $lockers = Locker::where('tenant_id', $tenant->id)
         ->latest()
         ->get();
-    
-        $doors = Door::where('tenant_id', $tenant->id)
-        ->latest()
-        ->get();
+      // Load the doors relationship for the selected locker
+    $doors = $lockers->first()->doors ?? collect();
 
         return view('admin.plan.create',compact('lockers','doors'));
     }

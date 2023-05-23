@@ -25,9 +25,9 @@ class Plan extends Model
         return $this->belongsTo(Locker::class);
     }
 
-    public function door()
+    public function doors()
     {
-        return $this->belongsTo(Door::class);
+        return $this->belongsToMany(Door::class);
     }
    
 }
