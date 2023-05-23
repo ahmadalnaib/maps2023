@@ -95,9 +95,9 @@
             <span class=""><i class="fa fa-exclamation-triangle"></i></span>  Rorbot 
           </a>
           @else
-          <a href="{{route('login')}}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
+          {{-- <a href="{{route('login')}}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
             <span class=""><i class="fa bookmark-o  fa-lg"></i></span> Bookmark
-          </a>
+          </a> --}}
           @endauth
         </div>
       </div>
