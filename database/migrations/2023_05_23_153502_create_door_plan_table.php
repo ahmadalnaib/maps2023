@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('door_id');
             $table->unsignedBigInteger('plan_id');
-            $table->unsignedBigInteger('tenant_id')->index();
+     
             $table->timestamps();
         });
     }

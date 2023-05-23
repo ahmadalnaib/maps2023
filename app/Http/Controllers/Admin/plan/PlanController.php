@@ -51,6 +51,7 @@ class PlanController extends Controller
         
          
         ]);
+        $plan->doors()->attach($request->door_id);
 
         return redirect()->route('admin.plan.index');
     }

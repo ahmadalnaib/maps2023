@@ -49,12 +49,13 @@
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $plan->locker->locker_name ?? 'Error' }}
                                     </th>
+
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         @foreach ($plan->doors as $door)
-                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                  
                                         {{ $door->door_number }}
-                                    </td>
+                                  
                             @endforeach
 
 
