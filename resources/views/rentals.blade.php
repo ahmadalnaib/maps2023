@@ -111,6 +111,7 @@
           }).then(function(res) {
               return res.json();
           }).then(function(orderData) {
+            window.location.href = '/dashboard';
               $('#success').slideDown(200);
               $('.card-body').slideUp(0);
           });

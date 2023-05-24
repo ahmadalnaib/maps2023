@@ -90,7 +90,7 @@ class PurchaseController extends Controller
             ]);
 
             $rental->save();
-
+            
              // Generate the PDF file
         $dompdf = new Dompdf();
         $dompdf->loadHtml(view('emails.payment_confirmation', ['rental' => $rental])->render());
@@ -104,6 +104,7 @@ class PurchaseController extends Controller
        Mail::to($rental->user->email)->send(new PaymentConfirmation($rental));
         // Cleanup the temporary PDF file
         unlink($pdfPath);
+       
         }
         return response()->json($result);
     }
