@@ -35,7 +35,15 @@ return[
   'Manage and log out your active sessions on other browsers and devices.'=>'Verwalten Sie Ihre aktiven Sitzungen auf anderen Browsern und Geräten und melden Sie sich ab.',
   'If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.'=>'Falls erforderlich, können Sie sich von allen anderen Browser-Sitzungen auf allen Ihren Geräten abmelden. Einige Ihrer letzten Sitzungen sind unten aufgeführt; diese Liste ist jedoch möglicherweise nicht vollständig. Wenn Sie glauben, dass Ihr Konto kompromittiert wurde, sollten Sie auch Ihr Passwort aktualisieren.',
   'Log Out Other Browser Sessions'=>'Abmelden von anderen Browser-Sitzungen',
-  'Last active'=>'Letzte aktive'
+  'Last active'=>'Letzte aktive',
+  'This device'=>'Das Gerät',
+  'Log Out Other Browser Sessions'=>'Andere Browsersitzungen abmelden',
+  'Delete Account'=>'Account löschen',
+  'Permanently delete your account.'=>'Ihr Konto dauerhaft löschen.',
+  'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'=>'Nach der Löschung Ihres Kontos werden alle Ressourcen und Daten dauerhaft gelöscht. Bevor Sie Ihr Konto löschen, laden Sie bitte alle Daten oder Informationen herunter, die Sie aufbewahren möchten.',
+  'Delete Account'=>'Account löschen',
+  'Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.'=>'Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Wenn Ihr Konto gelöscht wird, werden alle Ressourcen und Daten dauerhaft gelöscht. Bitte geben Sie Ihr Passwort ein, um zu bestätigen, dass Sie Ihr Konto endgültig löschen möchten.',
+  'Cancel'=>'Abbrechen',
 
 
 

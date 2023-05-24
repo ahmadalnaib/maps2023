@@ -35,7 +35,19 @@ return[
     'Manage and log out your active sessions on other browsers and devices.'=>'Manage and log out your active sessions on other browsers and devices.',
     'If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.'=>'If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.',
     'Log Out Other Browser Sessions'=>'Log Out Other Browser Sessions',
-    'Last active'=>'Last active'
+    'Last active'=>'Last active',
+    'This device'=>'This device',
+    'Log Out Other Browser Sessions'=>'Log Out Other Browser Sessions',
+    'Delete Account'=>'Delete Account',
+    'Permanently delete your account.'=>'Permanently delete your account.',
+    'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'=>'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
+    'Delete Account'=>'Delete Account',
+    'Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.'=>'Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
+
+    'Cancel'=>'Cancel',
+    
+
+
 
 
 
