@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\Rentals;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BasicController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SuperController;
 use App\Http\Controllers\LocaleController;
@@ -77,6 +78,37 @@ Route::delete('admin/lockers/{locker}', [LockerAdminController::class, 'destroy'
 
 
 // super citys  *****
+// super users *****
+
+
+// Route::middleware(['auth', 'role:admin'])->group(function () {
+//     Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');
+    
+// });
+
+// routes/web.php
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        $user = Auth::user();
+
+        // Check the user's role and return the corresponding dashboard view
+        if ($user->role === 'basic') {
+            return app(BasicController::class)->dashboard();
+        } elseif ($user->role === 'super') {
+            return app(SuperController::class)->show();
+        }
+
+        // Default case if the user's role doesn't match any specific dashboard
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+Route::get('/invoices/{rental}/generate', [BasicController::class,'generateInvoice'])->name('invoices.generate');
+
 
 Route::get('/admin/category',[CategoryController::class,'index'])->name('category.admin.index')
 ->middleware(['auth', 'role:super']);
@@ -89,9 +121,7 @@ Route::delete('/admin/{category}',[CategoryController::class,'destroy'])->name('
 
 
 
-// super users *****
-Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')
-->middleware(['auth', 'role:super']);
+
 
 
 
@@ -123,16 +153,7 @@ Route::middleware(['web'])->group(function(){
 // admin users
 Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
 
-        return view('dashboard');
-    })->name('dashboard');
-});
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
 Route::post('search',[SearchController::class,'show'])->name('search');
 Route::get('/{category:slug}',[CategoryController::class,'show'])->name('category.show');
