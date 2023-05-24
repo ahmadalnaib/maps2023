@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\PurchaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\Admin\Api\ApiRentalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/paypal/create-payment',[PurchaseController::class,'createPayment']);
 Route::post('/paypal/execute-payment',[PurchaseController::class,'executePayment']);
+
+Route::get('/rentals', [ApiRentalController::class, 'index']);
 
 
