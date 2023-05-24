@@ -127,19 +127,23 @@ let greenIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 L.marker([latitude,longitude],{icon: greenIcon}).bindPopup($('#name').val()).addTo(map).openPopup();
+
 const plansByDoor = {!! json_encode($plansByDoor) !!};
 
 const doorItems = document.querySelectorAll('.door-item');
 const doorSelect = document.getElementById('door_id');
 const planSelect = document.getElementById('rental_period');
 
-// Function to update the plan options based on the selected door
-function updatePlanOptions(selectedDoorId) {
+
+// Function to update the rental period options based on the selected door
+function updateRentalPeriodOptions() {
+  const selectedDoorId = doorSelect.value;
   const doorPlans = plansByDoor[selectedDoorId];
 
-  if (doorPlans && doorPlans.length > 0) {
-    planSelect.innerHTML = ''; // Clear the plan select options
+  // Clear the rental period select options
+  planSelect.innerHTML = '';
 
+  if (doorPlans && doorPlans.length > 0) {
     doorPlans.forEach(plan => {
       const option = document.createElement('option');
       option.value = plan.id;
@@ -149,21 +153,20 @@ function updatePlanOptions(selectedDoorId) {
   }
 }
 
+// Add change event listener to the door select box
+doorSelect.addEventListener('change', updateRentalPeriodOptions);
+
+// Set the initial rental period options for the first door
+updateRentalPeriodOptions();
+
 // Add click event listener to each door item
 doorItems.forEach(door => {
   door.addEventListener('click', () => {
     const selectedDoorId = door.dataset.doorId;
-    updatePlanOptions(selectedDoorId);
-
-    // Update the door select box
     doorSelect.value = selectedDoorId;
+    updateRentalPeriodOptions();
   });
 });
-
-// Set the initial plans for the first door
-const firstDoor = doorItems[0];
-const firstDoorId = firstDoor.dataset.doorId;
-updatePlanOptions(firstDoorId);
 
 
 
