@@ -1,22 +1,22 @@
 <x-action-section>
     <x-slot name="title">
-        {{ __('Two Factor Authentication') }}
+        {{ __('pro.Two Factor Authentication') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Add additional security to your account using two factor authentication.') }}
+        {{ __('pro.Add additional security to your account using two factor authentication.') }}
     </x-slot>
 
     <x-slot name="content">
         <h3 class="text-lg font-medium text-gray-900">
             @if ($this->enabled)
                 @if ($showingConfirmation)
-                    {{ __('Finish enabling two factor authentication.') }}
+                    {{ __('pro.Finish enabling two factor authentication.') }}
                 @else
-                    {{ __('You have enabled two factor authentication.') }}
+                    {{ __('pro.You have enabled two factor authentication.') }}
                 @endif
             @else
-                {{ __('You have not enabled two factor authentication.') }}
+                {{ __('pro.You have not enabled two factor authentication.') }}
             @endif
         </h3>
 

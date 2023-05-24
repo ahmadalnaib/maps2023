@@ -8,17 +8,17 @@
                 <x-application-mark class="block h-9 w-auto" />
             </a>
             <nav class="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
-                <a href="{{route('home')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">Find a locker</a>
-                <a href="{{route('how')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">How it works</a>
-                <a href="{{route('price')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">Pricing</a>
-                <a href="{{route('faq')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">FAQ</a>
+                <a href="{{route('home')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">{{__('nav.Find a locker')}}</a>
+                <a href="{{route('how')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">{{__('nav.How it works')}}</a>
+                <a href="{{route('price')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">{{__('nav.Pricing')}}</a>
+                <a href="{{route('faq')}}" class="mr-5 font-medium leading-6 text-white hover:text-gray-900">{{__('nav.FAQ')}}</a>
                 <x-lang-switcher />
             </nav>
         </div>
         @guest
         <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
             <a href="{{route('login')}}" class="text-base font-medium leading-6 text-white whitespace-no-wrap transition duration-150 ease-in-out hover:text-gray-900">
-                Sign in
+               {{__('nav.Login')}}
             </a>
             <a href="{{route('register')}}" class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-black border border-transparent rounded-md shadow-sm " data-rounded="rounded-md" data-primary="red-600">
                GET A BOX

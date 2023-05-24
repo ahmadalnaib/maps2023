@@ -1,25 +1,25 @@
 <div class="bg-white  mt-20">
 
   <h1 class="text-7xl text-center font-black">{{__('index.find')}}</h1>
-  <p class="text-center text-3xl text-gray-400 mt-4">Enter a street, Address or postcode and we’ll show your nearest lockers
+  <p class="text-center text-3xl text-gray-400 mt-4">{{__('index.Enter a street, Address or postcode and we’ll show your nearest lockers')}}
      </p>
-     <p class="text-center text-3xl text-gray-400 mt-2 mb-8">Lockers are available 24 hours a day, 7 days a week</p>
+     <p class="text-center text-3xl text-gray-400 mt-2 mb-8">{{__('index.Lockers are available 24 hours a day, 7 days a week')}}</p>
 </div>
 <form action="{{route('search')}}" method="post">
   @csrf
   <div class="flex flex-row p-5">
     <div class="w-6/12">
-      <input type="text" id="address" name="address" autocomplete="off" class="p-4 w-full bg-gray-100 rounded-md border-none focus:ring-transparent" placeholder="Enter Address or Postcode" placeholder="ex:Johann-Georg-Herzog-Str. 19">
+      <input type="text" id="address" name="address" autocomplete="off" class="p-4 w-full bg-gray-100 rounded-md border-none focus:ring-transparent" placeholder="{{__('index.Enter Address or Postcode')}}" >
       <div  id="address-list" class="mt-2" ></div>
     </div>
     <div class="w-6/12">
    <select name="category" id="" class="p-4 ml-5 bg-gray-100 w-full rounded-md border-none focus:ring-transparent">
-    <option value=""> Select State/City</option>
+    <option value="">{{__('index.Select State/City')}}</option>
   @include('includes.category_list')
    </select>
     </div>
     <div class="ml-5">
-      <button type="submit" class="py-4 px-5 bg-red-600 hover:bg-red-500 text-white ml-5 rounded-md">Search</button>
+      <button type="submit" class="py-4 px-5 bg-red-600 hover:bg-red-500 text-white ml-5 rounded-md">{{__('index.Search')}}</button>
     </div>
 
   </div>

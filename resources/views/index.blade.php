@@ -10,7 +10,7 @@
           </div> 
         </div>
         <div class=" bg-slate-100 p-40">
-          <h2 class="text-6xl font-black">Premium Lockers</h2>
+          <h2 class="text-6xl font-black">{{__('index.Premium Lockers')}}</h2>
           <div class="container my-12 mx-auto md:px-12 p-5">
    
    
@@ -38,7 +38,7 @@
     </div>
     <div class="container my-12 mx-auto md:px-12 p-5">
       
-      <h1 class="text-6xl font-black mb-4">Recently Added</h1>
+      <h1 class="text-6xl font-black mb-4">{{__('index.Recently Added')}}</h1>
             <div class="m-8">
                 </div>   
                 
@@ -61,7 +61,7 @@
 
 
               <a  href='{{route('place.show',[$place->id,$place->slug])}}' class='block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-[#CE111E] rounded-[14px] hover:bg-[#CE111E] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 text-white'>
-                  View 
+                  {{__('index.View')}} 
               </a>
          
        

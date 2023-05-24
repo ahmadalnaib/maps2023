@@ -27,7 +27,7 @@
             @guest
                 
             <div class="flex">
-                <x-nav-link href="{{route('login')}}" class="ml-3">Login
+                <x-nav-link href="{{route('login')}}" class="ml-3">{{__('nav.Login')}}
                 </x-nav-link>
                 <x-nav-link href="{{route('register')}}" class="ml-3  border-b-4 border-white ">GET A BOX
                 </x-nav-link>
@@ -112,13 +112,13 @@
                             
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('pro.Manage Account') }}
                             </div>
                             <x-dropdown-link href="{{route('dashboard')}}">
                                 Dashboard
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('pro.Profile') }}
                             </x-dropdown-link>
                            
                          
