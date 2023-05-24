@@ -24,6 +24,8 @@ class PurchaseController extends Controller
         $this->provider->setApiCredentials(config('paypal'));
         $token = $this->provider->getAccessToken();
         $this->provider->setAccessToken($token);
+        $this->provider->setCurrency('EUR');
+        
     }
     public function createPayment(Request $request) {
 
@@ -44,7 +46,7 @@ class PurchaseController extends Controller
             'purchase_units' => [
                 [
                     'amount' => [
-                        'currency_code' => "USD",
+                        'currency_code' => "EUR",
                         'value' => $total
                     ],
                     'description' => 'Order Description'

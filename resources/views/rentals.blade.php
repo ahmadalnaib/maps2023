@@ -74,7 +74,7 @@
    
 </x-app-layout>
  <!-- Replace "test" with your own sandbox Business account app client ID -->
- <script src="https://www.paypal.com/sdk/js?client-id=AVkELTVSTm95KMgxyRhuxuWInYolxp9SBPaGYkEYJYF_A2F6PBzwdXsPNeEvQolhV1eMhYb8smdNX3ct&currency=USD"></script>
+ <script src="https://www.paypal.com/sdk/js?client-id=AVkELTVSTm95KMgxyRhuxuWInYolxp9SBPaGYkEYJYF_A2F6PBzwdXsPNeEvQolhV1eMhYb8smdNX3ct&currency=EUR"></script>
  <!-- Set up a container element for the button -->
 
  <script>
