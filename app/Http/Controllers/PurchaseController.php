@@ -104,7 +104,7 @@ class PurchaseController extends Controller
        Mail::to($rental->user->email)->send(new PaymentConfirmation($rental));
         // Cleanup the temporary PDF file
         unlink($pdfPath);
-       
+        
         }
         return response()->json($result);
     }

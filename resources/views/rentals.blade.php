@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container my-12 mx-auto md:px-12 p-5">
-        <div id="success" style="display: none">success okkkk</div>
+      
         <div class="bg-white rounded-lg shadow-xl overflow-hidden">
        
                 <div class="px-4 py-5 sm:px-6">
@@ -112,9 +112,13 @@
               return res.json();
           }).then(function(orderData) {
             window.location.href = '/dashboard';
-              $('#success').slideDown(200);
+              $('#success').slideDown(400);
               $('.card-body').slideUp(0);
           });
       }
     }).render('#paypal-button-container');
+
+    if (window.location.href.includes('/dashboard')) {
+    $('#success').slideDown(400);
+  }
   </script>

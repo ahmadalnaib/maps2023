@@ -80,22 +80,22 @@
     <div class="container">
         <div class="header">
             <img src="{{ asset('/images/emaillogo.png') }}" alt="Logo" class="logo">
-            <h1>Invoice</h1>
+            <h1>Informationen zu Ihrer Reservierung </h1>
         </div>
 
         <div class="invoice-details">
-            <h2>Invoice Details</h2>
+            <h2>Infodetails</h2>
 
             <table>
                 <thead>
                     <tr>
-                        <th>Description</th>
-                        <th>Value</th>
+                        <th>Beschreibung</th>
+                        <th>Wert</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>User Name:</td>
+                        <td>Nutzername:</td>
                         <td>{{$rental->user->name}}</td>
                     </tr>
                     <tr>
@@ -103,32 +103,43 @@
                         <td>{{$rental->user->email}}</td>
                     </tr>
                     <tr>
-                        <td>Locker Name:</td>
+                        <td>Name des Schließfachs:</td>
                         <td>{{$rental->locker->locker_name}}</td>
                     </tr>
                     <tr>
-                        <td>Door Number:</td>
+                        <td>Türnummer:</td>
                         <td>{{$rental->door->door_number}}</td>
                     </tr>
                     <tr>
-                        <td>Start Time:</td>
+                        <td>Gültig ab:</td>
                         <td>{{$rental->start_time}}</td>
                     </tr>
                     <tr>
-                        <td>End Time:</td>
+                        <td>Gültig bis:</td>
                         <td>{{$rental->end_time}}</td>
                     </tr>
                     <tr>
                         <td>Plan Name:</td>
                         <td>{{$rental->plan->name}}</td>
                     </tr>
+                   
                 </tbody>
             </table>
         </div>
 
         <p class="price">Price: {{$rental->price}}</p>
 
-        <p class="footer">Thank you for using our service. If you have any questions, please feel free to contact us.</p>
+        <p class="footer">Gute Rad-Fahrt wünscht Ihnen das Bike and Biketec Box Team!
+            Bei Fragen zur Anlagennutzung oder zur Rechnung können Sie sich gerne über die im Impressum angegebenen Kontaktdaten an uns wenden.
+            --
+            Impressum:
+            Betreiber Buchungsportal, Anwenderbetreuung / Betrieb und Wartung der Anlagen, Aussteller der Rechnung:
+            Locktec GmbH
+            Johann-Georg-Herzog-Strasse 19 • D-96369 Weissenbrunn, Deutschland
+            Tel. 49 9261 6075 90 • Fax  +49 9261 6075 10
+            info@locktec.com • www.biketec.de
+            </p>
+        
     </div>
 </body>
 </html>

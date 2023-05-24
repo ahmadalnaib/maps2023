@@ -49,7 +49,7 @@
         <div class="flex">
             <!-- Sidebar -->
           {{-- @include('includes.sidebar') --}}
-
+          <div id="success" style="display: none">success okkkk</div>
             <!-- Page Content -->
             <div class="flex flex-col flex-1">
                 <!-- Page Heading -->

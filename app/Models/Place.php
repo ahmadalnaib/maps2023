@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\Slug;
 use App\Models\Locker;
+use App\Models\Rental;
 use App\Models\Category;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +25,6 @@ class Place extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
 
 
 

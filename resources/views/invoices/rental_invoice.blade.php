@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rental Invoice</title>
+    <title>Rechnung für Miete</title>
     <style>
         /* Add your custom CSS styles for the invoice here */
         /* For example: */
@@ -58,19 +58,19 @@
                 BikeTec
             </div>
             <div class="invoice-header-right">
-                <h2>Rental Invoice</h2>
-                <p>Invoice Number: {{ $rental->id }}</p>
-                <p>Date of Issue: {{ now()->format('Y-m-d') }}</p>
+                <h2>Rechnung für Miete</h2>
+                <p>Rechnungsnummer: {{ $rental->id }}</p>
+                <p>Ausgabedatum: {{ now()->format('Y-m-d') }}</p>
             </div>
         </div>
         <div class="invoice-section">
             <div class="section-left">
-                <h4>Bill To:</h4>
+                <h4>Rechnung an:</h4>
                 <p>Name: {{$rental->user->name}}</p>
                 <p>Email: {{$rental->user->email}}</p>
             </div>
             <div class="section-right">
-                <h4>Bill From:</h4>
+                <h4>Rechnung von:</h4>
                 <p> LockTec GmbH</p>
                 <p>Address:Schließfachsysteme <br>
                     Johann-Georg-Herzog-Strasse 19 <br>
@@ -79,12 +79,12 @@
         </div>
         <div class="invoice-section gray">
             <div class="section-left">
-                <h4>Locker:</h4>
+                <h4>Schließfach:</h4>
                 <p>Name: {{$rental->locker->locker_name}}</p>
-                <p>Door Number:{{$rental->door->door_number}}</p>
+                <p>Türnummer:{{$rental->door->door_number}}</p>
             </div>
             <div class="section-right">
-                <h4>Price:</h4>
+                <h4>Preis:</h4>
                 <p>{{$rental->price}}</p>
             </div>
         </div>
