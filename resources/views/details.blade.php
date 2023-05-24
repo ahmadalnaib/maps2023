@@ -6,73 +6,49 @@
       <h1 class="text-2xl mb-2">{{$place->name}}</h1>
       <small>{{$place->address}}</small>
     </div>
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 ">
 
-   
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+      @foreach ($lockers as $locker)
+        <div class="text-center border p-4 rounded-md">
+          <!-- ... -->
+          <ul class="flex flex-wrap list-none p-0">
+            @foreach ($locker->doors as $door)
+              @if ($door->size === 'big')
+                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-10 border-2 rounded-md text-center door-item {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
+                  {{ $door->door_number }} 
+                </li>
+              @else
+                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-5 border-2 rounded-md text-center door-item {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
+                  {{ $door->door_number }} 
+                </li>
+              @endif
+            @endforeach
+          </ul>
       
-        @foreach ($lockers as $locker)
-    <div class="text-center border p-4 rounded-md">
-      <h3>Locker {{ $locker->locker_name }}</h3>
-      <ul  class="flex flex-wrap list-none p-0">
-        @foreach ($locker->doors as $door)
-            @if ($door->size==='big')
-                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-10 border-2 rounded-md text-center {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
-                    {{ $door->door_number }} 
-                </li>
-            @else
-                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-5 border-2 rounded-md text-center {{ $door->rentals->isEmpty() ? 'bg-green-500 cursor-pointer' : 'bg-gray-500' }}">
-                    {{ $door->door_number }} 
-                </li>
-            @endif
-        @endforeach
-    </ul>
-    
-    
-    @if ($locker->doors->filter(function($door) { return $door->rentals->isEmpty(); })->count() > 0)
-      <form action="{{route('rent')}}" method="post">
-          @csrf
-  
-          <input class="" type="hidden" name="locker_id" value="{{ $locker->id }}">
-          <div class="form-group col-lg-6 mb-6 mt-5">
+          @if ($locker->doors->filter(function($door) { return $door->rentals->isEmpty(); })->count() > 0)
+      <form action="{{ route('rent') }}" method="post">
+        @csrf
+        <input class="" type="hidden" name="locker_id" value="{{ $locker->id }}">
+        <div class="form-group col-lg-6 mb-6 mt-5">
           <label for="door_id">Select a door:</label>
-          <select name="door_id" id="door_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              @foreach ($locker->doors as $door)
+          <select name="door_id" id="door_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onchange="updatePlanOptions(this.value)">
+            @foreach ($locker->doors as $door)
               @if ($door->rentals->isEmpty())
-                  <option value="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
-                      Door {{ $door->door_number }} 
-                    </option>
-                    
-                    @endif
-              @endforeach
+                <option value="{{ $door->id }}" data-door-id="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
+                  Door {{ $door->door_number }}
+                </option>
+              @endif
+            @endforeach
           </select>
-          </div>
-          <div class="form-group col-lg-6 mb-6">
-            <label for="rental_period">Select rental period:</label>
-            <select name="rental_period" id="rental_period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                @foreach ($plans as $plan)
-                    <option value="{{ $plan->id }}">{{ $plan->name }} - {{$plan->price}} &#x20AC</option>
-                @endforeach
-            </select>
+        </div>
+          
+        <div class="form-group col-lg-6 mb-6">
+          <label for="rental_period">Select rental period:</label>
+          <select name="rental_period" id="rental_period" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <!-- Options will be dynamically updated by JavaScript -->
+          </select>
         </div>
 
-        
-        <label for="door_id">Select a door:</label>
-<select name="door_id" id="door_id">
-    @foreach ($locker->doors as $door)
-        <option value="{{ $door->id }}" @if (old('door_id') == $door->id) selected @endif>
-            Door {{ $door->door_number }}
-        </option>
-    @endforeach
-</select>
-
-<label for="plan_id">Select a plan:</label>
-<select name="plan_id" id="plan_id">
-    @foreach ($locker->doors as $door)
-        @foreach ($door->plans as $plan)
-            <option value="{{ $plan->id }}">{{ $plan->name }} - {{ $plan->price }} &#x20AC;</option>
-        @endforeach
-    @endforeach
-</select>
 
         
           <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Rent</button>
@@ -151,19 +127,44 @@ let greenIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 L.marker([latitude,longitude],{icon: greenIcon}).bindPopup($('#name').val()).addTo(map).openPopup();
+const plansByDoor = {!! json_encode($plansByDoor) !!};
 
-const liElements = document.querySelectorAll('li[data-door-id]');
-const selectElement = document.querySelector('#door_id');
+const doorItems = document.querySelectorAll('.door-item');
+const doorSelect = document.getElementById('door_id');
+const planSelect = document.getElementById('rental_period');
 
-liElements.forEach(li => {
-  if (li.dataset.rented === 'true') {
-    li.classList.add('text-gray-400', 'cursor-not-allowed');
-  } else {
-    li.addEventListener('click', () => {
-      selectElement.value = li.dataset.doorId;
+// Function to update the plan options based on the selected door
+function updatePlanOptions(selectedDoorId) {
+  const doorPlans = plansByDoor[selectedDoorId];
+
+  if (doorPlans && doorPlans.length > 0) {
+    planSelect.innerHTML = ''; // Clear the plan select options
+
+    doorPlans.forEach(plan => {
+      const option = document.createElement('option');
+      option.value = plan.id;
+      option.textContent = `${plan.name} - ${plan.price} €`;
+      planSelect.appendChild(option);
     });
   }
+}
+
+// Add click event listener to each door item
+doorItems.forEach(door => {
+  door.addEventListener('click', () => {
+    const selectedDoorId = door.dataset.doorId;
+    updatePlanOptions(selectedDoorId);
+
+    // Update the door select box
+    doorSelect.value = selectedDoorId;
+  });
 });
+
+// Set the initial plans for the first door
+const firstDoor = doorItems[0];
+const firstDoorId = firstDoor.dataset.doorId;
+updatePlanOptions(firstDoorId);
+
 
 
 </script>
