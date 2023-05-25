@@ -133,7 +133,7 @@
                                  {{__('place.Places')}}
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('admin.locker.index') }}">
-                                {{ __('Lockers') }}
+                                {{ __('locker.Locker') }}
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('admin.door.index') }}">
                                 {{ __('Doors') }}

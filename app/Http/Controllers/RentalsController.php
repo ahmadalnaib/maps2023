@@ -53,6 +53,7 @@ class RentalsController extends Controller
         return view('rentals', [
             'rental' => $rental,
             'locker' => $locker,
+            'address' => $locker->address,
             'door' => $door,
             'start_time' => $start_time,
             'end_time' => $end_time,

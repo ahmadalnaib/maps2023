@@ -19,5 +19,8 @@ return[
     "Longitude"=>"Longitude",
     "Latitude"=>"Latitude",
     "Create"=>"Create",
+    "Current Image"=>"Current Image",
+    "Update"=>'Update',
+    'Edit Place'=>'Edit Place'
 
 ];

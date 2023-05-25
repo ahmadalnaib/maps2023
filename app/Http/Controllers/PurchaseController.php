@@ -76,6 +76,9 @@ class PurchaseController extends Controller
              $locker = Locker::findOrFail($data['locker_id']);
              $door = Door::findOrFail($data['door_id']);
 
+            // Generate a 6-digit pincode
+            $pincode = mt_rand(100000, 999999);
+
              $rental = new Rental([
                 "tenant_id" => $tenantId,
                 "locker_id" => $locker->id,
@@ -86,6 +89,7 @@ class PurchaseController extends Controller
                 'end_time' => $end_time,
                 'plan_id' => $plan->id,
                 'price' => $price,
+                'pincode' => $pincode,
                 'created_at' => Carbon::now(),
             ]);
 
@@ -101,6 +105,9 @@ class PurchaseController extends Controller
         // Save the PDF file to a temporary location
         $pdfPath = storage_path('app/tmp/invoice.pdf');
         file_put_contents($pdfPath, $pdfContents);
+        // Send the pin code email
+     
+
        Mail::to($rental->user->email)->send(new PaymentConfirmation($rental));
         // Cleanup the temporary PDF file
         unlink($pdfPath);

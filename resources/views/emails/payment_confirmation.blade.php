@@ -28,6 +28,12 @@
             font-size: 28px;
             margin: 0;
         }
+        .header p {
+            color: red;
+            font-size: 25px;
+            margin: 0;
+            margin-top: 10px;
+        }
 
         .invoice-details {
             margin-bottom: 30px;
@@ -79,12 +85,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="{{ asset('/images/emaillogo.png') }}" alt="Logo" class="logo">
+            <img src="{{ asset('images/logo-email.jpg') }}" alt="Logo" class="logo">
             <h1>Informationen zu Ihrer Reservierung </h1>
+            <p>Pin Code: {{$rental->pincode}}</p>
         </div>
 
         <div class="invoice-details">
-            <h2>Infodetails</h2>
+       
 
             <table>
                 <thead>
@@ -107,6 +114,10 @@
                         <td>{{$rental->locker->locker_name}}</td>
                     </tr>
                     <tr>
+                        <td>Locker Address:</td>
+                        <td>{{$rental->locker->address}}</td>
+                    </tr>
+                    <tr>
                         <td>Türnummer:</td>
                         <td>{{$rental->door->door_number}}</td>
                     </tr>
@@ -122,12 +133,16 @@
                         <td>Plan Name:</td>
                         <td>{{$rental->plan->name}}</td>
                     </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>{{$rental->price}}</td>
+                    </tr>
                    
                 </tbody>
             </table>
         </div>
 
-        <p class="price">Price: {{$rental->price}}</p>
+        <p class="price">Pin Code: {{$rental->pincode}}</p>
 
         <p class="footer">Gute Rad-Fahrt wünscht Ihnen das Bike and Biketec Box Team!
             Bei Fragen zur Anlagennutzung oder zur Rechnung können Sie sich gerne über die im Impressum angegebenen Kontaktdaten an uns wenden.

@@ -18,5 +18,8 @@ return[
     "Address"=>"Adresse",
     "Longitude"=>"Längengrad",
     "Latitude"=>"Breitengrad",
-    "Create"=>"erstellen"
+    "Create"=>"erstellen",
+    "Current Image"=>"Aktuelles Bild",
+    "Update"=>'Aktualisierung',
+    'Edit Place'=>'Platz bearbeiten'
 ];

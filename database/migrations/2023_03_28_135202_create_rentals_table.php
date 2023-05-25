@@ -22,6 +22,7 @@ return new class extends Migration
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->decimal('price', 8, 2);
+            $table->integer('pincode');
             $table->timestamps();
         });
     }

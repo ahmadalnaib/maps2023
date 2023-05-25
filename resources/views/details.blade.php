@@ -13,15 +13,17 @@
           <!-- ... -->
           <ul class="flex flex-wrap list-none p-0">
             @foreach ($locker->doors as $door)
-              @php
-                $isRented = $door->rentals->isNotEmpty();
-                $doorClass = $isRented ? 'bg-gray-500' : 'bg-green-500 cursor-pointer';
-              @endphp
-              <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-{{ $door->size === 'big' ? '10' : '5' }} border-2 rounded-md text-center door-item {{ $doorClass }}" @if ($isRented) disabled @endif>
-                {{ $door->door_number }} 
-              </li>
+                @php
+                    $isRented = $door->rentals->isNotEmpty();
+                    $doorClass = $isRented ? 'bg-gray-500' : ($door->size === 'big' ? 'bg-yellow-400' : 'bg-green-500');
+                    $cursorClass = $isRented ? '' : 'cursor-pointer';
+                @endphp
+                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-{{ $door->size === 'big' ? '8' : '5' }} border-2 rounded-md text-center door-item {{ $doorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif>
+                    {{ $door->door_number }} 
+                </li>
             @endforeach
-          </ul>
+        </ul>
+        
           
       
           @if ($locker->doors->filter(function($door) { return $door->rentals->isEmpty(); })->count() > 0)
@@ -48,10 +50,25 @@
          
           </select>
         </div>
+           <div class="mb-5">
+            <div class="py-2 flex items-center justify-center  space-x-5">
+              <div class="w-4 h-4 bg-gray-500 rounded-full "></div>Besetzt
+              <div class="w-4 h-4 bg-green-500 rounded-full"></div>ein Fahrrad
+              <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>Doppelfahrrad  
+           </div>
 
+      </div> 
+      <div class="form-group m-10">
+       
+<div class="flex items-center justify-center">
+  <input  type="checkbox" id="accept_conditions" name="accept_conditions"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+  <label for="link-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</a>.</label>
+</div>
 
-        
-          <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Rent</button>
+      </div>
+      
+      <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onclick="return validateForm()">Rent</button>
+
       </form>
       @else
       <p class="mt-10 bg-gray-100 p-5 rounded">We're sorry, but there are currently no locker doors available for rent. Please check back later or contact our customer service for further assistance.</p>
@@ -169,6 +186,13 @@ doorItems.forEach(door => {
 });
 
 
-
+function validateForm() {
+    const acceptCheckbox = document.getElementById('accept_conditions');
+    if (!acceptCheckbox.checked) {
+      alert('Please accept the conditions.');
+      return false;
+    }
+    return true;
+  }
 </script>
 

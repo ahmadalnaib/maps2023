@@ -54,7 +54,7 @@
             <div class="flex flex-col flex-1">
                 <!-- Page Heading -->
                 @if (isset($header))
-                    <header class="bg-white mt-8">
+                    <header class="bg-gray-100 mt-8">
                         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                             {{ $header }}
                         </div>

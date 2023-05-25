@@ -43,6 +43,7 @@ class LockerAdminController extends Controller
 
         Locker::create([
             'locker_name' => $request->locker_name,
+            'address' => $request->address,
             'place_id' => $request->place_id,
             'tenant_id' => Auth::id(),
         ]);
@@ -66,11 +67,13 @@ class LockerAdminController extends Controller
     {
         $request->validate([
             'locker_name' => 'required',
+            'address' => 'required',
             'place_id' => 'required|exists:places,id',
         ]);
 
         $locker->update([
             'locker_name' => $request->locker_name,
+            'address' => $request->address,
             'place_id' => $request->place_id,
         ]);
 

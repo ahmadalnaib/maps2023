@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('place_id');
             $table->unsignedBigInteger('tenant_id')->index();
             $table->string('locker_name');
+            $table->string('address');
             $table->timestamps();
     
         });

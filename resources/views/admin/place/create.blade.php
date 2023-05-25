@@ -1,5 +1,9 @@
 <x-admin>
-
+    <x-slot name="header" >
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
+            {{ __('place.Places') }}
+        </h2>
+    </x-slot>
 
     <div class="container my-12 mx-auto md:px-12 p-5">
         <h1 class="text-2xl p-5 mb-2">{{__('place.Add New Place')}}</h1>
@@ -28,13 +32,13 @@
             Das Fahrrad wird in einem Doppelstockparker abgestellt. Es können Fahrräder in allen handelsüblichen Rahmengrößen mit einer Reifenbreite von bis zu 55mm geparkt werden. Bitte beachten Sie, dass das Parken auf der oberen Ebene auf ein Fahrradgewicht von 18kg begrenzt ist.
             
             Adresse:
-            Multifunktionsplatz Amberg
-            Kaiser-Ludwig-Ring 2,
-            92224 Amberg
+            ................
+            ................. 2,
+           ..... .......
             
             Gesamtkapazität:
-            20 Boxen
-            Alles Belegt?" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="overview" id="" cols="30" rows="10"></textarea>
+            24 Boxen
+           " class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="overview" id="" cols="30" rows="10"></textarea>
         </div>
                 <div>    
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">{{__('place.Upload Image - MAX 2 MB')}}</label>
@@ -58,7 +62,7 @@
             <input placeholder="50.12057809796008" id="latitude" type="text" name="latitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           </div>
          
-    <button type="submit" class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{__('place.Create')}}</button>
+    <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">{{__('place.Create')}}</button>
     </div>
 
    </form>
