@@ -52,9 +52,9 @@
       <form action="{{route('search')}}" method="post">
         @csrf
       <div class="flex flex-col w-full mx-auto space-y-5 md:space-y-0 md:space-x-5 md:flex-row">
-        <input type="text" id="address" name="address" class="flex-1 w-full px-5 py-5 text-2xl border border-gray-300 rounded-lg focus:ring-4 focus:border-red-700 focus:ring-red-600 focus:ring-opacity-50 focus:outline-none " data-primary="blue-600" data-rounded="rounded-lg" placeholder="{{__('index.Enter Address or Postcode')}}">
+        <input type="text" id="address" name="address" class="flex-1 w-full px-5 py-5 text-2xl border border-gray-300 rounded-lg focus:ring-4 focus:border-red-700 focus:ring-red-600 focus:ring-opacity-50 focus:outline-none bg-gray-100" data-primary="blue-600" data-rounded="rounded-lg" placeholder="{{__('index.Enter Address or Postcode')}}">
        
-          <select name="category" id="" class="flex-1 w-full px-5 py-5 text-2xl border border-gray-300 rounded-lg focus:ring-4 focus:border-red-700 focus:ring-red-600 focus:ring-opacity-50 focus:outline-none">
+          <select name="category" id="" class="flex-1 w-full px-5 py-5 text-2xl border border-gray-300 rounded-lg focus:ring-4 focus:border-red-700 focus:ring-red-600 focus:ring-opacity-50 focus:outline-none bg-gray-100">
             <option value="">{{__('index.Select State/City')}}</option>
           @include('includes.category_list')
            </select>
