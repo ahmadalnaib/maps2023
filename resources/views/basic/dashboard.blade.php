@@ -21,14 +21,15 @@
                       <td class="p-2 font-semibold">Username:</td>
                       <td class="p-2">{{ $rental->user->name }}</td>
                   </tr>
-                  <tr>
-                      <td class="p-2 font-semibold">User ID:</td>
-                      <td class="p-2">{{ $rental->user_id }}</td>
-                  </tr>
+                 
                   <tr>
                       <td class="p-2 font-semibold">Locker Name:</td>
                       <td class="p-2">{{$rental->locker->locker_name}}</td>
                   </tr>
+                  <tr>
+                    <td class="p-2 font-semibold">Locker Address:</td>
+                    <td class="p-2">{{$rental->locker->address}}</td>
+                </tr>
                   <tr>
                       <td class="p-2 font-semibold">Door Number:</td>
                       <td class="p-2">{{$rental->door->door_number}}</td>
@@ -82,11 +83,7 @@
       }
   }
 
-  function generateInvoice(rentalId) {
-      // Logic to generate invoice for the rental with the given ID
-      // You can implement this functionality according to your requirements
-      console.log(`Generating invoice for rental with ID ${rentalId}`);
-  }
+ 
 </script>
 
 </x-admin>
