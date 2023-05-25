@@ -2,27 +2,42 @@
 
 
     <div class="container my-12 mx-auto md:px-12 p-5">
-        <h1 class="text-2xl p-5 mb-2">Add New Place</h1>
+        <h1 class="text-2xl p-5 mb-2">{{__('place.Add New Place')}}</h1>
    <hr class="mb-5"/>
    <form class="form-contact" action="{{route('admin.place.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="grid grid-col-2 gap-4">
         <div>
-            <label for="name">Place Name</label>
-            <input name="name" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <label for="name">{{__('place.Place name')}}</label>
+            <input placeholder="Kulmbach" name="name" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
         <div>
-            <label for="catg">Choose Category</label>
+            <label for="catg">{{__('place.Choose state')}}</label>
             <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="category_id" id="">
                 @include('includes.category_list')
             </select>
         </div>
         <div>
-            <label for="overview">Place Overview</label>
-            <textarea class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="overview" id="" cols="30" rows="10"></textarea>
+            <label for="overview">{{__('place.Place Info/Notes')}}</label>
+            <textarea placeholder="In der Anlage befinden sich zwei Ladesteckdosen zum Laden von E-Bikes und Pedelecs, welche jeweils von den äußeren Stellplätzen genutzt werden können.
+
+            Hinweis zur Sammelgarage:
+            Die Stellplätze in der Anlage bei Ihnen vor Ort sind nicht nummeriert. Die Stellplatznummer, die Sie bei der Buchung auswählen, ist fiktiv und nur für den Zugang wichtig. Innerhalb der Anlage haben Sie freie Platzwahl. Bitte das Fahrrad zusätzlich mit einem eigenen Schloss abschließen und die Tür wieder schließen.
+            
+            Hinweis Doppelstockparker:
+            Das Fahrrad wird in einem Doppelstockparker abgestellt. Es können Fahrräder in allen handelsüblichen Rahmengrößen mit einer Reifenbreite von bis zu 55mm geparkt werden. Bitte beachten Sie, dass das Parken auf der oberen Ebene auf ein Fahrradgewicht von 18kg begrenzt ist.
+            
+            Adresse:
+            Multifunktionsplatz Amberg
+            Kaiser-Ludwig-Ring 2,
+            92224 Amberg
+            
+            Gesamtkapazität:
+            20 Boxen
+            Alles Belegt?" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="overview" id="" cols="30" rows="10"></textarea>
         </div>
                 <div>    
-        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">{{__('place.Upload Image - MAX 2 MB')}}</label>
         <input class="p-5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="image">
 
         </div>
@@ -31,19 +46,19 @@
             <div id="mapid" style="height:350px"></div>
         </div>
         <div class="mt-4">
-            <label for="address">Address</label>
-            <input type="text" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <label for="address">{{__('place.Address')}}</label>
+            <input placeholder="Heinrich Schneider 7" type="text" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
         <div class="form-group col-lg-6">
-          <label for="long">Longitude</label>
-          <input id="longitude" type="text" name="longitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <label for="long">{{__('place.Longitude')}}</label>
+          <input placeholder="10.250244140625002" id="longitude" type="text" name="longitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         </div>
         <div class="form-group col-lg-6">
-            <label for="long">Latitude</label>
-            <input id="latitude" type="text" name="latitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <label for="long">{{__('place.Latitude')}}</label>
+            <input placeholder="50.12057809796008" id="latitude" type="text" name="latitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           </div>
          
-    <button type="submit" class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create</button>
+    <button type="submit" class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{__('place.Create')}}</button>
     </div>
 
    </form>

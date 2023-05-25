@@ -10,6 +10,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
+            
 
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
