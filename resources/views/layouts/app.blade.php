@@ -116,12 +116,16 @@
 
 const swiper = new Swiper('.swiper', {
   slidesPerView: 1,
-  spaceBetween: 10,
+  spaceBetween: 30,
  
   breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 30,
+    },
     500: {
       slidesPerView: 1,
-      spaceBetween: 10,
+      spaceBetween: 30,
     },
     700: {
       slidesPerView: 1,
@@ -129,18 +133,18 @@ const swiper = new Swiper('.swiper', {
     },
     800: {
       slidesPerView: 2,
-      spaceBetween: 10,
+      spaceBetween: 30,
     },
     900: {
       slidesPerView: 3,
-      spaceBetween: 10,
+      spaceBetween: 30,
     },
   },
   autoplay: {
    delay: 5000,
    pauseOnMouseEnter:true, 
     disableOnInteraction: true,
-    reverseDirection: true,
+    reverseDirection: false,
     
  },
  

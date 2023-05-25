@@ -9,8 +9,8 @@
           <div id="mapid" style="height:700px" class="rounded-lg"></div>
           </div> 
         </div>
-        <div class=" bg-slate-100 p-40">
-          <h2 class="text-6xl font-black">{{__('index.Premium Lockers')}}</h2>
+        {{-- <div class="bg-slate-100 p-40">
+          <h2 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl ">{{__('index.Premium Lockers')}}</h2>
           <div class="container my-12 mx-auto md:px-12 p-5">
    
    
@@ -35,10 +35,46 @@
       </div>
 
       </div>   
+    </div> --}}
+    <div class="bg-slate-100 p-20">
+    <div class="container my-12 mx-auto md:px-12 p-5">
+      <h1 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl mb-4">{{__('index.Premium Lockers')}}</h1>
+            <div class="m-8">
+                </div>   
+                
+        <div class="flex flex-wrap -mx-1 lg:-mx-4 ">    
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+            @foreach($categories as $category)
+    
+
+    <a  href='{{route('category.show',$category->slug)}}'  style='background-image:url({{$category->image }});background-size:cover;background-position:center' class='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden mb-4 swiper-slide' data-swiper-autoplay="5000">
+        <div class='max-w-md mx-auto'>
+          <div class='h-96'>
+           </div>
+          <div class='p-4 sm:p-6'>
+            <p class='w-full mx-auto text-2xl font-extrabold leading-none text-left text-white sm:text-5xl md:text-3xl mb-4'> {{ $category->title }}</p>
+            <div class='flex flex-row'>
+           
+            </div>
+          
+         
+       
+          </div>
+        </div>
+    </a>
+
+            @endforeach
+            </div>
+            <div class="swiper-button-next text-red-600" style="color:  rgb(220 38 38)"></div>
+            <div class="swiper-button-prev text-red-600" style="color:  rgb(220 38 38)"></div>
+          </div>
+        </div>
     </div>
+  </div>
     <div class="container my-12 mx-auto md:px-12 p-5">
       
-      <h1 class="text-6xl font-black mb-4">{{__('index.Recently Added')}}</h1>
+      <h1 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl">{{__('index.Recently Added')}}</h1>
             <div class="m-8">
                 </div>   
                 
@@ -142,5 +178,6 @@
     // No places to display in Germany, show a default location on the map
     map.setView([51.1657, 10.4515], 6);
   }
+
 </script>
 

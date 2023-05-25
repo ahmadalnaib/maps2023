@@ -4,7 +4,7 @@
         
         <x-slot name="logo">
             <a href="{{ route('home') }}" title="Home">
-                <img class="object-cover h-100 w-96  rounded-xl hidden md:block" src="{{ url('icons/login.jpg') }}" alt="">
+                <img class="object-cover h-100 w-96  rounded-xl hidden md:block" src="{{ url('images/login/login.jpg') }}" alt="">
             </a>
         </x-slot>
 
