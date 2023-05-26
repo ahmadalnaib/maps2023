@@ -2,9 +2,9 @@
 
 
   <div class="py-12">
-    <div class="text-center mt-5 p-5">
-      <h1 class="text-2xl mb-2">{{$place->name}}</h1>
-      <small>{{$place->address}}</small>
+    <div class="text-center m-5 p-5">
+      <h1 class="text-7xl font-extrabold mb-2">{{$place->name}}</h1>
+      <p class="text-5xl text-gray-400">{{$place->address}}</p>
     </div>
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 ">
@@ -78,10 +78,7 @@
 
       <div class="rounded-md">
       <div class="bg-white shadow-lg rounded p-5 mb-2">
-        <div>
-          <h1 class="mb-4 text-2xl">About the Place</h1>
-          <p class="text-sm">{{$place->overview}}</p>
-        </div>
+       
         <div class="mt-5">
           <h3 class="mb-4 text-2xl">Address</h3>
           <div id="mapid" style="height: 350px"></div>
@@ -90,14 +87,12 @@
           <input type="hidden" id="longitude" value="{{$place->longitude}}">
         </div>
       </div>
-      <div class="bg-white shadow-lg rounded p-4 h-52">
+      <div class="bg-white shadow-lg rounded p-4 ">
         <div class="p-5 bg-white shadow-sm">
-          <h3>{{$place->user->name}}</h3>
-        
-          <p></p>
-          <ul class="mt-3">
-            <li><i class="fa fa-envelope"></i> {{$place->user->email}}</li>
-          </ul>
+          <div>
+            <h1 class="mb-4 text-2xl">About the Place</h1>
+            <p class="text-sm">{{$place->overview}}</p>
+          </div>
         </div>
         <hr>
         <div class="p-3">
@@ -113,6 +108,7 @@
           @endauth
         </div>
       </div>
+      
     </div>
 
  
