@@ -7,5 +7,6 @@ return[
     "Add New Locker"=>"Add New Locker",
     "Choose Place"=>"Choose Place",
     "Locker"=>"Locker",
-    "Lockers"=>"Lockers"
+    "Lockers"=>"Lockers",
+    "Address"=>"Address"
 ];

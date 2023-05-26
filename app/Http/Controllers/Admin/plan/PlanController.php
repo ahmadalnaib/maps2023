@@ -6,8 +6,9 @@ use App\Models\Door;
 use App\Models\Plan;
 use App\Models\Locker;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\PlanRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PlanController extends Controller
 {
@@ -39,22 +40,20 @@ class PlanController extends Controller
         return view('admin.plan.create',compact('lockers','doors'));
     }
 
-    public function store(Request $request)
+    public function store(PlanRequest $request)
     {
-       
-        $plan= Plan::create([
-            "name" =>$request->name,
-            "number_of_days"=>$request->number_of_days,
+        $plan = Plan::create([
+            'name' => $request->name,
+            'number_of_days' => $request->number_of_days,
             'price' => $request->price,
-            "locker_id"=>$request->locker_id,
-            'door_id'=>$request->door_id
-        
-         
+            'locker_id' => $request->locker_id,
         ]);
+    
         $plan->doors()->attach($request->door_id);
-
+    
         return redirect()->route('admin.plan.index');
     }
+    
 
     public function edit(Plan $plan)
     {
@@ -70,19 +69,20 @@ class PlanController extends Controller
         return view('admin.plan.edit', compact('plan', 'lockers', 'doors'));
     }
 
-    public function update(Request $request, Plan $plan)
+    public function update(PlanRequest $request, Plan $plan)
     {
         $plan->update([
-            "name" => $request->name,
-            "number_of_days" => $request->number_of_days,
+            'name' => $request->name,
+            'number_of_days' => $request->number_of_days,
             'price' => $request->price,
-            "locker_id" => $request->locker_id,
-            'door_id' => $request->door_id
+            'locker_id' => $request->locker_id,
         ]);
-
+    
+        $plan->doors()->sync($request->door_id);
+    
         return redirect()->route('admin.plan.index');
     }
-
+    
     public function destroy(Plan $plan)
     {
         $plan->delete();

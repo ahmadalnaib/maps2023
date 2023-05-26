@@ -14,6 +14,9 @@
                 <div>
                     <label for="door_number">{{__('door.Door number')}}</label>
                     <input name="door_number" type="text" value="{{ $door->door_number }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @error('door_number')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="locker_id">{{__('door.Choose Locker')}}</label>

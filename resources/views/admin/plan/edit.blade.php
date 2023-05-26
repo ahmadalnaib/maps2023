@@ -10,14 +10,23 @@
               <div>
                   <label for="name">Plan Name</label>
                   <input name="name" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $plan->name }}">
+                  @error('name')
+                  <span class="text-red-500">{{ $message }}</span>
+                  @enderror
               </div>
               <div>
                   <label for="number_of_days">Number of Days</label>
                   <input name="number_of_days" type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $plan->number_of_days }}">
+                  @error('number_of_days')
+                  <span class="text-red-500">{{ $message }}</span>
+                  @enderror
               </div>
               <div>
                   <label for="price">Price</label>
                   <input name="price" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $plan->price }}">
+                  @error('price')
+                  <span class="text-red-500">{{ $message }}</span>
+                  @enderror
               </div>
               <div>
                   <label for="locker_id">Choose Locker</label>

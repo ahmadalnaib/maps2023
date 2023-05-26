@@ -7,5 +7,6 @@ return[
     "Add New Locker"=>"Neues Schließfach hinzufügen",
     "Choose Place"=>"Ort auswählen",
     "Locker"=>"Schließfächer",
-    "Lockers"=>"Schließfächer"
+    "Lockers"=>"Schließfächer",
+    "Address"=>"Adresse"
 ];

@@ -19,8 +19,12 @@
                   {{__('locker.Locker name')}}
                 </th>
                 <th scope="col" class="px-6 py-3">
+                  {{__('door.Charge')}}
+                </th>
+                <th scope="col" class="px-6 py-3">
                 {{__('door.Door Size')}}
                 </th>
+                
              
            
                 <th scope="col" class="px-6 py-3 ">
@@ -38,6 +42,9 @@
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$door->locker->locker_name ?? 'Error'}}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$door->charge ? "+ Elektrische Ladung" :"-"}}
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$door->size }}

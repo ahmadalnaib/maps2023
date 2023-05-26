@@ -14,21 +14,30 @@
         <div>
             <label for="name">{{__('locker.Locker name')}}</label>
             <input placeholder="Velosafe-T-1" name="locker_name" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @error('locker_name')
+            <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <div>
-            <label for="name">address</label>
+            <label for="name">{{__('locker.Address')}}</label>
             <input placeholder="
             Musterstraße 17 
             12345 Berlin 
             " name="address" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @error('address')
+            <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <div>
             <label for="catg">{{__('locker.Choose Place')}}</label>
-            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="place_id" id="">
+            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="place_id" id="" required>
                 @foreach ($places as $place)
                 <option  value="{{$place->id}}">{{$place->name}}</option>
                 @endforeach
             </select>
+            @error('place_id')
+            <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
     
   

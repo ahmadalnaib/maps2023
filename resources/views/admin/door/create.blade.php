@@ -13,15 +13,22 @@
     <div class="grid grid-col-2 gap-4">
         <div>
             <label for="name">{{__('door.Door number')}}</label>
-            <input name="door_number" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1,2,3..">
+            <input name="door_number" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1,2,3.." required>
+              @error('door_number')
+            <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <div>
             <label for="catg">{{__('door.Choose Locker')}}</label>
-            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="locker_id" id="">
+            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="locker_id" id="" required>
                 @foreach ($lockers as $locker)
                 <option  value="{{$locker->id}}">{{$locker->locker_name}}</option>
                 @endforeach
             </select>
+            @error('locker_id')
+            <span class="text-red-500">{{ $message }}</span>
+            @enderror
+            
         </div>
         <div>
             <label for="size">{{__('door.Door Size')}}</label>
@@ -29,6 +36,9 @@
                 <option value="big">{{__('door.Big')}}</option>
                 <option value="small">{{__('door.Small')}}</option>
             </select>
+            @error('size')
+            <span class="text-red-500">{{ $message }}</span>
+            @enderror
         </div>
         <div>
             <label for="charge">{{__('door.Charge')}}</label>

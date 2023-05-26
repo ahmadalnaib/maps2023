@@ -7,6 +7,7 @@ use App\Models\Place;
 use App\Models\Locker;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LockerRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LockerAdminController extends Controller
@@ -33,23 +34,18 @@ class LockerAdminController extends Controller
         return view('admin.locker.create',compact('places'));
     }
 
-    public function store(Request $request)
+    public function store(LockerRequest $request)
     {
-       
-        $request->validate([
-            'locker_name' => 'required',
-            'place_id' => 'required|exists:places,id',
-        ]);
-
         Locker::create([
             'locker_name' => $request->locker_name,
             'address' => $request->address,
             'place_id' => $request->place_id,
             'tenant_id' => Auth::id(),
         ]);
-
-        return redirect()->route('admin.locker.index')->with('message','Locker wurde aktualisiert 🎉')->with('timeout', 3000);
+    
+        return redirect()->route('admin.locker.index')->with('message', 'Locker wurde aktualisiert 🎉')->with('timeout', 3000);
     }
+    
 
 
     public function edit(Locker $locker)
@@ -63,23 +59,17 @@ class LockerAdminController extends Controller
     }
 
 
-    public function update(Request $request, Locker $locker)
+    public function update(LockerRequest $request, Locker $locker)
     {
-        $request->validate([
-            'locker_name' => 'required',
-            'address' => 'required',
-            'place_id' => 'required|exists:places,id',
-        ]);
-
         $locker->update([
             'locker_name' => $request->locker_name,
             'address' => $request->address,
             'place_id' => $request->place_id,
         ]);
-
-        return redirect()->route('admin.locker.index')->with('message','Locker wurde update 🎉')->with('timeout', 3000);;
+    
+        return redirect()->route('admin.locker.index')->with('message', 'Locker wurde update 🎉')->with('timeout', 3000);
     }
-
+    
 
 
     public function destroy(Locker $locker)
