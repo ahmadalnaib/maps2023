@@ -73,15 +73,7 @@
                                 <strong> {{ session()->get('warning') }}</strong>
                             </div>
                         @endif
-                        @if ($errors->any())
-                            <div class="bg-red-200 text-red-800 px-3 py-2 rounded all-err">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                     
                     </div>
                     {{ $slot }}
                 </main>

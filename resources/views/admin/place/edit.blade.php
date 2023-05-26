@@ -14,6 +14,9 @@
                   <div>
                       <label for="name">{{__('place.Place name')}}</label>
                       <input name="name" type="text" value="{{ $place->name }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      @error('name')
+                      <span class="text-red-500">{{ $message }}</span>
+                      @enderror
                   </div>
                   <div>
                       <label for="category">{{__('place.Choose state')}}</label>
@@ -22,28 +25,46 @@
                               <option value="{{ $category->id }}" @if ($category->id === $place->category_id) selected @endif>{{ $category->title }}</option>
                           @endforeach
                       </select>
+                      @error('category_id')
+                      <span class="text-red-500">{{ $message }}</span>
+                      @enderror
                   </div>
                   <div>
                       <label for="overview">{{__('place.Place Info/Notes')}}</label>
                       <textarea name="overview" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $place->overview }}</textarea>
+                      @error('overview')
+                      <span class="text-red-500">{{ $message }}</span>
+                      @enderror
                   </div>
                   <div>
                     <label for="image">{{__('place.Current Image')}}</label>
                     <img src="{{ asset( $place->image) }}" alt="Current Image" class="block mb-4" style="width: 200px; height: auto;">
                     <label for="image">{{__('place.Upload Image - MAX 2 MB')}}</label>
                     <input type="file" name="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @error('image')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                   <div>
                       <label for="address">{{__('place.Address')}}</label>
                       <input type="text" name="address" value="{{ $place->address }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      @error('address')
+                      <span class="text-red-500">{{ $message }}</span>
+                      @enderror
                   </div>
                   <div>
                       <label for="longitude">{{__('place.Longitude')}}</label>
                       <input type="text" name="longitude" value="{{ $place->longitude }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                      @error('longitude')
+                    <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                   </div>
                   <div>
                       <label for="latitude">{{__('place.Latitude')}}</label>
                       <input type="text" name="latitude" value="{{ $place->latitude }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5">
+                      @error('latitude')
+                      <span class="text-red-500">{{ $message }}</span>
+                      @enderror
                   </div>
               </div>
 
