@@ -15,7 +15,9 @@ class BasicController extends Controller
     public function dashboard()
     {
         $user = auth()->user();
-        $rentals = Rental::where('user_id', $user->id)->get();
+        $rentals = Rental::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+      
         return view ('basic.dashboard' ,compact('rentals'));
     }
 

@@ -88,7 +88,7 @@
             <div class="section-left">
                 <h4>Schließfach:</h4>
                 <p>Name: {{$rental->locker->locker_name}}</p>
-                <p>Name: {{$rental->locker->address}}</p>
+                <p>Address: {{$rental->locker->address}}</p>
                 <p>Name: {{$rental->duration }}</p>
                 <p>Türnummer:{{$rental->door->door_number}}</p>
             </div>
