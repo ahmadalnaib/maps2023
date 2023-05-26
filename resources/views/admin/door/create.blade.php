@@ -30,7 +30,10 @@
                 <option value="small">{{__('door.Small')}}</option>
             </select>
         </div>
-    
+        <div>
+            <label for="charge">{{__('door.Charge')}}</label>
+            <input name="charge" type="checkbox" class="form-checkbox h-5 w-5 text-blue-500">
+        </div>
    
 
          

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container my-12 mx-auto md:px-12 p-5">
+    <div class="container my-12 mx-auto md:px-12 p-5 ">
       
         <div class="bg-white rounded-lg shadow-xl overflow-hidden">
        

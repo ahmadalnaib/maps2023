@@ -38,6 +38,7 @@ class DoorAdminController extends Controller
              "door_number" =>$request->door_number,
              "locker_id"=>$request->locker_id,
              'size' => $request->size,
+             'charge' => $request->has('charge') ? 1 : 0,
           
          ]);
  
@@ -60,6 +61,7 @@ class DoorAdminController extends Controller
              'door_number' => $request->door_number,
              'locker_id' => $request->locker_id,
              'size' => $request->size,
+             'charge' => $request->has('charge') ? 1 : 0, 
          ]);
  
          return redirect()->route('admin.door.index')->with('message','Door wurde aktualisiert 🎉')->with('timeout', 3000);;

@@ -17,12 +17,18 @@
                     $isRented = $door->rentals->isNotEmpty();
                     $doorClass = $isRented ? 'bg-gray-500' : ($door->size === 'big' ? 'bg-yellow-400' : 'bg-green-500');
                     $cursorClass = $isRented ? '' : 'cursor-pointer';
+                    $hasCharge = $door->charge;
                 @endphp
-                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-20 px-{{ $door->size === 'big' ? '8' : '5' }} border-2 rounded-md text-center door-item {{ $doorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif>
+                <li data-door-id="{{ $door->id }}" class="inline-block m-0 py-12 px-{{ $door->size === 'big' ? '4' : '3' }} border-2 rounded-md text-center door-item {{ $doorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif>
                     {{ $door->door_number }} 
+                    @if ($hasCharge)
+                        <div><img src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
+                    @endif
                 </li>
             @endforeach
         </ul>
+        
+        
         
           
       
@@ -55,6 +61,7 @@
               <div class="w-4 h-4 bg-gray-500 rounded-full "></div>Besetzt
               <div class="w-4 h-4 bg-green-500 rounded-full"></div>ein Fahrrad
               <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>Doppelfahrrad  
+              <div ><img  src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>{{__('door.Charge')}}
            </div>
 
       </div> 
@@ -67,7 +74,7 @@
 
       </div>
       
-      <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onclick="return validateForm()">Rent</button>
+      <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onclick="return validateForm()">Rent </button>
 
       </form>
       @else

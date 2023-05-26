@@ -9,7 +9,8 @@ return[
     "Choose Locker"=>'Schließfach wählen',
     "Big"=>"Groß",
     "Small"=>"Klein",
-    "Edit Door"=>"Bearbeiten"
+    "Edit Door"=>"Bearbeiten",
+    "Charge"=>'Elektrische Ladung'
   
 
 ];

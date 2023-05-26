@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('door_number');
             $table->string('name')->nullable();
             $table->string('size');
+            $table->boolean('charge')->default(false);
             $table->timestamps();
     
          

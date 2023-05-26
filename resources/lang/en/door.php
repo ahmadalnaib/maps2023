@@ -10,4 +10,5 @@ return[
     "Big"=>"Big",
     "Small"=>"Small",
     "Edit Door"=>"Edit Door",
+    "Charge"=>'Electric charge'
 ];
