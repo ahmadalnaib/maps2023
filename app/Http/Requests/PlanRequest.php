@@ -26,8 +26,8 @@ class PlanRequest extends FormRequest
             'number_of_days' => 'required|integer',
             'price' => 'required|numeric',
             'locker_id' => 'required|exists:lockers,id',
-            'door_id' => 'required|array',
-            'door_id.*' => 'exists:doors,id',
+        
+           
         ];
     }
 }

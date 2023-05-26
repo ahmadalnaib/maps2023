@@ -40,20 +40,22 @@ class PlanController extends Controller
         return view('admin.plan.create',compact('lockers','doors'));
     }
 
-    public function store(PlanRequest $request)
+    public function store(PlanRequest  $request)
     {
-        $plan = Plan::create([
-            'name' => $request->name,
-            'number_of_days' => $request->number_of_days,
+       
+        $plan= Plan::create([
+            "name" =>$request->name,
+            "number_of_days"=>$request->number_of_days,
             'price' => $request->price,
-            'locker_id' => $request->locker_id,
+            "locker_id"=>$request->locker_id,
+         
+        
+         
         ]);
-    
         $plan->doors()->attach($request->door_id);
-    
+
         return redirect()->route('admin.plan.index');
     }
-    
 
     public function edit(Plan $plan)
     {
@@ -69,20 +71,19 @@ class PlanController extends Controller
         return view('admin.plan.edit', compact('plan', 'lockers', 'doors'));
     }
 
-    public function update(PlanRequest $request, Plan $plan)
+    public function update(PlanRequest  $request, Plan $plan)
     {
         $plan->update([
-            'name' => $request->name,
-            'number_of_days' => $request->number_of_days,
+            "name" => $request->name,
+            "number_of_days" => $request->number_of_days,
             'price' => $request->price,
-            'locker_id' => $request->locker_id,
+            "locker_id" => $request->locker_id,
+            
         ]);
-    
         $plan->doors()->sync($request->door_id);
-    
         return redirect()->route('admin.plan.index');
     }
-    
+
     public function destroy(Plan $plan)
     {
         $plan->delete();
