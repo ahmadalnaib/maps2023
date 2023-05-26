@@ -61,7 +61,7 @@
             <div class="py-2 flex items-center justify-center  space-x-5">
               <div class="w-4 h-4 bg-gray-500 rounded-full "></div>Besetzt
               <div class="w-4 h-4 bg-green-500 rounded-full"></div>ein Fahrrad
-              <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>Doppelfahrrad  
+              <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>zwei Fahrräder 
               <div ><img  src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>{{__('door.Charge')}}
            </div>
 
