@@ -54,7 +54,7 @@
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
                         <h3 class="text-2xl font-semibold sm:text-4xl">{{$how->title_two}}</h3>
                         <p class="text-lg text-left text-gray-600">
-                        {{$how->subtitle_two}}
+                        {{$how->subtitel_two}}
                     </div>
                 </div>
     

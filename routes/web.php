@@ -14,6 +14,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Plan\PlanController;
+use App\Http\Controllers\Admin\How\HowAdminController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
@@ -139,6 +140,9 @@ Route::get('/price', function () {
 ;
 
 Route::get('/how',[HowController::class,'index'])->name('how');
+
+Route::get('/how/edit',[HowAdminController::class,'index'])->name('how.edit');
+Route::put('/how/update',[HowAdminController::class,'update'])->name('how.update');
 
 
 
