@@ -1,9 +1,5 @@
 <x-admin>
 
-
-
-@section('content')
-    <!-- Replace with your content -->
     <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -367,6 +363,48 @@
                     <div class="bg-gray-50 px-4 py-4 sm:px-6">
                         <div class="text-sm leading-5">
                             <a href="#"
+                               class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
+                                View all
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
+                               
+                              
+                             
+                          
+                           
+                                  
+                    
+                                  
+                                  <svg  class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                  </svg>
+                                  
+                                  
+                                  
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm leading-5 font-medium text-gray-500 truncate">
+                                        Pages
+                                    </dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl leading-8 font-semibold text-gray-900">
+                                          
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                        <div class="text-sm leading-5">
+                            <a href="{{route('pages')}}"
                                class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
                                 View all
                             </a>

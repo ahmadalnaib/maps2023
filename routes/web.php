@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\Rentals;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HowController;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\PlaceController;
@@ -137,8 +138,15 @@ Route::get('/faq', function () {
 Route::get('/price', function () {
     return view('price');
 })->name('price');
-;
 
+
+Route::get('/pages', function () {
+    return view('admin.pages.index');
+})->name('pages');
+
+
+
+Route::get('/faq',[FaqController::class,'index'])->name('faq');
 Route::get('/how',[HowController::class,'index'])->name('how');
 
 Route::get('/how/edit',[HowAdminController::class,'index'])->name('how.edit');
