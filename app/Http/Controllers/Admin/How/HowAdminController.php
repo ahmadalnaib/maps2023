@@ -37,7 +37,7 @@ class HowAdminController extends Controller
 
         $how->update($fields);
 
-    return back()->with('success', 'how was updated!');
+    return back()->with('success_message', 'Announcement was updated!');
 
     }
 }
