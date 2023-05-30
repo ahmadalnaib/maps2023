@@ -3,10 +3,10 @@
         <div class="flex flex-col items-center justify-center mx-auto sm:p-6 xl:p-8 lg:flex-row lg:max-w-6xl lg:p-0">
             <div class="container relative z-20 flex flex-col w-full px-5 pb-1 pr-12 mb-16 text-2xl text-gray-700 lg:w-1/2 sm:pr-0 md:pr-6 md:pl-0 lg:pl-5 xl:pr-10 sm:items-center lg:items-start lg:mb-0">
                 <h1 class="relative z-20 text-5xl font-extrabold leading-none text-red-600 xl:text-6xl sm:text-center lg:text-left" data-primary="purple-500">
-                    Protect Your Bike with<br>
-                    <span class="mt-1 text-gray-800 lg:mt-0">Peace of Mind</span>
+                   {{$how->main_title}}<br>
+                  
                 </h1>
-                <p class="relative z-20 block mt-6 text-base text-gray-500 xl:text-xl sm:text-center lg:text-left">We've developed the ultimate tool to assist you in creating the perfect bike storage solution. With a focus on customization, our platform allows you to fully personalize every aspect of your bike locker, ensuring it meets your exact needs and preferences.</p>
+                <p class="relative z-20 block mt-6 text-base text-gray-500 xl:text-xl sm:text-center lg:text-left">{{$how->main_subtitle}}</p>
                 <div class="relative flex mt-4">
                     <a href="#park" class="flex items-center self-start justify-center px-5 py-2 mt-5 text-base font-medium leading-tight text-white transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-full shadow lg:py-4 hover:bg-red-600 focus:outline-none focus:border-red-600 focus:shadow-outline-red md:text-lg xl:text-xl md:px-5 xl:px-10" data-primary="red-500" data-rounded="rounded-full">Get Started</a>
                     <a href="#_" class="relative flex items-center self-start justify-center py-2 pl-10 pr-5 mt-5 ml-5 text-base font-medium leading-tight text-gray-400 transition duration-150 ease-in-out bg-gray-100 border-transparent rounded-full shadow-sm lg:py-4 md:pl-16 md:pr-5 xl:pr-10 hover:text-red-500 focus:outline-none md:text-lg xl:text-xl" data-primary="red-500" data-rounded="rounded-full" onclick="toggleVideo()">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="relative overflow-hidden rounded-md  cursor-pointer group">
                     <div id="player" class="embed-container">
-                        <iframe id="videoFrame" width="500px" height="300px" src="https://www.youtube.com/embed/FAFy9kYopuY?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe id="videoFrame" width="500px" height="300px" src="{{$how->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -37,9 +37,9 @@
             <div class="grid overflow-hidden lg:rounded-xl">
                 <div class="grid items-center lg:grid-cols-2">
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl">Book Box was never this easy</h3>
+                        <h3 class="text-2xl font-semibold sm:text-4xl">{{$how->title_one}}</h3>
                         <p class="text-lg text-gray-600">
-                            Use our online Book Box website.
+                           {{$how->subtitle_one}}
                         </p>
                     </div>
                     <div class="overflow-hidden bg-gray-100 h-96">
@@ -52,17 +52,17 @@
                         <img src="{{ asset('/images/howpage/mob.png') }}" class="object-cover w-full h-full" alt="">
                     </div>
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl">Receive code</h3>
+                        <h3 class="text-2xl font-semibold sm:text-4xl">{{$how->title_two}}</h3>
                         <p class="text-lg text-left text-gray-600">
-                            Get your Pin Code and put your bike when it suits you!
+                        {{$how->subtitle_two}}
                     </div>
                 </div>
     
                 <div class="grid items-center lg:grid-cols-2">
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl">Park safely</h3>
+                        <h3 class="text-2xl font-semibold sm:text-4xl">{{$how->title_three}}</h3>
                         <p class="text-lg text-gray-600">
-                            Put your bike in your locker box.
+                          {{$how->subtitle_three}}
                         </p>
                     </div>
                     <div class="bg-gray-100 h-full">
@@ -91,10 +91,10 @@
                     </div>
                     <div class="max-w-xl mb-6">
                         <div class="mb-6">
-                            <p class="inline font-sans text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl sm:leading-none">Any time</p>
-                            <p class="block font-sans text-5xl font-bold tracking-tight text-red-700 sm:text-6xl sm:leading-none">any day.</p>
+                        
+                            <p class="block font-sans text-5xl font-bold tracking-tight text-red-700 sm:text-6xl sm:leading-none">{{$how->title_four}}</p>
                         </div>
-                        <p class="text-base text-gray-700 md:text-lg">Lockers are 24/7 which means you can access them when is suits you. No more changing your plans just for a parcel!</p>
+                        <p class="text-base text-gray-700 md:text-lg">{{$how->subtitle_four}}</p>
                     </div>
                     <div class="max-w-xl mb-6">
                         <p class="relative">
