@@ -20,8 +20,8 @@
           <td class="py-3 px-4"><a href="{{route('how.edit')}}"><span class="text-red-800 text-4xl">&#8594;</span></a></td>
         </tr>
         <tr>
-          <td class="py-3 px-4">About</td>
-          <td class="py-3 px-4"><a href="/about">About</a></td>
+          <td class="py-3 px-4">FAQ</td>
+          <td class="py-3 px-4"><a href="{{route('faq.edit')}}"><span class="text-red-800 text-4xl">&#8594;</span></a></td>
         </tr>
         <!-- Add more rows for other pages -->
       </tbody>

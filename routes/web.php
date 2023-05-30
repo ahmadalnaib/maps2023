@@ -15,6 +15,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Plan\PlanController;
+use App\Http\Controllers\Admin\Faq\FaqAdminController;
 use App\Http\Controllers\Admin\How\HowAdminController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
@@ -147,8 +148,12 @@ Route::get('/pages', function () {
 
 
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
-Route::get('/how',[HowController::class,'index'])->name('how');
+Route::get('/faq/edit',[FaqAdminController::class,'index'])->name('faq.edit');
+Route::put('/faq/update',[FaqAdminController::class,'update'])->name('faq.update');
 
+
+
+Route::get('/how',[HowController::class,'index'])->name('how');
 Route::get('/how/edit',[HowAdminController::class,'index'])->name('how.edit');
 Route::put('/how/update',[HowAdminController::class,'update'])->name('how.update');
 
