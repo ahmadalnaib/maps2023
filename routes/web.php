@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\How\HowAdminController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
+use App\Http\Controllers\Admin\Price\PriceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Duration\DurationController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
@@ -157,6 +158,8 @@ Route::get('/how/edit',[HowAdminController::class,'index'])->name('how.edit');
 Route::put('/how/update',[HowAdminController::class,'update'])->name('how.update');
 
 Route::get('/price',[PriceController::class,'index'])->name('price');
+Route::get('/price/edit',[PriceAdminController::class,'index'])->name('price.edit');
+Route::put('/price/update',[PriceAdminController::class,'update'])->name('price.update');
 
 
 Route::get('/super', [SuperController::class, 'show'])->name('super');

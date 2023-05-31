@@ -26,7 +26,7 @@
 
         <tr>
           <td class="py-3 px-4">preis Plan</td>
-          <td class="py-3 px-4"><a href=""><span class="text-red-800 text-4xl">&#8594;</span></a></td>
+          <td class="py-3 px-4"><a href="{{route('price.edit')}}"><span class="text-red-800 text-4xl">&#8594;</span></a></td>
         </tr>
         <!-- Add more rows for other pages -->
       </tbody>
