@@ -48,6 +48,7 @@ class PlanController extends Controller
             "number_of_days"=>$request->number_of_days,
             'price' => $request->price,
             "locker_id"=>$request->locker_id,
+            "door_id"=>$request->door_id,
          
         
          
@@ -78,6 +79,7 @@ class PlanController extends Controller
             "number_of_days" => $request->number_of_days,
             'price' => $request->price,
             "locker_id" => $request->locker_id,
+            "door_id" => $request->door_id,
             
         ]);
         $plan->doors()->sync($request->door_id);

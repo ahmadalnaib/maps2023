@@ -1,104 +1,12 @@
-{{-- <x-admin>
 
-  <div class="container mx-auto">
-   
-    <h1 class="text-4xl font-bold my-6">Purchases</h1>
-    <p class="text-2xl font-light text-gray-400 my-6">Here you'll find all your purchased Lockers.</p>
-
-    @if (count($rentals) > 0)
-    <div class="grid grid-cols-2 gap-4">
-        @foreach ($rentals as $rental)
-        <div class="bg-green-200 p-4 rounded shadow">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <span class="font-bold text-2xl">{{ $rental->locker->locker_name}}</span>
-               
-                </div>
-                <span class="font-bold text-2xl">{{ $rental->price }}</span>
-            </div>
-            <div class="mt-4" id="rental-details-{{ $rental->id }}" style="display: none;">
-              <table class="w-full bg-green-100 rounded-lg">
-                  <tr>
-                      <td class="p-2 font-semibold">Username:</td>
-                      <td class="p-2">{{ $rental->user->name }}</td>
-                  </tr>
-                 
-                  <tr>
-                      <td class="p-2 font-semibold">Locker Name:</td>
-                      <td class="p-2">{{$rental->locker->locker_name}}</td>
-                  </tr>
-                  <tr>
-                    <td class="p-2 font-semibold">Locker Address:</td>
-                    <td class="p-2">{{$rental->locker->address}}</td>
-                </tr>
-                  <tr>
-                      <td class="p-2 font-semibold">Door Number:</td>
-                      <td class="p-2">{{$rental->door->door_number}}</td>
-                  </tr>
-                  <tr>
-                      <td class="p-2 font-semibold">Plan Name:</td>
-                      <td class="p-2">{{ $rental->duration }}</td>
-                  </tr>
-                  <tr>
-                      <td class="p-2 font-semibold">Price:</td>
-                      <td class="p-2">{{ $rental->price }}</td>
-                  </tr>
-                  <tr>
-                      <td class="p-2 font-semibold">Valid from:</td>
-                      <td class="p-2">{{ $rental->start_time }}</td>
-                  </tr>
-                  <tr>
-                      <td class="p-2 font-semibold">Valid until:</td>
-                      <td class="p-2">{{ $rental->end_time }}</td>
-                  </tr>
-              </table>
-          </div>
-          
-            <div class="flex justify-end mt-6">
-                <button class="text-blue-500 hover:underline" onclick="toggleRentalDetails({{ $rental->id }})">
-                    Show Details
-                </button>
-                <a href="{{route('invoices.generate',$rental)}}" class="ml-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-600" >
-                  Generate Invoice
-              </a>
-              
-              
-            </div>
-            <span class="text-gray-500 ml-2"> {{ $rental->created_at->diffForHumans() }}</span>
-        </div>
-        
-        @endforeach
-    </div>
-    @else
-    <p class="text-gray-500 italic">You have no orders at the moment.</p>
-    @endif
-</div>
-<script>
-  function toggleRentalDetails(rentalId) {
-      const detailsElement = document.getElementById(`rental-details-${rentalId}`);
-      const buttonElement = document.getElementById(`rental-details-button-${rentalId}`);
-      if (detailsElement.style.display === 'none') {
-          detailsElement.style.display = 'block';
-          buttonElement.innerText = 'Hide Details';
-      } else {
-          detailsElement.style.display = 'none';
-          buttonElement.innerText = 'Show Details';
-      }
-  }
-
- 
-</script>
-
-</x-admin> --}}
 
 
 <x-admin>
-    <section class="pt-20 pb-32 bg-white tails-selected-element" contenteditable="true">
+    <section class="pt-20 pb-32 bg-white">
         <div class="px-20 mx-auto max-w-7xl">
-            <h2 class="mb-1 text-3xl font-extrabold leading-tight text-gray-900"> {{ Auth::user()->name }}</h2>
-            <p class="mb-16 text-lg text-gray-500">Here is our list of our powerful and award-winning features.</p>
+         
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-16 lg:gap-x-24 gap-y-20">
-                <div>
+                <a href="{{route('invoices.index')}}" class="border p-4 rounded-xl shadow-sm">
                     <div class="flex items-center justify-center w-12 h-12 mb-4 text-red-600 bg-red-100 rounded-full" data-primary="red-600" data-rounded="rounded-full">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
@@ -106,20 +14,20 @@
                     </div>
                     <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Processing</h3>
                     <p class="text-sm text-gray-500 lg:text-base">Faster processing to help you build your applications quicker and with more efficiency.</p>
-                </div>
+                </a>
     
-                <div>
+                <a href="{{route('profile.show')}}" class="border p-4 rounded-xl shadow-sm">
                     <div class="flex items-center justify-center w-12 h-12 mb-4 text-green-600 bg-green-100 rounded-full" data-primary="green-600" data-rounded="rounded-full">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Configuration</h3>
+                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Profile Configuration</h3>
                     <p class="text-sm text-gray-500 lg:text-base">Faster processing to help you build your applications quicker and with more efficiency.</p>
-                </div>
+                </a>
     
-                <div>
+                <a href="" class="border p-4 rounded-xl shadow-sm">
                     <div class="flex items-center justify-center w-12 h-12 mb-4 text-blue-600 bg-blue-100 rounded-full" data-primary="blue-600" data-rounded="rounded-full">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
@@ -127,9 +35,9 @@
                     </div>
                     <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Bundling</h3>
                     <p class="text-sm text-gray-500 lg:text-base">Bundling functionality to help you build your application with ease and sustainability.</p>
-                </div>
+                </a>
     
-                <div>
+                <a href="" class="border p-4 rounded-xl shadow-sm">
                     <div class="flex items-center justify-center w-12 h-12 mb-4 text-purple-600 bg-purple-100 rounded-full" data-primary="purple-600" data-rounded="rounded-full">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
@@ -137,9 +45,9 @@
                     </div>
                     <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Database</h3>
                     <p class="text-sm text-gray-500 lg:text-base">Take advantage of unlimited storage and data retrieval from our global CDN data centers.</p>
-                </div>
+                </a>
     
-                <div>
+                <a href="" class="border p-4 rounded-xl shadow-sm">
                     <div class="flex items-center justify-center w-12 h-12 mb-4 text-indigo-600 bg-indigo-100 rounded-full" data-primary="indigo-600" data-rounded="rounded-full">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
@@ -147,9 +55,9 @@
                     </div>
                     <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Integrations</h3>
                     <p class="text-sm text-gray-500 lg:text-base">Simple and configuration intregrations with your favorite applications and services.</p>
-                </div>
+                </a>
     
-                <div class="">
+                <a href="" class="border p-4 rounded-xl shadow-sm">
                     <div class="flex items-center justify-center w-12 h-12 mb-4 text-pink-600 bg-pink-100 rounded-full" data-primary="pink-600" data-rounded="rounded-full">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -157,7 +65,7 @@
                     </div>
                     <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Speed</h3>
                     <p class="text-sm text-gray-500 lg:text-base">Our tools and services have been crafted for maximum speed and efficiency.</p>
-                </div>
+                </a>
     
             </div>
         </div>

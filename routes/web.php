@@ -123,6 +123,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/invoices', [BasicController::class,'index'])->name('invoices.index');
+
 Route::get('/invoices/{rental}/generate', [BasicController::class,'generateInvoice'])->name('invoices.generate');
 
 
@@ -186,6 +188,8 @@ Route::get('/super', [SuperController::class, 'show'])->name('super');
 
 Route::view('/team', 'team')->name('team.index');
 Route::view('/tenant', 'tenant')->name('tenant');
+Route::view('/userlogin', 'loginUser')->name('userLogin');
+
 
 Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');
 

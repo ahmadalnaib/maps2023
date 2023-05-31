@@ -14,11 +14,16 @@ class BasicController extends Controller
 
     public function dashboard()
     {
+      return view('basic.dashboard');
+    }
+
+    public function index()
+    {
         $user = auth()->user();
         $rentals = Rental::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 
       
-        return view ('basic.dashboard' ,compact('rentals'));
+        return view ('basic.rental' ,compact('rentals'));
     }
 
     public function generateInvoice(Rental $rental)

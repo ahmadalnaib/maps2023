@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Models\Login;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Scopes\TenantScope;
@@ -84,6 +85,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Rental::class);
     }
+
 
 
     

@@ -93,7 +93,7 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-4 sm:px-6">
                         <div class="text-sm leading-5">
-                            <a href="#"
+                            <a href="{{route('userLogin')}}"
                                class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
                                 View all
                             </a>
