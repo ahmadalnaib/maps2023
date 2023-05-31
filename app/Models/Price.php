@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Price extends Model
 {
-    use HasFactory,BelongsToTenant ;
+    use HasFactory;
+    
+    protected $guarded=[];
    
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HowController;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\SuperController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReportController;
@@ -136,9 +137,7 @@ Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
 
-Route::get('/price', function () {
-    return view('price');
-})->name('price');
+
 
 
 Route::get('/pages', function () {
@@ -157,6 +156,7 @@ Route::get('/how',[HowController::class,'index'])->name('how');
 Route::get('/how/edit',[HowAdminController::class,'index'])->name('how.edit');
 Route::put('/how/update',[HowAdminController::class,'update'])->name('how.update');
 
+Route::get('/price',[PriceController::class,'index'])->name('price');
 
 
 Route::get('/super', [SuperController::class, 'show'])->name('super');
