@@ -32,6 +32,10 @@
           <td class="py-3 px-4">Policy</td>
           <td class="py-3 px-4"><a href="{{route('policy.edit')}}"><span class="text-red-800 text-4xl">&#8594;</span></a></td>
         </tr>
+        <tr>
+          <td class="py-3 px-4">Terms</td>
+          <td class="py-3 px-4"><a href="{{route('term.edit')}}"><span class="text-red-800 text-4xl">&#8594;</span></a></td>
+        </tr>
         <!-- Add more rows for other pages -->
       </tbody>
     </table>

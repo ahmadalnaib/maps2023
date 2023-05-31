@@ -4,9 +4,11 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\Rentals;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HowController;
+use App\Http\Controllers\TermController;
 use App\Http\Controllers\BasicController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\PriceController;
@@ -22,6 +24,7 @@ use App\Http\Controllers\Admin\Faq\FaqAdminController;
 use App\Http\Controllers\Admin\How\HowAdminController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
+use App\Http\Controllers\Admin\Term\TermAdminController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Price\PriceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
@@ -169,6 +172,10 @@ Route::get('/policy',[PrivacyController::class,'index'])->name('policy');
 Route::get('/policy/edit',[PrivacyAdminController::class,'index'])->name('policy.edit');
 Route::put('/policy/update',[PrivacyAdminController::class,'update'])->name('policy.update');
 
+
+Route::get('/terms',[TermController::class,'index'])->name('terms');
+Route::get('/terms/edit',[TermAdminController::class,'index'])->name('term.edit');
+Route::put('/terms/update',[TermAdminController::class,'update'])->name('term.update');
 
 Route::get('/super', [SuperController::class, 'show'])->name('super');
 
