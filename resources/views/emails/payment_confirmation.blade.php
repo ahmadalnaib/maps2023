@@ -78,7 +78,7 @@
         .footer {
             text-align: center;
             color: #999999;
-            font-size: 14px;
+            font-size: 10px;
         }
     </style>
 </head>
