@@ -29,7 +29,7 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-4 sm:px-6">
                         <div class="text-sm leading-5">
-                            <a href="#"
+                            <a href="{{route('admin.user.index')}}"
                                class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
                                 View all
                             </a>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-4 sm:px-6">
                         <div class="text-sm leading-5">
-                            <a href="#"
+                            <a href="{{route('tenant')}}"
                                class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
                                 View all
                             </a>
@@ -380,10 +380,12 @@
                            
                                   
                     
-                                  
-                                  <svg  class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                
+
+                                  <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
                                   </svg>
+                                  
                                   
                                   
                                   
@@ -405,6 +407,51 @@
                     <div class="bg-gray-50 px-4 py-4 sm:px-6">
                         <div class="text-sm leading-5">
                             <a href="{{route('pages')}}"
+                               class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
+                                View all
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
+                               
+                              
+                             
+                          
+                           
+                                  
+                    
+                                
+
+                                  <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                                  </svg>
+                                  
+                                  
+                                  
+                                  
+                                  
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm leading-5 font-medium text-gray-500 truncate">
+                                        Diagram
+                                    </dt>
+                                    <dd class="flex items-baseline">
+                                        <div class="text-2xl leading-8 font-semibold text-gray-900">
+                                          
+                                        </div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-4 sm:px-6">
+                        <div class="text-sm leading-5">
+                            <a href=""
                                class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150">
                                 View all
                             </a>

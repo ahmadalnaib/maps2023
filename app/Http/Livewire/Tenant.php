@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Livewire;
-use App\Models\User;
-use Livewire\WithPagination;
-use Livewire\Component;
 
-class Users extends Component
+use App\Models\User;
+use Livewire\Component;
+use Livewire\WithPagination;
+
+class Tenant extends Component
 {
     use WithPagination;
-
- 
     public $search;
     public $sortField;
     public $sortAsc = true;
@@ -30,17 +29,19 @@ class Users extends Component
     {
         $this->resetPage();
     }
+
     public function render()
     {
-        return view('livewire.users',[
+        return view('livewire.tenant',[
             'users' => User::where(function ($query) {
                 $query->where('name', 'like', '%' . $this->search . '%')
                     ->orWhere('email', 'like', '%' . $this->search . '%');
             })
-            ->where('role', 'basic') // Add this line to filter by role
+            ->where('role', 'admin') // Add this line to filter by role
             ->when($this->sortField, function ($query) {
                 $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
             })->paginate(10),
+
         ]);
     }
 }

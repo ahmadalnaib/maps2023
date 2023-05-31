@@ -52,6 +52,10 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
 
+// admin users
+Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')->middleware(['auth', 'role:super']);;
+
+
 
 // **** Admin place route ****//
 Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
@@ -140,6 +144,7 @@ Route::delete('/admin/{category}',[CategoryController::class,'destroy'])->name('
 
 
 
+
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
@@ -180,6 +185,7 @@ Route::put('/terms/update',[TermAdminController::class,'update'])->name('term.up
 Route::get('/super', [SuperController::class, 'show'])->name('super');
 
 Route::view('/team', 'team')->name('team.index');
+Route::view('/tenant', 'tenant')->name('tenant');
 
 Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');
 
@@ -188,8 +194,6 @@ Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->nam
 Route::middleware(['web'])->group(function(){
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
     
-// admin users
-Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');
 
 
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
