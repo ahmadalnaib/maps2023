@@ -119,7 +119,7 @@
           }).then(function(res) {
               return res.json();
           }).then(function(orderData) {
-            window.location.href = '/dashboard';
+            window.location.href = '/invoices';
               $('#success').slideDown(400);
               $('.card-body').slideUp(0);
           });

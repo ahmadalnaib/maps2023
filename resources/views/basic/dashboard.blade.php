@@ -12,8 +12,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Processing</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Faster processing to help you build your applications quicker and with more efficiency.</p>
+                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Purchases</h3>
+                    <p class="text-sm text-gray-500 lg:text-base">Here you'll find all your purchased Lockers.</p>
                 </a>
     
                 <a href="{{route('profile.show')}}" class="border p-4 rounded-xl shadow-sm">
@@ -24,7 +24,7 @@
                         </svg>
                     </div>
                     <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Profile Configuration</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Faster processing to help you build your applications quicker and with more efficiency.</p>
+                    <p class="text-sm text-gray-500 lg:text-base">Here you'll find all your Info.</p>
                 </a>
     
                 <a href="" class="border p-4 rounded-xl shadow-sm">
@@ -33,39 +33,11 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Bundling</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Bundling functionality to help you build your application with ease and sustainability.</p>
+                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Need help and support</h3>
+                    <p class="text-sm text-gray-500 lg:text-base">For any issues, just contact us here and we'll be able to help</p>
                 </a>
     
-                <a href="" class="border p-4 rounded-xl shadow-sm">
-                    <div class="flex items-center justify-center w-12 h-12 mb-4 text-purple-600 bg-purple-100 rounded-full" data-primary="purple-600" data-rounded="rounded-full">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Database</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Take advantage of unlimited storage and data retrieval from our global CDN data centers.</p>
-                </a>
-    
-                <a href="" class="border p-4 rounded-xl shadow-sm">
-                    <div class="flex items-center justify-center w-12 h-12 mb-4 text-indigo-600 bg-indigo-100 rounded-full" data-primary="indigo-600" data-rounded="rounded-full">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Integrations</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Simple and configuration intregrations with your favorite applications and services.</p>
-                </a>
-    
-                <a href="" class="border p-4 rounded-xl shadow-sm">
-                    <div class="flex items-center justify-center w-12 h-12 mb-4 text-pink-600 bg-pink-100 rounded-full" data-primary="pink-600" data-rounded="rounded-full">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Speed</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Our tools and services have been crafted for maximum speed and efficiency.</p>
-                </a>
+             
     
             </div>
         </div>

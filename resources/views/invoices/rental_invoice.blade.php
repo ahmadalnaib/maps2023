@@ -9,7 +9,7 @@
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
             background-color: #f5f5f5;
         }
         .invoice-header {
@@ -19,7 +19,7 @@
             margin-bottom: 20px;
         }
         .invoice-header img {
-            width: 100px;
+            width: 50px;
             height: auto;
         }
         .invoice-details {
@@ -31,7 +31,7 @@
             margin-bottom: 20px;
         }
         .invoice-section.gray {
-            background-color: #f5f5f5;
+            background-color: #f1f1f1;
         }
         .invoice-section::after {
             content: "";
@@ -49,7 +49,7 @@
             margin-top: 0;
         }
         .logo{
-            width: 120px;
+            width: 80px;
         }
         
     </style>
@@ -78,10 +78,10 @@
             </div>
             <div class="section-right">
                 <h4>Rechnung von:</h4>
-                <p> LockTec GmbH</p>
-                <p>Address:Schließfachsysteme <br>
-                    Johann-Georg-Herzog-Strasse 19 <br>
-                    D-96369 Weissenbrunn</p>
+                <p>LockTec GmbH</p>
+                <p>Address:Schließfachsysteme </p>
+                <p> Johann-Georg-Herzog-Strasse 19</p> 
+                <p>D-96369 Weissenbrunn</p>
             </div>
         </div>
         <div class="invoice-section gray">
@@ -94,7 +94,7 @@
             </div>
             <div class="section-right">
                 <h4>Preis:</h4>
-                <p>{{$rental->price}}</p>
+                <p>{{$rental->price}} &euro;</p>
             </div>
         </div>
         <!-- Add more sections as needed -->
