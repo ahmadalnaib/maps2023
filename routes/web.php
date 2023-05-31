@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Payment;
 use App\Models\Rentals;
+use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HowController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\SuperController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Plan\PlanController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\Admin\Price\PriceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Duration\DurationController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
+use App\Http\Controllers\Admin\Privacy\PrivacyAdminController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -162,6 +165,11 @@ Route::get('/price/edit',[PriceAdminController::class,'index'])->name('price.edi
 Route::put('/price/update',[PriceAdminController::class,'update'])->name('price.update');
 
 
+Route::get('/policy',[PrivacyController::class,'index'])->name('policy');
+Route::get('/policy/edit',[PrivacyAdminController::class,'index'])->name('policy.edit');
+Route::put('/policy/update',[PrivacyAdminController::class,'update'])->name('policy.update');
+
+
 Route::get('/super', [SuperController::class, 'show'])->name('super');
 
 Route::view('/team', 'team')->name('team.index');
@@ -199,3 +207,4 @@ Route::post('/rent', [RentalsController::class,'rent'])->name('rent')->middlewar
 
 
 });
+
