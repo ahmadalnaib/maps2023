@@ -175,6 +175,7 @@ Route::get('/price/edit',[PriceAdminController::class,'index'])->name('price.edi
 Route::put('/price/update',[PriceAdminController::class,'update'])->name('price.update');
 
 
+// e
 Route::get('/policy',[PrivacyController::class,'index'])->name('policy');
 Route::get('/policy/edit',[PrivacyAdminController::class,'index'])->name('policy.edit');
 Route::put('/policy/update',[PrivacyAdminController::class,'update'])->name('policy.update');
