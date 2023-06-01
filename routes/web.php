@@ -179,7 +179,6 @@ Route::get('/policy',[PrivacyController::class,'index'])->name('policy');
 Route::get('/policy/edit',[PrivacyAdminController::class,'index'])->name('policy.edit');
 Route::put('/policy/update',[PrivacyAdminController::class,'update'])->name('policy.update');
 
-
 Route::get('/terms',[TermController::class,'index'])->name('terms');
 Route::get('/terms/edit',[TermAdminController::class,'index'])->name('term.edit');
 Route::put('/terms/update',[TermAdminController::class,'update'])->name('term.update');
