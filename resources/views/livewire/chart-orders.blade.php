@@ -22,7 +22,13 @@
              const config = {
                  type: 'bar',
                  data: data,
-                 options: {}
+                 options: {
+                    scales: {
+                        y: {
+                            suggestedMax: 100
+                        }
+                    }
+                 }
              };
              const myChart = new Chart(
                  this.$refs.canvas,

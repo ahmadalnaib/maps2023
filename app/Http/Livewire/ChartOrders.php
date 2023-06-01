@@ -11,6 +11,7 @@ class ChartOrders extends Component
     public $selectedYear;
     public $thisYearOrders;
      public $lastYearOrders;
+     public $rentals;
 
 
     public function mount(){
@@ -32,6 +33,10 @@ class ChartOrders extends Component
                                    })
                                    ->getYearOrders($this->selectedYear - 1)
                                    ->groupByMonth();
+
+        $this->rentals = Rental::whereHas('locker', function ($query) use ($user) {
+                                    $query->where('tenant_id', $user->id);
+                                 })->get();
     
         $this->emit('updateTheChart');
     }
@@ -40,6 +45,9 @@ class ChartOrders extends Component
         $availableYears=[
             date('Y'),date('Y') -1 ,date('Y') -2,date('Y') -3
         ];
-        return view('livewire.chart-orders',compact('availableYears'));
+        return view('livewire.chart-orders', [
+            'availableYears' => $availableYears,
+            'rentals' => $this->rentals,
+        ]);
     }
 }

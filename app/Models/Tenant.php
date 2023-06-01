@@ -2,11 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Door;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tenant extends Model
 {
     protected $guarded=[];
     use HasFactory;
+
+    public function doors()
+    {
+        return $this->hasMany(Door::class);
+    }
 }

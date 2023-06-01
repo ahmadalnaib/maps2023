@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Plan;
+use App\Models\User;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Traits\BelongsToTenant;
@@ -14,6 +15,8 @@ class Door extends Model
     use HasFactory,BelongsToTenant ;
     
     protected $guarded=[];
+
+
 
 
         public function locker()

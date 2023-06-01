@@ -20,7 +20,11 @@
             <div class="bg-white border overflow-hidden shadow-xl sm:rounded-lg p-5">
             
                <livewire:chart-orders/>
+               
          
+            </div>
+            <div class="bg-white border overflow-hidden shadow-xl sm:rounded-lg p-5 mt-5">
+                <livewire:rentals-table />
             </div>
         </div>
     </div>
