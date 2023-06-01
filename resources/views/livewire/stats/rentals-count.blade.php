@@ -1,4 +1,4 @@
-<div class="bg-white shadow-lg border  rounded-lg px-4 py-6">
+<div class="bg-zinc-100 shadow-lg border  rounded-lg px-4 py-6">
     <div class="flex justify-between items-center">
         <h4 class="text-gray-500 font-medium">Rentals</h4>
         <select name="selectedDays" id="selectedDays" class="border-solid border-2 border-red-200 bg-white" wire:model="selectedDays" wire:change='updateStat'>
@@ -9,3 +9,4 @@
     </div>
     <div class="text-3xl font-bold mt-4">{{$rentalsCount}}</div>
 </div>
+

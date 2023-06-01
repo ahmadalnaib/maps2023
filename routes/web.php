@@ -189,6 +189,7 @@ Route::get('/super', [SuperController::class, 'show'])->name('super');
 Route::view('/team', 'team')->name('team.index');
 Route::view('/tenant', 'tenant')->name('tenant');
 Route::view('/userlogin', 'loginUser')->name('userLogin');
+Route::view('/createuser', 'createuser')->name('createuser');
 
 
 Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');

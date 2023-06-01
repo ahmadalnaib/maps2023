@@ -18,8 +18,12 @@
                             placeholder="Search" type="search">
                     </div>
                 </div>
-          
+            
+                <a href="{{route('createuser')}}" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
+                    Add New Tenent
+                </a>
             </div>
+            
 
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg mt-4">
 
