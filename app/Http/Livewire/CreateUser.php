@@ -3,8 +3,11 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 
 class CreateUser extends Component
 {
@@ -13,6 +16,14 @@ class CreateUser extends Component
     public $role;
     public $email;
     public $password;
+    public $isLoading = false;
+
+    protected $rules = [
+        'name' => 'required',
+        'role' => 'required|in:admin,user',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:8',
+    ];
 
     public function render()
     {
@@ -21,18 +32,24 @@ class CreateUser extends Component
 
     public function createUser()
     {
-        // Validation can be added here if needed
+        $this->validate();
+
+        $this->isLoading = true;
+
         $user = new User();
-    $user->name = $this->name;
-    $user->tenant_id = User::max('tenant_id') + 1;
-    $user->role = $this->role;
-    $user->email = $this->email;
-    $user->password = Hash::make($this->password);
-    $user->save();
+        $user->name = $this->name;
+        $user->tenant_id = User::max('tenant_id') + 1;
+        $user->role = $this->role;
+        $user->email = $this->email;
+        $user->password = Hash::make($this->password);
+        $user->save();
 
-    session()->flash('message', 'User created successfully.');
+        Mail::to($user->email)->send(new WelcomeEmail($user->name, $user->email, $this->password));
 
-    $this->resetForm();
+        session()->flash('message', 'User created successfully.');
+
+        $this->resetForm();
+        $this->isLoading = false;
     }
 
     private function resetForm()
