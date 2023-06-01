@@ -26,18 +26,18 @@
     </style>
 </head>
 <body>
-    <h2>Welcome, {{ $name }}!</h2>
-    <p>Thank you for joining our application. We're excited to have you on board.</p>
-    <p>Here are your account details:</p>
+    <h2>Willkommen, {{ $name }}!</h2>
+    <p>Vielen Dank, dass Sie sich unserer Bewerbung anschließen. Wir freuen uns, Sie an Bord zu haben.</p>
+    <p>Hier sind Ihre Kontodaten:</p>
     <ul>
         <li><strong>Name:</strong> {{ $name }}</li>
         <li><strong>Email:</strong> {{ $email }}</li>
-        <li><strong>Password:</strong> {{ $password }}</li>
+        <li><strong>Passwort:</strong> {{ $password }}</li>
     </ul>
-    <p>Please keep your account information confidential and do not share it with anyone.</p>
-    <p>If you have any questions or need assistance, feel free to contact our support team.</p>
-    <p>Thank you again for joining us!</p>
-    <p>Best regards,</p>
-    <p>Your Application Team</p>
+    <p>Bitte behandeln Sie Ihre Kontoinformationen vertraulich und geben Sie sie nicht an Dritte weiter.</p>
+    <p>Wenn Sie Fragen haben oder Hilfe benötigen, wenden Sie sich bitte an unser Support-Team.</p>
+    <p>Nochmals vielen Dank, dass Sie sich uns angeschlossen haben!</p>
+    <p>Mit freundlichen Grüßen,</p>
+    <p>Biketec</p>
 </body>
 </html>

@@ -100,14 +100,15 @@
                             </td>
                             
                             <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                <a href="#" wire:click="editUser({{ $user->id }})" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap">
                                
-                                <span
+                                <button wire:click="deleteUser({{ $user->id }})"
+                                    onclick="return confirm('Are you sure you want to delete this user?')"
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-red-100 text-red-800">
                                     Delete
-                                </span>
+                                </button>
                               
                             </td>
                          
