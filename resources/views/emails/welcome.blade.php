@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Welcome to Our Application</title>
+    <title>Willkommen bei unserer Anwendung</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -10,8 +10,23 @@
             color: #333333;
         }
 
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+        }
+
+        .email-content {
+            max-width: 500px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
         h2 {
-            color: #0066cc;
+            color: #CE111E;
         }
 
         ul {
@@ -23,21 +38,41 @@
         li {
             margin-bottom: 10px;
         }
+
+        .login-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #CE111E;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .login-button:hover {
+            background-color: #cb4851;
+        }
     </style>
 </head>
 <body>
-    <h2>Willkommen, {{ $name }}!</h2>
-    <p>Vielen Dank, dass Sie sich unserer Bewerbung anschließen. Wir freuen uns, Sie an Bord zu haben.</p>
-    <p>Hier sind Ihre Kontodaten:</p>
-    <ul>
-        <li><strong>Name:</strong> {{ $name }}</li>
-        <li><strong>Email:</strong> {{ $email }}</li>
-        <li><strong>Passwort:</strong> {{ $password }}</li>
-    </ul>
-    <p>Bitte behandeln Sie Ihre Kontoinformationen vertraulich und geben Sie sie nicht an Dritte weiter.</p>
-    <p>Wenn Sie Fragen haben oder Hilfe benötigen, wenden Sie sich bitte an unser Support-Team.</p>
-    <p>Nochmals vielen Dank, dass Sie sich uns angeschlossen haben!</p>
-    <p>Mit freundlichen Grüßen,</p>
-    <p>Biketec</p>
+    <div class="container">
+        <div class="email-content">
+            <h2>Willkommen, {{ $name }}!</h2>
+            <p>Vielen Dank, dass Sie sich unserer Anwendung angeschlossen haben. Wir freuen uns, Sie an Bord zu haben.</p>
+            <p>Hier sind Ihre Kontodaten:</p>
+            <ul>
+                <li><strong>Name:</strong> {{ $name }}</li>
+                <li><strong>E-Mail:</strong> {{ $email }}</li>
+                <li><strong>Passwort:</strong> {{ $password }}</li>
+            </ul>
+            <p>Bitte behandeln Sie Ihre Kontoinformationen vertraulich und geben Sie sie nicht an Dritte weiter.</p>
+            <p>Nach dem Einloggen empfehlen wir aus Sicherheitsgründen, Ihr Passwort zu ändern.</p>
+            <p>Bei Fragen oder Unterstützungsbedarf wenden Sie sich bitte an unser Support-Team.</p>
+            <p>Nochmals vielen Dank für Ihre Teilnahme!</p>
+            <p>Beste Grüße,</p>
+            <p>Biketec</p>
+            <a href="http://ec2-18-184-176-63.eu-central-1.compute.amazonaws.com/de" class="login-button">Jetzt einloggen</a>
+        </div>
+    </div>
 </body>
 </html>
