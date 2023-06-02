@@ -49,10 +49,10 @@
     
 
     <a  href='{{route('category.show',$category->slug)}}'  style='background-image:url({{$category->image }});background-size:cover;background-position:center' class='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden mb-4 swiper-slide' data-swiper-autoplay="5000">
-        <div class='max-w-md mx-auto'>
-          <div class='h-96'>
+        <div class='max-w-lg mx-auto'>
+          <div class='h-96 '> 
            </div>
-          <div class='p-4 sm:p-6'>
+          <div class='p-4 sm:p-8'>
             <p class='w-full mx-auto text-2xl font-extrabold leading-none text-left text-white sm:text-5xl md:text-3xl mb-4'> {{ $category->title }}</p>
             <div class='flex flex-row'>
            
