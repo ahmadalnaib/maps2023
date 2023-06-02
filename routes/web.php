@@ -48,6 +48,14 @@ use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
 */
 
 
+$app_url = config("app.url");
+if (app()->environment('production') && !empty($app_url)) {
+    URL::forceRootUrl($app_url);
+    $schema = explode(':', $app_url)[0];
+    URL::forceScheme($schema);
+}
+
+
 
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
