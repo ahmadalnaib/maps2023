@@ -60,6 +60,9 @@ if (app()->environment('production') && !empty($app_url)) {
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
 
+
+
+
 // admin users
 Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')->middleware(['auth', 'role:super']);;
 
@@ -101,8 +104,6 @@ Route::put('admin/lockers/{locker}', [LockerAdminController::class, 'update'])->
 Route::delete('admin/lockers/{locker}', [LockerAdminController::class, 'destroy'])->name('admin.locker.destroy');
 
 
-// super citys  *****
-// super users *****
 
 
 // Route::middleware(['auth', 'role:admin'])->group(function () {

@@ -123,7 +123,7 @@
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
   let greenIcon = L.icon({
-    iconUrl: '{{ asset("icons/bike-map.svg") }}',
+    iconUrl: '{{ asset("images/icons/bike-map.svg") }}',
     iconSize: [40, 95],
     shadowSize: [50, 64],
     iconAnchor: [22, 40],

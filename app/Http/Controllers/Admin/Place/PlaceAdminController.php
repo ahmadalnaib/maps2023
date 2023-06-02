@@ -17,7 +17,7 @@ class PlaceAdminController extends Controller
         $places = Place::where('tenant_id', $tenant->id)
             ->latest()
             ->paginate(8);
-
+        
         return view('admin.place.index', compact('places'));
     }
 

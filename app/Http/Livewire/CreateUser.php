@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\Tenant;
 use Livewire\Component;
 use App\Mail\WelcomeEmail;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\Rule;
 
 class CreateUser extends Component
 {
@@ -36,9 +37,15 @@ class CreateUser extends Component
 
         $this->isLoading = true;
 
+        // Create a new tenant
+    $tenant = new Tenant();
+    $tenant->name = $this->name;
+    $tenant->save();
+
         $user = new User();
         $user->name = $this->name;
-        $user->tenant_id = User::max('tenant_id') + 1;
+        // $user->tenant_id = User::max('tenant_id') + 1;
+        $user->tenant_id = $tenant->id; 
         $user->role = $this->role;
         $user->email = $this->email;
         $user->password = Hash::make($this->password);
