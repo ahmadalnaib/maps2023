@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Duration\DurationController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
 use App\Http\Controllers\Admin\Privacy\PrivacyAdminController;
+use App\Http\Controllers\PurchaseController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -104,6 +105,8 @@ Route::put('admin/lockers/{locker}', [LockerAdminController::class, 'update'])->
 Route::delete('admin/lockers/{locker}', [LockerAdminController::class, 'destroy'])->name('admin.locker.destroy');
 
 
+Route::get('/checkout',[PurchaseController::class,'creditCheckout'])->name('credit.checkout');
+Route::post('/checkout',[PurchaseController::class,'purchase'])->name('products.purchase');
 
 
 // Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -220,7 +223,6 @@ Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show'
 
 
 Route::post('/rent', [RentalsController::class,'rent'])->name('rent')->middleware('auth');
-
 
 
 

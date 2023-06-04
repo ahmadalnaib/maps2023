@@ -67,7 +67,10 @@
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:px-6 text-center mt-4 items-center">
-                            <div id="paypal-button-container"></div>
+                            <div id="paypal-button-container"></div> 
+                            <a href="{{route('credit.checkout')}}">
+                                <span>Credit Card</span>
+                            </a>
                             <div>
 
                                 <a href="{{ route('home') }}" class=" bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded ml-2">Cancel</a>

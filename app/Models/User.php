@@ -7,6 +7,7 @@ use App\Models\Login;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Scopes\TenantScope;
+use Laravel\Cashier\Billable;
 use App\Traits\BelongsToTenant;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
@@ -26,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use BelongsToTenant;
     use TwoFactorAuthenticatable;
+    use Billable;
   
 
 

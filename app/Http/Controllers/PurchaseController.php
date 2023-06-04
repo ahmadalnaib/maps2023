@@ -115,6 +115,28 @@ class PurchaseController extends Controller
         }
         return response()->json($result);
     }
+   
+
+
+
+    // strpi
+
+    public function creditCheckout()
+    {
+
+        $intent=auth()->user()->createSetupIntent();
+        // $userId=auth()->user()->id;
+          $total=0;
+          $price=100;
+        //    $plan = Plan::findOrFail($userId);
+        //      $price = $plan->price;
+
+             return view('credit.checkout',compact('intent','total'));
+
+
+
+    }
+
 
 
 
