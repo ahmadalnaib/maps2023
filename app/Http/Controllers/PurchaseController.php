@@ -121,12 +121,12 @@ class PurchaseController extends Controller
 
     // strpi
 
-    public function creditCheckout()
+    public function creditCheckout(Request $request)
     {
 
         $intent=auth()->user()->createSetupIntent();
         // $userId=auth()->user()->id;
-          $total=0;
+          $total=100;
           $price=100;
         //    $plan = Plan::findOrFail($userId);
         //      $price = $plan->price;
@@ -136,6 +136,30 @@ class PurchaseController extends Controller
 
 
     }
+
+
+    public function purchase(Request $request)
+    {
+        $user=$request->user();
+        $paymentMethod=$request->input('payment_method');
+
+        $total=100;
+        $price=100;
+
+        try{
+            $user->createOrGetStripeCustomer();
+            $user->updateDefaultPaymentMethod($paymentMethod);
+            $user->charge($total * 100,$paymentMethod); // * 100 weil stripe deail with cents
+
+        }catch (\Exception $exception){
+            return back()->with('error check from your info card',$exception->getMessage());
+
+        }
+
+
+
+    }
+
 
 
 
