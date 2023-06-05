@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Door;
+use App\Models\Plan;
 use App\Models\Locker;
 use App\Models\Rental;
-use App\Models\Plan;
 use Illuminate\Http\Request;
+use App\Mail\PaymentConfirmation;
+use Illuminate\Support\Facades\Mail;
 
 class RentalsController extends Controller
 {
@@ -30,10 +32,8 @@ class RentalsController extends Controller
 
         // Calculate price based on plan's price
         $price = $plan->price;
+        $intent=auth()->user()->createSetupIntent();
 
-        // if ($door->size==="big") {
-        //     $price *= 2;
-        // }
 
         // Create the rental record
         $rental = new Rental([
@@ -58,7 +58,75 @@ class RentalsController extends Controller
             'start_time' => $start_time,
             'end_time' => $end_time,
             'plan'=>$plan,
+            'intent'=>$intent,
             
         ]);
     }
+
+
+
+     public function creditCheckout(Request $request)
+     {
+        $intent = auth()->user()->createSetupIntent();
+        $user = auth()->user();
+        $price = $plan->price;
+      
+        $total = $price; // Set total equal to the plan price
+              return view('credit.checkout',compact('intent','total'));
+ 
+     }
+
+ 
+ 
+     public function purchase(Request $request, Plan $plan)
+{
+
+            $user = $request->user();
+            $paymentMethod = $request->input('payment_method');
+            $lockerId = $request->input('locker_id');
+            $doorId = $request->input('door_id');
+            $price = $plan->price;
+            $total = $price;
+
+    try {
+        $user->createOrGetStripeCustomer();
+        $user->updateDefaultPaymentMethod($paymentMethod);
+        $user->charge($total * 100, $paymentMethod); // * 100 because Stripe deals with cents
+    } catch (\Exception $exception) {
+        return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
+    }
+    $start_time = Carbon::now();
+    $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    $tenantId = $user->tenant->id;
+    $pincode = mt_rand(100000, 999999);
+
+      // Create a new rental record
+      $rental = Rental::create([
+        "tenant_id" => $tenantId,
+                "locker_id" => $lockerId,
+                "user_id" => $user->id,
+                'door_id' => $doorId,
+                'duration'=>$plan->name,
+                'start_time' => $start_time,
+                'end_time' => $end_time,
+                'plan_id' => $plan->id,
+                'price' => $price,
+                'pincode' => $pincode,
+                'created_at' => Carbon::now(),
+        // 'payment_method' => 'stripe', // or any other payment method identifier
+      
+        // Add any other relevant fields you have in your Rental model
+    ]);
+    
+
+
+    // Additional logic or redirects if needed
+
+    return redirect()->route('dashboard')->with('success', 'Rental purchased successfully.');
+
+
+
+}
+
+ 
 }

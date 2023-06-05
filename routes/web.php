@@ -105,8 +105,8 @@ Route::put('admin/lockers/{locker}', [LockerAdminController::class, 'update'])->
 Route::delete('admin/lockers/{locker}', [LockerAdminController::class, 'destroy'])->name('admin.locker.destroy');
 
 
-Route::get('/checkout',[PurchaseController::class,'creditCheckout'])->name('credit.checkout');
-Route::post('/checkout',[PurchaseController::class,'purchase'])->name('products.purchase');
+Route::get('/checkout',[RentalsController::class,'creditCheckout'])->name('credit.checkout');
+Route::post('/rentals/purchase/{plan}', [RentalsController::class,'purchase'])->name('rentals.purchase');
 
 
 // Route::middleware(['auth', 'role:admin'])->group(function () {
