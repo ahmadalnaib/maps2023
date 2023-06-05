@@ -67,15 +67,24 @@
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:px-6 text-center mt-4 items-center">
-                            <div id="paypal-button-container"></div> 
-                            <a href="{{route('credit.checkout')}}">
-                                <span>Credit Card</span>
-                            </a>
-                            <div>
-
-                                <a href="{{ route('home') }}" class=" bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded ml-2">Cancel</a>
+                            <div class="grid grid-cols-2 gap-4">
+                              <div class="text-center">
+                                <div id="paypal-button-container" style="max-width: 150px; margin: 0 auto;"></div>
+                              </div>
+                              <div>
+                                <a href="{{ route('credit.checkout', ['price' => $plan->price]) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                  Credit Card
+                                </a>
+                              </div>
                             </div>
-                        </div>
+                            <div>
+                              <a href="{{ route('home') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded mt-2">
+                                Cancel
+                              </a>
+                            </div>
+                          </div>
+                          
+                          
                         
                     </dl>
                 </div>
@@ -133,3 +142,5 @@
     $('#success').slideDown(400);
   }
   </script>
+
+
