@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\Locker;
@@ -78,11 +79,14 @@ class RentalsController extends Controller
 
  
  
-     public function purchase(Request $request, Plan $plan)
+     public function purchase(Request $request, Plan $plan, )
 {
 
             $user = $request->user();
             $paymentMethod = $request->input('payment_method');
+           // Encrypt the locker and door IDs
+            // $lockerId = encrypt($request->input('locker_id'));
+            // $doorId = encrypt($request->input('door_id'));
             $lockerId = $request->input('locker_id');
             $doorId = $request->input('door_id');
             $price = $plan->price;
@@ -91,7 +95,13 @@ class RentalsController extends Controller
     try {
         $user->createOrGetStripeCustomer();
         $user->updateDefaultPaymentMethod($paymentMethod);
-        $user->charge($total * 100, $paymentMethod); // * 100 because Stripe deals with cents
+        $user->charge($total * 100, $paymentMethod, [
+            'metadata' =>
+            ['locker_id' => $lockerId, 
+            'door_id' => $doorId,
+            'tenant_id '=> $user->tenant->id,
+            ]
+           ]); // * 100 because Stripe deals with cents
     } catch (\Exception $exception) {
         return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
     }
@@ -117,6 +127,22 @@ class RentalsController extends Controller
       
         // Add any other relevant fields you have in your Rental model
     ]);
+     // Generate the PDF file
+     $dompdf = new Dompdf();
+     $dompdf->loadHtml(view('emails.payment_confirmation', ['rental' => $rental])->render());
+
+     $dompdf->render();
+     $pdfContents = $dompdf->output();
+
+     // Save the PDF file to a temporary location
+     $pdfPath = storage_path('app/tmp/invoice.pdf');
+     file_put_contents($pdfPath, $pdfContents);
+     // Send the pin code email
+  
+
+    Mail::to($rental->user->email)->send(new PaymentConfirmation($rental));
+     // Cleanup the temporary PDF file
+     unlink($pdfPath);
     
 
 
