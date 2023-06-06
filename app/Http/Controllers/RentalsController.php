@@ -71,8 +71,12 @@ class RentalsController extends Controller
         $intent = auth()->user()->createSetupIntent();
         $user = auth()->user();
         $price = $plan->price;
-      
         $total = $price; // Set total equal to the plan price
+
+        // Store the locker and door IDs in the session
+        $request->session()->put('locker_id', $lockerId);
+        $request->session()->put('door_id', $doorId);
+
               return view('credit.checkout',compact('intent','total'));
  
      }
@@ -91,6 +95,10 @@ class RentalsController extends Controller
             $doorId = $request->input('door_id');
             $price = $plan->price;
             $total = $price;
+
+            // Retrieve the locker and door IDs from the session
+            $lockerId = $request->session()->get('locker_id');
+            $doorId = $request->session()->get('door_id');
 
     try {
         $user->createOrGetStripeCustomer();
@@ -148,7 +156,7 @@ class RentalsController extends Controller
 
     // Additional logic or redirects if needed
 
-    return redirect()->route('dashboard')->with('success', 'Rental purchased successfully.');
+    return redirect()->route('invoices.index')->with('message', 'Rental purchased successfully.');
 
 
 
