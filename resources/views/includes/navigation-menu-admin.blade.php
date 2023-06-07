@@ -139,6 +139,9 @@
                             <x-dropdown-link href="{{route('admin.system.index')}}">
                                 System
                            </x-dropdown-link>
+                           <x-dropdown-link href="{{route('admin.box.index')}}">
+                           Box
+                       </x-dropdown-link>
                             <x-dropdown-link href="{{ route('admin.locker.index') }}">
                                 {{ __('locker.Locker') }}
                             </x-dropdown-link>

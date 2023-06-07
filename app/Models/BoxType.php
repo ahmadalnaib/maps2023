@@ -18,9 +18,9 @@ class BoxType extends Model
         return $this->belongsTo(Plan::class);
     }
 
-    public function box()
+    public function boxes()
     {
-        return $this->belongsTo(Box::class);
+        return $this->hasMany(Box::class);
     }
    
 }

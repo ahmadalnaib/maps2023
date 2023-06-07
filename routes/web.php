@@ -19,6 +19,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\Admin\Box\BoxController;
 use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Admin\Faq\FaqAdminController;
@@ -81,13 +82,23 @@ Route::delete('admin/policy/{policy}',[PolicyController::class,'destroy'])->name
 
 
 
-// admin -- Locker
+// admin -- systems
 Route::get('admin/system',[SystemController::class,'index'])->name('admin.system.index');
 Route::get('admin/system/create',[SystemController::class,'create'])->name('admin.system.create');
 Route::post('admin/system/store',[SystemController::class,'store'])->name('admin.system.store');
 Route::get('admin/system/{system}', [SystemController::class, 'edit'])->name('admin.system.edit');
 Route::put('admin/system/{system}', [SystemController::class, 'update'])->name('admin.system.update');
 Route::delete('admin/system/{system}', [SystemController::class, 'destroy'])->name('admin.system.destroy');
+
+
+// admin -- Boxes
+Route::get('admin/box',[BoxController::class,'index'])->name('admin.box.index');
+Route::get('admin/box/create',[BoxController::class,'create'])->name('admin.box.create');
+Route::post('admin/box/create',[BoxController::class,'store'])->name('admin.box.store');
+Route::get('admin/box/{box}', [BoxController::class, 'edit'])->name('admin.box.edit');
+Route::put('admin/boxs/{box}', [BoxController::class, 'update'])->name('admin.box.update');
+Route::delete('admin/boxs/{box}', [BoxController::class, 'destroy'])->name('admin.box.destroy');
+
 
 
 

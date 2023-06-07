@@ -21,8 +21,6 @@ return new class extends Migration
             $table->text('description');
             $table->boolean('ebike_option');
             $table->boolean('first_floor_option');
-            $table->unsignedBigInteger('plan_id');
-            $table->unsignedBigInteger('box_id');
             $table->timestamps();
         });
     }

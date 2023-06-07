@@ -13,12 +13,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Box extends Model
 {
     use HasFactory,BelongsToTenant ;
+    protected $guarded=[];
 
     public function boxType()
     {
         return $this->belongsTo(BoxType::class);
     }
-    public function systems()
+    public function system()
     {
         return $this->belongsTo(System::class);
     }
