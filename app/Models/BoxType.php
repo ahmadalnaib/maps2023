@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class BoxType extends Model
 {
     use HasFactory,BelongsToTenant ;
+    protected $guarded=[];
 
     public function plan()
     {

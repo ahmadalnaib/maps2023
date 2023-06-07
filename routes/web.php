@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\System\SystemController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Term\TermAdminController;
+use App\Http\Controllers\Admin\BoxType\BoxTypeController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Price\PriceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
@@ -99,7 +100,14 @@ Route::get('admin/box/{box}', [BoxController::class, 'edit'])->name('admin.box.e
 Route::put('admin/boxs/{box}', [BoxController::class, 'update'])->name('admin.box.update');
 Route::delete('admin/boxs/{box}', [BoxController::class, 'destroy'])->name('admin.box.destroy');
 
+// admin -- BoxesTypes
+Route::get('admin/boxtype',[BoxTypeController::class,'index'])->name('admin.boxtype.index');
+Route::get('admin/boxtype/create',[BoxTypeController::class,'create'])->name('admin.boxtype.create');
+Route::post('admin/boxtype/create',[BoxTypeController::class,'store'])->name('admin.boxtype.store');
+Route::get('admin/boxtype/{boxType}', [BoxTypeController::class, 'edit'])->name('admin.boxtype.edit');
 
+Route::put('admin/boxtype/{boxType}', [BoxTypeController::class, 'update'])->name('admin.boxtype.update');
+Route::delete('admin/boxtype/{boxType}', [BoxTypeController::class, 'destroy'])->name('admin.boxtype.destroy');
 
 
 // **** Admin place route ****//

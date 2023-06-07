@@ -49,7 +49,7 @@
       
 
       <div>
-        <label for="box_type_id" class="block">Choose Box Type</label>
+        <label for="box_type_id" class="block text-gray-700 font-bold mb-2">Choose Box Type</label>
         @foreach ($boxTypes as $boxType)
             <label class="inline-flex items-center mt-2">
                 <input type="radio" name="box_type_id" value="{{ $boxType->id }}" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500">
@@ -57,10 +57,11 @@
             </label>
         @endforeach
         @error('box_type_id')
-            <span class="text-red-500">{{ $message }}</span>
+            <p class="text-red-500 text-sm">{{ $message }}</p>
         @enderror
     </div>
     <!-- ... -->
+    
     
           
 
