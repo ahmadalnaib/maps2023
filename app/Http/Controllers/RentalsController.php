@@ -37,6 +37,7 @@ class RentalsController extends Controller
 
 
         // Create the rental record
+        
         $rental = new Rental([
             "locker_id" => $locker->id,
             "user_id" => auth()->id(),
