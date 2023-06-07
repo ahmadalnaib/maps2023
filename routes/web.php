@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Admin\Faq\FaqAdminController;
 use App\Http\Controllers\Admin\How\HowAdminController;
 use App\Http\Controllers\Admin\Policy\PolicyController;
+use App\Http\Controllers\Admin\System\SystemController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Term\TermAdminController;
@@ -76,6 +77,17 @@ Route::post('admin/policy/store',[PolicyController::class,'store'])->name('admin
 Route::get('admin/policy/{policy}',[PolicyController::class,'edit'])->name('admin.policy.edit');
 Route::put('admin/policy/{policy}',[PolicyController::class,'update'])->name('admin.policy.update');
 Route::delete('admin/policy/{policy}',[PolicyController::class,'destroy'])->name('admin.policy.destroy');
+
+
+
+
+// admin -- Locker
+Route::get('admin/system',[SystemController::class,'index'])->name('admin.system.index');
+Route::get('admin/system/create',[SystemController::class,'create'])->name('admin.system.create');
+Route::post('admin/system/store',[SystemController::class,'store'])->name('admin.system.store');
+Route::get('admin/system/{system}', [SystemController::class, 'edit'])->name('admin.system.edit');
+Route::put('admin/system/{system}', [SystemController::class, 'update'])->name('admin.system.update');
+Route::delete('admin/system/{system}', [SystemController::class, 'destroy'])->name('admin.system.destroy');
 
 
 

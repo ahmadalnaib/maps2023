@@ -129,12 +129,16 @@
                           
                             @endif
                             @if (Auth::check() && Auth::user()->role === 'admin' )
-                            <x-dropdown-link href="{{route('admin.policy.index')}}">
-                                policy
-                           </x-dropdown-link>
+                         
                             <x-dropdown-link href="{{route('admin.place.index')}}">
                                  {{__('place.Places')}}
                             </x-dropdown-link>
+                            <x-dropdown-link href="{{route('admin.policy.index')}}">
+                                policy
+                           </x-dropdown-link>
+                            <x-dropdown-link href="{{route('admin.system.index')}}">
+                                System
+                           </x-dropdown-link>
                             <x-dropdown-link href="{{ route('admin.locker.index') }}">
                                 {{ __('locker.Locker') }}
                             </x-dropdown-link>
