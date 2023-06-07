@@ -33,31 +33,35 @@
 
 
         <div class="my-4">
-            <label for="plan_id" class="block">Choose Plan</label>
-            <select name="plan_id[]" multiple class="form-multiselect block w-full" required>
+          <label class="block text-gray-700 font-bold mb-2">Choose Plan</label>
+          <div class="grid grid-cols-1 gap-2">
               @foreach ($plans as $plan)
-                <option value="{{ $plan->id }}">{{ $plan->name }}</option>
+              <label class="flex items-center">
+                  <input type="checkbox" name="plan_id[]" value="{{ $plan->id }}" class="form-checkbox h-5 w-5 text-gray-600">
+                  <span class="ml-2 text-gray-800">{{ $plan->name }}</span>
+              </label>
               @endforeach
-            </select>
-            @error('plan_id')
-              <span class="text-red-500">{{ $message }}</span>
-            @enderror
           </div>
+          @error('plan_id')
+          <p class="text-red-500 text-sm">{{ $message }}</p>
+          @enderror
+      </div>
+      
 
-          <!-- ... -->
-<div>
-    <label for="box_type_id">Choose Box Type</label>
-    <select name="box_type_id" class="form-select" required>
+      <div>
+        <label for="box_type_id" class="block">Choose Box Type</label>
         @foreach ($boxTypes as $boxType)
-            <option value="{{ $boxType->id }}">{{ $boxType->name }}</option>
+            <label class="inline-flex items-center mt-2">
+                <input type="radio" name="box_type_id" value="{{ $boxType->id }}" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500">
+                <span class="ml-2">{{ $boxType->name }}</span>
+            </label>
         @endforeach
-    </select>
-    @error('box_type_id')
-        <span class="text-red-500">{{ $message }}</span>
-    @enderror
-</div>
-<!-- ... -->
-
+        @error('box_type_id')
+            <span class="text-red-500">{{ $message }}</span>
+        @enderror
+    </div>
+    <!-- ... -->
+    
           
 
          

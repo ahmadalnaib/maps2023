@@ -29,26 +29,32 @@
 
                 
               <!-- Plans -->
-<div class="mb-6">
-    <label for="plan_id" class="block text-gray-700 font-bold mb-2">Choose Plan</label>
-    <select name="plan_id[]" multiple class="form-multiselect w-full bg-white border border-gray-300 rounded-md py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
-        @foreach ($plans as $plan)
-            <option value="{{ $plan->id }}" {{ in_array($plan->id, $box->plans->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $plan->name }}</option>
-        @endforeach
-    </select>
-    @error('plan_id')
-    <p class="text-red-500 text-sm">{{ $message }}</p>
-    @enderror
-</div>
-
+              <div class="mb-6">
+                <label for="plan_id" class="block text-gray-700 font-bold mb-2">Choose Plan</label>
+                <div class="grid grid-cols-1 gap-2">
+                    @foreach ($plans as $plan)
+                    <label class="flex items-center">
+                        <input type="checkbox" name="plan_id[]" value="{{ $plan->id }}" class="form-checkbox h-5 w-5 text-gray-600" {{ in_array($plan->id, $box->plans->pluck('id')->toArray()) ? 'checked' : '' }}>
+                        <span class="ml-2 text-gray-800">{{ $plan->name }}</span>
+                    </label>
+                    @endforeach
+                </div>
+                @error('plan_id')
+                <p class="text-red-500 text-sm">{{ $message }}</p>
+                @enderror
+            </div>
+            
 <!-- Box Type -->
 <div class="mb-6">
     <label for="box_type_id" class="block text-gray-700 font-bold mb-2">Choose Box Type</label>
-    <select name="box_type_id" class="form-select w-full bg-white border border-gray-300 rounded-md py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+    <div class="flex flex-wrap items-center">
         @foreach ($boxTypes as $boxType)
-            <option value="{{ $boxType->id }}" {{ $box->box_type_id == $boxType->id ? 'selected' : '' }}>{{ $boxType->name }}</option>
+        <label class="inline-flex items-center mr-4 mb-2">
+            <input type="radio" name="box_type_id" value="{{ $boxType->id }}" class="form-radio h-5 w-5 text-gray-600" {{ $box->box_type_id == $boxType->id ? 'checked' : '' }}>
+            <span class="ml-2 text-gray-800">{{ $boxType->name }}</span>
+        </label>
         @endforeach
-    </select>
+    </div>
     @error('box_type_id')
     <p class="text-red-500 text-sm">{{ $message }}</p>
     @enderror
