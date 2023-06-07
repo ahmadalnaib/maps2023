@@ -129,6 +129,9 @@
                           
                             @endif
                             @if (Auth::check() && Auth::user()->role === 'admin' )
+                            <x-dropdown-link href="{{route('admin.policy.index')}}">
+                                policy
+                           </x-dropdown-link>
                             <x-dropdown-link href="{{route('admin.place.index')}}">
                                  {{__('place.Places')}}
                             </x-dropdown-link>

@@ -18,10 +18,12 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RentalsController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Admin\Faq\FaqAdminController;
 use App\Http\Controllers\Admin\How\HowAdminController;
+use App\Http\Controllers\Admin\Policy\PolicyController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Term\TermAdminController;
@@ -31,7 +33,6 @@ use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Duration\DurationController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
 use App\Http\Controllers\Admin\Privacy\PrivacyAdminController;
-use App\Http\Controllers\PurchaseController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -65,7 +66,16 @@ Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name
 
 
 // admin users
-Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')->middleware(['auth', 'role:super']);;
+Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')->middleware(['auth', 'role:super']);
+
+
+// admin -- policies
+Route::get('admin/policy',[PolicyController::class,'index'])->name('admin.policy.index');
+Route::get('admin/policy/create',[PolicyController::class,'create'])->name('admin.policy.create');
+Route::post('admin/policy/store',[PolicyController::class,'store'])->name('admin.policy.store');
+Route::get('admin/policy/{policy}',[PolicyController::class,'edit'])->name('admin.policy.edit');
+Route::put('admin/policy/{policy}',[PolicyController::class,'update'])->name('admin.policy.update');
+Route::delete('admin/policy/{policy}',[PolicyController::class,'destroy'])->name('admin.policy.destroy');
 
 
 
