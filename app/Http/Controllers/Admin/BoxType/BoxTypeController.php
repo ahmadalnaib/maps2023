@@ -44,17 +44,17 @@ class BoxTypeController extends Controller
     }
 
 
-    public function edit(BoxType $boxType)
+    public function edit(BoxType $type)
     {
-        return view('admin.boxtypes.edit', compact('boxType'));
+        return view('admin.boxtypes.edit', compact('type'));
     }
     
 
 
-    public function update(BoxTypeRequest $request, BoxType $boxType)
+    public function update(BoxTypeRequest $request, BoxType $type)
     {
-        $boxType->update([
-            'number' => $request->number,
+        $type->update([
+            
             'name' => $request->name,
             'depth' => $request->depth,
             'width' => $request->width,
@@ -68,9 +68,9 @@ class BoxTypeController extends Controller
 
     }
 
-    public function destroy(BoxType $boxType)
+    public function destroy(BoxType $type)
     {
-        $boxType->delete();
+        $type->delete();
 
         return redirect()->route('admin.boxtype.index')->with('message', 'Box type deleted successfully!');
     }

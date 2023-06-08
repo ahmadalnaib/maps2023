@@ -74,10 +74,10 @@
              
             
               <td class="px-6 py-4 flex  flex-wrap">
-                  <a href="{{route('admin.boxtype.edit',$boxType)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">{{__('place.Edit')}}</a>
+                  <a href="{{route('admin.boxtype.edit',$type)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">{{__('place.Edit')}}</a>
                  
   
-                      <form action="" method="post">
+                      <form action="{{route('admin.boxtype.destroy',$type)}}" method="post">
                           @csrf
                           @method('delete')
                           <button onclick="return confirm('Sind Sie sicher, dass du diesen Beitrag löschen möchtest? Es gibt keinen Weg zurück. 😯')"    class="font-medium text-red-600 dark:text-red-500 hover:underline m-2" type="submit">{{__('place.delete')}}</button>

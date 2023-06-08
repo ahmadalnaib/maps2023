@@ -104,10 +104,9 @@ Route::delete('admin/boxs/{box}', [BoxController::class, 'destroy'])->name('admi
 Route::get('admin/boxtype',[BoxTypeController::class,'index'])->name('admin.boxtype.index');
 Route::get('admin/boxtype/create',[BoxTypeController::class,'create'])->name('admin.boxtype.create');
 Route::post('admin/boxtype/create',[BoxTypeController::class,'store'])->name('admin.boxtype.store');
-Route::get('admin/boxtype/{boxType}', [BoxTypeController::class, 'edit'])->name('admin.boxtype.edit');
-
-Route::put('admin/boxtype/{boxType}', [BoxTypeController::class, 'update'])->name('admin.boxtype.update');
-Route::delete('admin/boxtype/{boxType}', [BoxTypeController::class, 'destroy'])->name('admin.boxtype.destroy');
+Route::get('admin/boxtype/{type}', [BoxTypeController::class, 'edit'])->name('admin.boxtype.edit');
+Route::put('admin/boxtype/{type}', [BoxTypeController::class, 'update'])->name('admin.boxtype.update');
+Route::delete('admin/boxtype/{type}', [BoxTypeController::class, 'destroy'])->name('admin.boxtype.destroy');
 
 
 // **** Admin place route ****//
