@@ -25,7 +25,7 @@ class PlanRequest extends FormRequest
             'name' => 'required',
             'number_of_days' => 'required|integer',
             'price' => 'required|numeric',
-            'locker_id' => 'required|exists:lockers,id',
+            'policy_id' => 'required|exists:policies,id',
         
            
         ];

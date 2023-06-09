@@ -28,11 +28,14 @@ class SystemController extends Controller
       public function create()
       {
           $tenant = Auth::user();
+          $chosenPlaces = System::where('tenant_id', $tenant->id)->pluck('place_id')->toArray();
           $places = Place::where('tenant_id', $tenant->id)
-          ->latest()
-          ->get();
-          return view('admin.system.create',compact('places'));
+              ->whereNotIn('id', $chosenPlaces)
+              ->latest()
+              ->get();
+          return view('admin.system.create', compact('places'));
       }
+      
   
       public function store(SystemRequest $request)
       {

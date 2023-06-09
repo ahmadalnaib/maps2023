@@ -8,8 +8,8 @@
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</th>
                 
-                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Locker</th>
-                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Door</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">System</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Box</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Plan</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Strat Time</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">End Time</th>
@@ -30,10 +30,10 @@
                     {{ $rental->user->email }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->locker->locker_name }}
+                    {{ $rental->system->name }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->door->door_number }}
+                    {{ $rental->box->number }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     {{ $rental->duration }}

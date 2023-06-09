@@ -23,7 +23,7 @@ class RentalsCount extends Component
         $user = auth()->user(); // get the current authenticated user
 
     $this->rentalsCount = Rental::where('created_at', '>=', now()->subDays($this->selectedDays))
-                                  ->whereHas('locker', function ($query) use ($user) {
+                                  ->whereHas('system', function ($query) use ($user) {
                                       $query->where('tenant_id', $user->id);
                                   })
                                   ->count();

@@ -142,17 +142,13 @@
                             <x-dropdown-link href="{{route('admin.boxtype.index')}}">
                                 Box Type
                            </x-dropdown-link>
-                           <x-dropdown-link href="{{route('admin.box.index')}}">
-                           Box
-                       </x-dropdown-link>
-                            <x-dropdown-link href="{{ route('admin.locker.index') }}">
-                                {{ __('locker.Locker') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link href="{{ route('admin.door.index') }}">
-                                {{ __('door.Doors') }}
-                            </x-dropdown-link>
+                        
+                          
                             <x-dropdown-link href="{{ route('admin.plan.index') }}">
                                 {{ __('Plans') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{route('admin.box.index')}}">
+                                Box
                             </x-dropdown-link>
                           
                          

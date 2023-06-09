@@ -24,18 +24,19 @@ class PlaceController extends Controller
     //     $query->where('user_id', $place->user_id);
     // })->get();
 
-    $lockers = $place->lockers()->with('doors')->get();
-    $plansByDoor = [];
+    $systems = $place->systems()->with(['boxes'])->get();
+    $plansByBox = [];
 
-    foreach ($lockers as $locker) {
-        foreach ($locker->doors as $door) {
-            if ($door->rentals->isEmpty()) {
-                $plansByDoor[$door->id] = $door->plans;
+    foreach ($systems as $system) {
+        foreach ($system->boxes as $box) {
+            if ($box->rentals && $box->rentals->isEmpty()) {
+
+                $plansByBox[$box->id] = $box->plans;
             }
         }
     }
 
-    return view('details', compact('place', 'lockers', 'plansByDoor'));
+    return view('details', compact('place', 'systems','plansByBox'));
 
   }
 }

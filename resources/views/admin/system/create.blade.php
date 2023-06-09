@@ -30,17 +30,20 @@
         </div>
         <div>
             <label for="catg">{{__('locker.Choose Place')}}</label>
-            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="place_id" id="" required>
-                @foreach ($places as $place)
-                <option  value="{{$place->id}}">{{$place->name}}</option>
-                @endforeach
-            </select>
-            @error('place_id')
-            <span class="text-red-500">{{ $message }}</span>
-            @enderror
+            @if ($places->isEmpty())
+                <p>No available places to Create new Orte from.</p>
+            @else
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="place_id" id="" required>
+                    @foreach ($places as $place)
+                        <option value="{{$place->id}}">{{$place->name}} - {{$place->address}}</option>
+                    @endforeach
+                </select>
+                @error('place_id')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            @endif
         </div>
-    
-  
+        
 
          
     <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">{{__('place.Create')}}</button>
