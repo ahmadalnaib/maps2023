@@ -17,7 +17,7 @@
         
       @endphp
              
-              <li data-box-id="{{ $box->id }}"  class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif >
+              <li data-box-id="{{ $box->id }}"   class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif >
                   {{ $box->number }} 
                  
               @if ($box->boxType->ebike_option)
