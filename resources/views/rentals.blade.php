@@ -8,26 +8,26 @@
                 <div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Door Number
+                            Box Number
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            0 {{ $door->door_number }}
+                            0 {{ $box->number }}
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Locker Name
+                            System Name
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            <p>Locker: {{ $locker->locker_name }}</p>
+                            <p>System: {{ $system->system_name }}</p>
                         </dd>
                     </div>
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Locker Address
+                            System Address
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            <p>Locker: {{ $locker->address }}</p>
+                            <p>System: {{ $system->address }}</p>
                         </dd>
                     </div>
                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -86,10 +86,10 @@
                                                         @csrf
                                                         <input type="hidden" name="payment_method"
                                                             class="payment-method">
-                                                        <input type="hidden" name="locker_id"
-                                                            value="{{ $locker->id }}">
-                                                        <input type="hidden" name="door_id"
-                                                            value="{{ $door->id }}">
+                                                        <input type="hidden" name="system_id"
+                                                            value="{{ $system->id }}">
+                                                        <input type="hidden" name="box_id"
+                                                            value="{{ $box->id }}">
                                                         <div class="mb-4">
                                                             <input
                                                                 class="StripeElement form-input px-4 py-3 rounded-lg w-full"
@@ -102,7 +102,7 @@
                                                         <div id="card-errors" role="alert"></div>
                                                         <div class="mt-3 text-center">
                                                             <button type="submit"
-                                                                class="bg-red-800 text-white font-bold py-2 px-4 rounded">
+                                                                class="bg-red-500 text-white font-bold py-2 px-4 rounded">
                                                                 Pay {{$plan->price}} $ <span class="icon"
                                                                     hidden><i
                                                                         class="fas fa-sync fa-spin"></i></span>
@@ -159,8 +159,8 @@
                   orderId : data.orderID,
                   userId: "{{ auth()->user()->id }}",
                   rental_period: "{{ $plan->id }}",
-                    locker_id: "{{ $locker->id }}",
-                    door_id: "{{ $door->id }}",
+                    system_id: "{{ $system->id }}",
+                    box_id: "{{ $box->id }}",
               }), headers: {
                     'Content-Type': 'application/json',
                 }

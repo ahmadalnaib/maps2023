@@ -87,10 +87,10 @@
         <div class="invoice-section gray">
             <div class="section-left">
                 <h4>Schließfach:</h4>
-                <p>Name: {{$rental->locker->locker_name}}</p>
-                <p>Address: {{$rental->locker->address}}</p>
+                <p>Name: {{$rental->system->system_name}}</p>
+                <p>Address: {{$rental->system->address}}</p>
                 <p>Name: {{$rental->duration }}</p>
-                <p>Türnummer:{{$rental->door->door_number}}</p>
+                <p>Türnummer:{{$rental->box->number}}</p>
             </div>
             <div class="section-right">
                 <h4>Preis:</h4>

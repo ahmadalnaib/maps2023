@@ -11,7 +11,7 @@
         <div class="bg-green-200 p-4 rounded shadow">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <span class="font-bold text-2xl">{{ $rental->locker->locker_name}}</span>
+                    <span class="font-bold text-2xl">{{ $rental->system->name}}</span>
                
                 </div>
                 <span class="font-bold text-2xl">{{ $rental->price }}</span>
@@ -24,16 +24,16 @@
                   </tr>
                  
                   <tr>
-                      <td class="p-2 font-semibold">Locker Name:</td>
-                      <td class="p-2">{{$rental->locker->locker_name}}</td>
+                      <td class="p-2 font-semibold">System Name:</td>
+                      <td class="p-2">{{$rental->system->name}}</td>
                   </tr>
                   <tr>
-                    <td class="p-2 font-semibold">Locker Address:</td>
-                    <td class="p-2">{{$rental->locker->address}}</td>
+                    <td class="p-2 font-semibold">System Address:</td>
+                    <td class="p-2">{{$rental->system->address}}</td>
                 </tr>
                   <tr>
-                      <td class="p-2 font-semibold">Door Number:</td>
-                      <td class="p-2">{{$rental->door->door_number}}</td>
+                      <td class="p-2 font-semibold">Box Number:</td>
+                      <td class="p-2">{{$rental->box->number}}</td>
                   </tr>
                   <tr>
                       <td class="p-2 font-semibold">Plan Name:</td>

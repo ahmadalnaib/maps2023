@@ -11,13 +11,14 @@
         <ul class="flex flex-wrap list-none p-0">
           @foreach ($system->boxes as $box)
           @php
-          $isRented = $box->rentals->isNotEmpty();
-          $boxClass = $isRented ? 'bg-gray-500' : ($box->box_type_id === 1 ? 'bg-yellow-400' : 'bg-green-500');
-          $cursorClass = $isRented ? '' : 'cursor-pointer';
+        $isRented = $box->rentals->isNotEmpty();
+    $cursorClass = $isRented ? '' : 'cursor-pointer';
+    $bgColorClass = $isRented ? 'bg-gray-500' : 'bg-green-500';
+       
         
       @endphp
              
-              <li data-box-id="{{ $box->id }}"  class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4" >
+              <li data-box-id="{{ $box->id }}"  class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif >
                   {{ $box->number }} 
                
               </li>
@@ -28,13 +29,13 @@
         @csrf
         <input class="" type="hidden" name="system_id" value="{{ $system->id }}">
         <div class="form-group col-lg-6 mb-6 mt-5">
-          <label for="box_id">Select a door:</label>
+          <label for="box_id">Select a Box:</label>
           <select name="box_id" id="box_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onchange="updatePlanOptions(this.value)">
             @foreach ($system->boxes as $box)
             @if ($box->rentals->isEmpty())
-                <option value="{{ $box->id }}"  data-box-id="{{ $box->id }}">
-                  Box {{ $box->number }}
-                </option>
+            <option value="{{ $box->id }}" data-box-id="{{ $box->id }}" @if (old('box_id') == $box->id) selected @endif>
+              Box- {{ $box->number }}
+            </option>
                 @endif
             @endforeach
           </select>
@@ -48,6 +49,26 @@
          
           </select>
         </div>
+        <div class="mb-5">
+          <div class="py-2 flex items-center justify-center  space-x-5">
+            <div class="w-4 h-4 bg-gray-500 rounded-full "></div>Besetzt
+            <div class="w-4 h-4 bg-green-500 rounded-full"></div>ein Fahrrad
+            <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>zwei Fahrräder 
+            <div ><img  src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>{{__('door.Charge')}}
+         </div>
+
+    </div> 
+    <div class="form-group m-10">
+     
+<div class="flex items-center justify-center">
+<input  type="checkbox" id="accept_conditions" name="accept_conditions"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+<label for="link-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">terms and conditions</a>.</label>
+</div>
+
+    </div>
+    
+    <button id="rental-form" type="submit" class="text-white bg-red-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-md w-full sm:w-auto px-20 py-5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" onclick="return validateForm()">Rent </button>
+
         
         </form>
         @else
@@ -102,6 +123,11 @@
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <script>
 
+const plansByBox = {!! json_encode($plansByBox) !!};
+
+const boxItems = document.querySelectorAll('.box-item');
+const boxSelect = document.getElementById('box_id');
+const planSelect = document.getElementById('rental_period');
 
 
 let longitude=$('#longitude').val();
@@ -121,11 +147,6 @@ let greenIcon = L.icon({
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 L.marker([latitude,longitude],{icon: greenIcon}).bindPopup($('#name').val()).addTo(map).openPopup();
-const plansByBox = {!! json_encode($plansByBox) !!};
-
-const boxItems = document.querySelectorAll('.box-item');
-const boxSelect = document.getElementById('box_id');
-const planSelect = document.getElementById('rental_period');
 
 // Function to update the rental period options based on the selected door
 function updateRentalPeriodOptions() {
@@ -155,7 +176,7 @@ updateRentalPeriodOptions();
 boxItems.forEach(box => {
   box.addEventListener('click', () => {
     if (!box.classList.contains('bg-gray-500')) {
-      const selecteBoxId = box.dataset.doorId;
+      const selectedBoxId = box.dataset.boxId;
       boxSelect.value = selectedBoxId;
       updateRentalPeriodOptions();
     }
@@ -163,5 +184,13 @@ boxItems.forEach(box => {
 });
 
 
+function validateForm() {
+    const acceptCheckbox = document.getElementById('accept_conditions');
+    if (!acceptCheckbox.checked) {
+      alert('Please accept the conditions.');
+      return false;
+    }
+    return true;
+  }
 </script>
 
