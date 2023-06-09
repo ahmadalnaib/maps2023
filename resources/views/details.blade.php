@@ -13,13 +13,18 @@
           @php
         $isRented = $box->rentals->isNotEmpty();
     $cursorClass = $isRented ? '' : 'cursor-pointer';
-    $bgColorClass = $isRented ? 'bg-gray-500' : 'bg-green-500';
-       
+    $bgColorClass = $isRented ? 'bg-gray-500' : ($box->boxType->big ? 'bg-yellow-400 p-6' : 'bg-green-500');
         
       @endphp
              
               <li data-box-id="{{ $box->id }}"  class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif >
                   {{ $box->number }} 
+                 
+              @if ($box->boxType->ebike_option)
+                  <div><img src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
+                
+              @endif
+           
                
               </li>
           @endforeach
@@ -35,6 +40,7 @@
             @if ($box->rentals->isEmpty())
             <option value="{{ $box->id }}" data-box-id="{{ $box->id }}" @if (old('box_id') == $box->id) selected @endif>
               Box- {{ $box->number }}
+              
             </option>
                 @endif
             @endforeach

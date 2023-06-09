@@ -48,6 +48,22 @@
                     @enderror
                 </div>
                 <div>
+                    <label for="big">Box is Big</label>
+                    <div class="mt-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="big" value="1" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500">
+                            <span class="ml-2">Yes</span>
+                        </label>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" name="big" value="0" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500">
+                            <span class="ml-2">No</span>
+                        </label>
+                    </div>
+                    @error('big')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
                     <label for="ebike_option">E-Bike Option</label>
                     <div class="mt-2">
                         <label class="inline-flex items-center">

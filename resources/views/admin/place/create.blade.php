@@ -29,22 +29,8 @@
         </div>
         <div>
             <label for="overview">{{__('place.Place Info/Notes')}}</label>
-            <textarea placeholder="In der Anlage befinden sich zwei Ladesteckdosen zum Laden von E-Bikes und Pedelecs, welche jeweils von den äußeren Stellplätzen genutzt werden können.
-
-            Hinweis zur Sammelgarage:
-            Die Stellplätze in der Anlage bei Ihnen vor Ort sind nicht nummeriert. Die Stellplatznummer, die Sie bei der Buchung auswählen, ist fiktiv und nur für den Zugang wichtig. Innerhalb der Anlage haben Sie freie Platzwahl. Bitte das Fahrrad zusätzlich mit einem eigenen Schloss abschließen und die Tür wieder schließen.
-            
-            Hinweis Doppelstockparker:
-            Das Fahrrad wird in einem Doppelstockparker abgestellt. Es können Fahrräder in allen handelsüblichen Rahmengrößen mit einer Reifenbreite von bis zu 55mm geparkt werden. Bitte beachten Sie, dass das Parken auf der oberen Ebene auf ein Fahrradgewicht von 18kg begrenzt ist.
-            
-            Adresse:
-            ................
-            ................. 2,
-           ..... .......
-            
-            Gesamtkapazität:
-            24 Boxen
-           " class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="overview" id="" cols="30" rows="10"></textarea>
+            <textarea 
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="overview" id="" cols="30" rows="10"></textarea>
            @error('overview')
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
@@ -60,13 +46,15 @@
         <div class="mt-2">
             <div id="mapid" style="height:350px"></div>
         </div>
+        
         <div class="mt-4">
             <label for="address">{{__('place.Address')}}</label>
-            <input placeholder="Heinrich Schneider 7" type="text" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input placeholder="Heinrich Schneider 7" type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             @error('address')
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
         </div>
+        
         <div class="form-group col-lg-6">
           <label for="long">{{__('place.Longitude')}}</label>
           <input placeholder="10.250244140625002" id="longitude" type="text" name="longitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -93,29 +81,55 @@
 <script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.js"></script>
 
-    <script>
-        let map=L.map('mapid');
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-        map.locate({setView:true,maxZoom:6});
-        map.on('locationfound',function(e){
-            L.marker(e.latlng).addTo(map);
-        })
+<script>
+    let map = L.map('mapid');
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+    map.locate({ setView: true, maxZoom: 6 });
+    map.on('locationfound', function(e) {
+        L.marker(e.latlng).addTo(map);
+    });
 
-        map.on('locationerror',function(e){
-            alert(e.message);
-        })
- 
+    map.on('locationerror', function(e) {
+        alert(e.message);
+    });
 
-        var geocodeService = L.esri.Geocoding.geocodeService();
-        map.on('mousedown',function(e){
-            $('#latitude').val(e.latlng.lat);
-            $('#longitude').val(e.latlng.lng);
-            geocodeService.reverse().latlng(e.latlng).run(function(error, result) {
-            if(error){
+    var geocodeService = L.esri.Geocoding.geocodeService();
+    var marker;
+
+    map.on('mousedown', function(e) {
+        $('#latitude').val(e.latlng.lat);
+        $('#longitude').val(e.latlng.lng);
+        if (marker) {
+            map.removeLayer(marker);
+        }
+        marker = L.marker(e.latlng).addTo(map);
+        geocodeService.reverse().latlng(e.latlng).run(function(error, result) {
+            if (error) {
                 return;
             }
-            
-            L.marker(result.latlng).addTo(map).bindPopup(result.address.Match_addr).openPopup();
-            })
-        })
-    </script>
+            marker.bindPopup(result.address.Match_addr).openPopup();
+            $('#address').val(result.address.Match_addr);
+        });
+    });
+
+    // Update map and coordinates when address is typed
+    $('#address').on('input', function() {
+        var address = $(this).val();
+        if (address) {
+            geocodeService.geocode().text(address).run(function(error, result) {
+                if (error) {
+                    return;
+                }
+                var location = result.results[0].latlng;
+                if (marker) {
+                    map.removeLayer(marker);
+                }
+                marker = L.marker(location).addTo(map);
+                map.setView(location);
+                marker.bindPopup(address).openPopup();
+                $('#latitude').val(location.lat);
+                $('#longitude').val(location.lng);
+            });
+        }
+    });
+</script>

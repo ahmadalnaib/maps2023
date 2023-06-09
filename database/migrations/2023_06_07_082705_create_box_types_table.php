@@ -19,8 +19,9 @@ return new class extends Migration
             $table->float('width');
             $table->float('height');
             $table->text('description');
-            $table->boolean('ebike_option');
-            $table->boolean('first_floor_option');
+            $table->boolean('ebike_option')->default(0);
+            $table->boolean('first_floor_option')->default(0);
+            $table->boolean('big')->default(0);
             $table->timestamps();
         });
     }

@@ -37,6 +37,7 @@ class BoxTypeController extends Controller
             'description' => $request->description,
             'ebike_option' => $request->ebike_option,
             'first_floor_option' => $request->first_floor_option,
+            'big' => $request->big,
         ]);
 
         return redirect()->route('admin.boxtype.index')->with('message', 'Box type created successfully!');
@@ -62,6 +63,7 @@ class BoxTypeController extends Controller
             'description' => $request->description,
             'ebike_option' => $request->ebike_option,
             'first_floor_option' => $request->first_floor_option,
+            'big' => $request->big,
         ]);
 
         return redirect()->route('admin.boxtype.index')->with('message', 'Box type updated successfully!');
