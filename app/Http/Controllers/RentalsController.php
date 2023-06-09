@@ -57,7 +57,7 @@ class RentalsController extends Controller
         return view('rentals', [
             'rental' => $rental,
             'system' => $system,
-            'address' => $locker->address,
+            'address' => $system->address,
             'box' => $box,
             'start_time' => $start_time,
             'end_time' => $end_time,
@@ -89,8 +89,8 @@ class RentalsController extends Controller
            // Encrypt the locker and door IDs
             // $lockerId = encrypt($request->input('locker_id'));
             // $doorId = encrypt($request->input('door_id'));
-            $lockerId = $request->input('system_id');
-            $doorId = $request->input('box_id');
+            $systemId = $request->input('system_id');
+            $boxId = $request->input('box_id');
             $price = $plan->price;
             $total = $price;
 

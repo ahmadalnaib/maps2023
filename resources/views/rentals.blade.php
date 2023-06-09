@@ -1,11 +1,14 @@
 <x-app-layout>
-    <div class="container my-12 mx-auto md:px-12 p-5">
-        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
-            <div class="px-4 py-5 sm:px-6">
-                <h4 class="mt-2 text-lg font-bold">Rental Details</h4>
-            </div>
-            <div class="border-t border-gray-200">
-                <div>
+  
+    <div class="container mx-auto my-12 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rental Details -->
+            <div class="bg-gray-100 rounded-lg shadow-xl overflow-hidden">
+                <div class="px-4 py-5 sm:px-6">
+                    <h4 class="mt-2 text-lg font-bold">Rental Details</h4>
+                </div>
+                <!-- Rental details content -->
+             
                     <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             Box Number
@@ -14,7 +17,7 @@
                             0 {{ $box->number }}
                         </dd>
                     </div>
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
                             System Name
                         </dt>
@@ -62,68 +65,53 @@
                             {{ $plan->price }} &#8364;
                         </dd>
                     </div>
+            </div>
 
-                    <div class="bg-white px-4 py-5 sm:px-6 mt-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="text-center">
-                                <div id="paypal-button-container" style="max-width: 150px; margin: 0 auto;"></div>
-                            </div>
-                            <div>
-                                <div class="container mx-auto">
-                                    <div class="flex justify-center">
-                                        <div id="success" style="display: none"
-                                            class="col-md-8 text-center h3 p-4 bg-success text-light rounded">The
-                                            payment was successful.</div>
-                                        <div class="w-8/12">
-                                            <div class="bg-white shadow-md rounded-lg">
-                                                <div
-                                                    class="bg-gray-200 text-center py-4 px-6 rounded-t-lg">Pay with Card
-                                                </div>
-                                                <div class="p-6">
-                                                    <form method="POST"
-                                                        action="{{ route('rentals.purchase',$plan) }}"
-                                                        class="card-form mt-3 mb-3">
-                                                        @csrf
-                                                        <input type="hidden" name="payment_method"
-                                                            class="payment-method">
-                                                        <input type="hidden" name="system_id"
-                                                            value="{{ $system->id }}">
-                                                        <input type="hidden" name="box_id"
-                                                            value="{{ $box->id }}">
-                                                        <div class="mb-4">
-                                                            <input
-                                                                class="StripeElement form-input px-4 py-3 rounded-lg w-full"
-                                                                name="card_holder_name"
-                                                                placeholder="Cardholder Name">
-                                                        </div>
-                                                        <div>
-                                                            <div id="card-element"></div>
-                                                        </div>
-                                                        <div id="card-errors" role="alert"></div>
-                                                        <div class="mt-3 text-center">
-                                                            <button type="submit"
-                                                                class="bg-red-500 text-white font-bold py-2 px-4 rounded">
-                                                                Pay {{$plan->price}} $ <span class="icon"
-                                                                    hidden><i
-                                                                        class="fas fa-sync fa-spin"></i></span>
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
+            <!-- Payment Section -->
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+                <div class="px-4 py-5 sm:px-6">
+                    <h4 class="mt-2 text-lg font-bold">Payment</h4>
+                </div>
+                <!-- Payment section content -->
+                <div class="container mx-auto">
+                    <div class="flex justify-center ">
+                        <div id="success" style="display: none" class="col-md-8 text-center h3 p-4 bg-success text-light rounded">The payment was successful.</div>
+                        <div class="w-8/12">
+                            <div class="bg-white shadow-md rounded-lg p-4">
+                                <div class="flex">
+                                    <button class="tab tab-active bg-gray-200 text-center py-4 px-6 rounded-t-lg w-1/2" data-target="card-tab">Pay with Card</button>
+                                    <button class="tab bg-gray-200 text-center py-4 px-6 rounded-t-lg w-1/2" data-target="paypal-tab">Pay with PayPal</button>
+                                </div>
+                                <div class="tab-content mt-4" id="card-tab">
+                                    <form method="POST" action="{{ route('rentals.purchase',$plan) }}" class="card-form mt-3 mb-3">
+                                        @csrf
+                                        <input type="hidden" name="payment_method" class="payment-method">
+                                        <input type="hidden" name="system_id" value="{{ $system->id }}">
+                                        <input type="hidden" name="box_id" value="{{ $box->id }}">
+                                        <div class="mb-4">
+                                            <input class="StripeElement form-input px-4 py-3 rounded-lg w-full" name="card_holder_name" placeholder="Cardholder Name">
                                         </div>
+                                        <div>
+                                            <div id="card-element"></div>
+                                        </div>
+                                        <div id="card-errors" role="alert"></div>
+                                        <div class="mt-3 text-center">
+                                            <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded">Pay {{$plan->price}} $ <span class="icon" hidden><i class="fas fa-sync fa-spin"></i></span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-content mt-4" id="paypal-tab" style="display: none;">
+                                    <div class="text-center">
+                                        <div id="paypal-button-container" style="max-width: 150px; margin: 0 auto;"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4 text-center">
-                            <a href="{{ route('home') }}"
-                                class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">
-                                Cancel
-                            </a>
-                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="{{ route('home') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Cancel</a>
             </div>
         </div>
     </div>
@@ -230,4 +218,19 @@
         })
         return false
     })
+
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.getAttribute('data-target');
+
+            tabs.forEach(tab => tab.classList.remove('tab-active'));
+            tabContents.forEach(content => content.style.display = 'none');
+
+            tab.classList.add('tab-active');
+            document.getElementById(target).style.display = 'block';
+        });
+    });
 </script>
