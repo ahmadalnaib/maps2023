@@ -86,8 +86,9 @@
                                     <form method="POST" action="{{ route('rentals.purchase',$plan) }}" class="card-form mt-3 mb-3">
                                         @csrf
                                         <input type="hidden" name="payment_method" class="payment-method">
-                                        <input type="hidden" name="system_id" value="{{ $system->id }}">
-                                        <input type="hidden" name="box_id" value="{{ $box->id }}">
+                                        <input type="hidden" name="system_id" value="{{ encrypt($system->id) }}">
+                                        <input type="hidden" name="box_id" value="{{ encrypt($box->id) }}">
+                                        
                                         <div class="mb-4">
                                             <input class="StripeElement form-input px-4 py-3 rounded-lg w-full" name="card_holder_name" placeholder="Cardholder Name">
                                         </div>

@@ -13,6 +13,7 @@ use App\Models\System;
 use Illuminate\Http\Request;
 use App\Mail\PaymentConfirmation;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
 
 class RentalsController extends Controller
 {
@@ -86,13 +87,21 @@ class RentalsController extends Controller
 
             $user = $request->user();
             $paymentMethod = $request->input('payment_method');
-           // Encrypt the locker and door IDs
-            // $lockerId = encrypt($request->input('locker_id'));
-            // $doorId = encrypt($request->input('door_id'));
-            $systemId = $request->input('system_id');
-            $boxId = $request->input('box_id');
+            $encryptedSystemId = $request->input('system_id');
+            $encryptedBoxId = $request->input('box_id');
+            
+            // Decrypt the encrypted IDs
+            $systemId = Crypt::decrypt($encryptedSystemId);
+            $boxId = Crypt::decrypt($encryptedBoxId);
+            
+            // Validate the IDs and user authorization
+            $system = System::findOrFail($systemId);
+            $box = Box::findOrFail($boxId);
             $price = $plan->price;
             $total = $price;
+
+         
+   
 
     try {
         $user->createOrGetStripeCustomer();
