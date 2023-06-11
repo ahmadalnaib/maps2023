@@ -17,7 +17,7 @@ class ApiRentalController extends Controller
 
     public function index()
     {
-        $rentals =RentalResource::collection(Rental::all());
+        $rentals =RentalResource::collection(Rental::paginate(8));
         return $rentals->response()->setStatusCode(200);
     }
 

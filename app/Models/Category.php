@@ -7,11 +7,13 @@ use App\Scopes\TenantScope;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Translatable\HasTranslations;
 
 class Category extends Model
 {
-    use HasFactory,  BelongsToTenant;
+    use HasFactory,  BelongsToTenant,HasTranslations;
     protected $guarded=[];
+    public $translatable=['title'];
     public function places()
     {
         return $this->hasMany('App\Models\Place');
