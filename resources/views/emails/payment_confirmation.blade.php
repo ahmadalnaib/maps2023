@@ -117,7 +117,7 @@
                     </tr>
                     <tr>
                         <td>System Address:</td>
-                        <td>{{$rental->system->address}}</td>
+                        <td>{{$rental->system->place->address}}</td>
                     </tr>
                     <tr>
                         <td>Türnummer:</td>

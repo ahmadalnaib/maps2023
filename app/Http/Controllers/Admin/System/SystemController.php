@@ -41,7 +41,7 @@ class SystemController extends Controller
       {
             System::create([
               'system_name' => $request->system_name,
-              'address' => $request->address,
+          
               'place_id' => $request->place_id,
               'tenant_id' => auth()->user()->tenant_id,
           ]);
@@ -66,7 +66,7 @@ class SystemController extends Controller
       {
           $system->update([
               'system_name' => $request->system_name,
-              'address' => $request->address,
+            
               'place_id' => $request->place_id,
           ]);
       

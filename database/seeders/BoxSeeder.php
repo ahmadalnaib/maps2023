@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Policy;
-use App\Models\Privacy;
+use App\Models\Box;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class PolicySeeder extends Seeder
+class BoxSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,8 +15,6 @@ class PolicySeeder extends Seeder
     {
         //
 
-        Policy::factory()->count(40)->create();
-
-    
+        Box::factory()->count(40)->create();
     }
 }

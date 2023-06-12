@@ -29,7 +29,7 @@
                   </tr>
                   <tr>
                     <td class="p-2 font-semibold">System Address:</td>
-                    <td class="p-2">{{$rental->system->address}}</td>
+                    <td class="p-2">{{$rental->system->place->address}}</td>
                 </tr>
                   <tr>
                       <td class="p-2 font-semibold">Box Number:</td>

@@ -15,9 +15,7 @@
                 <th scope="col" class="px-6 py-3">
                    {{__('locker.Locker name')}}
                 </th>
-                <th scope="col" class="px-6 py-3">
-                  Address
-                </th>
+               
                 <th scope="col" class="px-6 py-3">
                    {{__('locker.Place name')}}
                 </th>
@@ -35,9 +33,7 @@
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$system->system_name}}
                 </th>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{$system->address}}
-                </th>
+              
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{$system->place->name ?? "Error"}}
                 </th>

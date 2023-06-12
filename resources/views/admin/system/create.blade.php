@@ -18,16 +18,7 @@
             <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
-        <div>
-            <label for="name">System Address</label>
-            <input placeholder="
-            Musterstraße 17 
-            12345 Berlin 
-            " name="address" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            @error('address')
-            <span class="text-red-500">{{ $message }}</span>
-            @enderror
-        </div>
+    
         <div>
             <label for="catg">{{__('locker.Choose Place')}}</label>
             @if ($places->isEmpty())

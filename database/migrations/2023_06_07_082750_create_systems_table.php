@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('tenant_id')->index();
             $table->uuid('place_id');
             $table->string('system_name');
-            $table->string('address');
             $table->timestamps();
         });
     }

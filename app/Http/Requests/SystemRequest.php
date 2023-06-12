@@ -23,7 +23,6 @@ class SystemRequest extends FormRequest
     {
         return [
             'system_name' => 'required',
-            'address' => 'required',
             'place_id' => 'required|exists:places,id',
         ];
     }
