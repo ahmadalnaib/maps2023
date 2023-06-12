@@ -55,7 +55,7 @@
                             <span class="ml-2">Yes</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" name="big" value="0" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500">
+                            <input type="radio" name="big" value="0" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500" checked>
                             <span class="ml-2">No</span>
                         </label>
                     </div>
@@ -71,8 +71,8 @@
                             <span class="ml-2">Yes</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" name="ebike_option" value="0" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500">
-                            <span class="ml-2">No</span>
+                            <input type="radio" name="ebike_option" value="0" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500" checked>
+                            <span class="ml-2">No</span >
                         </label>
                     </div>
                     @error('ebike_option')
@@ -87,7 +87,7 @@
                             <span class="ml-2">Yes</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" name="first_floor_option" value="0" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500">
+                            <input type="radio" name="first_floor_option" value="0" class="form-radio text-blue-500 focus:ring-blue-300 focus:border-blue-500" checked>
                             <span class="ml-2">No</span>
                         </label>
                     </div>
