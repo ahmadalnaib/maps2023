@@ -13,7 +13,9 @@ class Category extends Model
 {
     use HasFactory,  BelongsToTenant,HasTranslations;
     protected $guarded=[];
+
     public $translatable=['title'];
+    
     public function places()
     {
         return $this->hasMany('App\Models\Place');
