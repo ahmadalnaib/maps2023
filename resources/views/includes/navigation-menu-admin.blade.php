@@ -136,7 +136,7 @@
                                  {{__('place.Places')}}
                             </x-dropdown-link>
                             <x-dropdown-link href="{{route('admin.policy.index')}}">
-                                policy
+                            {{__('policy.policy')}}
                            </x-dropdown-link>
                             <x-dropdown-link href="{{route('admin.system.index')}}">
                                 System

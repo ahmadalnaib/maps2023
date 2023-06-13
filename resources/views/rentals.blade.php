@@ -97,7 +97,7 @@
                                         </div>
                                         <div id="card-errors" role="alert"></div>
                                         <div class="mt-3 text-center">
-                                            <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded " id="pay-btn">{{__('rental.Pay')}} {{$plan->price}} $ <span class="icon" hidden><i class="fas fa-sync fa-spin"></i></span></button>
+                                            <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded " id="pay-btn">{{__('rental.Pay')}} {{$plan->price}} &euro; <span class="icon" hidden><i class="fas fa-sync fa-spin"></i></span></button>
                                         </div>
                                     </form>
                                 </div>

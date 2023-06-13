@@ -1,38 +1,42 @@
 <x-admin>
   <x-slot name="header" >
       <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
-          Boxes Types
+       {{__('type.Boxes Types')}}
       </h2>
   </x-slot>
   <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-          <a href="{{route('admin.boxtype.create')}}" type="button" class="py-2.5 px-5 mr-2 mb-10 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">Create new Box Type</a>
+          <a href="{{route('admin.boxtype.create')}}" type="button" class="py-2.5 px-5 mr-2 mb-10 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{{__('type.Create new Box Type')}}</a>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
   @if($boxTypes->count())
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
               <th scope="col" class="px-6 py-3">
-               name
+            {{__('type.Box Type Name')}}
               </th>
               <th scope="col" class="px-6 py-3">
-              depth
+         {{__('type.Depth')}}
               </th>
               <th scope="col" class="px-6 py-3">
-                width
+                {{__('type.Width')}}
               </th>
               <th scope="col" class="px-6 py-3">
-                height
+                {{__('type.Height')}}
               </th>
               <th scope="col" class="px-6 py-3">
-                description
+             {{__('type.Description')}}
               </th>
               <th scope="col" class="px-6 py-3">
-                ebike_option
+             {{__('type.Box Size')}}
               </th>
               <th scope="col" class="px-6 py-3">
-                first_floor_option
+              {{__('type.Box Type')}}
               </th>
+              <th scope="col" class="px-6 py-3">
+            {{__('type.Box Floor')}}
+              </th>
+             
               
            
          
@@ -59,14 +63,19 @@
                 {{$type->height}}
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{$type->description}}
+               
+                {{ Str::limit($type->description, 30) }}
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ $type->ebike_option ? 'Yes' : 'No' }}
+                {{ $type->big ? 'Groß' : 'Klein' }}
 
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{$type->first_floor_option ? "Yes" : "No"}}
+                {{ $type->ebike_option ? 'Mit elektrischer Ladung' : 'Ohne elektrische Ladung' }}
+
+              </th>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{$type->first_floor_option ? "Erster Etage" : "Zweite Etage"}}
               </th>
              
            
