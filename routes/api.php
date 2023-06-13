@@ -25,6 +25,8 @@ Route::post('/paypal/create-payment',[PurchaseController::class,'createPayment']
 Route::post('/paypal/execute-payment',[PurchaseController::class,'executePayment']);
 
 Route::get('/rentals', [ApiRentalController::class, 'index']);
+Route::get('/rentals/system/{systemId}', [ApiRentalController::class, 'getBySystem']);
+
 
 Route::get('/login',[LoginController::class,'login']);
 
