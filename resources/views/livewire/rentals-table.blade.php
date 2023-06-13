@@ -1,7 +1,7 @@
 <div>
     <input type="text" wire:model.debounce.300ms="search" placeholder="{{__('admin.Search Rentals...')}}" class="border border-gray-300 rounded px-4 py-2 mb-4">
 
-    <table class="min-w-full divide-y divide-gray-200">
+    <table class="min-w-full divide-y divide-slate-200 ">
         <!-- Table header -->
         <thead>
             <tr>

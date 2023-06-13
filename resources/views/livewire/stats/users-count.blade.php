@@ -1,4 +1,4 @@
-<div class="bg-teal-600 border shadow-md rounded-lg px-4 py-6">
+<div class="bg-indigo-500 border shadow-md rounded-lg px-4 py-6">
     <div class="flex justify-between items-center">
         <h4 class="text-white font-medium">{{__('admin.Users')}}</h4>
         <select name="selectedDays" id="selectedDays" class="border-solid border-2 border-red-500 bg-white" wire:model="selectedDays" wire:change='updateStat'>
