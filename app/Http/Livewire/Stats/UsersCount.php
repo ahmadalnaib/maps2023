@@ -21,7 +21,7 @@ class UsersCount extends Component
         $user = auth()->user(); // Get the current authenticated user
     
         $this->usersCount = User::whereHas('rentals', function ($query) use ($user) {
-            $query->whereHas('door', function ($subQuery) use ($user) {
+            $query->whereHas('box', function ($subQuery) use ($user) {
                 $subQuery->where('tenant_id', $user->tenant_id);
             });
         })->count();

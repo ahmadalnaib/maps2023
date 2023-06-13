@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\User;
 use App\Models\Locker;
+use App\Models\System;
 use App\Models\Duration;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
@@ -22,14 +24,14 @@ class Rental extends Model
     return $this->belongsTo(User::class);
 }
 
-public function locker()
+public function system()
 {
-    return $this->belongsTo(Locker::class);
+    return $this->belongsTo(System::class);
 }
 
-public function door()
+public function box()
 {
-    return $this->belongsTo(Door::class);
+    return $this->belongsTo(Box::class);
 }
 
 public function plan()

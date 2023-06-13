@@ -6,7 +6,7 @@
                    {{$how->main_title}}<br>
                   
                 </h1>
-                <p class="relative z-20 block mt-6 text-base text-gray-500 xl:text-xl sm:text-center lg:text-left">{{$how->main_subtitle}}</p>
+                <p class="relative z-20 block mt-6 text-base text-gray-500 xl:text-xl sm:text-center lg:text-left"></p>
                 <div class="relative flex mt-4">
                     <a href="#park" class="flex items-center self-start justify-center px-5 py-2 mt-5 text-base font-medium leading-tight text-white transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-full shadow lg:py-4 hover:bg-red-600 focus:outline-none focus:border-red-600 focus:shadow-outline-red md:text-lg xl:text-xl md:px-5 xl:px-10" data-primary="red-500" data-rounded="rounded-full">Get Started</a>
                     <a href="#_" class="relative flex items-center self-start justify-center py-2 pl-10 pr-5 mt-5 ml-5 text-base font-medium leading-tight text-gray-400 transition duration-150 ease-in-out bg-gray-100 border-transparent rounded-full shadow-sm lg:py-4 md:pl-16 md:pr-5 xl:pr-10 hover:text-red-500 focus:outline-none md:text-lg xl:text-xl" data-primary="red-500" data-rounded="rounded-full" onclick="toggleVideo()">
@@ -52,17 +52,17 @@
                         <img src="{{ asset('/images/howpage/mob.png') }}" class="object-cover w-full h-full" alt="">
                     </div>
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl">{{$how->title_two}}</h3>
+                        <h3 class="text-2xl font-semibold sm:text-4xl"></h3>
                         <p class="text-lg text-left text-gray-600">
-                        {{$how->subtitel_two}}
+                     
                     </div>
                 </div>
     
                 <div class="grid items-center lg:grid-cols-2">
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl">{{$how->title_three}}</h3>
+                        <h3 class="text-2xl font-semibold sm:text-4xl"></h3>
                         <p class="text-lg text-gray-600">
-                          {{$how->subtitle_three}}
+                         
                         </p>
                     </div>
                     <div class="bg-gray-100 h-full">
@@ -92,9 +92,9 @@
                     <div class="max-w-xl mb-6">
                         <div class="mb-6">
                         
-                            <p class="block font-sans text-5xl font-bold tracking-tight text-red-700 sm:text-6xl sm:leading-none">{{$how->title_four}}</p>
+                            <p class="block font-sans text-5xl font-bold tracking-tight text-red-700 sm:text-6xl sm:leading-none"></p>
                         </div>
-                        <p class="text-base text-gray-700 md:text-lg">{{$how->subtitle_four}}</p>
+                        <p class="text-base text-gray-700 md:text-lg"></p>
                     </div>
                     <div class="max-w-xl mb-6">
                         <p class="relative">

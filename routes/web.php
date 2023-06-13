@@ -18,20 +18,24 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PrivacyController;
 use App\Http\Controllers\RentalsController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\Admin\Box\BoxController;
 use App\Http\Controllers\ImpersonationController;
 use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Admin\Faq\FaqAdminController;
 use App\Http\Controllers\Admin\How\HowAdminController;
+use App\Http\Controllers\Admin\Policy\PolicyController;
+use App\Http\Controllers\Admin\System\SystemController;
 use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Term\TermAdminController;
+use App\Http\Controllers\Admin\BoxType\BoxTypeController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Price\PriceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
 use App\Http\Controllers\Admin\Duration\DurationController;
 use App\Http\Controllers\Admin\Locker\LockerAdminController;
 use App\Http\Controllers\Admin\Privacy\PrivacyAdminController;
-use App\Http\Controllers\PurchaseController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Jetstream\Http\Controllers\Livewire\UserProfileController;
@@ -65,8 +69,44 @@ Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name
 
 
 // admin users
-Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')->middleware(['auth', 'role:super']);;
+Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')->middleware(['auth', 'role:super']);
 
+
+// admin -- policies
+Route::get('admin/policy',[PolicyController::class,'index'])->name('admin.policy.index');
+Route::get('admin/policy/create',[PolicyController::class,'create'])->name('admin.policy.create');
+Route::post('admin/policy/store',[PolicyController::class,'store'])->name('admin.policy.store');
+Route::get('admin/policy/{policy}',[PolicyController::class,'edit'])->name('admin.policy.edit');
+Route::put('admin/policy/{policy}',[PolicyController::class,'update'])->name('admin.policy.update');
+Route::delete('admin/policy/{policy}',[PolicyController::class,'destroy'])->name('admin.policy.destroy');
+
+
+
+
+// admin -- systems
+Route::get('admin/system',[SystemController::class,'index'])->name('admin.system.index');
+Route::get('admin/system/create',[SystemController::class,'create'])->name('admin.system.create');
+Route::post('admin/system/store',[SystemController::class,'store'])->name('admin.system.store');
+Route::get('admin/system/{system}', [SystemController::class, 'edit'])->name('admin.system.edit');
+Route::put('admin/system/{system}', [SystemController::class, 'update'])->name('admin.system.update');
+Route::delete('admin/system/{system}', [SystemController::class, 'destroy'])->name('admin.system.destroy');
+
+
+// admin -- Boxes
+Route::get('admin/box',[BoxController::class,'index'])->name('admin.box.index');
+Route::get('admin/box/create',[BoxController::class,'create'])->name('admin.box.create');
+Route::post('admin/box/create',[BoxController::class,'store'])->name('admin.box.store');
+Route::get('admin/box/{box}', [BoxController::class, 'edit'])->name('admin.box.edit');
+Route::put('admin/boxs/{box}', [BoxController::class, 'update'])->name('admin.box.update');
+Route::delete('admin/boxs/{box}', [BoxController::class, 'destroy'])->name('admin.box.destroy');
+
+// admin -- BoxesTypes
+Route::get('admin/boxtype',[BoxTypeController::class,'index'])->name('admin.boxtype.index');
+Route::get('admin/boxtype/create',[BoxTypeController::class,'create'])->name('admin.boxtype.create');
+Route::post('admin/boxtype/create',[BoxTypeController::class,'store'])->name('admin.boxtype.store');
+Route::get('admin/boxtype/{type}', [BoxTypeController::class, 'edit'])->name('admin.boxtype.edit');
+Route::put('admin/boxtype/{type}', [BoxTypeController::class, 'update'])->name('admin.boxtype.update');
+Route::delete('admin/boxtype/{type}', [BoxTypeController::class, 'destroy'])->name('admin.boxtype.destroy');
 
 
 // **** Admin place route ****//

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use Dompdf\Dompdf;
+use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
 use App\models\User;
-use Dompdf\Dompdf;
 use App\Models\Locker;
 use App\Models\Rental;
+use App\Models\System;
 use Illuminate\Http\Request;
 use App\Mail\PaymentConfirmation;
 use Illuminate\Support\Facades\Mail;
@@ -73,17 +75,17 @@ class PurchaseController extends Controller
              $start_time = Carbon::now();
              $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
 
-             $locker = Locker::findOrFail($data['locker_id']);
-             $door = Door::findOrFail($data['door_id']);
+             $system = System::findOrFail($data['system_id']);
+             $box = Box::findOrFail($data['box_id']);
 
             // Generate a 6-digit pincode
             $pincode = mt_rand(100000, 999999);
 
              $rental = new Rental([
                 "tenant_id" => $tenantId,
-                "locker_id" => $locker->id,
+                "system_id" => $system->id,
                 "user_id" => $user->id,
-                'door_id' => $door->id,
+                'box_id' => $box->id,
                 'duration'=>$plan->name,
                 'start_time' => $start_time,
                 'end_time' => $end_time,

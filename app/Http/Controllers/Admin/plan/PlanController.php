@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Plan;
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\Locker;
+use App\Models\Policy;
+use App\Models\System;
 use Illuminate\Http\Request;
 use App\Http\Requests\PlanRequest;
 use App\Http\Controllers\Controller;
@@ -17,10 +19,15 @@ class PlanController extends Controller
     public function index()
     {
         $tenant = Auth::user();
-        $plans = Plan::with(['locker', 'doors']) // Eager load the locker and doors relationships
-            ->where('tenant_id', $tenant->id)
-            ->latest()
-            ->paginate(8);
+        // $plans = Plan::with(['system', 'doors']) // Eager load the locker and doors relationships
+        //     ->where('tenant_id', $tenant->id)
+        //     ->latest()
+        //     ->paginate(8);
+
+        $plans=Plan::with(['policy'])
+        ->where('tenant_id', $tenant->id)
+             ->latest()
+             ->paginate(8);
 
             // dd($plans[1]->doors);
 
@@ -31,13 +38,11 @@ class PlanController extends Controller
     public function create()
     {
         $tenant = Auth::user();
-        $lockers = Locker::where('tenant_id', $tenant->id)
+        $policies = Policy::where('tenant_id', $tenant->id)
         ->latest()
         ->get();
-      // Load the doors relationship for the selected locker
-    $doors = $lockers->first()->doors ?? collect();
-
-        return view('admin.plan.create',compact('lockers','doors'));
+      
+        return view('admin.plan.create',compact('policies'));
     }
 
     public function store(PlanRequest  $request)
@@ -47,13 +52,14 @@ class PlanController extends Controller
             "name" =>$request->name,
             "number_of_days"=>$request->number_of_days,
             'price' => $request->price,
-            "locker_id"=>$request->locker_id,
-            "door_id"=>$request->door_id,
+            "policy_id"=>$request->policy_id,
+            'tenant_id' => auth()->user()->tenant_id,
+           
          
         
          
         ]);
-        $plan->doors()->attach($request->door_id);
+      
 
         return redirect()->route('admin.plan.index');
     }
@@ -61,28 +67,24 @@ class PlanController extends Controller
     public function edit(Plan $plan)
     {
         $tenant = Auth::user();
-        $lockers = Locker::where('tenant_id', $tenant->id)
+        $policies = Policy::where('tenant_id', $tenant->id)
             ->latest()
             ->get();
 
-        $doors = Door::where('tenant_id', $tenant->id)
-            ->latest()
-            ->get();
-
-        return view('admin.plan.edit', compact('plan', 'lockers', 'doors'));
+      
+        return view('admin.plan.edit', compact('plan','policies'));
     }
 
     public function update(PlanRequest  $request, Plan $plan)
     {
         $plan->update([
-            "name" => $request->name,
-            "number_of_days" => $request->number_of_days,
+            "name" =>$request->name,
+            "number_of_days"=>$request->number_of_days,
             'price' => $request->price,
-            "locker_id" => $request->locker_id,
-            "door_id" => $request->door_id,
+            "policy_id"=>$request->policy_id,
             
         ]);
-        $plan->doors()->sync($request->door_id);
+      
         return redirect()->route('admin.plan.index');
     }
 

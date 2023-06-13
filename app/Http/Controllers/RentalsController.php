@@ -4,26 +4,29 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Dompdf\Dompdf;
+use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\Locker;
 use App\Models\Rental;
+use App\Models\System;
 use Illuminate\Http\Request;
 use App\Mail\PaymentConfirmation;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
 
 class RentalsController extends Controller
 {
     public function rent(Request $request)
     {
         $validatedData = $request->validate([
-            'locker_id' => 'required|exists:lockers,id',
-            'door_id' => 'required|exists:doors,id',
+            'system_id' => 'required|exists:systems,id',
+            'box_id' => 'required|exists:boxes,id',
             'rental_period' => 'required|exists:plans,id',
         ]);
 
-        $locker = Locker::findOrFail($validatedData['locker_id']);
-        $door = Door::findOrFail($validatedData['door_id']);
+        $system = System::findOrFail($validatedData['system_id']);
+        $box = Box::findOrFail($validatedData['box_id']);
         $plan = Plan::findOrFail($validatedData['rental_period']);
 
         $start_time = Carbon::now();
@@ -37,10 +40,11 @@ class RentalsController extends Controller
 
 
         // Create the rental record
+        
         $rental = new Rental([
-            "locker_id" => $locker->id,
+            "system_id" => $system->id,
             "user_id" => auth()->id(),
-            'door_id' => $door->id,
+            'box_id' => $box->id,
             'start_time' => $start_time,
             'end_time' => $end_time,
             'plan_id' => $plan->id,
@@ -53,9 +57,9 @@ class RentalsController extends Controller
 
         return view('rentals', [
             'rental' => $rental,
-            'locker' => $locker,
-            'address' => $locker->address,
-            'door' => $door,
+            'system' => $system,
+            'address' => $system->address,
+            'box' => $box,
             'start_time' => $start_time,
             'end_time' => $end_time,
             'plan'=>$plan,
@@ -83,21 +87,29 @@ class RentalsController extends Controller
 
             $user = $request->user();
             $paymentMethod = $request->input('payment_method');
-           // Encrypt the locker and door IDs
-            // $lockerId = encrypt($request->input('locker_id'));
-            // $doorId = encrypt($request->input('door_id'));
-            $lockerId = $request->input('locker_id');
-            $doorId = $request->input('door_id');
+            $encryptedSystemId = $request->input('system_id');
+            $encryptedBoxId = $request->input('box_id');
+            
+            // Decrypt the encrypted IDs
+            $systemId = Crypt::decrypt($encryptedSystemId);
+            $boxId = Crypt::decrypt($encryptedBoxId);
+            
+            // Validate the IDs and user authorization
+            $system = System::findOrFail($systemId);
+            $box = Box::findOrFail($boxId);
             $price = $plan->price;
             $total = $price;
+
+         
+   
 
     try {
         $user->createOrGetStripeCustomer();
         $user->updateDefaultPaymentMethod($paymentMethod);
         $user->charge($total * 100, $paymentMethod, [
             'metadata' =>
-            ['locker_id' => $lockerId, 
-            'door_id' => $doorId,
+            ['system_id' => $systemId, 
+            'box_id' => $boxId,
             'tenant_id '=> $user->tenant->id,
             ]
            ]); // * 100 because Stripe deals with cents
@@ -112,9 +124,9 @@ class RentalsController extends Controller
       // Create a new rental record
       $rental = Rental::create([
         "tenant_id" => $tenantId,
-                "locker_id" => $lockerId,
+                "system_id" => $systemId,
                 "user_id" => $user->id,
-                'door_id' => $doorId,
+                'box_id' => $boxId,
                 'duration'=>$plan->name,
                 'start_time' => $start_time,
                 'end_time' => $end_time,

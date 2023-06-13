@@ -28,10 +28,10 @@ class RentalsTable extends Component
 
         $user = auth()->user(); // Get the current authenticated user
 
-        $rentals = Rental::whereHas('locker', function ($query) use ($user) {
+        $rentals = Rental::whereHas('system', function ($query) use ($user) {
                 $query->where('tenant_id', $user->id);
             })
-            ->orWhereHas('door', function ($query) use ($user) {
+            ->orWhereHas('box', function ($query) use ($user) {
                 $query->where('tenant_id', $user->id);
             })
             ->orderBy('created_at', 'desc')

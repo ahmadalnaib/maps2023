@@ -10,7 +10,7 @@ use App\Scopes\TenantScope;
 use Laravel\Cashier\Billable;
 use App\Traits\BelongsToTenant;
 use Laravel\Jetstream\HasTeams;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use BelongsToTenant;
     use TwoFactorAuthenticatable;
     use Billable;
+    use HasApiTokens;
   
 
 

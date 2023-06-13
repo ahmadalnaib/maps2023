@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Door;
-use App\Models\Locker;
+use App\Models\Box;
+use App\Models\Policy;
 use App\Models\Rental;
+use App\Models\BoxType;
 use App\Scopes\TenantScope;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
@@ -20,14 +21,21 @@ class Plan extends Model
         return $this->hasMany(Rental::class);
     }
 
-    public function locker()
+    public function policy()
     {
-        return $this->belongsTo(Locker::class);
+        return $this->belongsTo(Policy::class);
+    }
+  
+    public function boxType()
+    {
+        return $this->belongsTo(BoxType::class);
     }
 
-    public function doors()
+    public function boxes()
     {
-        return $this->belongsToMany(Door::class);
+        return $this->belongsToMany(Box::class);
     }
+
+ 
    
 }

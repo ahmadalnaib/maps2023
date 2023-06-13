@@ -9,33 +9,7 @@
           <div id="mapid" style="height:700px" class="rounded-lg"></div>
           </div> 
         </div>
-        {{-- <div class="bg-slate-100 p-40">
-          <h2 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl ">{{__('index.Premium Lockers')}}</h2>
-          <div class="container my-12 mx-auto md:px-12 p-5">
-   
-   
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            @foreach($categories as $category)
-            <div class="swiper-slide"  >
-          <a href="{{route('category.show',$category->slug)}}" style="background-image: url({{ $category->image }});"  class="app-gallery-item same"
-          ><div>
-            <h2 class="text-3xl font-black truncate overflow-hidden">{{$category->title}}</h2>
-           
-          </div></a
-        >
-  
-
-      </div>
-          @endforeach
-        </div>
-        
-        <div class="swiper-button-next text-red-600" style="color:  rgb(220 38 38)"></div>
-        <div class="swiper-button-prev text-red-600" style="color:  rgb(220 38 38)"></div>
-      </div>
-
-      </div>   
-    </div> --}}
+       
     <div class="bg-slate-100 p-20">
     <div class="container my-12 mx-auto md:px-12 p-5">
       <h1 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl mb-4">{{__('index.Premium Lockers')}}</h1>

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Policy;
 use App\Models\Privacy;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,10 +16,8 @@ class PolicySeeder extends Seeder
     {
         //
 
-        Privacy::create([
-            'content' => 'test',
-            
-           
-        ]);
+        Policy::factory()->count(40)->create();
+
+    
     }
 }

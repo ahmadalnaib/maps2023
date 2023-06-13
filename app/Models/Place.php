@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Helpers\Slug;
 use App\Models\Locker;
 use App\Models\Rental;
+use App\Models\System;
 use App\Models\Category;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
@@ -28,9 +29,9 @@ class Place extends Model
 
 
 
-    public function lockers()
+    public function systems()
 {
-    return $this->hasMany(Locker::class);
+    return $this->hasMany(System::class);
 }
 
     public function getImageAttribute($image){

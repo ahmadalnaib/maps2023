@@ -112,16 +112,16 @@
                         <td>{{$rental->user->email}}</td>
                     </tr>
                     <tr>
-                        <td>Name des Schließfachs:</td>
-                        <td>{{$rental->locker->locker_name}}</td>
+                        <td>System Name:</td>
+                        <td>{{$rental->system->system_name}}</td>
                     </tr>
                     <tr>
-                        <td>Locker Address:</td>
-                        <td>{{$rental->locker->address}}</td>
+                        <td>System Address:</td>
+                        <td>{{$rental->system->place->address}}</td>
                     </tr>
                     <tr>
                         <td>Türnummer:</td>
-                        <td>{{$rental->door->door_number}}</td>
+                        <td>{{$rental->box->number}}</td>
                     </tr>
                     <tr>
                         <td>Gültig ab:</td>

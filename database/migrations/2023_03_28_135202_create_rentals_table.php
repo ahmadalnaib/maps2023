@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('tenant_id')->index();
             $table->unsignedBigInteger('user_id');
-            $table->uuid('locker_id');
-            $table->uuid('door_id');
+            $table->uuid('system_id');
+            $table->uuid('box_id');
             $table->unsignedBigInteger('plan_id');
             $table->string('duration');
             $table->dateTime('start_time');

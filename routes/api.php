@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Admin\Api\ApiRentalController;
+use App\Http\Controllers\Admin\Api\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,7 @@ Route::post('/paypal/create-payment',[PurchaseController::class,'createPayment']
 Route::post('/paypal/execute-payment',[PurchaseController::class,'executePayment']);
 
 Route::get('/rentals', [ApiRentalController::class, 'index']);
+
+Route::get('/login',[LoginController::class,'login']);
 
 
