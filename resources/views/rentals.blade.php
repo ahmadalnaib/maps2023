@@ -68,7 +68,7 @@
             </div>
 
             <!-- Payment Section -->
-            <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="bg-stone-200 rounded-lg shadow-xl overflow-hidden">
                 <div class="px-4 py-5 sm:px-6">
                     <h4 class="mt-2 text-lg font-bold P-2">{{__('rental.CONFIRM ORDER AND PAY')}}</h4>
                 </div>
@@ -80,7 +80,7 @@
                             <div class="bg-white shadow-md rounded-lg p-4">
                                 <div class="flex">
                                     <button class="tab tab-active bg-gray-200 text-center py-4 px-6 rounded-t-lg w-1/2 m-1" data-target="card-tab">{{__('rental.Pay with Card')}}</button>
-                                    <button class="tab bg-gray-200 text-center py-4 px-6 rounded-t-lg w-1/2 m-1" data-target="paypal-tab">{{__('rental.Pay with PayPal')}}</button>
+                                    <button class="tab bg-blue-500 text-white text-center py-4 px-6 rounded-t-lg w-1/2 m-1" data-target="paypal-tab">{{__('rental.Pay with PayPal')}}</button>
                                 </div>
                                 <div class="tab-content mt-4" id="card-tab">
                                     <form method="POST" action="{{ route('rentals.purchase',$plan) }}" class="card-form mt-3 mb-3">
