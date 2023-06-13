@@ -12,6 +12,7 @@ return[
     "System Address:"=>"System-Adresse:",
     "Box Number:"=>"Box-Nummer:",
     "Show Details"=>'Details anzeigen',
-    "Generate Invoice"=>"Rechnung generieren"
+    "Generate Invoice"=>"Rechnung generieren",
+    "Close"=>"Schließen"
     
 ];
