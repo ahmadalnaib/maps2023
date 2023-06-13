@@ -2,8 +2,8 @@
 
   <div class="container mx-auto">
    
-    <h1 class="text-4xl font-bold my-6">Purchases</h1>
-    <p class="text-2xl font-light text-gray-400 my-6">Here you'll find all your purchased Lockers.</p>
+    <h1 class="text-4xl font-bold my-6">{{__('basic.Purchases')}}</h1>
+    <p class="text-2xl font-light text-gray-400 my-6">{{__("basic.Here you'll find all your purchased Lockers.")}}</p>
 
     @if (count($rentals) > 0)
     <div class="grid grid-cols-2 gap-4">
@@ -19,36 +19,36 @@
             <div class="mt-4" id="rental-details-{{ $rental->id }}" style="display: none;">
               <table class="w-full bg-green-100 rounded-lg">
                   <tr>
-                      <td class="p-2 font-semibold">Username:</td>
+                      <td class="p-2 font-semibold">{{__('basic.Username:')}}</td>
                       <td class="p-2">{{ $rental->user->name }}</td>
                   </tr>
                  
                   <tr>
-                      <td class="p-2 font-semibold">System Name:</td>
-                      <td class="p-2">{{$rental->system->name}}</td>
+                      <td class="p-2 font-semibold">{{__('basic.System Name:')}}</td>
+                      <td class="p-2">{{$rental->system->system_name}}</td>
                   </tr>
                   <tr>
-                    <td class="p-2 font-semibold">System Address:</td>
+                    <td class="p-2 font-semibold">{{__('basic.System Address:')}}</td>
                     <td class="p-2">{{$rental->system->place->address}}</td>
                 </tr>
                   <tr>
-                      <td class="p-2 font-semibold">Box Number:</td>
+                      <td class="p-2 font-semibold">{{__('basic.Box Number:')}}</td>
                       <td class="p-2">{{$rental->box->number}}</td>
                   </tr>
                   <tr>
-                      <td class="p-2 font-semibold">Plan Name:</td>
+                      <td class="p-2 font-semibold">{{__('rental.Rental period')}}:</td>
                       <td class="p-2">{{ $rental->duration }}</td>
                   </tr>
                   <tr>
-                      <td class="p-2 font-semibold">Price:</td>
+                      <td class="p-2 font-semibold">{{__('rental.Price')}}:</td>
                       <td class="p-2">{{ $rental->price }}</td>
                   </tr>
                   <tr>
-                      <td class="p-2 font-semibold">Valid from:</td>
+                      <td class="p-2 font-semibold">{{__('rental.Valid from')}}</td>
                       <td class="p-2">{{ $rental->start_time }}</td>
                   </tr>
                   <tr>
-                      <td class="p-2 font-semibold">Valid until:</td>
+                      <td class="p-2 font-semibold">{{__('rental.Booked until')}}</td>
                       <td class="p-2">{{ $rental->end_time }}</td>
                   </tr>
               </table>
@@ -56,10 +56,10 @@
           
             <div class="flex justify-end mt-6">
                 <button class="text-blue-500 hover:underline" onclick="toggleRentalDetails({{ $rental->id }})">
-                    Show Details
+               {{__('basic.Show Details')}}
                 </button>
                 <a href="{{route('invoices.generate',$rental)}}" class="ml-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-600" >
-                  Generate Invoice
+               {{__('basic.Generate Invoice')}}
               </a>
               
               

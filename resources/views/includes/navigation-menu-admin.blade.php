@@ -12,6 +12,7 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @if (Auth::check() && Auth::user()->role === 'super')
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                  
@@ -23,6 +24,7 @@
                     </x-nav-link>
                 
                 </div>
+                @endif
             </div>
             @guest
                 

@@ -21,4 +21,6 @@ class ApiRentalController extends Controller
         return $rentals->response()->setStatusCode(200);
     }
 
+    
+
 }

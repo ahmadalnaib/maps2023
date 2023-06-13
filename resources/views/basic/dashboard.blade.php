@@ -12,8 +12,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Purchases</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Here you'll find all your purchased Lockers.</p>
+                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">{{__('basic.Purchases')}}</h3>
+                    <p class="text-sm text-gray-500 lg:text-base">{{__("basic.Here you'll find all your purchased Lockers.")}}</p>
                 </a>
     
                 <a href="{{route('profile.show')}}" class="border p-4 rounded-xl shadow-sm">
@@ -23,8 +23,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Profile Configuration</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">Here you'll find all your Info.</p>
+                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">{{__('basic.Profile Configuration')}}</h3>
+                    <p class="text-sm text-gray-500 lg:text-base">{{__("basic.Here you'll find all your Info.")}}</p>
                 </a>
     
                 <a href="" class="border p-4 rounded-xl shadow-sm">
@@ -33,8 +33,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">Need help and support</h3>
-                    <p class="text-sm text-gray-500 lg:text-base">For any issues, just contact us here and we'll be able to help</p>
+                    <h3 class="mb-2 text-base font-semibold leading-tight text-gray-900 lg:text-lg">{{__('basic.Need help and support')}}</h3>
+                    <p class="text-sm text-gray-500 lg:text-base">{{__("basic.For any issues, just contact us here and we'll be able to help")}}</p>
                 </a>
     
              
