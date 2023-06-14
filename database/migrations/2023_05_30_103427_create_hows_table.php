@@ -14,17 +14,17 @@ return new class extends Migration
     {
         Schema::create('hows', function (Blueprint $table) {
             $table->id();
-            $table->string('main_title');
-            $table->text('main_subtitle');
-            $table->text('video');
-            $table->string('title_one');
-            $table->text('subtitle_one');
-            $table->string('title_two');
-            $table->text('subtitel_two');
-            $table->string('title_three');
-            $table->text('subtitle_three');
-            $table->string('title_four');
-            $table->text('subtitle_four');
+            $table->json('main_title');
+            $table->json('main_subtitle');
+            $table->json('video');
+            $table->json('title_one');
+            $table->json('subtitle_one');
+            $table->json('title_two');
+            $table->json('subtitel_two');
+            $table->json('title_three');
+            $table->json('subtitle_three');
+            $table->json('title_four');
+            $table->json('subtitle_four');
             $table->timestamps();
         });
 

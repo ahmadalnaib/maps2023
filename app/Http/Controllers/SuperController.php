@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\User;
@@ -10,6 +11,7 @@ use App\Models\Place;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Models\Report;
+use App\Models\System;
 use App\Models\Tenant;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -30,10 +32,10 @@ class SuperController extends Controller
             $basicUsers =  User::where('role', 'basic')->count();
              $tenantUsers = User::where('role', 'admin')->count();
             $loginsCount = Login::count();
-            $lockersCount = Locker::count();
+            $lockersCount = System::count();
             $citycount = Category::count();
             $rentCount=Rental::count();
-            $doorCount=Door::count();
+            $doorCount=Box::count();
             $placeCount=Place::count();
             $planCount=Plan::count();
             $errorCount=Report::count();
