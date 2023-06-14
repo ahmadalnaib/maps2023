@@ -68,14 +68,14 @@
             </div>
 
             <!-- Payment Section -->
-            <div class="bg-stone-200 rounded-lg shadow-xl overflow-hidden">
+            <div class="bg-slate-500 rounded-lg shadow-xl overflow-hidden">
                 <div class="px-4 py-5 sm:px-6">
-                    <h4 class="mt-2 text-lg font-bold P-2">{{__('rental.CONFIRM ORDER AND PAY')}}</h4>
+                    <h4 class="mt-2 text-lg font-bold P-2 text-white">{{__('rental.CONFIRM ORDER AND PAY')}}</h4>
                 </div>
                 <!-- Payment section content -->
                 <div class="container mx-auto">
+                    <div id="success" style="display: none" class="text-center h3 p-4 bg-green-400 text-white rounded mb-2">{{__('rental.The payment was successful.')}}</div>
                     <div class="flex justify-center ">
-                        <div id="success" style="display: none" class="col-md-8 text-center h3 p-4 bg-success text-light rounded">The payment was successful.</div>
                         <div class="w-8/12">
                             <div class="bg-white shadow-md rounded-lg p-4">
                                 <div class="flex">

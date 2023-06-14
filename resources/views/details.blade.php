@@ -20,9 +20,8 @@
               <li data-box-id="{{ $box->id }}"   class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif >
                   {{ $box->number }} 
                  
-              @if ($box->boxType->ebike_option)
+                  @if ($box && $box->boxType && $box->boxType->ebike_option)
                   <div><img src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
-                
               @endif
            
                
@@ -95,9 +94,9 @@
         </div>
         <div class="bg-white shadow-lg rounded p-4 ">
           <div class="p-5 bg-white shadow-sm">
-            <div>
+            <div class="max-w-full">
               <h1 class="mb-4 text-2xl">{{__('details.About the Place')}}</h1>
-              <p class="text-sm">{{$place->overview}}</p>
+              <p class="text-sm break-words">{{$place->overview}}</p>
             </div>
           </div>
           <hr>

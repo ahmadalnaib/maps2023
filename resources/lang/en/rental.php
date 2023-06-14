@@ -15,6 +15,7 @@ return[
   "Cardholder Name"=>"Cardholder Name",
   "Pay"=>"Pay",
   "Cancel"=>"Cancel",
-  "The data you entered contains errors! Review it and try again"=>"The data you entered contains errors! Review it and try again"
+  "The data you entered contains errors! Review it and try again"=>"The data you entered contains errors! Review it and try again",
+  'The payment was successful.'=>'Die Zahlung war erfolgreich.'
 
 ];
