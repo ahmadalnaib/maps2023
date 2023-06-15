@@ -8,8 +8,8 @@
     <div class="flex flex-col justify-center space-y-7">
       
       <h2 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl md:text-center">{{__('index.find')}}</h2>
-      <p class="w-full max-w-4xl mx-auto text-xl text-left text-gray-500 md:text-2xl md:text-center">{{__('index.Enter a street, Address or postcode and we’ll show your nearest lockers')}}</p>
-      <p class="w-full max-w-5xl mx-auto text-xl text-left text-gray-500 md:text-2xl md:text-center">{{__('index.Lockers are available 24 hours a day, 7 days a week')}}</p>
+      <p class="w-full max-w-4xl mx-auto text-xl text-left text-gray-500 md:text-2xl md:text-center">{{__('index.find suitable lockers with address or postal code')}}</p>
+      <p class="w-full max-w-5xl mx-auto text-xl text-left text-gray-500 md:text-2xl md:text-center">{{__('index.Lockers for left-luggage and bikes are available on different locations')}}</p>
       <form action="{{route('search')}}" method="post">
         @csrf
       <div class="flex flex-col w-full mx-auto space-y-5 md:space-y-0 md:space-x-5 md:flex-row">

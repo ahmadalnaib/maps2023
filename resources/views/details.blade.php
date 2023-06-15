@@ -13,7 +13,7 @@
           @php
         $isRented = $box->rentals->isNotEmpty();
     $cursorClass = $isRented ? '' : 'cursor-pointer';
-    $bgColorClass = $isRented ? 'bg-gray-500' : ($box->boxType->big ? 'bg-yellow-400 p-6' : 'bg-green-500');
+    $bgColorClass = $isRented ? 'bg-red-500' : ($box->boxType->big ? 'bg-green-500 p-6' : 'bg-green-500');
         
       @endphp
              
@@ -38,7 +38,7 @@
             @foreach ($system->boxes as $box)
             @if ($box->rentals->isEmpty())
             <option value="{{ $box->id }}" data-box-id="{{ $box->id }}" @if (old('box_id') == $box->id) selected @endif>
-              Box- {{ $box->number }}
+              {{__('details.Locker')}}- {{ $box->number }}
               
             </option>
                 @endif
@@ -56,10 +56,10 @@
         </div>
         <div class="mb-5">
           <div class="py-2 flex items-center justify-center  space-x-5 flex-wrap">
-            <div class="w-4 h-4 bg-gray-500 rounded-full "></div>{{__('details.Besetzt')}}
-            <div class="w-4 h-4 bg-green-500 rounded-full"></div>{{__('details.Ein Fahrrad')}}
-            <div class="w-4 h-4 bg-yellow-400 rounded-full"></div>{{__('details.Zwei Fahrräder')}}
-            <div ><img  src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>{{__('door.Charge')}}
+            <div class="w-4 h-4 bg-green-500 rounded-full mr-1"></div> {{__('details.Free')}}
+            <div class="w-4 h-4 bg-red-500 rounded-full mr-1"></div> {{__('details.Booked')}}
+            <div class="w-4 h-4 bg-gray-400 rounded-full mr-1"></div> {{__('details.Not available')}}
+            <div ><img class="mr-1"  src="{{ asset('/images/charge.svg') }}" alt="Charge"></div> {{__('details.Charge')}}
          </div>
 
     </div> 

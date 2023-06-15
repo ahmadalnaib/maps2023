@@ -1,13 +1,13 @@
 <?php
 
 return[
-  'find' => 'Find a bike locker near you',
-  'Enter a street, Address or postcode and we’ll show your nearest lockers'=>'Enter a street, Address or postcode and we’ll show your nearest lockers',
-  'Lockers are available 24 hours a day, 7 days a week'=>'Lockers are available 24 hours a day, 7 days a week',
-  'Select State/City'=>'Select State/City',
-  'Enter Address or Postcode'=>'Enter Address or Postcode',
+  'find' => 'Find a locker nearby',
+  'find suitable lockers with address or postal code'=>'find suitable lockers with address or postal code.',
+  'Lockers for left-luggage and bikes are available on different locations'=>'Lockers for left-luggage and bikes are available on different locations',
+  'Select State/City'=>'Choose a city',
+  'Enter Address or Postcode'=>'Enter Address or Postal code',
   'Search'=>"Search",
-  'Premium Lockers'=>"Premium Lockers",
-  "Recently Added"=>"Recently Added",
+  'Premium Lockers'=>"Favorite locations",
+  "Recently Added"=>"Latest locations",
    "View"=>"View"
 ];
