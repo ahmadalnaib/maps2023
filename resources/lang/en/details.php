@@ -13,6 +13,6 @@ return[
     "Free"=>"Free",
     "Booked"=>"Booked",
     "Not available"=>"Not available",
-    "Charge"=>"Steckdose",
+    "Charge"=>"power charge",
     "Locker"=>"Fach"
 ];

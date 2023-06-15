@@ -41,6 +41,8 @@ class PurchaseController extends Controller
         
     // Calculate the total price based on the plan's price
     $total = $plan->price;
+
+    
         
 
         $order = $this->provider->createOrder([

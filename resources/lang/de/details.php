@@ -14,7 +14,7 @@ return[
   "Free"=>"frei",
   "Booked"=>"belegt",
   "Not available"=>"nicht verfügbar",
-  "Charge"=>"power charge",
+  "Charge"=>"Steckdose",
   "Locker"=>"Fach"
   
 ];
