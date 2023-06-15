@@ -105,6 +105,8 @@
                     <iframe id="videoFrame" width="500px" height="200px" src="{{$how->video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
+
+            
         </div>
 
           </div>

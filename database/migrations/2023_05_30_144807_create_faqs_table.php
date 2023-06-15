@@ -13,26 +13,23 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->string('question_one');
-            $table->longText('answer_one');
-            $table->string('question_two');
-            $table->longText('answer_two');
-            $table->string('question_three');
-            $table->longText('answer_three');
-            $table->string('question_four');
-            $table->longText('answer_four');
-            $table->string('question_five');
-            $table->longText('answer_five');
-            $table->string('question_six');
-            $table->longText('answer_six');
-            $table->string('question_seven');
-            $table->longText('answer_seven');
-            $table->string('question_eight');
-            $table->longText('answer_eight');
-            $table->string('question_nine');
-            $table->longText('answer_nine');
-            $table->string('question_ten');
-            $table->longText('answer_ten');
+            $table->json('question_one');
+            $table->json('answer_one');
+            $table->json('question_two');
+            $table->json('answer_two');
+            $table->json('question_three');
+            $table->json('answer_three');
+            $table->json('question_four');
+            $table->json('answer_four');
+            $table->json('question_five');
+            $table->json('answer_five');
+            $table->json('question_six');
+            $table->json('answer_six');
+            $table->json('question_seven');
+            $table->json('answer_seven');
+            $table->json('question_eight');
+            $table->json('answer_eight');
+         
             $table->timestamps();
         });
     }

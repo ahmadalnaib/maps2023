@@ -9,128 +9,132 @@
         <form action="{{route('faq.update')}}" method="POST">
             @csrf
             @method('PUT')
-            <div class="grid grid-col-2 gap-4">
-                <div>
-                    <label for="locker_name">Question One</label>
-                    <input name="question_one" type="text" value="{{ $faq->question_one }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input type="hidden" name="id" value="{{ $faq->id }}">
+            <div x-data="{ activeTab: '{{ array_key_first(config('locales.languages')) }}' }">
+              <ul class="flex mb-4" id="myTab" role="tablist">
+                  @foreach(config('locales.languages') as $key => $val)
+                      <li role="presentation" class="mr-2">
+                          <a :class="{ 'bg-gray-300': activeTab === '{{ $key }}' }" x-on:click="activeTab = '{{ $key }}'" id="{{ $key }}-tab" role="tab" :aria-controls="{{ $key }}" :aria-selected="(activeTab === '{{ $key }}').toString()" class="py-2 px-4 bg-gray-200 rounded-md hover:bg-gray-300">{{ $val['name'] }}</a>
+                      </li>
+                  @endforeach
+              </ul>
+
+              @foreach (config('locales.languages') as $key => $val)
+                  <div x-show="activeTab === '{{ $key }}'" id="{{ $key }}" role="tabpanel" :aria-labelledby="{{ $key }}-tab">
+                      <div class="grid grid-cols-2 gap-4">
+                       
+                          <!-- Add other fields here -->
+                          <div>
+                            <label for="question_one">Question one ({{ $key }})</label>
+                            <textarea class="ckeditor" name="question_one[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('question_one.' . $key, $faq->getTranslation('question_one', $key)) }}
+                            </textarea>
+                        </div>
+                          <div>
+                            <label for="answer_one">Answer one ({{ $key }})</label>
+                            <textarea class="ckeditor" name="answer_one[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('answer_one.' . $key, $faq->getTranslation('answer_one', $key)) }}
+                            </textarea>
+                        </div>
+                          <div>
+                            <label for="question_two">Question two ({{ $key }})</label>
+                            <textarea class="ckeditor" name="question_two[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('question_two.' . $key, $faq->getTranslation('question_two', $key)) }}
+                            </textarea>
+                        </div>
+                          <div>
+                            <label for="answer_two">Answer two ({{ $key }})</label>
+                            <textarea class="ckeditor" name="answer_two[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('answer_two.' . $key, $faq->getTranslation('answer_two', $key)) }}
+                            </textarea>
+                        </div>
+                          <div>
+                            <label for="question_three">Question three({{ $key }})</label>
+                            <textarea class="ckeditor" name="question_three[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('question_three.' . $key, $faq->getTranslation('question_three', $key)) }}
+                            </textarea>
+                        </div>
+                          <div>
+                            <label for="answer_three">Answer three({{ $key }})</label>
+                            <textarea class="ckeditor" name="answer_three[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('answer_three.' . $key, $faq->getTranslation('answer_three', $key)) }}
+                            </textarea>
+                        </div>
+                        <div>
+                          <label for="question_four"> Question four({{ $key }})</label>
+                          <textarea class="ckeditor" name="question_four[{{ $key }}]" id="" cols="30" rows="10">
+                              {{ old('question_four.' . $key, $faq->getTranslation('question_four', $key)) }}
+                          </textarea>
+                      </div>
+
+                      <div>
+                        <label for="answer_four">Answer four({{ $key }})</label>
+                        <textarea class="ckeditor" name="answer_four[{{ $key }}]" id="" cols="30" rows="10">
+                            {{ old('answer_four.' . $key, $faq->getTranslation('answer_four', $key)) }}
+                        </textarea>
+                    </div>
+
+                    <div>
+                      <label for="question_five"> Question five({{ $key }})</label>
+                      <textarea class="ckeditor" name="question_five[{{ $key }}]" id="" cols="30" rows="10">
+                          {{ old('question_five.' . $key, $faq->getTranslation('question_five', $key)) }}
+                      </textarea>
+                  </div>
+
+                  <div>
+                    <label for="answer_five">Answer five({{ $key }})</label>
+                    <textarea class="ckeditor" name="answer_five[{{ $key }}]" id="" cols="30" rows="10">
+                        {{ old('answer_five.' . $key, $faq->getTranslation('answer_five', $key)) }}
+                    </textarea>
                 </div>
 
                 <div>
-                  <label for="overview">answer_one</label>
-                  <textarea name="answer_one" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_one }}</textarea>
-                 
+                  <label for="question_six"> Question six({{ $key }})</label>
+                  <textarea class="ckeditor" name="question_six[{{ $key }}]" id="" cols="30" rows="10">
+                      {{ old('question_six.' . $key, $faq->getTranslation('question_six', $key)) }}
+                  </textarea>
               </div>
-      <hr>
+
+              <div>
+                <label for="answer_six">Answer six({{ $key }})</label>
+                <textarea class="ckeditor" name="answer_six[{{ $key }}]" id="" cols="30" rows="10">
+                    {{ old('answer_six.' . $key, $faq->getTranslation('answer_six', $key)) }}
+                </textarea>
+            </div>
+
+            <div>
+              <label for="question_seven"> Question seven({{ $key }})</label>
+              <textarea class="ckeditor" name="question_seven[{{ $key }}]" id="" cols="30" rows="10">
+                  {{ old('question_seven.' . $key, $faq->getTranslation('question_seven', $key)) }}
+              </textarea>
+          </div>
+
+          <div>
+            <label for="answer_seven">Answer seven({{ $key }})</label>
+            <textarea class="ckeditor" name="answer_seven[{{ $key }}]" id="" cols="30" rows="10">
+                {{ old('answer_seven.' . $key, $faq->getTranslation('answer_seven', $key)) }}
+            </textarea>
+        </div>
+
+        <div>
+          <label for="question_eight"> Question eight({{ $key }})</label>
+          <textarea class="ckeditor" name="question_eight[{{ $key }}]" id="" cols="30" rows="10">
+              {{ old('question_eight.' . $key, $faq->getTranslation('question_eight', $key)) }}
+          </textarea>
+      </div>
 
       <div>
-        <label for="locker_name">Question two</label>
-        <input name="question_two" type="text" value="{{ $faq->question_two }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <label for="answer_eight">Answer eight({{ $key }})</label>
+        <textarea class="ckeditor" name="answer_eight[{{ $key }}]" id="" cols="30" rows="10">
+            {{ old('answer_eight.' . $key, $faq->getTranslation('answer_eight', $key)) }}
+        </textarea>
     </div>
 
-    <div>
-      <label for="overview">Answer two</label>
-      <textarea name="answer_two" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_two }}</textarea>
-     
-  </div>
-<hr>
-
-<div>
-  <label for="locker_name">Question three</label>
-  <input name="question_three" type="text" value="{{ $faq->question_three }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer three</label>
-<textarea name="answer_three" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_three }}</textarea>
-
-</div>
-<hr>
-
-<div>
-  <label for="locker_name">Question four</label>
-  <input name="question_four" type="text" value="{{ $faq->question_four }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer four</label>
-<textarea name="answer_four" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_four }}</textarea>
-
-</div>
-<hr>
-
-<div>
-  <label for="locker_name">Question five</label>
-  <input name="question_five" type="text" value="{{ $faq->question_five }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer five</label>
-<textarea name="answer_five" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_five }}</textarea>
-
-</div>
-<hr>
-
-<div>
-  <label for="locker_name">Question six</label>
-  <input name="question_six" type="text" value="{{ $faq->question_six }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer six</label>
-<textarea name="answer_six" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_six }}</textarea>
-
-</div>
-<hr>
-
-<div>
-  <label for="locker_name">Question seven</label>
-  <input name="question_seven" type="text" value="{{ $faq->question_seven }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer seven</label>
-<textarea name="answer_seven" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_seven }}</textarea>
-
-</div>
-<hr>
-
-<div>
-  <label for="locker_name">Question eight</label>
-  <input name="question_eight" type="text" value="{{ $faq->question_eight }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer eight</label>
-<textarea name="answer_eight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_eight }}</textarea>
-
-</div>
-<hr>
-
-<div>
-  <label for="locker_name">Question nine</label>
-  <input name="question_nine" type="text" value="{{ $faq->question_nine }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer nine</label>
-<textarea name="answer_nine" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_nine }}</textarea>
-
-</div>
-<hr>
-
-<div>
-  <label for="locker_name">Question ten</label>
-  <input name="question_ten" type="text" value="{{ $faq->question_ten }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
-
-<div>
-<label for="overview">Answer ten</label>
-<textarea name="answer_ten" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $faq->answer_ten }}</textarea>
-
-</div>
-
-
-
+               
+                      </div>
+                  </div>
+              @endforeach
+             
             </div>
             <button type="submit" class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 mt-4">{{__('place.Update')}}</button>
         </form>
