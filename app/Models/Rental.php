@@ -38,6 +38,10 @@ public function plan()
 {
     return $this->belongsTo(Plan::class);
 }
+protected $casts = [
+    'system_id' => 'integer',
+    'box_id' => 'integer',
+];
 
 public function scopeGroupByMonth(Builder $query)
 {

@@ -3,15 +3,15 @@
         <div class="flex flex-col items-center justify-center mx-auto sm:p-6 xl:p-8 lg:flex-row lg:max-w-6xl lg:p-0">
             <div class="container relative z-20 flex flex-col w-full px-5 pb-1 pr-12 mb-16 text-2xl text-gray-700 lg:w-1/2 sm:pr-0 md:pr-6 md:pl-0 lg:pl-5 xl:pr-10 sm:items-center lg:items-start lg:mb-0">
                 <h1 class="relative z-20 text-5xl font-extrabold leading-none text-red-600 xl:text-6xl sm:text-center lg:text-left" data-primary="purple-500">
-                   {{$how->main_title}}<br>
+                   {!! $how->main_title !!}<br>
                   
                 </h1>
-                <p class="relative z-20 block mt-6 text-base text-gray-500 xl:text-xl sm:text-center lg:text-left"></p>
+                <p class="relative z-20 block mt-6 text-base text-gray-500 xl:text-xl sm:text-center lg:text-left">{!! $how->main_subtitle !!}</p>
                 <div class="relative flex mt-4">
-                    <a href="#park" class="flex items-center self-start justify-center px-5 py-2 mt-5 text-base font-medium leading-tight text-white transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-full shadow lg:py-4 hover:bg-red-600 focus:outline-none focus:border-red-600 focus:shadow-outline-red md:text-lg xl:text-xl md:px-5 xl:px-10" data-primary="red-500" data-rounded="rounded-full">Get Started</a>
+                    <a href="#park" class="flex items-center self-start justify-center px-5 py-2 mt-5 text-base font-medium leading-tight text-white transition duration-150 ease-in-out bg-red-500 border border-transparent rounded-full shadow lg:py-4 hover:bg-red-600 focus:outline-none focus:border-red-600 focus:shadow-outline-red md:text-lg xl:text-xl md:px-5 xl:px-10" data-primary="red-500" data-rounded="rounded-full">{{__('how.Get Started')}}</a>
                     <a href="#_" class="relative flex items-center self-start justify-center py-2 pl-10 pr-5 mt-5 ml-5 text-base font-medium leading-tight text-gray-400 transition duration-150 ease-in-out bg-gray-100 border-transparent rounded-full shadow-sm lg:py-4 md:pl-16 md:pr-5 xl:pr-10 hover:text-red-500 focus:outline-none md:text-lg xl:text-xl" data-primary="red-500" data-rounded="rounded-full" onclick="toggleVideo()">
                         <svg class="absolute left-0 w-6 h-6 ml-3 md:w-10 md:h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                        <span class="text-red-500" data-primary="red-600">How It Works</span>
+                        <span class="text-red-500" data-primary="red-600">{{__('how.How It Works')}}</span>
                     </a>
                 </div>
             </div>
@@ -31,15 +31,15 @@
     <section id="park" class="w-full py-20 bg-gray-50 ">
         <div class="px-10 mx-auto max-w-7xl">
             <div class="px-10 mb-8 space-y-5 lg:px-0 lg:text-center lg:mb-16">
-                <h2 class="text-4xl font-bold sm:text-5xl">How can I park my bike in the Locker.</h2>
+                <h2 class="text-4xl font-bold sm:text-5xl">{{__('how.How do I use a locker?')}}</h2>
                 <p class="text-lg text-gray-600 w-ful sm:text-xl"></p>
             </div>
             <div class="grid overflow-hidden lg:rounded-xl">
                 <div class="grid items-center lg:grid-cols-2">
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl">{{$how->title_one}}</h3>
+                        <h3 class="text-2xl font-semibold sm:text-4xl">{!! $how->title_one !!}</h3>
                         <p class="text-lg text-gray-600">
-                           {{$how->subtitle_one}}
+                           {!! $how->subtitle_one !!}
                         </p>
                     </div>
                     <div class="overflow-hidden bg-gray-100 h-96">
@@ -52,18 +52,16 @@
                         <img src="{{ asset('/images/howpage/mob.png') }}" class="object-cover w-full h-full" alt="">
                     </div>
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl"></h3>
-                        <p class="text-lg text-left text-gray-600">
+                        <h3 class="text-2xl font-semibold sm:text-4xl">{!! $how->title_two !!}</h3>
+                        <p class="text-lg text-left text-gray-600">{!! $how->subtitle_two !!}</p>
                      
                     </div>
                 </div>
     
                 <div class="grid items-center lg:grid-cols-2">
                     <div class="flex flex-col items-start justify-center h-full py-16 pl-16 pr-16 space-y-4 bg-white lg:pr-20 lg:py-0">
-                        <h3 class="text-2xl font-semibold sm:text-4xl"></h3>
-                        <p class="text-lg text-gray-600">
-                         
-                        </p>
+                        <h3 class="text-2xl font-semibold sm:text-4xl">{!! $how->title_three !!}</h3>
+                        <p class="text-lg text-left text-gray-600">{!! $how->subtitle_three !!}</p>
                     </div>
                     <div class="bg-gray-100 h-full">
                         <img  src="{{ asset('/images/howpage/bike.jpg') }}" class="object-cover w-full h-full" alt="">
@@ -92,15 +90,15 @@
                     <div class="max-w-xl mb-6">
                         <div class="mb-6">
                         
-                            <p class="block font-sans text-5xl font-bold tracking-tight text-red-700 sm:text-6xl sm:leading-none"></p>
+                            <div class="block font-sans text-5xl font-bold tracking-tight text-red-700 sm:text-6xl sm:leading-none">{!! $how->title_four !!}</div>
                         </div>
-                        <p class="text-base text-gray-700 md:text-lg"></p>
+                        <p class="text-base text-gray-700 md:text-lg">{!! $how->subtitle_four !!}</p>
                     </div>
                     <div class="max-w-xl mb-6">
                         <p class="relative">
-                            <a href="#_" class="inline-flex flex-col items-center font-semibold text-red-700 transition-colors duration-200 cursor-pointer group">
+                            <a href="{{route('home')}}" class="inline-flex flex-col items-center font-semibold text-red-700 transition-colors duration-200 cursor-pointer group">
                                 <span class="flex items-center w-full">
-                                    <span>Find a locker near you</span>
+                                    <span>{{__('how.Find a locker nearby')}}</span>
                                     <svg class="inline-block w-3 ml-2" fill="currentColor" viewBox="0 0 12 12"><path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z"></path></svg>
                                 </span>
                                 <span class="w-full h-0.5 translate-y-2 group-hover:translate-y-1 duration-200 ease-out transition opacity-0 group-hover:opacity-100 block bg-purple-600"></span>

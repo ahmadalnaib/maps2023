@@ -16,11 +16,11 @@ return new class extends Migration
             $table->id();
             $table->json('main_title');
             $table->json('main_subtitle');
-            $table->json('video');
+            $table->text('video');
             $table->json('title_one');
             $table->json('subtitle_one');
             $table->json('title_two');
-            $table->json('subtitel_two');
+            $table->json('subtitle_two');
             $table->json('title_three');
             $table->json('subtitle_three');
             $table->json('title_four');

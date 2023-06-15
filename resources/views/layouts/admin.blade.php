@@ -81,6 +81,7 @@
         </div>
     </div>
 
+    <script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js" charset="utf-8"></script>
     @stack('modals')
     @stack('scripts')
 
