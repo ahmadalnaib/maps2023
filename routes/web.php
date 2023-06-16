@@ -26,7 +26,6 @@ use App\Http\Controllers\Admin\Faq\FaqAdminController;
 use App\Http\Controllers\Admin\How\HowAdminController;
 use App\Http\Controllers\Admin\Policy\PolicyController;
 use App\Http\Controllers\Admin\System\SystemController;
-use App\Http\Controllers\Admin\Door\DoorAdminController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Term\TermAdminController;
 use App\Http\Controllers\Admin\BoxType\BoxTypeController;

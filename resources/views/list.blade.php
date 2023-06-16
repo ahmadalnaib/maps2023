@@ -6,7 +6,7 @@
   <div class="py-12">
     @if (!$places->count())
         <div class="text-red-900 px-6 py-4 rounded relative bg-red-200 max-w-7x mx-auto text-center container">
-          <span class="inline-block align-middle mr-8 text-center ">There are no Locker in this time</span>
+          <span class="inline-block align-middle mr-8 text-center ">{{__('list.There are no Locker in this time')}}</span>
           </div> 
     @else
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 " >

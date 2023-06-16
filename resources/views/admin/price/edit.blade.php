@@ -9,234 +9,89 @@
         <form action="{{route('price.update')}}" method="POST">
             @csrf
             @method('PUT')
-            <div class="grid grid-col-2 gap-4">
-                <div>
-                    <label for="locker_name">Main title</label>
-                    <input name="main_title" type="text" value="{{ $price->main_title }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </div>
+            <input type="hidden" name="id" value="{{ $price->id }}">
+            <div x-data="{ activeTab: '{{ array_key_first(config('locales.languages')) }}' }">
+              <ul class="flex mb-4" id="myTab" role="tablist">
+                  @foreach(config('locales.languages') as $key => $val)
+                      <li role="presentation" class="mr-2">
+                          <a :class="{ 'bg-gray-300': activeTab === '{{ $key }}' }" x-on:click="activeTab = '{{ $key }}'" id="{{ $key }}-tab" role="tab" :aria-controls="{{ $key }}" :aria-selected="(activeTab === '{{ $key }}').toString()" class="py-2 px-4 bg-gray-200 rounded-md hover:bg-gray-300">{{ $val['name'] }}</a>
+                      </li>
+                  @endforeach
+              </ul>
 
-                <div>
-                  <label for="overview">Main subtitle</label>
-                  <input name="main_subtitle " type="text" value="{{ $price->main_subtitle }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                 
-              </div>
-              
-              <div>
-                <label for="overview">Plan one</label>
-                <input name="title_one" type="text" value="{{ $price->title_one }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              @foreach (config('locales.languages') as $key => $val)
+                  <div x-show="activeTab === '{{ $key }}'" id="{{ $key }}" role="tabpanel" :aria-labelledby="{{ $key }}-tab">
+                      <div class="grid grid-cols-2 gap-4">
+                       
+                          <!-- Add other fields here -->
+                          <div>
+                            <label for="main_title">Main Title ({{ $key }})</label>
+                            <textarea class="ckeditor" name="main_title[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('main_title.' . $key, $price->getTranslation('main_title', $key)) }}
+                            </textarea>
+                        {{-- </div>
+                          <div>
+                            <label for="main_subtitle">Main subtitle({{ $key }})</label>
+                            <textarea class="ckeditor" name="main_subtitle[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('main_subtitle.' . $key, $price->getTranslation('main_subtitle', $key)) }}
+                            </textarea>
+                        </div>
+                          <div>
+                            <label for="title_one">Title one({{ $key }})</label>
+                            <textarea class="ckeditor" name="title_one[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('title_one.' . $key, $price->getTranslation('title_one', $key)) }}
+                            </textarea>
+                        </div>
+                          <div>
+                            <label for="subtitle_one">Subtitle one({{ $key }})</label>
+                            <textarea class="ckeditor" name="subtitle_one[{{ $key }}]" id="" cols="30" rows="10">
+                                {{ old('subtitle_one.' . $key, $price->getTranslation('subtitle_one', $key)) }}
+                            </textarea>
+                        </div>
+                        <div>
+                          <label for="price_one">Price one({{ $key }})</label>
+                         
+                          <input type="text" name="price_one[{{ $key }}]" id="price_one" autocomplete="price_one" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ old('price_one.' . $key, $price->getTranslation('price_one', $key)) }}">
+                      </div>
+
+                      <div>
+                        <label for="tag_one_one">Tag one({{ $key }})</label>
+                       
+                        <input type="text" name="tag_one_one[{{ $key }}]" id="tag_one_one" autocomplete="tag_one_one" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ old('tag_one_one.' . $key, $price->getTranslation('tag_one_one', $key)) }}">
+                    </div>
+                      <div>
+                        <label for="tag_one_two">Tag three({{ $key }})</label>
+                       
+                        <input type="text" name="tag_one_two[{{ $key }}]" id="tag_one_two" autocomplete="tag_one_two" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ old('tag_one_two.' . $key, $price->getTranslation('tag_one_two', $key)) }}">
+                    </div>
+                      <div>
+                        <label for="tag_one_three">Tag three({{ $key }})</label>
+                       
+                        <input type="text" name="tag_one_three[{{ $key }}]" id="tag_one_three" autocomplete="tag_one_three" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ old('tag_one_three.' . $key, $price->getTranslation('tag_one_three', $key)) }}">
+                    </div>
+                      <div>
+                        <label for="tag_one_four">Tag four({{ $key }})</label>
+                       
+                        <input type="text" name="tag_one_four[{{ $key }}]" id="tag_one_four" autocomplete="tag_one_four" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ old('tag_one_four.' . $key, $price->getTranslation('tag_one_four', $key)) }}">
+                    </div>
+                      <div>
+                        <label for="tag_one_five">Tag five({{ $key }})</label>
+                       
+                        <input type="text" name="tag_one_five[{{ $key }}]" id="tag_one_five" autocomplete="tag_one_five" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ old('tag_one_five.' . $key, $price->getTranslation('tag_one_five', $key)) }}">
+                    </div>
+                      <div>
+                        <label for="tag_one_six">Tag Six({{ $key }})</label>
+                       
+                        <input type="text" name="tag_one_six[{{ $key }}]" id="tag_one_six" autocomplete="tag_one_six" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ old('tag_one_six.' . $key, $price->getTranslation('tag_one_six', $key)) }}">
+                    </div> --}}
+
+                   
+
                
-            </div>
-            <div>
-              <label for="overview">Subtitle one</label>
-              <textarea name="subtitle_one" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $price->subtitle_one }}</textarea>
+                      </div>
+                  </div>
+              @endforeach
              
-          </div>
-
-          <div>
-            <label for="overview">price </label>
-            <input name="price_one" type="number" value="{{ $price->price_one }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-           
-        </div>
-        <div>
-          <label for="overview">tag one  </label>
-          <input name="tag_one_one" type="text" value="{{ $price->tag_one_one }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-         
-      </div>
-        <div>
-          <label for="overview">tag two  </label>
-          <input name="tag_one_two" type="text" value="{{ $price->tag_one_two }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-         
-      </div>
-        <div>
-          <label for="overview">tag three  </label>
-          <input name="tag_one_three" type="text" value="{{ $price->tag_one_three }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-         
-      </div>
-        <div>
-          <label for="overview">tag four  </label>
-          <input name="tag_one_four" type="text" value="{{ $price->tag_one_four }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-         
-      </div>
-        <div>
-          <label for="overview">tag five  </label>
-          <input name="tag_one_five" type="text" value="{{ $price->tag_one_five }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-         
-      </div>
-        <div>
-          <label for="overview">tag six  </label>
-          <input name="tag_one_six" type="text" value="{{ $price->tag_one_six }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-         
-      </div>
-       
-             
-             
-          <div class="border-dashed border-2 border-red-600 m-4"></div>
-
-
-          {{-- plan -two --}}
-
-      
-      <div>
-        <label for="overview">Plan two</label>
-        <input name="title_two" type="text" value="{{ $price->title_two }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-       
-    </div>
-    <div>
-      <label for="overview">Subtitle two</label>
-      <textarea name="subtitle_two" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $price->subtitle_two }}</textarea>
-     
-  </div>
-
-  <div>
-    <label for="overview">price </label>
-    <input name="price_two" type="number" value="{{ $price->price_two }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-   
-</div>
-<div>
-  <label for="overview">tag one  </label>
-  <input name="tag_two_one" type="text" value="{{ $price->tag_two_one }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag two  </label>
-  <input name="tag_two_two" type="text" value="{{ $price->tag_two_two }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag three  </label>
-  <input name="tag_two_three" type="text" value="{{ $price->tag_two_three }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag four  </label>
-  <input name="tag_two_four" type="text" value="{{ $price->tag_two_four }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag five  </label>
-  <input name="tag_two_five" type="text" value="{{ $price->tag_two_five }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag six  </label>
-  <input name="tag_two_six" type="text" value="{{ $price->tag_two_six }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-
-
-         
-<div class="border-dashed border-2 border-indigo-600 m-4"></div>
-
-
-{{-- plan -three --}}
-         
-         
-          
-       
-      <div>
-        <label for="overview">Plan three</label>
-        <input name="title_three" type="text" value="{{ $price->title_three }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-       
-    </div>
-    <div>
-      <label for="overview">Subtitle two</label>
-      <textarea name="subtitle_three" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $price->subtitle_three }}</textarea>
-     
-  </div>
-
-  <div>
-    <label for="overview">price </label>
-    <input name="price_three" type="number" value="{{ $price->price_three }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-   
-</div>
-<div>
-  <label for="overview">tag one  </label>
-  <input name="tag_three_one" type="text" value="{{ $price->tag_three_one }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag two  </label>
-  <input name="tag_three_two" type="text" value="{{ $price->tag_three_two }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag three  </label>
-  <input name="tag_three_three" type="text" value="{{ $price->tag_three_three }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag four  </label>
-  <input name="tag_three_four" type="text" value="{{ $price->tag_three_four }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag five  </label>
-  <input name="tag_three_five" type="text" value="{{ $price->tag_three_five }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-  <label for="overview">tag six  </label>
-  <input name="tag_three_six" type="text" value="{{ $price->tag_three_six }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-
-{{-- plan -foure --}}
-         
-<div class="border-dashed border-2 border-green-600 m-4"></div>
-   
-          
-       
-<div>
-  <label for="overview">Plan four</label>
-  <input name="title_four" type="text" value="{{ $price->title_four }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
- 
-</div>
-<div>
-<label for="overview">Subtitle two</label>
-<textarea name="subtitle_four" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $price->subtitle_four }}</textarea>
-
-</div>
-
-<div>
-<label for="overview">price </label>
-<input name="price_four" type="number" value="{{ $price->price_four }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-</div>
-<div>
-<label for="overview">tag one  </label>
-<input name="tag_three_one" type="text" value="{{ $price->tag_four_one }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-</div>
-<div>
-<label for="overview">tag two  </label>
-<input name="tag_four_two" type="text" value="{{ $price->tag_four_two }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-</div>
-<div>
-<label for="overview">tag three  </label>
-<input name="tag_four_three" type="text" value="{{ $price->tag_four_three }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-</div>
-<div>
-<label for="overview">tag four  </label>
-<input name="tag_four_four" type="text" value="{{ $price->tag_four_four }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-</div>
-<div>
-<label for="overview">tag five  </label>
-<input name="tag_four_five" type="text" value="{{ $price->tag_four_five }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-</div>
-<div>
-<label for="overview">tag six  </label>
-<input name="tag_four_six" type="text" value="{{ $price->tag_four_six }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-</div>
-
-         
-
-      
-
             </div>
             <button type="submit" class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 mt-4">{{__('place.Update')}}</button>
         </form>

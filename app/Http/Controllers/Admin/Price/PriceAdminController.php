@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Price;
 use App\Models\Price;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class PriceAdminController extends Controller
 {
@@ -19,60 +20,123 @@ class PriceAdminController extends Controller
 
     public function update(Request $request)
     {
-        $fields = $request->validate([
-            'main_title' => 'required',
-            'main_subtitle' => 'required',
+        $price_id = $request->id;
+        $attr = [];
 
-            'title_one' => 'required',
-            'subtitle_one' => 'required',
-            'price_one' => 'required',
-            'tag_one_one' => 'required',
-            'tag_one_two' => 'required',
-            'tag_one_three' => 'required',
-            'tag_one_four' => 'required',
-            'tag_one_five' => 'required',
-            'tag_one_six' => 'required',
+        foreach (config('locales.languages') as $key => $val) {
+            $attr['main_title.' . $key] = 'required';
+            // $attr['main_subtitle.' . $key] = 'required';
+            // $attr['title_one.' . $key] = 'required';
+            // $attr['subtitle_one.' . $key] = 'required';
+            // $attr['price_one.' . $key] = 'required';
+            // $attr['tag_one_one' . $key] = 'required';
+            // $attr['tag_one_two' . $key] = 'required';
+            // $attr['tag_one_three' . $key] = 'required';
+            // $attr['tag_one_four' . $key] = 'required';
+            // $attr['tag_one_five' . $key] = 'required';
+            // $attr['tag_one_six' . $key] = 'required';
 
-            'title_two' => 'required',
-            'subtitle_two' => 'required',
-            'price_two' => 'required',
-            'tag_two_one' => 'required',
-            'tag_two_two' => 'required',
-            'tag_two_three' => 'required',
-            'tag_two_four' => 'required',
-            'tag_two_five' => 'required',
-            'tag_two_six' => 'required',
+            // $attr['title_two.' . $key] = 'required';
+            // $attr['subtitle_two.' . $key] = 'required';
+            // $attr['price_two.' . $key] = 'required';
+            // $attr['tag_two_on' . $key] = 'required';
+            // $attr['tag_two_two' . $key] = 'required';
+            // $attr['tag_two_three' . $key] = 'required';
+            // $attr['tag_two_four' . $key] = 'required';
+            // $attr['tag_two_five' . $key] = 'required';
+            // $attr['tag_two_six' . $key] = 'required';
 
-            'title_three' => 'required',
-            'subtitle_three' => 'required',
-            'price_three' => 'required',
-            'tag_three_one' => 'required',
-            'tag_three_two' => 'required',
-            'tag_three_three' => 'required',
-            'tag_three_four' => 'required',
-            'tag_three_five' => 'required',
-            'tag_three_six' => 'required',
-
-            
-            'title_four' => 'required',
-            'subtitle_four' => 'required',
-            'price_four' => 'required',
-            'tag_four_one' => 'required',
-            'tag_four_two' => 'required',
-            'tag_four_three' => 'required',
-            'tag_four_four' => 'required',
-            'tag_four_five' => 'required',
-            'tag_four_six' => 'required',
-
+            // $attr['title_three.' . $key] = 'required';
+            // $attr['subtitle_three.' . $key] = 'required';
+            // $attr['price_three.' . $key] = 'required';
+            // $attr['tag_three_one' . $key] = 'required';
+            // $attr['tag_three_two' . $key] = 'required';
+            // $attr['tag_three_three' . $key] = 'required';
+            // $attr['tag_three_four' . $key] = 'required';
+            // $attr['tag_three_five' . $key] = 'required';
+            // $attr['tag_three_six' . $key] = 'required';
           
-        ]);
 
-        $price = Price::first();
-        dd($price);
-       
-        $price->update($fields);
+            // $attr['title_four.' . $key] = 'required';
+            // $attr['subtitle_four.' . $key] = 'required';
+            // $attr['price_four.' . $key] = 'required';
+            // $attr['tag_four_one' . $key] = 'required';
+            // $attr['tag_four_two' . $key] = 'required';
+            // $attr['tag_four_three' . $key] = 'required';
+            // $attr['tag_four_four' . $key] = 'required';
+            // $attr['tag_four_five' . $key] = 'required';
+            // $attr['tag_four_six' . $key] = 'required';
+          
+           
+         
+         
+        }
+
+        $validation = Validator::make($request->all(), $attr);
+      
+        if ($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+
         
+        $price= Price::findOrFail($price_id);
+      
+        $data['main_title']=$request->main_title;
+        // $data['main_subtitle']=$request->main_subtitle;
+        // $data['title_one']=$request->title_one;
+        // $data['subtitle_one']=$request->subtitle_one;
+        // $data['price_one']=$request->price_one;
+        // $data['tag_one_one']=$request->tag_one_one;
+        // $data['tag_one_two']=$request->tag_one_two;
+        // $data['tag_one_three']=$request->tag_one_three;
+        // $data['tag_one_four']=$request->tag_one_four;
+        // $data['tag_one_five']=$request->tag_one_five;
+        // $data['tag_one_six']=$request->tag_one_six;
 
-    return back()->with('success', 'Plans was updated!');
+
+        // $data['title_two']=$request->title_two;
+        // $data['subtitle_two']=$request->subtitle_two;
+        // $data['price_two']=$request->price_two;
+        // $data['tag_two_one']=$request->tag_two_one;
+        // $data['tag_two_two']=$request->tag_two_two;
+        // $data['tag_two_three']=$request->tag_two_three;
+        // $data['tag_two_four']=$request->tag_two_four;
+        // $data['tag_two_five']=$request->tag_two_five;
+        // $data['tag_two_six']=$request->tag_two_six;
+
+
+        // $data['title_three']=$request->title_three;
+        // $data['subtitle_three']=$request->subtitle_three;
+        // $data['price_three']=$request->price_three;
+        // $data['tag_three_one']=$request->tag_three_one;
+        // $data['tag_three_two']=$request->tag_three_two;
+        // $data['tag_three_three']=$request->tag_three_three;
+        // $data['tag_three_four']=$request->tag_three_four;
+        // $data['tag_three_five']=$request->tag_three_five;
+        // $data['tag_three_six']=$request->tag_three_six;
+
+
+        // $data['title_four']=$request->title_four;
+        // $data['subtitle_four']=$request->subtitle_four;
+        // $data['price_four']=$request->price_four;
+        // $data['tag_four_one']=$request->tag_four_one;
+        // $data['tag_four_two']=$request->tag_four_two;
+        // $data['tag_four_three']=$request->tag_four_three;
+        // $data['tag_four_four']=$request->tag_four_four;
+        // $data['tag_four_five']=$request->tag_four_five;
+        // $data['tag_four_six']=$request->tag_four_six;
+
+
+
+      
+        
+       
+        
+        $update = $price->update($data);
+
+
+    return back()->with('success_message', 'Announcement was updated!');
+
+ 
     }
 }

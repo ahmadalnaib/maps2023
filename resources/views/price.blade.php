@@ -4,7 +4,7 @@
         <div class="relative px-10 mx-auto max-w-7xl xl:px-16">
             <div class="max-w-3xl mx-auto mb-12 text-center lg:mb-20">
                 <span class="text-sm font-semibold text-red-500">Our Subscription Plans</span>
-                <h2 class="mt-3 mb-10 text-4xl font-bold font-heading">{{$price->main_title}}</h2>
+                <h2 class="mt-3 mb-10 text-4xl font-bold font-heading">{!! $price->main_title !!}</h2>
                 <p class="mb-16 text-xl text-gray-500">{{$price->main_subtitle}}</p>
             </div>
             <div class="px-6 py-6 mb-6 lg:pl-12 lg:pr-6 bg-gray-50 rounded-xl">
@@ -53,7 +53,7 @@
                             <p class="mb-6 text-gray-500 lg:mb-12">Ensure the utmost safety for your bike with our secure locker</p>
                             <div class="flex justify-center mb-12">
                                 <span class="self-start inline-block mr-1 text-xl font-semibold text-gray-500">&euro;</span>
-                                <p class="self-end text-5xl font-semibold font-heading">{{$price->price_one}}<span class="ml-1 text-sm">/ day</span></p>
+                                <p class="self-end text-5xl font-semibold font-heading"><span class="ml-1 text-sm">/ day</span></p>
                             </div>
                             <a class="block py-4 mb-4 text-sm font-medium leading-normal text-center text-white transition duration-200 bg-red-400 rounded hover:bg-red-300" href="#">Book Now</a>
                             <p class="text-xs text-gray-500">No contract. Cancel Anytime</p>
@@ -105,7 +105,7 @@
                             <p class="mb-6 text-gray-500 lg:mb-12">Ensure the utmost safety for your bike with our secure locker.</p>
                             <div class="flex justify-center mb-12">
                                 <span class="self-start inline-block mr-1 text-xl font-semibold text-gray-500">&euro;</span>
-                                <p class="self-end text-5xl font-semibold font-heading">{{$price->price_two}}<span class="ml-1 text-sm">/ month</span></p>
+                                <p class="self-end text-5xl font-semibold font-heading"><span class="ml-1 text-sm">/ month</span></p>
                             </div>
                             <a class="block py-4 mb-4 text-sm font-medium leading-normal text-center text-white transition duration-200 bg-blue-400 rounded hover:bg-blue-300" href="#">Book Now</a>
                             <p class="text-xs text-gray-500">No contract. Cancel Anytime</p>
@@ -157,7 +157,7 @@
                             <p class="mb-6 text-gray-500 lg:mb-12">Ensure the utmost safety for your bike with our secure locker.</p>
                             <div class="flex justify-center mb-12">
                                 <span class="self-start inline-block mr-1 text-xl font-semibold text-gray-500">&euro;</span>
-                                <p class="self-end text-5xl font-semibold font-heading">{{$price->price_three}}<span class="ml-1 text-sm">/ month</span></p>
+                                <p class="self-end text-5xl font-semibold font-heading"><span class="ml-1 text-sm">/ month</span></p>
                             </div>
                             <a class="block py-4 mb-4 text-sm font-medium leading-normal text-center text-white transition duration-200 bg-emerald-400 rounded hover:bg-emerald-300" href="#">Book Now</a>
                             <p class="text-xs text-gray-500">No contract. Cancel Anytime</p>
@@ -209,7 +209,7 @@
                             <p class="mb-6 text-gray-500 lg:mb-12">Ensure the utmost safety for your bike with our secure locker.</p>
                             <div class="flex justify-center mb-12">
                                 <span class="self-start inline-block mr-1 text-xl font-semibold text-gray-500">&euro;</span>
-                                <p class="self-end text-5xl font-semibold font-heading">{{$price->price_four}}<span class="ml-1 text-sm">/ Year</span></p>
+                                <p class="self-end text-5xl font-semibold font-heading"><span class="ml-1 text-sm">/ Year</span></p>
                             </div>
                             <a class="block py-4 mb-4 text-sm font-medium leading-normal text-center text-white transition duration-200 bg-yellow-400 rounded hover:bg-blue-300" href="#">Book Now</a>
                             <p class="text-xs text-gray-500">No contract. Cancel Anytime</p>
