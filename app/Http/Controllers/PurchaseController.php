@@ -7,7 +7,7 @@ use Dompdf\Dompdf;
 use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
-use App\models\User;
+use App\Models\User;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Models\System;
@@ -64,6 +64,7 @@ class PurchaseController extends Controller
     public function executePayment(Request $request) {
 
         $data = json_decode($request->getContent(), true);
+   
 
         $result = $this->provider->capturePaymentOrder($data['orderId']);
 
