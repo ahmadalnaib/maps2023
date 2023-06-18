@@ -21,6 +21,28 @@ class ApiRentalController extends Controller
         return $rentals->response()->setStatusCode(200);
     }
 
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'tenant_id' => 'required',
+            'user_id' => 'required',
+            'system_id' => 'required',
+            'box_id' => 'required',
+            'plan_id' => 'required',
+            'duration' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'price' => 'required',
+            'pincode' => 'required',
+        ]);
+
+        $rental = Rental::create($validatedData);
+
+        $rentalResource = new RentalResource($rental);
+
+        return $rentalResource->response()->setStatusCode(201);
+    }
+
     public function getBySystem(Request $request, $systemId)
 {
     $rentals = RentalResource::collection(Rental::where('system_id', $systemId)->paginate(8));
