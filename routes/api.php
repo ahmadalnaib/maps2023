@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Admin\Api\PlanController;
+use App\Http\Controllers\Admin\Api\UserController;
 use App\Http\Controllers\Admin\Api\LoginController;
 use App\Http\Controllers\Admin\Api\SystemController;
 use App\Http\Controllers\Admin\Api\ApiRentalController;
@@ -34,6 +35,9 @@ Route::get('/systems', [SystemController::class, 'index']);
 
 Route::get('/plans', [PlanController::class, 'index']);
 
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/email-verified', [UserController::class, 'emailVerifiedUsers']);
+Route::get('/users/not-email-verified', [UserController::class, 'notEmailVerifiedUsers']);
 
 
 Route::get('/login',[LoginController::class,'login']);
