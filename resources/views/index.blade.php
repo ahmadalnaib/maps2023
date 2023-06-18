@@ -70,7 +70,7 @@
             <p class='text-[#7C7C80] font-[15px] mt-6'>{{ $place->address }}</p>
 
 
-              <a  href='{{route('place.show',[$place->id,$place->slug])}}' class='block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-[#CE111E] rounded-[14px] hover:bg-[#CE111E] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 text-white'>
+              <a  href='{{route('place.show',[$place,$place->slug])}}' class='block mt-10 w-full px-4 py-3 font-medium tracking-wide text-center capitalize transition-colors duration-300 transform bg-[#CE111E] rounded-[14px] hover:bg-[#CE111E] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80 text-white'>
                   {{__('index.View')}} 
               </a>
          
