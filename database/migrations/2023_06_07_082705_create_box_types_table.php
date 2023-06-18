@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('ebike_option')->default(0);
             $table->boolean('first_floor_option')->default(0);
             $table->boolean('big')->default(0);
+            $table->unsignedBigInteger('api_size_id')->nullable();
             $table->timestamps();
         });
     }

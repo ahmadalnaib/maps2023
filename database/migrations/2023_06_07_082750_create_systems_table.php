@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('systems', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->unsignedBigInteger('tenant_id')->index();
             $table->uuid('place_id');
             $table->string('system_name');
+            $table->unsignedBigInteger('log_level_config')->nullable();
             $table->timestamps();
         });
     }

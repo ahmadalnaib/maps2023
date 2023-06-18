@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('number_of_days');
             $table->decimal('price',8,2);
             $table->unsignedBigInteger('tenant_id')->index();
+            $table->boolean('active')->default(false); 
             $table->timestamps();
         });
     }

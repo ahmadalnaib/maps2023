@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->unsignedBigInteger('tenant_id')->index();
             $table->unsignedBigInteger('user_id');
             $table->uuid('system_id');

@@ -22,6 +22,7 @@ class SystemResource extends JsonResource
         $currentTime = Carbon::now()->toDateTimeString();
         return [
             'id'=>$this->id,
+            'uuid'=>$this->uuid,
             'tenant_id'=>$this->tenant_id,
             'place_id'=>$this->place_id,
             'system_name'=>$this->system_name,

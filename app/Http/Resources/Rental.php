@@ -16,6 +16,7 @@ class Rental extends JsonResource
     {
         return [
             'id'=>$this->id,
+            'uuid'=>$this->uuid,
             'tenant_id'=>$this->tenant_id,
             'user_id'=>$this->user_id,
             'system_id'=>$this->system_id,

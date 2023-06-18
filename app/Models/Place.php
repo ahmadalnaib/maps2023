@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\Slug;
+use Ramsey\Uuid\Uuid;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Models\System;
@@ -14,10 +15,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Place extends Model
 {
-    use HasFactory,HasUuids,BelongsToTenant ;
-   protected $guarded=['id','view_count'];
+    use HasFactory,BelongsToTenant ;
+   protected $guarded=[];
 
-   
+   protected static function booted()
+   {
+       static::creating(function ($rental) {
+           $rental->uuid = Uuid::uuid4()->toString();
+       });
+   }
     public function user()
     {
         return $this->belongsTo('App\Models\User');

@@ -19,10 +19,6 @@ class PlaceController extends Controller
 
     public function show(Place $place)
     {
-    //   $lockers = $place->lockers()->with('doors')->get();
-    //   $plans = Plan::whereHas('locker.place', function ($query) use ($place) {
-    //     $query->where('user_id', $place->user_id);
-    // })->get();
 
     $systems = $place->systems()->with(['boxes'])->get();
     $plansByBox = [];

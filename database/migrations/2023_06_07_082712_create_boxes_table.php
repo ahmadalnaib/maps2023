@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('number');
             $table->unsignedBigInteger('box_type_id');
             $table->string('plan_id', 255);
-            $table->unsignedBigInteger('system_id');
+            $table->uuid('system_id');
+            $table->unsignedBigInteger('api_id')->nullable();
             $table->timestamps();
         });
     }

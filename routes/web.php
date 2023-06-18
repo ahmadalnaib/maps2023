@@ -258,7 +258,7 @@ Route::get('/{category:slug}',[CategoryController::class,'show'])->name('categor
 Route::resource('report',ReportController::class,['only'=>['create','store']]);
 
 Route::get('/',[PlaceController::class,'index'])->name('home');
-Route::get('/{place}/{slug}',[PlaceController::class,'show'])->name('place.show');
+Route::get('/{place:name}/{slug}',[PlaceController::class,'show'])->name('place.show');
 
 
 Route::post('/rent', [RentalsController::class,'rent'])->name('rent')->middleware('auth');
