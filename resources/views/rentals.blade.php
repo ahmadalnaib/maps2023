@@ -75,12 +75,12 @@
                 <!-- Payment section content -->
                 <div class="container mx-auto">
                     <div id="success" style="display: none" class="text-center h3 p-4 bg-green-400 text-white rounded mb-2">{{__('rental.The payment was successful.')}}</div>
-                    <div class="flex justify-center ">
-                        <div class="w-8/12">
+                    <div class="flex justify-center">
+                        <div class="w-full md:w-8/12">
                             <div class="bg-white shadow-md rounded-lg p-4">
-                                <div class="flex">
-                                    <button class="tab tab-active bg-gray-200 text-center py-4 px-6 rounded-t-lg w-1/2 m-1" data-target="card-tab">{{__('rental.Pay with Card')}}</button>
-                                    <button class="tab bg-blue-500 text-white text-center py-4 px-6 rounded-t-lg w-1/2 m-1" data-target="paypal-tab">{{__('rental.Pay with PayPal')}}</button>
+                                <div class="flex flex-col md:flex-row">
+                                    <button class="tab tab-active bg-green-300 border text-center py-4 px-6 rounded-t-lg w-full md:w-1/2 m-1" data-target="card-tab">{{__('rental.Pay with Card')}}</button>
+                                    <button class="tab  text-black text-center border py-4 px-6 rounded-t-lg w-full md:w-1/2 m-1" data-target="paypal-tab">{{__('rental.Pay with PayPal')}}</button>
                                 </div>
                                 <div class="tab-content mt-4" id="card-tab">
                                     <form method="POST" action="{{ route('rentals.purchase',$plan) }}" class="card-form mt-3 mb-3">
@@ -97,7 +97,7 @@
                                         </div>
                                         <div id="card-errors" role="alert"></div>
                                         <div class="mt-3 text-center">
-                                            <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded " id="pay-btn">{{__('rental.Pay')}} {{$plan->price}} &euro; <span class="icon" hidden><i class="fas fa-sync fa-spin"></i></span></button>
+                                            <button type="submit" class="bg-red-500 text-white font-bold py-2 px-4 rounded" id="pay-btn">{{__('rental.Pay')}} {{$plan->price}} &euro; <span class="icon" hidden><i class="fas fa-sync fa-spin"></i></span></button>
                                         </div>
                                     </form>
                                 </div>
@@ -110,6 +110,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
             <div class="mt-4 text-center">
                 <a href="{{ route('home') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-4 px-6 rounded">{{__('rental.Cancel')}}</a>
@@ -232,6 +233,15 @@
 
             tab.classList.add('tab-active');
             document.getElementById(target).style.display = 'block';
+
+            // Add the background color class to the active tab
+            tabs.forEach(tab => {
+                if (tab.classList.contains('tab-active')) {
+                    tab.classList.add('bg-green-300');
+                } else {
+                    tab.classList.remove('bg-green-300');
+                }
+            });
         });
     });
 </script>
