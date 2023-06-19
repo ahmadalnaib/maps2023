@@ -23,7 +23,7 @@
                
          
             </div>
-            <div class="bg-slate-500 border overflow-hidden shadow-xl sm:rounded-lg p-5 mt-5">
+            <div class="bg-gray-100 border overflow-hidden shadow-xl sm:rounded-lg p-5 mt-5">
                 <livewire:rentals-table />
             </div>
         </div>
