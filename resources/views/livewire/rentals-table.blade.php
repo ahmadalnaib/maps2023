@@ -24,10 +24,10 @@
             @foreach ($rentals as $rental)
             <tr>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->user->name }}
+                    {{ $rental->user->name  ?? 'ANONYMOUS PERSON' }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->user->email }}
+                    {{ $rental->user->email  ?? 'ANONYMOUS PERSON' }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     {{ $rental->system->system_name }}
