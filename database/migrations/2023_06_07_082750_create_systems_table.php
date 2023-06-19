@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('systems', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->unique();
+            $table->uuid('id');
             $table->unsignedBigInteger('tenant_id')->index();
-            $table->uuid('place_id');
+            $table->unsignedBigInteger('place_id');
             $table->string('system_name');
             $table->unsignedBigInteger('log_level_config')->nullable();
             $table->timestamps();

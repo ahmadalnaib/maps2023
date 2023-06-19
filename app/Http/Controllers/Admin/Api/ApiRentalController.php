@@ -43,9 +43,9 @@ class ApiRentalController extends Controller
         return $rentalResource->response()->setStatusCode(201);
     }
 
-    public function getBySystem(Request $request, $systemId)
+    public function getBySystem(Request $request, $systemUuid)
 {
-    $rentals = RentalResource::collection(Rental::where('system_id', $systemId)->paginate(8));
+    $rentals = RentalResource::collection(Rental::where('system_id', $systemUuid)->paginate(8));
 
     return $rentals->response()->setStatusCode(200);
 }

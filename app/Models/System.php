@@ -14,16 +14,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class System extends Model
 {
-    use HasFactory,BelongsToTenant ;
+    use HasFactory,BelongsToTenant,HasUuids ;
     protected $guarded=[];
+    
 
 
-    protected static function booted()
-    {
-        static::creating(function ($system) {
-            $system->uuid = Uuid::uuid4()->toString();
-        });
-    }
+
     public function boxes()
     {
         return $this->hasMany(Box::class);

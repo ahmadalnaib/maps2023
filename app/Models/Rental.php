@@ -18,16 +18,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Rental extends Model
 {
-    use HasFactory,BelongsToTenant ;
+    use HasFactory,BelongsToTenant,HasUuids ;
     protected $guarded=[];
 
+    // protected $casts = [
+    //     'system_id' => 'integer',
+    //     'box_id' => 'integer',
+    // ];
 
-    protected static function booted()
-    {
-        static::creating(function ($rental) {
-            $rental->uuid = Uuid::uuid4()->toString();
-        });
-    }
+
     public function user()
 {
     return $this->belongsTo(User::class);
@@ -47,10 +46,7 @@ public function plan()
 {
     return $this->belongsTo(Plan::class);
 }
-protected $casts = [
-    'system_id' => 'integer',
-    'box_id' => 'integer',
-];
+
 
 public function scopeGroupByMonth(Builder $query)
 {

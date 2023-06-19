@@ -29,7 +29,7 @@ Route::post('/paypal/execute-payment',[PurchaseController::class,'executePayment
 
 Route::get('/rentals', [ApiRentalController::class, 'index']);
 Route::post('/rentals', [ApiRentalController::class, 'store']); 
-Route::get('/rentals/system/{systemId}', [ApiRentalController::class, 'getBySystem']);
+Route::get('/rentals/system/{systemUuid}', [ApiRentalController::class, 'getBySystem']);
 
 Route::get('/systems', [SystemController::class, 'index']);
 
