@@ -26,6 +26,13 @@ class Rental extends Model
     //     'box_id' => 'integer',
     // ];
 
+    protected static function booted()
+    {
+        static::creating(function ($rental) {
+            $rental->uuid = Uuid::uuid4()->toString();
+        });
+    }
+
 
     public function user()
 {

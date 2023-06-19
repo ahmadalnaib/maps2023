@@ -16,14 +16,14 @@ return new class extends Migration
             $table->uuid('uuid')->unique();
             $table->unsignedBigInteger('tenant_id')->index();
             $table->unsignedBigInteger('user_id');
-            $table->foreignUuid('system_id');
+            $table->uuid('system_id');
             $table->unsignedBigInteger('box_id');
-            $table->unsignedBigInteger('plan_id');
+            $table->uuid('plan_id');
             $table->string('duration');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
             $table->decimal('price', 8, 2);
-            $table->unsignedBigInteger('pincode');
+            $table->integer('pincode');
             $table->timestamps();
         });
     }
