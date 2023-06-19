@@ -13,6 +13,7 @@ return[
     "Box Number:"=>"Box Number:",
     "Show Details"=>'Show Details',
     "Generate Invoice"=>"Generate Invoice",
-    "Close"=>"Schließen"
+    "Close"=>"Schließen",
+    'You have no orders at the moment.'=>'You have no orders at the moment.'
 
 ];

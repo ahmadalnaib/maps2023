@@ -70,7 +70,7 @@
           @endforeach
       </div>
       @else
-      <p class="text-gray-500 italic">You have no orders at the moment.</p>
+      <p class="text-gray-500 italic">{{__('basic.You have no orders at the moment.')}}</p>
       @endif
   </div>
   <script>

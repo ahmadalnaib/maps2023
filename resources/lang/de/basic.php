@@ -13,6 +13,7 @@ return[
     "Box Number:"=>"Box-Nummer:",
     "Show Details"=>'Details anzeigen',
     "Generate Invoice"=>"Rechnung generieren",
-    "Close"=>"Schließen"
+    "Close"=>"Schließen",
+    'You have no orders at the moment.'=>'Sie haben im Moment keine Aufträge.'
     
 ];

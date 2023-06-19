@@ -134,7 +134,7 @@
 
       // Replace the placeholders in the URL with the actual values
       let detailsUrl = `{{ route('place.show', [':place', ':slug']) }}`;
-      detailsUrl = detailsUrl.replace(':place', place.id).replace(':slug', place.slug);
+      detailsUrl = detailsUrl.replace(':place', place.name).replace(':slug', place.slug);
 
       // Add click event listener to open the details page when marker is clicked
       marker.on('click', function () {
