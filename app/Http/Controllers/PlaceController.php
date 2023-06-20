@@ -20,19 +20,26 @@ class PlaceController extends Controller
     public function show(Place $place)
     {
 
-    $systems = $place->systems()->with(['boxes'])->get();
+    $system = $place->systems()->with(['boxes'])->get()->first();
     $plansByBox = [];
+    $firstFloorBoxes = [];
+    $secondFloorBoxes = [];
 
-    foreach ($systems as $system) {
+   
         foreach ($system->boxes as $box) {
+            if ($box->boxType->first_floor_option){
+                $firstFloorBoxes[] = $box->id;
+            }else{
+                $secondFloorBoxes[] = $box->id;
+            }
             if ($box->rentals->isNotEmpty() && $box->rentals->last()->end_time->isPast() || $box->rentals->isEmpty()) {
 
                 $plansByBox[$box->id] = $box->plans;
             }
         }
-    }
+    
 
-    return view('details', compact('place', 'systems','plansByBox'));
+    return view('details', compact('place', 'system','plansByBox', 'firstFloorBoxes', 'secondFloorBoxes'));
 
   }
 }
