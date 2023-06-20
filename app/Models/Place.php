@@ -11,12 +11,16 @@ use App\Models\Category;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Place extends Model
 {
-    use HasFactory,BelongsToTenant ;
+    use HasFactory,BelongsToTenant,HasTranslations ;
    protected $guarded=[];
+
+   public $translatable = ['overview'];
+
 
    protected static function booted()
    {

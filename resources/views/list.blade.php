@@ -9,6 +9,7 @@
           <span class="inline-block align-middle mr-8 text-center ">{{__('list.There are no Locker in this time')}}</span>
           </div> 
     @else
+    
       <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 " >
         <div style="height: calc(100vh - 260px);
         overflow-y: scroll;">

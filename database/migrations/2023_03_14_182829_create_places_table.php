@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('image')->default('default.png');
             $table->integer('category_id');
-            $table->text('overview');
+            $table->json('overview');
             $table->string('address');
             $table->integer('user_id');
             $table->double('latitude');

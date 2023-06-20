@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin\Place;
 use App\Models\Place;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\PlaceRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\PlaceRequest;
+use Illuminate\Support\Facades\Validator;
 
 class PlaceAdminController extends Controller
 {
@@ -28,6 +29,24 @@ class PlaceAdminController extends Controller
 
     public function store(PlaceRequest $request)
     {
+
+
+        foreach(config('locales.languages') as $key =>$val){
+            if ($key ==='de'){
+
+                $attr['overview.' .$key]= 'required';
+            }
+
+            $validation=Validator::make($request->all(),$attr);
+            if($validation->fails()){
+                return redirect()->back()->withErrors($validation)->withInput();
+            }
+            $data['overview'] = $request->overview;
+          
+      
+
+
+
         if ($request->image) {
             $imageName = time().'.'.$request->image->extension();
             $request->image->storeAs('public/images', $imageName);
@@ -35,9 +54,10 @@ class PlaceAdminController extends Controller
         } else {
             $request->user()->places()->create($request->all());
         }
-
+       
         return redirect()->route('admin.place.index')->with('message', 'Place was created successfully 🎉')->with('timeout', 3000);
     }
+}
 
     public function edit(Place $place)
     {

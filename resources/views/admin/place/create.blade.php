@@ -18,7 +18,7 @@
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
         </div>
-        <div>
+        <div class="mb-5">
             <label for="catg">{{__('place.Choose state')}}</label>
             <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="category_id" id="" required>
                 @include('includes.category_list')
@@ -27,15 +27,35 @@
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
         </div>
-        <div>
-            <label for="overview">{{__('place.Place Info/Notes')}}</label>
-            <textarea 
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="overview" id="" cols="30" rows="10"></textarea>
-           @error('overview')
-                    <span class="text-red-500">{{ $message }}</span>
-                    @enderror
-        </div>
-                <div>    
+        <div x-data="{ activeTab: '{{ array_key_first(config('locales.languages')) }}' }">
+            <ul class="flex mb-4" id="myTab" role="tablist">
+                @foreach(config('locales.languages') as $key => $val)
+                    <li role="presentation" class="mr-2">
+                        <a :class="{ 'bg-gray-300': activeTab === '{{ $key }}' }" x-on:click="activeTab = '{{ $key }}'" id="{{ $key }}-tab" role="tab" :aria-controls="{{ $key }}" :aria-selected="(activeTab === '{{ $key }}').toString()" class="py-2 px-4 bg-gray-200 rounded-md hover:bg-gray-300">{{ $val['name'] }}</a>
+                    </li>
+                @endforeach
+            </ul>
+
+            @foreach (config('locales.languages') as $key => $val)
+                <div x-show="activeTab === '{{ $key }}'" id="{{ $key }}" role="tabpanel" :aria-labelledby="{{ $key }}-tab">
+                    <div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <div>
+                            <label for="overview">{{__('place.Place Info/Notes')}} ({{ $key }})</label>
+                        
+                            <textarea class="ckeditor" name="overview[{{ $key }}]" id="" cols="30" rows="10">
+                                {{old('overview.' .$key)}}
+                          </textarea>
+                          
+                        </div>
+            
+                    
+                                       
+                       
+                    </div>
+                </div>
+            @endforeach
+     
+                <div class="mt-5 mb-5">    
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">{{__('place.Upload Image - MAX 2 MB')}}</label>
         <input class="p-5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="image" required>
         @error('image')
