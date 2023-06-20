@@ -20,11 +20,10 @@ class BoxResource extends JsonResource
             'tenant_id' => $this->tenant_id,
             'number' => $this->number,
             'box_type_id' => $this->box_type_id,
-            'plan' => new PlanResource($this->whenLoaded('plan')), // Include the associated plan
+            'plans' => PlanResource::collection($this->whenLoaded('plans')),
             'system_id' => $this->system_id,
             'api_id' => $this->api_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+          
         ];
     }
 }
