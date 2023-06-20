@@ -12,7 +12,7 @@
                   <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Resources</h2>
                   <ul class="text-white dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline">BikeTec</a>
+                          <a href="https://flowbite.com/" class="hover:underline">Lockport</a>
                       </li>
                       <li>
                           <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
@@ -45,7 +45,7 @@
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-white sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">BikeTec</a>. All Rights Reserved.
+          <span class="text-sm text-white sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Lockport</a>. All Rights Reserved.
           </span>
           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
               <a href="#" class="text-white hover:text-gray-900 dark:hover:text-white">

@@ -160,7 +160,7 @@ class RentalsController extends Controller
 
     // Additional logic or redirects if needed
 
-    return redirect()->route('invoices.index')->with('message', 'Rental purchased successfully.');
+    return redirect()->route('invoices.index')->with('message', 'Miete erfolgreich erworben.');
 
 
 

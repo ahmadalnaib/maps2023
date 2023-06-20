@@ -99,7 +99,7 @@
         </div>
         <!-- Add more sections as needed -->
         <div>
-            <p>Thank you for being a Biketec customer! If you need any help, please contact us at <a href="mailto:info@locktec.de">locktec@info.de</a>.</p>
+            <p>Vielen Dank, dass Sie Lockport-Kunde sind! Wenn Sie Hilfe benötigen, kontaktieren Sie uns bitte. <a href="mailto:info@locktec.de">locktec@info.de</a>.</p>
         </div>
     </div>
 </body>

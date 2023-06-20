@@ -11,47 +11,47 @@
         }
 
         .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f3f3f3;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f3f3f3;
+    }
 
-        .email-content {
-            max-width: 500px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 5px;
-        }
+    .email-content {
+        max-width: 500px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 5px;
+    }
 
-        h2 {
-            color: #CE111E;
-        }
+    h2 {
+        color: #CE111E;
+    }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 
-        li {
-            margin-bottom: 10px;
-        }
+    li {
+        margin-bottom: 10px;
+    }
 
-        .login-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #CE111E;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+    .login-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #CE111E;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
 
-        .login-button:hover {
-            background-color: #cb4851;
-        }
+    .login-button:hover {
+        background-color: #cb4851;
+    }
     </style>
 </head>
 <body>
@@ -70,8 +70,8 @@
             <p>Bei Fragen oder Unterstützungsbedarf wenden Sie sich bitte an unser Support-Team.</p>
             <p>Nochmals vielen Dank für Ihre Teilnahme!</p>
             <p>Beste Grüße,</p>
-            <p>Biketec</p>
-            <a href="http://ec2-18-184-176-63.eu-central-1.compute.amazonaws.com/de" class="login-button">Jetzt einloggen</a>
+            <p>Lockport</p>
+            <a href="https://lockport.online/login" class="login-button">Jetzt einloggen</a>
         </div>
     </div>
 </body>
