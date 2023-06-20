@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
-        return view('list',['places'=>$category->places()->get()]);
+        return view('list',['places'=>$category->places()->latest()->get()]);
     }
 
 
