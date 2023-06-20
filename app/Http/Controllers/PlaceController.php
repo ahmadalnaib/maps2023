@@ -25,7 +25,7 @@ class PlaceController extends Controller
 
     foreach ($systems as $system) {
         foreach ($system->boxes as $box) {
-            if ($box->rentals && $box->rentals->isEmpty()) {
+            if ($box->rentals->isNotEmpty() && $box->rentals->last()->end_time->isPast() || $box->rentals->isEmpty()) {
 
                 $plansByBox[$box->id] = $box->plans;
             }

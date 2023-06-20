@@ -25,7 +25,7 @@ class Rental extends Model
     // ];
 
 
-
+    protected $casts = [ 'end_time'=>'datetime'];
 
     public function user()
 {

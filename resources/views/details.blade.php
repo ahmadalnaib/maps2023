@@ -12,12 +12,13 @@
           @foreach ($system->boxes as $box)
           @php
         $isRented = $box->rentals->isNotEmpty();
-    $cursorClass = $isRented ? '' : 'cursor-pointer';
-    $bgColorClass = $isRented ? 'bg-red-500' : ($box->boxType->big ? 'bg-green-500 p-6' : 'bg-green-500');
-        
+        $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
+        $cursorClass = $isRented ? '' : 'cursor-pointer';
+        // $bgColorClass = $isRented ? 'bg-red-500' : ($box->boxType->big ? 'bg-green-500 p-6' : 'bg-green-500');
+       $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-6' : 'bg-green-500');
       @endphp
              
-              <li data-box-id="{{ $box->id }}"   class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}" @if ($isRented) disabled @endif >
+              <li data-box-id="{{ $box->id }}"   class="inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}" @if ($isRented ) disabled @endif >
                   {{ $box->number }} 
                  
                   @if ($box && $box->boxType && $box->boxType->ebike_option)
@@ -28,7 +29,7 @@
               </li>
           @endforeach
       </ul>
-      @if ($system->boxes->filter(function($box) { return $box->rentals->isEmpty(); })->count() > 0)
+      @if ($system->boxes->filter(function($box) { return $box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast(); })->count() > 0)
       <form action="{{ route('rent') }}" method="post">
         @csrf
         <input class="" type="hidden" name="system_id" value="{{ $system->id }}">
@@ -36,7 +37,8 @@
           <label for="box_id">{{__('details.Select a Box:')}}</label>
           <select name="box_id" id="box_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onchange="updatePlanOptions(this.value)">
             @foreach ($system->boxes as $box)
-            @if ($box->rentals->isEmpty())
+         
+            @if ($box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast() )
             <option value="{{ $box->id }}" data-box-id="{{ $box->id }}" @if (old('box_id') == $box->id) selected @endif>
               {{__('details.Locker')}}- {{ $box->number }}
               
@@ -180,7 +182,7 @@ updateRentalPeriodOptions();
 // Add click event listener to each box item
 boxItems.forEach(box => {
   box.addEventListener('click', () => {
-    if (!box.classList.contains('bg-gray-500')) {
+    if (!box.classList.contains('bg-red-500')) {
       const selectedBoxId = box.dataset.boxId;
       boxSelect.value = selectedBoxId;
       updateRentalPeriodOptions();

@@ -38,7 +38,7 @@ class RentalsController extends Controller
         $price = $plan->price;
         $intent=auth()->user()->createSetupIntent();
 
-
+    
         // Create the rental record
         
         $rental = new Rental([
@@ -64,6 +64,7 @@ class RentalsController extends Controller
             'end_time' => $end_time,
             'plan'=>$plan,
             'intent'=>$intent,
+         
             
         ]);
     }
