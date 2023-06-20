@@ -6,6 +6,7 @@ use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use App\Models\Locker;
 use App\Models\System;
 use App\Models\Duration;
@@ -26,6 +27,13 @@ class Rental extends Model
 
 
     protected $casts = [ 'end_time'=>'datetime'];
+
+    protected static function booted()
+    {
+        static::creating(function ($rental) {
+            $rental->uuid = Uuid::uuid4()->toString();
+        });
+    }
 
     public function user()
 {
