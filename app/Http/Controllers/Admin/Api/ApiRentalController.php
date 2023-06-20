@@ -17,15 +17,15 @@ class ApiRentalController extends Controller
 
     public function index()
     {
-        $rentals =RentalResource::collection(Rental::paginate(8));
+        $rentals =RentalResource::collection(Rental::all());
         return $rentals->response()->setStatusCode(200);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'tenant_id' => 'required',
-            'user_id' => 'required',
+            'tenant_id' => '',
+            'user_id' => '',
             'system_id' => 'required',
             'box_id' => 'required',
             'plan_id' => 'required',
@@ -45,7 +45,7 @@ class ApiRentalController extends Controller
 
     public function getBySystem(Request $request, $systemUuid)
 {
-    $rentals = RentalResource::collection(Rental::where('system_id', $systemUuid)->paginate(8));
+    $rentals = RentalResource::collection(Rental::where('system_id', $systemUuid)->get());
 
     return $rentals->response()->setStatusCode(200);
 }

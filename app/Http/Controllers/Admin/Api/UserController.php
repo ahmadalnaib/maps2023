@@ -18,19 +18,19 @@ class UserController extends Controller
 
     public function index()
     {
-        $rentals =UserResource::collection(User::paginate(8));
+        $rentals =UserResource::collection(User::all());
         return $rentals->response()->setStatusCode(200);
     }
 
     public function emailVerifiedUsers()
     {
-        $users = User::whereNotNull('email_verified_at')->paginate(8);
+        $users = User::whereNotNull('email_verified_at')->all();
         return UserResource::collection($users)->response()->setStatusCode(200);
     }
 
     public function notEmailVerifiedUsers()
     {
-        $users = User::whereNull('email_verified_at')->paginate(8);
+        $users = User::whereNull('email_verified_at')->all();
         return UserResource::collection($users)->response()->setStatusCode(200);
     }
 

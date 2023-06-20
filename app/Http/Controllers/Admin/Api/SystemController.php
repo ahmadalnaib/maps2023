@@ -18,7 +18,7 @@ class SystemController extends Controller
 
     public function index()
     {
-        $systems =SystemResource::collection(System::paginate(8));
+        $systems =SystemResource::collection(System::all());
         return $systems->response()->setStatusCode(200);
     }
 

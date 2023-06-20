@@ -18,7 +18,7 @@ class PlanController extends Controller
 
     public function index()
     {
-        $plans =PlanResource::collection(Plan::paginate(8));
+        $plans =PlanResource::collection(Plan::all());
         return $plans->response()->setStatusCode(200);
     }
 }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tenant_id')->index();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('tenant_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('system_id');
             $table->unsignedBigInteger('box_id');
             $table->uuid('plan_id');
