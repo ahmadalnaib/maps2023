@@ -6,7 +6,7 @@ return[
     "I agree with the"=>"I agree with the",
     "terms and conditions"=>"terms and conditions",
     "Checkout"=>"Checkout",
-    "We're sorry, but there are currently no locker doors available for rent. Please check back later or contact our customer service for further assistance."=>"We're sorry, but there are currently no locker doors available for rent. Please check back later or contact our customer service for further assistance.",
+    "We're sorry, but there are currently no locker doors available for rent. Please check back later or contact our customer service for further assistance."=>"We're sorry, but we currently have no free locker. Please check back later or use another location.",
     "Address"=>"Address",
     "About the Place"=>"Information",
     "Please accept the conditions."=>"Please accept the conditions.",

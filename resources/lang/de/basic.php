@@ -1,12 +1,12 @@
 <?php
 
 return[
-    "Purchases"=>"Käufe",
-    "Here you'll find all your purchased Lockers."=>"Hier finden Sie alle Ihre gekauften Schließfächer.",
+    "Purchases"=>"Buchungen",
+    "Here you'll find all your purchased Lockers."=>"Hier finden du eine aktuelle über deine Buchungen.",
     "Profile Configuration"=>"Profil-Konfiguration",
     "Here you'll find all your Info."=>"Hier finden Sie alle Ihre Infos.",
-    "Need help and support"=>"Brauche Hilfe und Unterstützung",
-    "For any issues, just contact us here and we'll be able to help"=>"Wenn Sie Fragen haben, kontaktieren Sie uns einfach hier und wir werden Ihnen helfen können.",
+    "Need help and support"=>"Hilfe",
+    "For any issues, just contact us here and we'll be able to help"=>"Wenn du Fragen hast, kontaktiere uns gerne:",
     "Username:"=>"Benutzername:",
     "System Name:"=>"System-Name:",
     "System Address:"=>"System-Adresse:",
@@ -14,6 +14,6 @@ return[
     "Show Details"=>'Details anzeigen',
     "Generate Invoice"=>"Rechnung generieren",
     "Close"=>"Schließen",
-    'You have no orders at the moment.'=>'Sie haben im Moment keine Aufträge.'
+    'You have no orders at the moment.'=>'Aktuell hast du keine Fächer gebucht.'
     
 ];

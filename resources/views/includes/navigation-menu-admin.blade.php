@@ -58,7 +58,7 @@
                       Dashboard
                    </x-nav-link>
                     <x-nav-link href="{{route('invoices.index')}}">
-                      Käufe
+                        Buchungen
                    </x-nav-link>
 
                    @endif
@@ -266,7 +266,7 @@
                     @if (Auth::check() && Auth::user()->role === 'basic' )
                   
                     <x-responsive-nav-link href="{{route('invoices.index')}}">
-                      Käufe
+                        Buchungen
                    </x-responsive-nav-link>
 
                    @endif
