@@ -9,7 +9,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <a href="{{route('admin.policy.create')}}" type="button"
-                class="py-2.5 px-5 mr-2 mb-10 text-sm font-medium text-white focus:outline-none bg-indigo-500 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{{__('policy.Create New Policy')}}</a>
+                class="py-2.5 px-5 mr-2 mb-10 text-sm font-medium text-white focus:outline-none bg-slate-500 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{{__('policy.Create New Policy')}}</a>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
                 @if ($policies->count())
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

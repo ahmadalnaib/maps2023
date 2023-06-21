@@ -6,14 +6,13 @@
     </x-slot>
 
     <div class="container my-12 mx-auto md:px-12 p-5">
-        <h1 class="text-2xl p-5 mb-2">{{__('place.Add New Place')}}</h1>
-   <hr class="mb-5"/>
+     
    <form class="form-contact" action="{{route('admin.place.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="grid grid-col-2 gap-4">
         <div>
             <label for="name">{{__('place.Place name')}}</label>
-            <input placeholder="Kulmbach" name="name" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input  name="name" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             @error('name')
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
@@ -45,6 +44,9 @@
                             <textarea class="ckeditor" name="overview[{{ $key }}]" id="" cols="30" rows="10">
                                 {{old('overview.' .$key)}}
                           </textarea>
+                          @error('overview')
+                          <span class="text-red-500">{{ $message }}</span>
+                          @enderror
                           
                         </div>
             
@@ -69,7 +71,7 @@
         
         <div class="mt-4">
             <label for="address">{{__('place.Address')}}</label>
-            <input placeholder="Heinrich Schneider 7" type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input  type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             @error('address')
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
@@ -77,20 +79,20 @@
         
         <div class="form-group col-lg-6">
           <label for="long">{{__('place.Longitude')}}</label>
-          <input placeholder="10.250244140625002" id="longitude" type="text" name="longitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <input  id="longitude" type="text" name="longitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           @error('longitude')
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
         </div>
         <div class="form-group col-lg-6">
             <label for="long">{{__('place.Latitude')}}</label>
-            <input placeholder="50.12057809796008" id="latitude" type="text" name="latitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <input id="latitude" type="text" name="latitude" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             @error('longitude')
                     <span class="text-red-500">{{ $message }}</span>
                     @enderror
           </div>
          
-    <button type="submit" class="text-white bg-slate-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">{{__('place.Create')}}</button>
+    <button type="submit" class="text-white bg-slate-500 mt-5 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-blue-800">{{__('place.Create')}}</button>
     </div>
 
    </form>

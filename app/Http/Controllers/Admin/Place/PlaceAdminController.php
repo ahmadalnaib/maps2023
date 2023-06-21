@@ -67,9 +67,21 @@ class PlaceAdminController extends Controller
 
     public function update(PlaceRequest $request, Place $place)
     {
+
+        foreach(config('locales.languages') as $key =>$val){
+            $attr['overview.' .$key]= 'required';
+           
+        }
+
+        $validation=Validator::make($request->all(),$attr);
+
+       if($validation->fails()){
+            return redirect()->back()->withErrors($validation)->withInput();
+        }
+        $data['overview']=$request->overview;
+
         $place->name = $request->input('name');
         $place->category_id = $request->input('category_id');
-        $place->overview = $request->input('overview');
         $place->address = $request->input('address');
         $place->longitude = $request->input('longitude');
         $place->latitude = $request->input('latitude');
@@ -80,7 +92,7 @@ class PlaceAdminController extends Controller
             $place->image = $imageName;
         }
 
-        $place->save();
+        $place->update($data);
 
         return redirect()->route('admin.place.index')->with('message', 'Place was updated successfully 🎉')->with('timeout', 3000);
     }
