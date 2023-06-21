@@ -29,14 +29,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // $this->call(PlaceSeeder::class);
-        $this->call(BoxSeeder::class);
-        $this->call(CategorySeeder::class);
-        $this->call(FaqSeeder::class);
-        $this->call(HowsTableSeeder::class);
-        $this->call(PlaceSeeder::class);
-        $this->call(PlanSeeder::class);
-        $this->call(PriceSeeder::class);
-        $this->call(TermSeeder::class);
-        $this->call(PolicySeeder::class);
+  
     }
 }
