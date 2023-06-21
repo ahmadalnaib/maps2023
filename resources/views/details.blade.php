@@ -1,15 +1,15 @@
 <x-app-layout>
-    <div class="py-12">
+    <div class="py-12 container mx-auto">
         <div class="text-center m-5 p-5">
             <h1 class="text-7xl font-extrabold mb-2">{{ $place->name }}</h1>
             <p class="text-5xl text-gray-400">{{ $place->address }}</p>
         </div>
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 ">
+        <div class="max-w-9xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 ">
 
             <div class="text-center border p-4 rounded-md">
 
               <div class="flex flex-wrap">
-                <div class="w-full md:w-1/2">
+                <div class="w-full md:w-full">
                   <ul class="list-none p-0">
                     @foreach ($system->boxes as $box)
                         @if (in_array($box->id, $firstFloorBoxes))
@@ -19,7 +19,7 @@
                                 $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
                                 $cursorClass = $isRented  ? '' : 'cursor-pointer';
                                 
-                                $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-6' : 'bg-green-500');
+                                $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-4' : 'bg-green-500');
                             @endphp
                             @if ($box && $box->boxType)
                                 <li data-box-id="{{ $box->id }}"
@@ -38,7 +38,7 @@
                   </ul>
                 </div>
               </div>
-                <div class="w-full md:w-1/2">
+                <div class="w-full md:w-full">
                   <ul class="list-none p-0">
 
                     @foreach ($system->boxes as $box)
@@ -49,7 +49,7 @@
                                 $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
                                 $cursorClass = $isRented ? '' : 'cursor-pointer';
                                 
-                                $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-6' : 'bg-green-500');
+                                $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-4' : 'bg-green-500');
                             @endphp
                             @if ($box && $box->boxType)
                                 <li data-box-id="{{ $box->id }}"
