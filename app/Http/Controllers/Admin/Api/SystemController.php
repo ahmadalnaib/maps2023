@@ -22,4 +22,11 @@ class SystemController extends Controller
         return $systems->response()->setStatusCode(200);
     }
 
+    public function show($id)
+{
+    $system = System::findOrFail($id);
+    return new SystemResource($system);
+}
+
+
 }

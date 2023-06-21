@@ -33,6 +33,8 @@ Route::post('/rentals', [ApiRentalController::class, 'store']);
 Route::get('/rentals/system/{systemUuid}', [ApiRentalController::class, 'getBySystem']);
 
 Route::get('/systems', [SystemController::class, 'index']);
+Route::get('/systems/{id}', [SystemController::class, 'show']);
+
 
 Route::get('/plans', [PlanController::class, 'index']);
 Route::get('/plans/{plan}', [PlanController::class, 'show']);
