@@ -12,9 +12,9 @@
                 </div>
 
                 <!-- Navigation Links -->
-                @if (Auth::check() && Auth::user()->role === 'super')
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @if (Auth::check() && Auth::user()->role === 'super')
                  
                     <x-nav-link href="{{route('super')}}" >
                         super
@@ -22,9 +22,51 @@
                     <x-nav-link href="{{route('team.index')}}" >
                         teams
                     </x-nav-link>
+                    @endif
+
+                    @if (Auth::check() && Auth::user()->role === 'admin' )
+                    <x-nav-link href="{{route('dashboard')}}">
+                      Dashboard
+                   </x-nav-link>
+                         
+                    <x-nav-link href="{{route('admin.place.index')}}">
+                         {{__('place.Places')}}
+                    </x-nav-link>
+                    <x-nav-link href="{{route('admin.policy.index')}}">
+                    {{__('policy.policy')}}
+                   </x-nav-link>
+                    <x-nav-link href="{{route('admin.system.index')}}">
+                        System
+                   </x-nav-link>
+                    <x-nav-link href="{{route('admin.boxtype.index')}}">
+                        Box Type
+                   </x-nav-link>
                 
+                  
+                    <x-nav-link href="{{ route('admin.plan.index') }}">
+                        {{ __('Plans') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{route('admin.box.index')}}">
+                        Box
+                    </x-nav-link>
+                  
+                 
+                    @endif
+                    
+                    @if (Auth::check() && Auth::user()->role === 'basic' )
+                    <x-nav-link href="{{route('dashboard')}}">
+                      Dashboard
+                   </x-nav-link>
+                    <x-nav-link href="{{route('invoices.index')}}">
+                      Käufe
+                   </x-nav-link>
+
+                   @endif
+                    <div class="mt-3">
+
+                        <x-lang-switcher />
+                    </div>
                 </div>
-                @endif
             </div>
             @guest
                 
@@ -130,32 +172,7 @@
                             </x-dropdown-link>
                           
                             @endif
-                            @if (Auth::check() && Auth::user()->role === 'admin' )
-                         
-                            <x-dropdown-link href="{{route('admin.place.index')}}">
-                                 {{__('place.Places')}}
-                            </x-dropdown-link>
-                            <x-dropdown-link href="{{route('admin.policy.index')}}">
-                            {{__('policy.policy')}}
-                           </x-dropdown-link>
-                            <x-dropdown-link href="{{route('admin.system.index')}}">
-                                System
-                           </x-dropdown-link>
-                            <x-dropdown-link href="{{route('admin.boxtype.index')}}">
-                                Box Type
-                           </x-dropdown-link>
-                        
                           
-                            <x-dropdown-link href="{{ route('admin.plan.index') }}">
-                                {{ __('Plans') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link href="{{route('admin.box.index')}}">
-                                Box
-                            </x-dropdown-link>
-                          
-                         
-                            @endif
-
                           
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -210,8 +227,8 @@
                 @endif
 
                 <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-300">{{ Auth::user()->email }}</div>
                 </div>
             </div>
 
@@ -220,9 +237,39 @@
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link href="{{ route('super') }}" :active="request()->routeIs('super')">
-                    {{ __('Super') }}
-                </x-responsive-nav-link>
+                @if (Auth::check() && Auth::user()->role === 'admin' )
+                 
+                         
+                    <x-responsive-nav-link href="{{route('admin.place.index')}}">
+                         {{__('place.Places')}}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{route('admin.policy.index')}}">
+                    {{__('policy.policy')}}
+                   </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{route('admin.system.index')}}">
+                        System
+                   </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{route('admin.boxtype.index')}}">
+                        Box Type
+                   </x-responsive-nav-link>
+                
+                  
+                    <x-responsive-nav-link href="{{ route('admin.plan.index') }}">
+                        {{ __('Plans') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link href="{{route('admin.box.index')}}">
+                        Box
+                    </x-responsive-nav-link>
+                  
+                 
+                    @endif
+                    @if (Auth::check() && Auth::user()->role === 'basic' )
+                  
+                    <x-responsive-nav-link href="{{route('invoices.index')}}">
+                      Käufe
+                   </x-responsive-nav-link>
+
+                   @endif
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">

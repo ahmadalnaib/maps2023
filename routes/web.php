@@ -126,22 +126,8 @@ Route::get('admin/plan/{plan}', [PlanController::class, 'edit'])->name('admin.pl
 Route::put('admin/plans/{plan}', [PlanController::class, 'update'])->name('admin.plan.update');
 Route::delete('admin/plans/{plan}', [PlanController::class, 'destroy'])->name('admin.plan.destroy');
 
-// admin -- Door
-Route::get('admin/door',[DoorAdminController::class,'index'])->name('admin.door.index');
-Route::get('admin/door/create',[DoorAdminController::class,'create'])->name('admin.door.create');
-Route::post('admin/door/create',[DoorAdminController::class,'store'])->name('admin.door.store');
-Route::get('admin/door/{door}', [DoorAdminController::class, 'edit'])->name('admin.door.edit');
-Route::put('admin/doors/{door}', [DoorAdminController::class, 'update'])->name('admin.door.update');
-Route::delete('admin/doors/{door}', [DoorAdminController::class, 'destroy'])->name('admin.door.destroy');
 
 
-// admin -- Locker
-Route::get('admin/locker',[LockerAdminController::class,'index'])->name('admin.locker.index');
-Route::get('admin/locker/create',[LockerAdminController::class,'create'])->name('admin.locker.create');
-Route::post('admin/locker/store',[LockerAdminController::class,'store'])->name('admin.locker.store');
-Route::get('admin/locker/{locker}', [LockerAdminController::class, 'edit'])->name('admin.locker.edit');
-Route::put('admin/lockers/{locker}', [LockerAdminController::class, 'update'])->name('admin.locker.update');
-Route::delete('admin/lockers/{locker}', [LockerAdminController::class, 'destroy'])->name('admin.locker.destroy');
 
 
 Route::get('/checkout',[RentalsController::class,'creditCheckout'])->name('credit.checkout');
