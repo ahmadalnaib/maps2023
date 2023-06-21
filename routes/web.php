@@ -248,6 +248,7 @@ Route::get('/{place:name}/{slug}',[PlaceController::class,'show'])->name('place.
 
 Route::post('/rent', [RentalsController::class,'rent'])->name('rent')->middleware('auth');
 
+Route::post('/rentals/save', [RentalsController::class, 'save'])->name('rentals.save')->middleware('auth');
 
 
 

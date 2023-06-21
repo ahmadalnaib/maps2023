@@ -166,5 +166,62 @@ class RentalsController extends Controller
 
 }
 
+public function save(Request $request, Plan $plan)
+{
+    // Retrieve the rental data from the request and save it to the database
+    $validatedData = $request->validate([
+        'system_id' => 'required|exists:systems,id',
+        'box_id' => 'required|exists:boxes,id',
+        'rental_period' => 'required|exists:plans,id',
+    ]);
+
+    $system = System::findOrFail($validatedData['system_id']);
+    $box = Box::findOrFail($validatedData['box_id']);
+    $plan = Plan::findOrFail($validatedData['rental_period']);
+
+    $start_time = Carbon::now();
+    $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    $price = $plan->price;
+    $pincode = mt_rand(100000, 999999);
+
+    $rental = new Rental([
+        "system_id" => $system->id,
+        "user_id" => auth()->id(),
+        'box_id' => $box->id,
+        'start_time' => $start_time,
+        'end_time' => $end_time,
+        'duration'=>$plan->name,
+        'plan_id' => $plan->id,
+        'price' => $price,
+        'pincode' => $pincode,
+        'created_at' => Carbon::now(),
+    ]);
+
+     $dompdf = new Dompdf();
+     $dompdf->loadHtml(view('emails.payment_confirmation', ['rental' => $rental])->render());
+
+     $dompdf->render();
+     $pdfContents = $dompdf->output();
+
+     // Save the PDF file to a temporary location
+     $pdfPath = storage_path('app/tmp/invoice.pdf');
+     file_put_contents($pdfPath, $pdfContents);
+     // Send the pin code email
+  
+
+    Mail::to($rental->user->email)->send(new PaymentConfirmation($rental));
+     // Cleanup the temporary PDF file
+     unlink($pdfPath);
+    
+
+
+    $rental->save();
+
+    // Perform any additional actions or redirects as needed
+    return redirect()->route('invoices.index')->with('message', 'Miete erfolgreich erworben.');
+}
+
+
+
  
 }
