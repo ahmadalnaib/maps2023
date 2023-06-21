@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\BoxResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlanResource extends JsonResource
@@ -22,6 +23,7 @@ class PlanResource extends JsonResource
             'number_of_days'=>$this->number_of_days,
             'price'=>$this->price,
             'active'=>$this->active,
+            'boxes' => BoxResource::collection($this->whenLoaded('boxes')),
             
            
 

@@ -21,4 +21,12 @@ class PlanController extends Controller
         $plans =PlanResource::collection(Plan::all());
         return $plans->response()->setStatusCode(200);
     }
+
+
+    public function show(Plan $plan)
+    {
+        $plan->load('boxes'); // Eager load the associated plans
+        return new PlanResource($plan);
+    }
+
 }
