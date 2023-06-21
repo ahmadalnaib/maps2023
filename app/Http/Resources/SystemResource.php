@@ -19,6 +19,7 @@ class SystemResource extends JsonResource
 
         $placeUrl = $this->place ? URL::to('/places/' . $this->place_id) : null;
         $websiteUrl = URL::to('/');
+      
         $currentTime = Carbon::now()->toDateTimeString();
         return [
             'id'=>$this->id,
@@ -27,6 +28,7 @@ class SystemResource extends JsonResource
             'system_name'=>$this->system_name,
             'place_name' => $this->place ? $this->place->name : null,
             'website_url' => $websiteUrl,
+            'current_url'=> URL::to('/de/'. $this->place->name.'/'.$this->place->slug.''),
             'currentTime'=>$currentTime
            
 
