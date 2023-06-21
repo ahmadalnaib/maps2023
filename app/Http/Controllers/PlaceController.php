@@ -25,7 +25,7 @@ class PlaceController extends Controller
     $firstFloorBoxes = [];
     $secondFloorBoxes = [];
 
-   
+    if ($system && isset($system->boxes)) {
         foreach ($system->boxes as $box) {
             if ($box->boxType->first_floor_option){
                 $firstFloorBoxes[] = $box->id;
@@ -36,6 +36,8 @@ class PlaceController extends Controller
 
                 $plansByBox[$box->id] = $box->plans;
             }
+        } }else{
+            dd('make sol');
         }
     
 

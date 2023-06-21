@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
 
     <x-authentication-card>
         
@@ -60,4 +60,4 @@
      
     </x-authentication-card>
 
-</x-guest-layout>
+</x-app-layout>
