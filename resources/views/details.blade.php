@@ -153,7 +153,7 @@
                     <div class="p-5 bg-white shadow-sm">
                         <div class="max-w-full">
                             <h1 class="mb-4 text-2xl">{{ __('details.About the Place') }}</h1>
-                            <p class="text-sm break-words">{{ $place->overview }}</p>
+                            <p class="text-sm break-words"> {!! $place->overview !!}</p>
                         </div>
                     </div>
                     <hr>
