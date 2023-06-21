@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 class BasicController extends Controller
 {
     //
+    public function __construct()
+{
+    $this->middleware(['auth', 'role:basic']);
+}
+
+
 
     public function dashboard()
     {

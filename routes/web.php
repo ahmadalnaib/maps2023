@@ -72,66 +72,66 @@ Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.use
 
 
 // admin -- policies
-Route::get('admin/policy',[PolicyController::class,'index'])->name('admin.policy.index');
-Route::get('admin/policy/create',[PolicyController::class,'create'])->name('admin.policy.create');
-Route::post('admin/policy/store',[PolicyController::class,'store'])->name('admin.policy.store');
-Route::get('admin/policy/{policy}',[PolicyController::class,'edit'])->name('admin.policy.edit');
-Route::put('admin/policy/{policy}',[PolicyController::class,'update'])->name('admin.policy.update');
-Route::delete('admin/policy/{policy}',[PolicyController::class,'destroy'])->name('admin.policy.destroy');
+Route::get('admin/policy',[PolicyController::class,'index'])->name('admin.policy.index')->middleware(['auth', 'role:admin']);
+Route::get('admin/policy/create',[PolicyController::class,'create'])->name('admin.policy.create')->middleware(['auth', 'role:admin']);
+Route::post('admin/policy/store',[PolicyController::class,'store'])->name('admin.policy.store')->middleware(['auth', 'role:admin']);
+Route::get('admin/policy/{policy}',[PolicyController::class,'edit'])->name('admin.policy.edit')->middleware(['auth', 'role:admin']);
+Route::put('admin/policy/{policy}',[PolicyController::class,'update'])->name('admin.policy.update')->middleware(['auth', 'role:admin']);
+Route::delete('admin/policy/{policy}',[PolicyController::class,'destroy'])->name('admin.policy.destroy')->middleware(['auth', 'role:admin']);
 
 
 
 
 // admin -- systems
-Route::get('admin/system',[SystemController::class,'index'])->name('admin.system.index');
-Route::get('admin/system/create',[SystemController::class,'create'])->name('admin.system.create');
-Route::post('admin/system/store',[SystemController::class,'store'])->name('admin.system.store');
-Route::get('admin/system/{system}', [SystemController::class, 'edit'])->name('admin.system.edit');
-Route::put('admin/system/{system}', [SystemController::class, 'update'])->name('admin.system.update');
-Route::delete('admin/system/{system}', [SystemController::class, 'destroy'])->name('admin.system.destroy');
+Route::get('admin/system',[SystemController::class,'index'])->name('admin.system.index')->middleware(['auth', 'role:admin']);
+Route::get('admin/system/create',[SystemController::class,'create'])->name('admin.system.create')->middleware(['auth', 'role:admin']);
+Route::post('admin/system/store',[SystemController::class,'store'])->name('admin.system.store')->middleware(['auth', 'role:admin']);
+Route::get('admin/system/{system}', [SystemController::class, 'edit'])->name('admin.system.edit')->middleware(['auth', 'role:admin']);
+Route::put('admin/system/{system}', [SystemController::class, 'update'])->name('admin.system.update')->middleware(['auth', 'role:admin']);
+Route::delete('admin/system/{system}', [SystemController::class, 'destroy'])->name('admin.system.destroy')->middleware(['auth', 'role:admin']);
 
 
 // admin -- Boxes
-Route::get('admin/box',[BoxController::class,'index'])->name('admin.box.index');
-Route::get('admin/box/create',[BoxController::class,'create'])->name('admin.box.create');
-Route::post('admin/box/create',[BoxController::class,'store'])->name('admin.box.store');
-Route::get('admin/box/{box}', [BoxController::class, 'edit'])->name('admin.box.edit');
-Route::put('admin/boxs/{box}', [BoxController::class, 'update'])->name('admin.box.update');
-Route::delete('admin/boxs/{box}', [BoxController::class, 'destroy'])->name('admin.box.destroy');
+Route::get('admin/box',[BoxController::class,'index'])->name('admin.box.index')->middleware(['auth', 'role:admin']);
+Route::get('admin/box/create',[BoxController::class,'create'])->name('admin.box.create')->middleware(['auth', 'role:admin']);
+Route::post('admin/box/create',[BoxController::class,'store'])->name('admin.box.store')->middleware(['auth', 'role:admin']);
+Route::get('admin/box/{box}', [BoxController::class, 'edit'])->name('admin.box.edit')->middleware(['auth', 'role:admin']);
+Route::put('admin/boxs/{box}', [BoxController::class, 'update'])->name('admin.box.update')->middleware(['auth', 'role:admin']);
+Route::delete('admin/boxs/{box}', [BoxController::class, 'destroy'])->name('admin.box.destroy')->middleware(['auth', 'role:admin']);
 
 // admin -- BoxesTypes
-Route::get('admin/boxtype',[BoxTypeController::class,'index'])->name('admin.boxtype.index');
-Route::get('admin/boxtype/create',[BoxTypeController::class,'create'])->name('admin.boxtype.create');
-Route::post('admin/boxtype/create',[BoxTypeController::class,'store'])->name('admin.boxtype.store');
-Route::get('admin/boxtype/{type}', [BoxTypeController::class, 'edit'])->name('admin.boxtype.edit');
-Route::put('admin/boxtype/{type}', [BoxTypeController::class, 'update'])->name('admin.boxtype.update');
-Route::delete('admin/boxtype/{type}', [BoxTypeController::class, 'destroy'])->name('admin.boxtype.destroy');
+Route::get('admin/boxtype',[BoxTypeController::class,'index'])->name('admin.boxtype.index')->middleware(['auth', 'role:admin']);
+Route::get('admin/boxtype/create',[BoxTypeController::class,'create'])->name('admin.boxtype.create')->middleware(['auth', 'role:admin']);
+Route::post('admin/boxtype/create',[BoxTypeController::class,'store'])->name('admin.boxtype.store')->middleware(['auth', 'role:admin']);
+Route::get('admin/boxtype/{type}', [BoxTypeController::class, 'edit'])->name('admin.boxtype.edit')->middleware(['auth', 'role:admin']);
+Route::put('admin/boxtype/{type}', [BoxTypeController::class, 'update'])->name('admin.boxtype.update')->middleware(['auth', 'role:admin']);
+Route::delete('admin/boxtype/{type}', [BoxTypeController::class, 'destroy'])->name('admin.boxtype.destroy')->middleware(['auth', 'role:admin']);
 
 
 // **** Admin place route ****//
-Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index');
-Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create');
-Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store');
-Route::get('admin/place/{place}',[PlaceAdminController::class,'edit'])->name('admin.place.edit');
+Route::get('admin/places',[PlaceAdminController::class,'index'])->name('admin.place.index')->middleware(['auth', 'role:admin']);
+Route::get('admin/place/create',[PlaceAdminController::class,'create'])->name('admin.place.create')->middleware(['auth', 'role:admin']);
+Route::post('admin/place/store',[PlaceAdminController::class,'store'])->name('admin.place.store')->middleware(['auth', 'role:admin']);
+Route::get('admin/place/{place}',[PlaceAdminController::class,'edit'])->name('admin.place.edit')->middleware(['auth', 'role:admin']);
 Route::put('admin/place/{place}',[PlaceAdminController::class,'update'])->name('admin.place.update');
-Route::delete('admin/place/{place}',[PlaceAdminController::class,'destroy'])->name('admin.place.destroy');
+Route::delete('admin/place/{place}',[PlaceAdminController::class,'destroy'])->name('admin.place.destroy')->middleware(['auth', 'role:admin']);
 
 
 
 // admin -- plans
-Route::get('admin/plan',[PlanController::class,'index'])->name('admin.plan.index');
-Route::get('admin/plan/create',[PlanController::class,'create'])->name('admin.plan.create');
-Route::post('admin/plan/create',[PlanController::class,'store'])->name('admin.plan.store');
-Route::get('admin/plan/{plan}', [PlanController::class, 'edit'])->name('admin.plan.edit');
-Route::put('admin/plans/{plan}', [PlanController::class, 'update'])->name('admin.plan.update');
-Route::delete('admin/plans/{plan}', [PlanController::class, 'destroy'])->name('admin.plan.destroy');
+Route::get('admin/plan',[PlanController::class,'index'])->name('admin.plan.index')->middleware(['auth', 'role:admin']);
+Route::get('admin/plan/create',[PlanController::class,'create'])->name('admin.plan.create')->middleware(['auth', 'role:admin']);
+Route::post('admin/plan/create',[PlanController::class,'store'])->name('admin.plan.store')->middleware(['auth', 'role:admin']);
+Route::get('admin/plan/{plan}', [PlanController::class, 'edit'])->name('admin.plan.edit')->middleware(['auth', 'role:admin']);
+Route::put('admin/plans/{plan}', [PlanController::class, 'update'])->name('admin.plan.update')->middleware(['auth', 'role:admin']);
+Route::delete('admin/plans/{plan}', [PlanController::class, 'destroy'])->name('admin.plan.destroy')->middleware(['auth', 'role:admin']);
 
 
 
 
 
 Route::get('/checkout',[RentalsController::class,'creditCheckout'])->name('credit.checkout');
-Route::post('/rentals/purchase/{plan}', [RentalsController::class,'purchase'])->name('rentals.purchase');
+Route::post('/rentals/purchase/{plan}', [RentalsController::class,'purchase'])->name('rentals.purchase')->middleware('auth');
 
 
 // Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -160,9 +160,9 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/invoices', [BasicController::class,'index'])->name('invoices.index');
+Route::get('/invoices', [BasicController::class,'index'])->name('invoices.index')->middleware(['auth', 'role:basic']);;
 
-Route::get('/invoices/{rental}/generate', [BasicController::class,'generateInvoice'])->name('invoices.generate');
+Route::get('/invoices/{rental}/generate', [BasicController::class,'generateInvoice'])->name('invoices.generate')->middleware(['auth', 'role:basic']);;
 
 
 Route::get('/admin/category',[CategoryController::class,'index'])->name('category.admin.index')
@@ -193,43 +193,42 @@ Route::get('/faq', function () {
 
 Route::get('/pages', function () {
     return view('admin.pages.index');
-})->name('pages');
-
+})->name('pages')->middleware(['auth', 'role:super']);
 
 
 Route::get('/faq',[FaqController::class,'index'])->name('faq');
-Route::get('/faq/edit',[FaqAdminController::class,'index'])->name('faq.edit');
-Route::put('/faq/update',[FaqAdminController::class,'update'])->name('faq.update');
+Route::get('/faq/edit',[FaqAdminController::class,'index'])->name('faq.edit')->middleware(['auth', 'role:super']);
+Route::put('/faq/update',[FaqAdminController::class,'update'])->name('faq.update')->middleware(['auth', 'role:super']);
 
 
 
 Route::get('/how',[HowController::class,'index'])->name('how');
-Route::get('/how/edit',[HowAdminController::class,'index'])->name('how.edit');
-Route::put('/how/update',[HowAdminController::class,'update'])->name('how.update');
+Route::get('/how/edit',[HowAdminController::class,'index'])->name('how.edit')->middleware(['auth', 'role:super']);
+Route::put('/how/update',[HowAdminController::class,'update'])->name('how.update')->middleware(['auth', 'role:super']);
 
 Route::get('/price',[PriceController::class,'index'])->name('price');
-Route::get('/price/edit',[PriceAdminController::class,'index'])->name('price.edit');
-Route::put('/price/update',[PriceAdminController::class,'update'])->name('price.update');
+Route::get('/price/edit',[PriceAdminController::class,'index'])->name('price.edit')->middleware(['auth', 'role:super']);
+Route::put('/price/update',[PriceAdminController::class,'update'])->name('price.update')->middleware(['auth', 'role:super']);
 
 
 // e
 Route::get('/policy',[PrivacyController::class,'index'])->name('policy');
-Route::get('/policy/edit',[PrivacyAdminController::class,'index'])->name('policy.edit');
-Route::put('/policy/update',[PrivacyAdminController::class,'update'])->name('policy.update');
+Route::get('/policy/edit',[PrivacyAdminController::class,'index'])->name('policy.edit')->middleware(['auth', 'role:super']);
+Route::put('/policy/update',[PrivacyAdminController::class,'update'])->name('policy.update')->middleware(['auth', 'role:super']);
 
 Route::get('/terms',[TermController::class,'index'])->name('terms');
-Route::get('/terms/edit',[TermAdminController::class,'index'])->name('term.edit');
-Route::put('/terms/update',[TermAdminController::class,'update'])->name('term.update');
+Route::get('/terms/edit',[TermAdminController::class,'index'])->name('term.edit')->middleware(['auth', 'role:super']);
+Route::put('/terms/update',[TermAdminController::class,'update'])->name('term.update')->middleware(['auth', 'role:super']);
 
-Route::get('/super', [SuperController::class, 'show'])->name('super');
+Route::get('/super', [SuperController::class, 'show'])->name('super')->middleware(['auth', 'role:super']);
 
-Route::view('/team', 'team')->name('team.index');
-Route::view('/tenant', 'tenant')->name('tenant');
-Route::view('/userlogin', 'loginUser')->name('userLogin');
-Route::view('/createuser', 'createuser')->name('createuser');
+Route::view('/team', 'team')->name('team.index')->middleware(['auth', 'role:super']);
+Route::view('/tenant', 'tenant')->name('tenant')->middleware(['auth', 'role:super']);
+Route::view('/userlogin', 'loginUser')->name('userLogin')->middleware(['auth', 'role:super']);
+Route::view('/createuser', 'createuser')->name('createuser')->middleware(['auth', 'role:super']);
 
 
-Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');
+Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation')->middleware(['auth', 'role:super']);
 
 // admin -- place
 

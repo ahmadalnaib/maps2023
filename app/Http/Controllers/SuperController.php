@@ -20,6 +20,13 @@ class SuperController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $this->middleware(['auth', 'role:super']);
+    }
+    
+    
+
     public function show()
     {
         if (! auth()->check()) {
