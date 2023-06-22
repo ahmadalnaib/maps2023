@@ -14,6 +14,7 @@ class Rental extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        
         return [
             'id'=>$this->id,
             'uuid'=>$this->uuid,
@@ -23,8 +24,8 @@ class Rental extends JsonResource
             'box_id'=>$this->box_id,
             'plan_id'=>$this->plan_id,
             'duration'=>$this->duration,
-            'start_time'=>$this->start_time,
-            'end_time'=>$this->end_time,
+            'start_time' => date("Y-m-d H:i:s", strtotime($this->start_time)),
+        'end_time' => date("Y-m-d H:i:s", strtotime($this->end_time)),
             'price'=>$this->price,
             'pincode'=>$this->pincode,
 
