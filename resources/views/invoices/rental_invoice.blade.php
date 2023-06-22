@@ -64,7 +64,7 @@
              
             </div>
             <div class="section-right">
-                <h4>Rechnung für Miete</h4>
+                <h4>Rechnung</h4>
                 <p>Rechnungsnummer: {{ $rental->id }}</p>
                 <p>Ausgabedatum: {{ now()->format('Y-m-d') }}</p>
             </div>
@@ -87,19 +87,19 @@
         <div class="invoice-section gray">
             <div class="section-left">
                 <h4>Schließfach:</h4>
-                <p>Name: {{$rental->system->system_name}}</p>
-                <p>Address: {{$rental->system->place->address}}</p>
-                <p>Name: {{$rental->duration }}</p>
+                <p>Anlage: {{$rental->system->system_name}}</p>
+                <p>Anlage Adresse: {{$rental->system->place->address}}</p>
+                <p>Planname: {{$rental->duration }}</p>
                 <p>Türnummer:{{$rental->box->number}}</p>
             </div>
             <div class="section-right">
-                <h4>Preis:</h4>
+                <h4>Mietgebühr:</h4>
                 <p>{{$rental->price}} &euro;</p>
             </div>
         </div>
         <!-- Add more sections as needed -->
         <div>
-            <p>Vielen Dank, dass Sie Lockport-Kunde sind! Wenn Sie Hilfe benötigen, kontaktieren Sie uns bitte. <a href="mailto:info@locktec.de">locktec@info.de</a>.</p>
+            <p>Vielen Dank für deine Nutzung. Wenn du Hilfe benötigst, kontaktiere und gerne.<a href="mailto:info@locktec.de">locktec@info.de</a>.</p>
         </div>
     </div>
 </body>

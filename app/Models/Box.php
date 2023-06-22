@@ -9,11 +9,12 @@ use App\Models\BoxType;
 use App\Scopes\TenantScope;
 use App\Traits\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Box extends Model
 {
-    use HasFactory,BelongsToTenant ;
+    use HasFactory,BelongsToTenant,HasUuids ;
     protected $guarded=[];
 
 

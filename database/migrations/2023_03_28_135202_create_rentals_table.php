@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreignUuid('system_id');
-            $table->unsignedBigInteger('box_id');
+            $table->foreignUuid('box_id');
             $table->uuid('uuid')->unique();
             $table->unsignedBigInteger('plan_id');
             $table->string('duration');

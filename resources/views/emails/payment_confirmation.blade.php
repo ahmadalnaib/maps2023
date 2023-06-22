@@ -132,13 +132,10 @@
                         <td>{{$rental->end_time}}</td>
                     </tr>
                     <tr>
-                        <td>Plan Name:</td>
-                        <td>{{$rental->plan->name}}</td>
-                    </tr>
-                    <tr>
                         <td>Mietgebühr:</td>
-                        <td>{{$rental->price}} &euro;</td>
+                        <td>{{$rental->plan->name}} - {{$rental->price}} &euro;</td>
                     </tr>
+                
                    
                 </tbody>
             </table>
