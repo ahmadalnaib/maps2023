@@ -22,7 +22,7 @@
                       <label for="place_id">{{__('locker.Choose Place')}}</label>
                       <select name="place_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           @foreach ($places as $place)
-                              <option value="{{ $place->id }}" @if ($place->id === $system->place_id) selected @endif>{{ $place->name }}</option>
+                              <option value="{{ $place->id }}" @if ($place->id === $system->place_id) selected @endif>{{ $place->name }} - {{$place->address}}</option>
                           @endforeach
                       </select>
                       @error('"place_id')
