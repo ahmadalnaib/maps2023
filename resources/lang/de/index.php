@@ -5,7 +5,7 @@ return[
   'find suitable lockers with address or postal code'=>'Mit Adresse oder PLZ zeigen wir dir passende Fächer.',
   'Lockers for left-luggage and bikes are available on different locations'=>'Passende Fächer für Gepäck, Taschen und Fahrräder findest du an unterschiedlichen Standorten.',
   'Enter Address or Postcode'=>'Adresse oder Postleitzahl eingeben',
-  'Select State/City'=>'Stadt auswählen',
+  'Select State/City'=>'Bundesland auswählen',
   'Search'=>"Suche",
   'Premium Lockers'=>"Beliebteste Standorte",
   "Recently Added"=>"Neueste Standorte",
