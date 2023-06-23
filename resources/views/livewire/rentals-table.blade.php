@@ -24,7 +24,10 @@
             @foreach ($rentals as $rental)
             <tr>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->user->name  ?? 'ANONYMOUS PERSON' }}
+                    <span class="bg-indigo-500 text-white  p-1 rounded">
+
+                        {{ $rental->user->name  ?? 'ANONYMOUS PERSON' }}
+                    </span>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     {{ $rental->user->email  ?? 'ANONYMOUS PERSON' }}
@@ -36,7 +39,7 @@
                     {{ $rental->box->number }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap ">
-                    <span class="bg-emerald-400 text-emerald-500 p-1 rounded">
+                    <span class="bg-emerald-400 text-white p-1 rounded">
 
                         {{ $rental->duration }}
                     </span>
@@ -44,11 +47,17 @@
                 <td class="px-6 py-4 whitespace-no-wrap">
                     {{ $rental->start_time }}
                 </td>
-                <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->end_time }}
+                <td class="px-6 py-4 whitespace-no-wrap ">
+                    <span class="bg-red-500 text-white p-1 rounded">
+
+                        {{ $rental->end_time }}
+                    </span>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->price }}
+                    <span class="bg-green-300 text-dark p-1 rounded">
+                        
+                        {{ $rental->price }}
+                    </span>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
                     {{ $rental->created_at }}

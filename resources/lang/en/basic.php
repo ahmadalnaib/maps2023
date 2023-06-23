@@ -8,12 +8,13 @@ return[
     "Need help and support"=>"help",
     "For any issues, just contact us here and we'll be able to help"=>"If you have any questions please contact us:",
     "Username:"=>"Username:",
-    "System Name:"=>"System Name:",
+    "System Name:"=>"System:",
     "System Address:"=>"System Address:",
-    "Box Number:"=>"Box Number:",
+    "Box Number:"=>"Locker:",
     "Show Details"=>'Show Details',
-    "Generate Invoice"=>"Generate Invoice",
+    "Generate Invoice"=>"Create Invoice",
     "Close"=>"Schließen",
-    'You have no orders at the moment.'=>'You have not currently booked any lockers.'
+    'You have no orders at the moment.'=>'You have not currently booked any lockers.',
+    "Pincode:"=>"Pincode:"
 
 ];

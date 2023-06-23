@@ -2,10 +2,10 @@
 
 return[
     "Booking Details"=>"Buchungsdetails",
-    "Box Number"=>"Boxnummer",
-    "System Name"=>"Systemname",
-    "System Address"=>"System Adresse",
-    "Valid from"=>"Gültig ab",
+    "Box Number"=>"Fach",
+    "System Name"=>"Anlage",
+    "System Address"=>"Anlagen Adresse",
+    "Valid from"=>"Gebucht ab",
     "Booked until"=>"Gebucht bis",
     "Rental period"=>"Mietdauer",
     "Price"=>"Preis",

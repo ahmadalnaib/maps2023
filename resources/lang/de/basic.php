@@ -10,10 +10,11 @@ return[
     "Username:"=>"Benutzername:",
     "System Name:"=>"Anlage:",
     "System Address:"=>"Anlage-Adresse:",
-    "Box Number:"=>"Box-Nummer:",
+    "Box Number:"=>"Fach:",
     "Show Details"=>'Details anzeigen',
-    "Generate Invoice"=>"Rechnung generieren",
+    "Generate Invoice"=>"Rechnung erstellen",
     "Close"=>"Schließen",
-    'You have no orders at the moment.'=>'Aktuell hast du keine Fächer gebucht.'
+    'You have no orders at the moment.'=>'Aktuell hast du keine Fächer gebucht.',
+    "Pincode:"=>"Pincode:"
     
 ];

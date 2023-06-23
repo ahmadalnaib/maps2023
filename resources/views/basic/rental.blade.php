@@ -18,6 +18,11 @@
               </div>
               <div class="mt-4" id="rental-details-{{ $rental->id }}" style="display: none;">
                 <table class="w-full bg-green-100 rounded-lg">
+
+                    <tr>
+                        <td class="p-2 font-semibold">{{__('basic.Pincode:')}}</td>
+                        <td class="p-2">{{ $rental->pincode }}</td>
+                    </tr>
                     <tr>
                         <td class="p-2 font-semibold">{{__('basic.Username:')}}</td>
                         <td class="p-2">{{ $rental->user->name }}</td>

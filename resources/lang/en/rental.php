@@ -2,12 +2,12 @@
 
 return[
   "Booking Details"=>"Booking Details",
-  "Box Number"=>"Box Number",
-  " System Name"=>"System Name",
-  " System Address"=>"System Address",
-  "Valid from"=>"Valid from",
+  "Box Number"=>"Locker",
+  " System Name"=>"System",
+  " System Address"=>"system address",
+  "Valid from"=>"Booked from",
   "Booked until"=>"Booked until",
-  "Rental period"=>"Rental period",
+  "Rental period"=>"Booking period",
   "Price"=>"Price",
   "CONFIRM ORDER AND PAY"=>"CONFIRM ORDER AND PAY",
   "Pay with Card"=>"Pay with Card",

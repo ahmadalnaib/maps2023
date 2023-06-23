@@ -34,8 +34,8 @@ class AuthServiceProvider extends ServiceProvider
         VerifyEmail::toMailUsing(function (object $notifiable, string $url) {
             return (new MailMessage)
                 ->subject('E-Mail Adresse überprüfen')
-                ->line('Klicken Sie auf die Schaltfläche unten, um Ihre E-Mail-Adresse zu bestätigen.')
-                ->action('E-Mail Adresse überprüfen', $url);
+                ->line('Danke für deine Registrierung.Bitte bestätigen deine E-Mail Adresse.')
+                ->action('Bestätigen', $url);
         });
 
         ResetPassword::toMailUsing(function ($notifiable, $url) {
