@@ -7,6 +7,7 @@ use Dompdf\Dompdf;
 use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
+use Ramsey\Uuid\Uuid;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Models\System;
@@ -134,6 +135,7 @@ class RentalsController extends Controller
                 'plan_id' => $plan->id,
                 'price' => $price,
                 'pincode' => $pincode,
+                'uuid' => Uuid::uuid4()->toString(),
                 'created_at' => Carbon::now(),
         // 'payment_method' => 'stripe', // or any other payment method identifier
       
@@ -194,6 +196,7 @@ public function save(Request $request, Plan $plan)
         'plan_id' => $plan->id,
         'price' => $price,
         'pincode' => $pincode,
+        'uuid' => Uuid::uuid4()->toString(),
         'created_at' => Carbon::now(),
     ]);
 

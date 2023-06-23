@@ -28,12 +28,7 @@ class Rental extends Model
 
     protected $casts = [ 'end_time'=>'datetime'];
 
-    protected static function booted()
-    {
-        static::creating(function ($rental) {
-            $rental->uuid = Uuid::uuid4()->toString();
-        });
-    }
+
 
     public function user()
 {

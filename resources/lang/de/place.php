@@ -1,11 +1,11 @@
 <?php
 
 return[
-    "Places"=>"Orte",
-    'Create New State'=>'Neuen Staat erstellen',
-    "Place name"=>"Ortsname",
-    "Place address"=>"Ort Adresse",
-    "State/City"=>"Bundesland/Stadt",
+    "Places"=>"Standorte",
+    'Create New State'=>'Neuen Standort erstellen',
+    "Place name"=>"Standort",
+    "Place address"=>"Standort Adresse",
+    "State"=>"Bundesland",
     "Image"=>"Bild",
     'Action'=>"Aktion",
     "Edit"=>"Bearbeiten",
@@ -13,7 +13,7 @@ return[
     "There are no citys"=>"Es gibt keine Städte",
     "Add New Place"=>"Neuen Platz hinzufügen",
     "Choose state"=>"Bundesland auswählen",
-    "Place Info/Notes"=>"Ortsinformationen/Notizen",
+    "Place Info/Notes"=>"Ortsinformationen/Beschreibung",
     "Upload Image - MAX 2 MB"=>"Bild hochladen - MAX 2 MB",
     "Address"=>"Adresse",
     "Longitude"=>"Längengrad",

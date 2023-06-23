@@ -26,6 +26,7 @@ class ApiRentalController extends Controller
         $validatedData = $request->validate([
             'tenant_id' => '',
             'user_id' => '',
+            'uuid'=>'',
             'system_id' => 'required',
             'box_id' => 'required',
             'plan_id' => 'required',

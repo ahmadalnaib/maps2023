@@ -8,6 +8,7 @@ use App\Models\Box;
 use App\Models\Door;
 use App\Models\Plan;
 use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Models\System;
@@ -94,6 +95,7 @@ class PurchaseController extends Controller
                 'end_time' => $end_time,
                 'plan_id' => $plan->id,
                 'price' => $price,
+                'uuid' => Uuid::uuid4()->toString(),
                 'pincode' => $pincode,
                 'created_at' => Carbon::now(),
             ]);
