@@ -93,7 +93,7 @@
 <script>
   let places = {!! $places !!};
 
-  let map = L.map('mapid', { maxZoom: 6 });
+  let map = L.map('mapid', { zoom: 6 });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
   let greenIcon = L.icon({
