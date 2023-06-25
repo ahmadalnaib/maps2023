@@ -11,7 +11,7 @@ class BoxPolicy
 
     public function delete(User $user, Box $box)
     {
-        return $user->id === $box->user_id;
+        return $user->tenant_id === $box->tenant_id;
 
     }
   

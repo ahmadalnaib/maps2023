@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Plan;
+use App\Models\User;
 use App\Models\Rental;
 use App\Models\System;
 use App\Models\BoxType;
@@ -35,6 +36,11 @@ class Box extends Model
     public function rentals()
     {
         return $this->hasMany(Rental::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
    
 }

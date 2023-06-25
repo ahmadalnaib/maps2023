@@ -17,10 +17,14 @@ class BoxController extends Controller
 
     public function index()
     {
+
        $tenant = Auth::user();
-       $boxes = Box::where('tenant_id', $tenant->id)
-       ->latest()
-       ->paginate(8);
+       $boxes = Box::query()
+       ->select('id','number','system_id','box_type_id','tenant_id')->with('user:id','system:id,system_name','plans:id,name','boxtype:id,name')
+        ->where('tenant_id', $tenant->id)
+        ->latest()
+        ->paginate(8);
+
 
   
     return view('admin.box.index',compact('boxes'));
