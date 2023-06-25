@@ -27,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $locale=\request()->segment(1);
+        
 
         $this->routes(function () use ($locale) {
             Route::middleware('api')
