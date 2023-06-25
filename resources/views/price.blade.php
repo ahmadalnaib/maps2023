@@ -1,14 +1,18 @@
 <x-app-layout>
-    <div class="w-full bg-white tails-selected-element" contenteditable="true">
-        <div class="flex flex-col items-center justify-center px-8 py-12 mx-auto space-y-5 text-center opacity-90 max-w-7xl sm:px-0 lg:space-y-10">
-            <h1 class="text-4xl font-black text-black lg:text-5xl">{!! $price->main_title !!}</h1>
-            <p class="max-w-lg text-sm lg:max-w-xl lg:text-lg">{!! $price->main_subtitle !!}</p>
-            <a href="#_" class="px-5 py-2 text-lg text-white bg-black rounded-full">Learn More</a>
+    <section class="relative w-full overflow-hidden bg-white " >
+        <div class="absolute top-0 left-0 z-10 hidden mt-20 -ml-32 scale-110 blur-xl opacity-70 2xl:block">
+            <div class="w-64 h-64 rounded-full bg-[#def0f0] opacity-70"></div>
         </div>
-        <div class="w-full md:pb-10 lg:pb-16">
-            <div class="h-auto max-w-2xl mx-auto overflow-hidden sm:rounded-lg md:max-w-3xl lg:max-w-4xl">
-                <img class="object-center w-full" src="{{ asset('/images/howpage/bike.jpg') }}">
+        <div class="relative z-20 flex items-center justify-center max-w-5xl px-10 py-24 mx-auto md:justify-start md:py-32">
+            <div class="relative z-20 flex flex-col items-start max-w-md space-y-8">
+                <p class="font-bold tracking-wider uppercase"></p>
+                <h1 class="text-5xl font-extrabold">{{$price->main_title}}</h1>
+                <p class="text-[#5f5843] font-medium">{{$price->main_subtitle}}</p>
+                <a href="{{route('register')}}" class="inline-block w-full px-5 py-4 font-bold text-center text-white bg-black md:w-auto">GET A BOX</a>
             </div>
         </div>
-    </div>
+        <div class="absolute top-0 right-0 hidden w-1/3 h-full md:block">
+            <img class="object-cover w-full h-full" src="{{ asset('/images/howpage/bike.jpg') }}">
+        </div>
+    </section>
 </x-app-layout>
