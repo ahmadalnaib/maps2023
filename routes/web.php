@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Payment;
 use App\Models\Rentals;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FaqController;
@@ -237,7 +238,13 @@ Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->nam
 
 Route::middleware(['web'])->group(function(){
     Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile.show');
-    
+// Login
+Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+// Registration
+Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('register', [RegisteredUserController::class, 'store']);
 
 
 Route::get('/search',[SearchController::class,'autoComplete'])->name('auto-complete');
