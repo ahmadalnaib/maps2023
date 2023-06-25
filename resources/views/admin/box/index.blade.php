@@ -63,11 +63,14 @@
                     <a href="{{route('admin.box.edit',$box)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">{{__('place.Edit')}}</a>
                    
     
+        
+                    @can('delete',$box)
                         <form action="{{route('admin.box.destroy',$box)}}" method="post">
                             @csrf
                             @method('delete')
                             <button onclick="return confirm('Sind Sie sicher, dass du diesen Beitrag löschen möchtest? Es gibt keinen Weg zurück. 😯')"    class="font-medium text-red-600 dark:text-red-500 hover:underline m-2" type="submit">{{__('place.delete')}}</button>
                         </form>
+                        @endcan
                     
                 </td>
             </tr>

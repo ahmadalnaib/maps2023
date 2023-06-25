@@ -37,7 +37,8 @@ class PlaceController extends Controller
                 $plansByBox[$box->id] = $box->plans;
             }
         } }else{
-            dd('make sol');
+            return view('placeNotCreated');
+
         }
     
 

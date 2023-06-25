@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Box;
 use App\Models\Team;
+use App\Policies\BoxPolicy;
 use App\Policies\TeamPolicy;
 use App\Policies\UserPolicy;
 use Laravel\Passport\Passport;
@@ -22,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Team::class => TeamPolicy::class,
         User::class=>UserPolicy::class,
+        Box::class=>BoxPolicy::class,
     ];
 
     /**

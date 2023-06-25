@@ -93,6 +93,7 @@ class BoxController extends Controller
 
     public function destroy(Box $box)
     {
+        $this->authorize('delete',$box);
         $box->delete();
 
         return redirect()->route('admin.box.index')->with('message','Box wurde delete 🎉')->with('timeout', 3000);;
