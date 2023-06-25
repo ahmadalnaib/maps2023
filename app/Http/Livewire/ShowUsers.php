@@ -39,7 +39,7 @@ class ShowUsers extends Component
         session()->put('impersonate', $originalId);
         auth()->loginUsingId($userId);
 
-        return redirect('/team');
+        return redirect()->route('admin.system.index');
     }
 
     public function mount()
