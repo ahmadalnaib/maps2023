@@ -26,12 +26,7 @@ class PriceAdminController extends Controller
         foreach (config('locales.languages') as $key => $val) {
             $attr['main_title.' . $key] = 'required';
             $attr['main_subtitle.' . $key] = 'required';
-            $attr['title_one.' . $key] = 'required';
-            $attr['subtitle_one.' . $key] = 'required';
-            $attr['price_one.' . $key] = 'required';
-            $attr['tag_one_one.' . $key] = 'required';
-            $attr['tag_one_two.' . $key] = 'required';
-            $attr['tag_one_three.' . $key] = 'required';
+       
           
         }
 
@@ -46,12 +41,7 @@ class PriceAdminController extends Controller
       
         $data['main_title']=$request->main_title;
         $data['main_subtitle']=$request->main_subtitle;
-        $data['title_one']=$request->title_one;
-        $data['subtitle_one']=$request->subtitle_one;
-        $data['price_one']=$request->price_one;
-        $data['tag_one_one']=$request->tag_one_one;
-        $data['tag_one_two']=$request->tag_one_two;
-        $data['tag_one_three']=$request->tag_one_three;
+
         
 
 

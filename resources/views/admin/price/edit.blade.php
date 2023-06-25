@@ -36,48 +36,7 @@
                           
                         </div>
 
-                        <div>
-                          <label class="bg-red-500 p-1  rounded text-red-100" for="title_one">Title one ({{ $key }})</label>
-                          <textarea class="ckeditor" name="title_one[{{ $key }}]" id="" cols="30" rows="10">
-                            {{ old('title_one.' . $key, $price->getTranslation('title_one', $key)) }}
-                        </textarea>
-                        
-                      </div>
-                        <div>
-                          <label class="bg-red-500 p-1  rounded text-red-100" for="subtitle_one"> subtitle one ({{ $key }})</label>
-                          <textarea class="ckeditor" name="subtitle_one[{{ $key }}]" id="" cols="30" rows="10">
-                            {{ old('subtitle_one.' . $key, $price->getTranslation('subtitle_one', $key)) }}
-                        </textarea>
-                        
-                      </div>
-                        <div>
-                          <label class="bg-red-500 p-1  rounded text-red-100" for="price_one"> Price one ({{ $key }})</label>
-                          <textarea class="ckeditor" name="price_one[{{ $key }}]" id="" cols="30" rows="10">
-                            {{ old('price_one.' . $key, $price->getTranslation('price_one', $key)) }}
-                        </textarea>
-                        
-                      </div>
-                        <div>
-                          <label class="bg-red-500 p-1  rounded text-red-100" for="tag_one_one"> tag one  ({{ $key }})</label>
-                          <textarea class="ckeditor" name="tag_one_one[{{ $key }}]" id="" cols="30" rows="10">
-                            {{ old('tag_one_one.' . $key, $price->getTranslation('tag_one_one', $key)) }}
-                        </textarea>
-                        
-                      </div>
-                        <div>
-                          <label class="bg-red-500 p-1  rounded text-red-100" for="tag_one_two"> tag two  ({{ $key }})</label>
-                          <textarea class="ckeditor" name="tag_one_two[{{ $key }}]" id="" cols="30" rows="10">
-                            {{ old('tag_one_two.' . $key, $price->getTranslation('tag_one_two', $key)) }}
-                        </textarea>
-                        
-                      </div>
-                        <div>
-                          <label class="bg-red-500 p-1  rounded text-red-100" for="tag_one_three"> tag three  ({{ $key }})</label>
-                          <textarea class="ckeditor" name="tag_one_three[{{ $key }}]" id="" cols="30" rows="10">
-                            {{ old('tag_one_three.' . $key, $price->getTranslation('tag_one_three', $key)) }}
-                        </textarea>
-                        
-                      </div>
+                   
           
                       </div>
                   </div>
