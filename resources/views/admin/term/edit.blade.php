@@ -9,18 +9,38 @@
         <form action="{{route('term.update')}}" method="POST">
             @csrf
             @method('PUT')
-            <div class="grid grid-col-2 gap-4">
-              
+            <input type="hidden" name="id" value="{{ $term->id }}">
+            <div x-data="{ activeTab: '{{ array_key_first(config('locales.languages')) }}' }">
+                <ul class="flex mb-4" id="myTab" role="tablist">
+                    @foreach(config('locales.languages') as $key => $val)
+                        <li role="presentation" class="mr-2">
+                            <a :class="{ 'bg-gray-300': activeTab === '{{ $key }}' }" x-on:click="activeTab = '{{ $key }}'" id="{{ $key }}-tab" role="tab" :aria-controls="{{ $key }}" :aria-selected="(activeTab === '{{ $key }}').toString()" class="py-2 px-4 bg-gray-200 rounded-md hover:bg-gray-300">{{ $val['name'] }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+    
+                @foreach (config('locales.languages') as $key => $val)
+                    <div x-show="activeTab === '{{ $key }}'" id="{{ $key }}" role="tabpanel" :aria-labelledby="{{ $key }}-tab">
+                        <div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <div>
+                                <label for="term">Term Content ({{ $key }})</label>
+                            
+                                <textarea class="ckeditor" name="content[{{ $key }}]" id="" cols="30" rows="10">
+                                    {{ old('privacy.' . $key, $term->getTranslation('content', $key)) }}
+                              </textarea>
+                              @error('privacy')
+                              <span class="text-red-500">{{ $message }}</span>
+                              @enderror
+                              
+                            </div>
+                
+                        
+                                           
+                           
+                        </div>
+                    </div>
+                @endforeach
 
-                <div>
-                  <label for="overview">Content</label>
-                  <textarea name="content" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" cols="30" rows="10">{{ $term->content }}</textarea>
-                 
-              </div>
-              
-
-
-            </div>
             <button type="submit" class="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 mt-4">{{__('place.Update')}}</button>
         </form>
     </div>

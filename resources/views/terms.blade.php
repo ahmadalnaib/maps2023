@@ -4,7 +4,7 @@
            
 
             <div class="w-full sm:max-w-2xl mt-6 p-6 bg-gray-100 shadow-md overflow-hidden sm:rounded-lg prose">
-               {{$term->content}}
+               {!! $term->content !!}
             </div>
         </div>
     </div>
