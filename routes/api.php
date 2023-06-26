@@ -6,6 +6,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Admin\Api\BoxController;
 use App\Http\Controllers\Admin\Api\PlanController;
 use App\Http\Controllers\Admin\Api\UserController;
+use App\Http\Controllers\Admin\Api\EventController;
 use App\Http\Controllers\Admin\Api\LoginController;
 use App\Http\Controllers\Admin\Api\SystemController;
 use App\Http\Controllers\Admin\Api\ApiRentalController;
@@ -31,6 +32,8 @@ Route::post('/paypal/execute-payment',[PurchaseController::class,'executePayment
 Route::get('/rentals', [ApiRentalController::class, 'index']);
 Route::post('/rentals', [ApiRentalController::class, 'store']); 
 Route::get('/rentals/system/{systemUuid}', [ApiRentalController::class, 'getBySystem']);
+
+Route::post('/events', [EventController::class, 'store']); 
 
 Route::get('/systems', [SystemController::class, 'index']);
 Route::get('/systems/{id}', [SystemController::class, 'show']);
