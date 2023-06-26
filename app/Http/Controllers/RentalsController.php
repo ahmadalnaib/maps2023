@@ -24,17 +24,22 @@ class RentalsController extends Controller
             'system_id' => 'required|exists:systems,id',
             'box_id' => 'required|exists:boxes,id',
             'rental_period' => 'required|exists:plans,id',
+            
         ]);
 
         $system = System::findOrFail($validatedData['system_id']);
         $box = Box::findOrFail($validatedData['box_id']);
         $plan = Plan::findOrFail($validatedData['rental_period']);
-
+        $durationUnit = $plan->duration_unit;
         $start_time = Carbon::now();
 
-        // Calculate end time based on plan's number of days
-        $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
-
+        if ($durationUnit === 'days') {
+            // Calculate end time based on plan's number of days
+            $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+        } elseif ($durationUnit === 'hours') {
+            // Calculate end time based on plan's number of hours
+            $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+        }
         // Calculate price based on plan's price
         $price = $plan->price;
         $intent=auth()->user()->createSetupIntent();
@@ -65,6 +70,7 @@ class RentalsController extends Controller
             'end_time' => $end_time,
             'plan'=>$plan,
             'intent'=>$intent,
+            'duration_unit' => $durationUnit,
          
             
         ]);
@@ -119,7 +125,18 @@ class RentalsController extends Controller
         return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
     }
     $start_time = Carbon::now();
-    $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    $durationUnit = $plan->duration_unit;
+    
+    if ($durationUnit === 'days') {
+        $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    } elseif ($durationUnit === 'hours') {
+        $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+    } else {
+        // Handle unknown duration_unit or default behavior if needed
+        $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    }
+
+
     $tenantId = $user->tenant->id;
     $pincode = mt_rand(100000000, 999999999);
 
@@ -180,9 +197,18 @@ public function save(Request $request, Plan $plan)
     $system = System::findOrFail($validatedData['system_id']);
     $box = Box::findOrFail($validatedData['box_id']);
     $plan = Plan::findOrFail($validatedData['rental_period']);
-
     $start_time = Carbon::now();
-    $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    $durationUnit = $plan->duration_unit;
+
+    if ($durationUnit === 'days') {
+        $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    } elseif ($durationUnit === 'hours') {
+        $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+    } else {
+        // Handle unknown duration_unit or default behavior if needed
+        $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+    }
+
     $price = $plan->price;
     $pincode = mt_rand(100000000, 999999999);
 

@@ -77,7 +77,16 @@ class PurchaseController extends Controller
              $plan = Plan::findOrFail($data['rental_period']);
              $price = $plan->price;
              $start_time = Carbon::now();
-             $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+             $durationUnit = $plan->duration_unit;
+
+             if ($durationUnit === 'days') {
+                $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+            } elseif ($durationUnit === 'hours') {
+                $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+            } else {
+                // Handle unknown duration_unit or default behavior if needed
+                $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+            }
 
              $system = System::findOrFail($data['system_id']);
              $box = Box::findOrFail($data['box_id']);

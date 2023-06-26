@@ -50,6 +50,7 @@ class PlanController extends Controller
         $plan= Plan::create([
             "name" =>$request->name,
             "number_of_days"=>$request->number_of_days,
+            "duration_unit" => $request->duration_unit,
             'price' => $request->price,
             "policy_id"=>$request->policy_id,
             'tenant_id' => auth()->user()->tenant_id,
@@ -79,6 +80,7 @@ class PlanController extends Controller
         $plan->update([
             "name" =>$request->name,
             "number_of_days"=>$request->number_of_days,
+            "duration_unit" => $request->duration_unit, 
             'price' => $request->price,
             "policy_id"=>$request->policy_id,
             
