@@ -1,9 +1,9 @@
 <?php
 
 return[
-    "Boxes Types"=>"Boxen-Typen",
-    "Create new Box Type"=>"Neuen Box-Typ erstellen",
-    "Box Type Name"=>"Box-Typ Name",
+    "Boxes Types"=>"Fach-Typen",
+    "Create new Box Type"=>"Neuen Fach-Typ erstellen",
+    "Box Type Name"=>"Fach-Typ Name",
     "Depth"=>"Tiefe",
     "Width"=>"Breite",
     "Height"=>"Höhe",
@@ -13,13 +13,14 @@ return[
     "Box Size"=>"Box-Größe",
     "Big"=>"Groß",
     "Small"=>"Klein",
-    "Box Type"=>"Box Typ-E",
-    'With Electric Charge'=>'Mit elektrischer Ladung',
-    "Without Electric Charge"=>"Ohne elektrische Ladung",
-    'Box Floor'=>"Box Etage",
-    "First Floor"=>"Erster Etage",
-    "Second Floor"=>"Zweite Etage",
+    "Box Type"=>"Zusätzliche Information",
+    'With Electric Charge'=>'Mit Steckdose',
+    "Without Electric Charge"=>"Ohne Steckdose",
+    'Box Floor'=>"Anordnung",
+    "First Floor"=>"Erste Ebene ",
+    "Second Floor"=>"Zweite Ebene",
     "Create"=>"Erstellen",
-    "Update"=>"Aktualisieren"
+    "Update"=>"Aktualisieren",
+    'there_are_no_products'=>'Es gibt keine Fach-Typen'
 
 ];

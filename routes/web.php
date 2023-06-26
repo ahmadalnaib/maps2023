@@ -265,7 +265,9 @@ Route::post('/rentals/save', [RentalsController::class, 'save'])->name('rentals.
 
 
 
-// require_once __DIR__ . '/jetstream.php';
+  require_once __DIR__ . '/jetstream.php';
+
+
 
 
 });

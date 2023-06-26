@@ -63,7 +63,7 @@
 </div>
 @else
 <div class="text-center p-4 bg-gray-100">
-    <p>No System</p>
+    <p>{{__('locker.No System')}}</p>
 </div>
 @endif
         </div>

@@ -1,13 +1,14 @@
 <?php
 
 return[
-    "Create New Locker"=>"Neues System erstellen",
-    "Locker name"=>"System",
-    "Place name"=>"Ortsname",
-    "Add New Locker"=>"Neues System hinzufügen",
+    "Create New Locker"=>"Neues Anlage erstellen",
+    "Locker name"=>"Anlagen",
+    "Place name"=>"Standort",
+    "Add New Locker"=>"Neues Anlage hinzufügen",
     "Choose Place"=>"Ort auswählen",
-    "Locker"=>"Systems",
-    "Lockers"=>"Systeme",
+    "Locker"=>"Anlagen",
+    "Lockers"=>"Anlagen",
     "Address"=>"Adresse",
-    "No available places to Create new Orte from."=>"Keine freien Plätze bitte neue Plätze anlegen "
+    "No available places to Create new Orte from."=>"Keine freien Plätze bitte neue Plätze anlegen ",
+    'No System'=>'Es gibt keine Systeme'
 ];

@@ -1,12 +1,12 @@
 <?php
 
 return[
-    "Plan"=>"Plan",
-    "Create New Plan"=>"Create New Plan",
-    "Plan name"=>"Plan Name",
-    "Number of Days"=>"Number of Days",
+    "Plan"=>" Booking period ",
+    "Create New Plan"=>"Create new booking period ",
+    "Plan name"=>"Booking period",
+    "Number of Days"=>"days",
     "Policy Name"=>"Policy Name",
-    "Plan Price"=>"Plan Price",
+    "Plan Price"=>"price",
     "Action"=>"Action",
     "Edit"=>'Edit',
     "Delete"=>'Delete',

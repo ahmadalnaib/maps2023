@@ -1,7 +1,7 @@
 <?php
 
 return[
-    "Boxes"=>"Boxes",
+    "Boxes"=>"Box",
     "Create new Box"=>"Create new Box",
     "Box Number"=>"Box Number",
     "Box Plans"=>"Box Plans",

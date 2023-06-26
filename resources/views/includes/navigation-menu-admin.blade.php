@@ -36,18 +36,18 @@
                     {{__('policy.policy')}}
                    </x-nav-link>
                     <x-nav-link href="{{route('admin.system.index')}}">
-                        System
+                      {{__('locker.Locker name')}}
                    </x-nav-link>
                     <x-nav-link href="{{route('admin.boxtype.index')}}">
-                        Box Type
+                      {{__('type.Boxes Types')}}
                    </x-nav-link>
                 
                   
                     <x-nav-link href="{{ route('admin.plan.index') }}">
-                        {{ __('Plans') }}
+                        {{ __('plan.Plan') }}
                     </x-nav-link>
                     <x-nav-link href="{{route('admin.box.index')}}">
-                        Box
+                        {{__('box.Boxes')}}
                     </x-nav-link>
                   
                  
@@ -81,6 +81,7 @@
     
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
+                @if (Auth::check() && Auth::user()->role === 'admin')
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
                         <x-dropdown align="right" width="60">
@@ -129,6 +130,7 @@
                         </x-dropdown>
                     </div>
             
+                @endif
                 @endif
          
                 <!-- Settings Dropdown -->
@@ -288,7 +290,7 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
-
+                @if (Auth::check() && Auth::user()->role === 'admin')
                 <!-- Team Management -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="border-t border-gray-200"></div>
@@ -318,6 +320,7 @@
                     @foreach (Auth::user()->allTeams() as $team)
                         <x-switchable-team :team="$team" component="responsive-nav-link" />
                     @endforeach
+                @endif
                 @endif
             </div>
         </div>

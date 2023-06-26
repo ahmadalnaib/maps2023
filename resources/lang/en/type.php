@@ -20,6 +20,7 @@ return[
     "First Floor"=>"First Floor",
     "Second Floor"=>"Second Floor",
     "Create"=>"Create",
-    "Update"=>"Update"
+    "Update"=>"Update",
+    'there_are_no_products'=>'There are no Locker type'
 
 ];

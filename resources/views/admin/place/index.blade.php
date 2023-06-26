@@ -21,7 +21,7 @@
                 </th>
       
                 <th scope="col" class="px-6 py-3">
-                  {{__('place.State/City')}}
+                  {{__('place.State')}}
                 </th>
                 <th scope="col" class="px-6 py-3">
                    {{__('place.Image')}}
