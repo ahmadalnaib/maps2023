@@ -61,6 +61,7 @@ if (app()->environment('production') && !empty($app_url)) {
 }
 
 require_once __DIR__ . '/jetstream.php';
+require_once __DIR__ . '/fortify.php';
 
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
