@@ -60,7 +60,7 @@ if (app()->environment('production') && !empty($app_url)) {
     URL::forceScheme($schema);
 }
 
-
+require_once __DIR__ . '/jetstream.php';
 
 // lang route
 Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name('change.language');
@@ -265,7 +265,7 @@ Route::post('/rentals/save', [RentalsController::class, 'save'])->name('rentals.
 
 
 
-  require_once __DIR__ . '/jetstream.php';
+
 
 
 
