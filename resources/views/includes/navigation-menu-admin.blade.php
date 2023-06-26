@@ -260,6 +260,8 @@
                     <x-responsive-nav-link href="{{route('admin.box.index')}}">
                         Box
                     </x-responsive-nav-link>
+
+                    
                   
                  
                     @endif

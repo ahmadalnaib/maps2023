@@ -34,10 +34,10 @@
                   <h2 class="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Legal</h2>
                   <ul class="text-white dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="{{route('policy')}}" class="hover:underline">Privacy Policy</a>
+                          <a target="__blank" href="{{url('privacy/Datenschutzerklärung_lockport.pdf')}}" class="hover:underline">{{__('footer.Privacy Policy')}}</a>
                       </li>
                       <li>
-                          <a href="{{route('terms')}}" class="hover:underline">Terms &amp; Conditions</a>
+                          <a target="__blank" href="{{url('terms/AGB_lockport.online.pdf')}}" class="hover:underline">{{__('footer.Terms &amp; Conditions')}}</a>
                       </li>
                   </ul>
               </div>
