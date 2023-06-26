@@ -24,7 +24,7 @@ class EventRecource extends JsonResource
             'priority'=>$this->priority,
             'message'=>$this->message,
             'data'=>$this->data,
-            'date_time' => $this->created_at,
+            'date_time' => date("Y-m-d H:i:s", strtotime($this->date_time)),
      
 
         ];

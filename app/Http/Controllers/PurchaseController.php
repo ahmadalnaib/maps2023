@@ -83,7 +83,7 @@ class PurchaseController extends Controller
              $box = Box::findOrFail($data['box_id']);
 
             // Generate a 6-digit pincode
-            $pincode = mt_rand(100000, 999999);
+            $pincode = mt_rand(100000000, 999999999);
 
              $rental = new Rental([
                 "tenant_id" => $tenantId,

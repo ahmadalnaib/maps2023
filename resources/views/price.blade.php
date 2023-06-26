@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="relative w-full overflow-hidden bg-white " >
         <div class="absolute top-0 left-0 z-10 hidden mt-20 -ml-32 scale-110 blur-xl opacity-70 2xl:block">
-            <div class="w-64 h-64 rounded-full bg-[#def0f0] opacity-70"></div>
+           
         </div>
         <div class="relative z-20 flex items-center justify-center max-w-5xl px-10 py-24 mx-auto md:justify-start md:py-32">
             <div class="relative z-20 flex flex-col items-start max-w-md space-y-8">

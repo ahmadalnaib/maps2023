@@ -121,7 +121,7 @@ class RentalsController extends Controller
     $start_time = Carbon::now();
     $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
     $tenantId = $user->tenant->id;
-    $pincode = mt_rand(100000, 999999);
+    $pincode = mt_rand(100000000, 999999999);
 
       // Create a new rental record
       $rental = Rental::create([
@@ -184,7 +184,7 @@ public function save(Request $request, Plan $plan)
     $start_time = Carbon::now();
     $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
     $price = $plan->price;
-    $pincode = mt_rand(100000, 999999);
+    $pincode = mt_rand(100000000, 999999999);
 
     $rental = new Rental([
         "system_id" => $system->id,
