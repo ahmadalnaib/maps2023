@@ -8,7 +8,7 @@
                 <p class="font-bold tracking-wider uppercase"></p>
                 <p class="text-3xl font-extrabold">{{$price->main_title}}</p>
                 <p class="text-[#5f5843] font-medium">{{$price->main_subtitle}}</p>
-                <a href="{{route('register')}}" class="inline-block w-full px-5 py-4 font-bold text-center text-white bg-black md:w-auto">GET A BOX</a>
+                <a href="{{route('register')}}" class="inline-block w-full px-5 py-4 font-bold text-center text-white bg-black md:w-auto">{{__('nav.Booking')}}</a>
             </div>
         </div>
         <div class="absolute top-0 right-0 hidden w-1/3 h-full md:block">

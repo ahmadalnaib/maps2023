@@ -68,7 +68,7 @@
             </div>
         @else
             <div class="text-center p-4 bg-gray-100">
-                <p>no policies</p>
+                <p>{{__('policy.no policy')}}</p>
             </div>
             @endif
         </div>

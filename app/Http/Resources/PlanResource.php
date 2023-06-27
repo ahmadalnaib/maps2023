@@ -21,6 +21,7 @@ class PlanResource extends JsonResource
             'policy_id'=>$this->policy_id,
             'name'=>$this->name,
             'number_of_days'=>$this->number_of_days,
+            'duration_unit'=>$this->duration_unit,
             'price'=>$this->price,
             'active'=>$this->active,
             'boxes' => BoxResource::collection($this->whenLoaded('boxes')),

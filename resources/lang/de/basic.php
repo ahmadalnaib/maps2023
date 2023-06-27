@@ -2,7 +2,7 @@
 
 return[
     "Purchases"=>"Buchungen",
-    "Here you'll find all your purchased Lockers."=>"Hier finden du eine aktuelle über deine Buchungen.",
+    "Here you'll find all your purchased Lockers."=>"Hier finden du eine aktuelle Übersicht über deine Buchungen.",
     "Profile Configuration"=>"Profil-Konfiguration",
     "Here you'll find all your Info."=>"Hier finden Sie alle Ihre Infos.",
     "Need help and support"=>"Hilfe",

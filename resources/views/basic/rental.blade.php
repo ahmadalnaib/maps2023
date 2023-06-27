@@ -1,5 +1,12 @@
 <x-admin>
 
+    <x-slot name="header" >
+       
+        <div class="bg-indigo-500 border-t border-b border-blue-500 text-white px-4 py-3 rounded" role="alert">
+            <a href="https://www.lockport.online/de" class="font-bold">{{__('rental.Neues Fach buchen')}}	<span class="font-bold">&#8594</span> </a>
+        
+          </div>
+    </x-slot>
     <div class="container mx-auto">
      
       <h1 class="text-4xl font-bold my-6">{{__('basic.Purchases')}}</h1>

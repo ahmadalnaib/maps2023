@@ -2,6 +2,7 @@
 
 
 <x-admin>
+    
     <section class="pt-20 pb-32 bg-white">
         <div class="px-20 mx-auto max-w-7xl">
          

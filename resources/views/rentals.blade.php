@@ -14,7 +14,7 @@
                         {{ __('rental.Box Number') }}
                     </dt>
                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        0 {{ $box->number }}
+                        {{ $box->number }}
                     </dd>
                 </div>
                 <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -139,7 +139,7 @@
                                             <input type="hidden" name="box_id" value="{{ $box->id }}">
                                             <input type="hidden" name="rental_period" value="{{ $plan->id }}">
                                             <button class="bg-red-500 text-white font-bold py-2 px-4 rounded"
-                                                type="submit"> {{ $plan->price }} &#8364</button>
+                                                type="submit">{{ __('rental.Pay') }} {{ $plan->price }} &#8364</button>
                                         </form>
 
                                     </div>

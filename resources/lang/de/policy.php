@@ -8,5 +8,6 @@ return[
     "Delete"=>"Löschen",
     "Create"=>"Erstellen",
     "Update"=>"Aktualisieren",
-    "policy"=>"Richtlinie"
+    "policy"=>"Richtlinie",
+    "no policy"=>"Es gibt keine Richtlinie",
 ];

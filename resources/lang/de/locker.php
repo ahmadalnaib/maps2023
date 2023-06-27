@@ -10,5 +10,5 @@ return[
     "Lockers"=>"Anlagen",
     "Address"=>"Adresse",
     "No available places to Create new Orte from."=>"Keine freien Plätze bitte neue Plätze anlegen ",
-    'No System'=>'Es gibt keine Systeme'
+    'No System'=>'Es gibt keine Anlagen'
 ];

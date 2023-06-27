@@ -8,5 +8,6 @@ return[
     "Delete"=>"Delete",
     "Create"=>"Create",
     "Update"=>"Update",
-    "policy"=>"Policy"
+    "policy"=>"Policy",
+    'no policy'=>'There are no Policy'
 ];

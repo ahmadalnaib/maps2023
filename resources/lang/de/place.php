@@ -10,7 +10,7 @@ return[
     'Action'=>"Aktion",
     "Edit"=>"Bearbeiten",
     "delete"=>"Löschen",
-    "There are no citys"=>"Es gibt keine Städte",
+    "There are no citys"=>"Es gibt keine Standorte",
     "Add New Place"=>"Neuen Platz hinzufügen",
     "Choose state"=>"Bundesland auswählen",
     "Place Info/Notes"=>"Ortsinformationen/Beschreibung",

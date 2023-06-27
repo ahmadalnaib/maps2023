@@ -20,7 +20,7 @@ class PriceSeeder extends Seeder
         DB::table('prices')->truncate();
         $pages[]= [
            
-            'main_title' => json_encode( ['de' => "DE: Die Preise für ein Fach sind Standort und Betreiber abhängig." , 'en'=>"The prices for a locker deppend on the location and operator."]),
+            'main_title' => json_encode( ['de' => " Die Preise für ein Fach sind Standort und Betreiber abhängig." , 'en'=>"The prices for a locker deppend on the location and operator."]),
             'main_subtitle' => json_encode( ['de' => "Die gültigen Preise finden Sie direkt unter „Ein Fach finden“ am jeweiligen Standort." , 'en'=>"You can find the valid prices directly under 'Find a locker' at the respective location.
             
        "]),

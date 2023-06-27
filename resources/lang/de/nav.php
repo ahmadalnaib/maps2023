@@ -5,6 +5,7 @@ return[
 'Find a locker'=>'Ein Fach finden',
 'How it works'=>"So funktioniert's",
 'Pricing'=>'Preise',
-'FAQ'=>'FAQ'
+'FAQ'=>'FAQ',
+'Booking'=>'Buchen'
 
 ];

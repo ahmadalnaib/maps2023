@@ -157,19 +157,19 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="p-3">
+                    {{-- <div class="p-3">
                         @auth
 
                             <a href="{{ route('report.create') }}"
                                 class="border border-red-600 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
                                 <span class=""><i class="fa fa-exclamation-triangle"></i></span> Rorbot
                             </a>
-                        @else
+                        @else --}}
                             {{-- <a href="{{route('login')}}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
               <span class=""><i class="fa bookmark-o  fa-lg"></i></span> Bookmark
             </a> --}}
-                        @endauth
-                    </div>
+                        {{-- @endauth
+                    </div> --}}
                 </div>
 
             </div>

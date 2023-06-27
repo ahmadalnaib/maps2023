@@ -1,5 +1,5 @@
 <?php
 
 return[
-    "Title"=>"pk",
+    "All Rights Reserved."=>"All Rights Reserved.",
 ];

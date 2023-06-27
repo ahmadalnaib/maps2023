@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('policy_id');
-            $table->string('name');
+            $table->text('name');
             $table->integer('number_of_days');
             $table->enum('duration_unit', ['days', 'hours'])->default('days');
             $table->decimal('price',8,2);

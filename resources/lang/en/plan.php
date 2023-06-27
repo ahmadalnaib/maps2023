@@ -13,6 +13,7 @@ return[
     "Update"=>"Update",
     'Duration Unit'=>'Duration Unit',
     'days'=>'days',
-    'Hours'=>'Hours'
+    'Hours'=>'Hours',
+    'there_are_no_products'=>'Thre are no plans'
 
 ];

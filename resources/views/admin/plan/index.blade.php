@@ -87,7 +87,7 @@
             </div>
         @else
             <div class="text-center p-4 bg-gray-100">
-                <p>{{ __('actions.there_are_no_products') }}</p>
+                <p>{{ __('plan.there_are_no_products') }}</p>
             </div>
             @endif
         </div>

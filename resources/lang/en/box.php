@@ -9,4 +9,5 @@ return[
     "Choose System"=>"Choose System",
     "Choose Plan"=>"Choose Plan",
     "Choose Box Type"=>"Choose Box Type",
+    'there_are_no_products'=>'There are no Boxes'
 ];

@@ -16,5 +16,6 @@ return[
     "Pay"=>"Bezahlen",
     'Cancel'=>"Abbrechen",
     "The data you entered contains errors! Review it and try again"=>"Die von Ihnen eingegebenen Daten enthalten Fehler! Überprüfen Sie sie und versuchen Sie es erneut",
-    'The payment was successful.'=>'Die Zahlung war erfolgreich.'
+    'The payment was successful.'=>'Die Zahlung war erfolgreich.',
+    'Neues Fach buchen'=>'Neues Fach buchen',
 ];

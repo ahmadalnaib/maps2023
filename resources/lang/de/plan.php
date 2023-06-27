@@ -13,6 +13,7 @@ return[
     "Update"=>"Aktualisieren",
     'Duration Unit'=>'Dauer Einheit',
     'Days'=>'Tage',
-    'Hours'=>'Stunden'
+    'Hours'=>'Stunden',
+    'there_are_no_products'=>'Es gibt keine Buchungs-Periode'
 
 ];
