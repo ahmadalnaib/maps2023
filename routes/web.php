@@ -59,7 +59,6 @@ if (app()->environment('production') && !empty($app_url)) {
     $schema = explode(':', $app_url)[0];
     URL::forceScheme($schema);
 }
-
 require_once __DIR__ . '/jetstream.php';
 require_once __DIR__ . '/fortify.php';
 
@@ -263,5 +262,6 @@ Route::post('/rentals/save', [RentalsController::class, 'save'])->name('rentals.
 
 
 
-});
 
+
+});

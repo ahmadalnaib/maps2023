@@ -9,6 +9,7 @@ use App\Mail\WelcomeEmail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Team;
 
 class CreateUser extends Component
 {
@@ -31,6 +32,15 @@ class CreateUser extends Component
         return view('livewire.create-user');
     }
 
+    protected function createTeam(User $user): void
+    {
+        $user->ownedTeams()->save(Team::forceCreate([
+            'user_id' => $user->id,
+            'name' => explode(' ', $user->name, 2)[0]."'s Team",
+            'personal_team' => true,
+        ]));
+    }
+
     public function createUser()
     {
         $this->validate();
@@ -38,18 +48,19 @@ class CreateUser extends Component
         $this->isLoading = true;
 
         // Create a new tenant
-    $tenant = new Tenant();
-    $tenant->name = $this->name;
-    $tenant->save();
+        $tenant = new Tenant();
+        $tenant->name = $this->name;
+        $tenant->save();
 
         $user = new User();
         $user->name = $this->name;
-        // $user->tenant_id = User::max('tenant_id') + 1;
         $user->tenant_id = $tenant->id; 
         $user->role = $this->role;
         $user->email = $this->email;
         $user->password = Hash::make($this->password);
         $user->save();
+
+        $this->createTeam($user);
 
         Mail::to($user->email)->send(new WelcomeEmail($user->name, $user->email, $this->password));
 
@@ -67,4 +78,5 @@ class CreateUser extends Component
         $this->email = '';
         $this->password = '';
     }
+    
 }

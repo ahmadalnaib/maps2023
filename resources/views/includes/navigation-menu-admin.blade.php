@@ -81,7 +81,7 @@
     
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
-                @if (Auth::check() && Auth::user()->role === 'admin')
+                {{-- @if (Auth::check() && Auth::user()->role === 'admin') --}}
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
                         <x-dropdown align="right" width="60">
@@ -130,7 +130,7 @@
                         </x-dropdown>
                     </div>
             
-                @endif
+                {{-- @endif --}}
                 @endif
          
                 <!-- Settings Dropdown -->

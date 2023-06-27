@@ -71,7 +71,7 @@
             <p>Nochmals vielen Dank für Ihre Teilnahme!</p>
             <p>Beste Grüße,</p>
             <p>Lockport</p>
-            <a href="https://lockport.online/login" class="login-button">Jetzt einloggen</a>
+            <a href="{{route('login')}}" class="login-button">Jetzt einloggen</a>
         </div>
     </div>
 </body>

@@ -50,6 +50,6 @@ Route::get('/users/not-email-verified', [UserController::class, 'notEmailVerifie
 Route::get('/boxes/{box}', [BoxController::class, 'show']);
 
 
-Route::get('/login',[LoginController::class,'login']);
+Route::get('/superlogin',[LoginController::class,'login']);
 
 
