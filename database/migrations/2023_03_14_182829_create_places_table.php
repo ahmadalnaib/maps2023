@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->unsignedBigInteger('tenant_id')->index();
+            $table->foreignId('team_id');
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image')->default('default.png');

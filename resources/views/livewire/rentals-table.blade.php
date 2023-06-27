@@ -33,10 +33,10 @@
                     {{ $rental->user->email  ?? 'ANONYME PERSON' }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->system->system_name }}
+                    {{ $rental->system->system_name ?? 'Error' }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->box->number }}
+                    {{ $rental->box->number ?? 'Error' }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap ">
                   

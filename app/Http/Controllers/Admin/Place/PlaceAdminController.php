@@ -14,6 +14,8 @@ class PlaceAdminController extends Controller
 {
     public function index()
     {
+
+        
         $tenant = Auth::user();
         $places = Place::where('tenant_id', $tenant->id)
             ->latest()
@@ -42,6 +44,7 @@ class PlaceAdminController extends Controller
                 return redirect()->back()->withErrors($validation)->withInput();
             }
             $data['overview'] = $request->overview;
+            $data['team_id'] = $request->user()->team_id;
           
       
 
@@ -50,8 +53,12 @@ class PlaceAdminController extends Controller
         if ($request->image) {
             $imageName = time().'.'.$request->image->extension();
             $request->image->storeAs('public/images', $imageName);
-            $request->user()->places()->create($request->except('image') + ['image' => $imageName]);
+            $request->user()->places()->create($request->except(['image']) + ['image' => $imageName, 'team_id' => $request->user()->id]);
+
+
+        
         } else {
+           
             $request->user()->places()->create($request->all());
         }
        
