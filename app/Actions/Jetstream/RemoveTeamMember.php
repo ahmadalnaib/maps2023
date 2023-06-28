@@ -24,6 +24,17 @@ class RemoveTeamMember implements RemovesTeamMembers
         $team->removeUser($teamMember);
 
         TeamMemberRemoved::dispatch($team, $teamMember);
+        $teamMember->delete();
+
+        // public function delete(User $user): void
+        // {
+        //     DB::transaction(function () use ($user) {
+        //         $this->deleteTeams($user);
+        //         $user->deleteProfilePhoto();
+        //         $user->tokens->each->delete();
+        //         $user->delete();
+        //     });
+        // }
     }
 
     /**

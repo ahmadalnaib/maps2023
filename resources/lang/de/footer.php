@@ -2,5 +2,6 @@
 
 return[
     "Privacy Policy"=>"Datenschutzerklärung",
-    "Terms &amp; Conditions"=>'AGB'
+    "Terms &amp; Conditions"=>'AGB',
+    'Imprint'=>'Impressum'
 ];

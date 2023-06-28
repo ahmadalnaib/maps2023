@@ -31,7 +31,7 @@ class RentalsController extends Controller
         $box = Box::findOrFail($validatedData['box_id']);
         $plan = Plan::findOrFail($validatedData['rental_period']);
         $durationUnit = $plan->duration_unit;
-        $start_time = Carbon::now();
+        $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
 
         if ($durationUnit === 'days') {
             // Calculate end time based on plan's number of days

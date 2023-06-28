@@ -2,5 +2,6 @@
 
 return[
   "Privacy Policy"=>"Privacy Policy",
-  "Terms &amp; Conditions"=>'Terms &amp; Conditions'
+  "Terms &amp; Conditions"=>'Terms &amp; Conditions',
+  'Imprint'=>'Imprint'
 ];

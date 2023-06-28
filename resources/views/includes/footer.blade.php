@@ -34,8 +34,11 @@
                       <li class="mb-4">
                           <a target="__blank" href="{{url('privacy/Datenschutzerklärung_lockport.pdf')}}" class="hover:underline">{{__('footer.Privacy Policy')}}</a>
                       </li>
-                      <li>
+                      <li class="mb-4">
                           <a target="__blank" href="{{url('terms/AGB_lockport.online.pdf')}}" class="hover:underline">{{__('footer.Terms &amp; Conditions')}}</a>
+                      </li>
+                      <li class="mb-4">
+                          <a target="__blank" href="#" class="hover:underline">{{__('footer.Imprint')}}</a>
                       </li>
                   </ul>
               </div>

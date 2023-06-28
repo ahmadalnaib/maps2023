@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Laravel\Jetstream\Contracts\AddsTeamMembers;
+use Laravel\Jetstream\Http\Controllers\TeamInvitationController;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -57,8 +59,9 @@ class CreateNewUser implements CreatesNewUsers
                 $createArray['current_team_id'] = $tokenValid['team_id'];
                
             }
-            return tap(User::create($createArray), function (User $user) {
-                $this->createTeam($user);
+            return tap(User::create($createArray), function (User $user) use ($tokenValid, $createArray){
+                $role = $createArray['role'];
+                $this->createTeam($user, $tokenValid, $role);
         });
     });
     }
@@ -82,6 +85,7 @@ class CreateNewUser implements CreatesNewUsers
         if (Hash::check($invitation->email, $token)) {
             return [
                 'team_id' => $invitation->team_id,
+                'id' => $invitation->id
                 
             ];
         }
@@ -92,12 +96,33 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Create a personal team for the user.
      */
-    protected function createTeam(User $user): void
+    protected function createTeam(User $user, $tokenValid, string $role): bool
     {
+        if ($role === 'basic'){
+            return false;
+        }
+        if ($tokenValid){
+            $invitation = TeamInvitation::where('id',$tokenValid['id'] )->firstOrFail();
+            // $model = Jetstream::teamInvitationModel();
+
+            // $invitation = $model::whereKey($invitationId->id, )->firstOrFail();
+    
+            app(AddsTeamMembers::class)->add(
+                $invitation->team->owner,
+                $invitation->team,
+                $invitation->email,
+                $invitation->role
+                
+            );
+    
+            $invitation->delete();
+            return false;
+        }
         $user->ownedTeams()->save(Team::forceCreate([
             'user_id' => $user->id,
             'name' => explode(' ', $user->name, 2)[0]."'s Team",
             'personal_team' => true,
         ]));
+        return true;
     }
 }
