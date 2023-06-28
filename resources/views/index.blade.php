@@ -1,5 +1,14 @@
 <x-app-layout>
 
+  @section('og-title', 'LockTec GmbH')
+  @section('og-type', 'website')
+  @section('og-description', 'test')
+  @section('og-url', url()->current())
+  @section('og-image', url('fav/apple-touch-icon.png'))
+  @section('description', 'test')
+  @section('keywords','tsxt,testst' )
+  
+  
     <x-slot name="header">
     @include('includes/header')
 

@@ -5,7 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+
+            <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{url('fav/apple-touch-icon.png')}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{url('fav/favicon-32x32.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{url('fav/favicon-16x16.png')}}">
+    <link rel="manifest" href="{{url('fav/site.webmanifest')}}">
+    <link rel="mask-icon" href="{{url('fav/safari-pinned-tab.svg')}}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <meta property="og:title" content="@yield('og-title')" />
+    <meta property="og:description" content="@yield('og-description')">
+    <meta property="og:type" content="@yield('og-type')" />
+    <meta property="og:url" content="@yield('og-url')" />
+    <meta property="og:image" content="@yield('og-image')" />
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+
+
+    <title>Lockport - Finde ein Fach in deiner Nähe</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
