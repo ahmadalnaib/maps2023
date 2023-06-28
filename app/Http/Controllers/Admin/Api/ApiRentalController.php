@@ -17,9 +17,13 @@ class ApiRentalController extends Controller
 
     public function index()
     {
-        $rentals =RentalResource::collection(Rental::all());
+        $currentDateTime = now(); // Get the current date and time
+    
+        $rentals = RentalResource::collection(Rental::where('end_time', '>', $currentDateTime)->get());
+    
         return $rentals->response()->setStatusCode(200);
     }
+    
 
     public function store(Request $request)
     {
