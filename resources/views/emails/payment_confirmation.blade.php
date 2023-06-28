@@ -154,7 +154,7 @@
                 Locktec GmbH <br>
                 Johann-Georg-Herzog-Strasse 19 • D-96369 Weissenbrunn, Deutschland<br>
                 Tel. 49 9261 6075 90 • Fax  +49 9261 6075 10 <br>
-                info@locktec.com • www.biketec.de
+                lockport@locktec.net• www.lockport.online
 
             </p> 
     

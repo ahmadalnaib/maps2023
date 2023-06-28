@@ -1,12 +1,12 @@
 <x-app-layout>
 
-  @section('og-title', 'LockTec GmbH')
+  @section('og-title', 'Lockport')
   @section('og-type', 'website')
-  @section('og-description', 'test')
+  @section('og-description', 'Sichere Fahrradschließfachvermietung für bequeme Aufbewahrung. Einfach. Bequem. Flexibel. Testen Sie uns!')
   @section('og-url', url()->current())
   @section('og-image', url('fav/apple-touch-icon.png'))
-  @section('description', 'test')
-  @section('keywords','tsxt,testst' )
+  @section('description', 'Sichere Fahrradschließfachvermietung für bequeme Aufbewahrung. Einfach. Bequem. Flexibel. Testen Sie uns!')
+  @section('keywords','Sichere Fahrradschließfachvermietung, bequeme Aufbewahrung, Fahrradschließfach mieten, sichere Fahrradlagerung, flexible Lösungen, Testen Sie uns!' )
   
   
     <x-slot name="header">

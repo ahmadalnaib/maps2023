@@ -25,7 +25,7 @@
     <meta name="keywords" content="@yield('keywords')">
 
 
-    <title>Lockport - Finde ein Fach in deiner Nähe</title>
+    <title>Lockport - Sichere Fahrradschließfachvermietung: Bequeme Aufbewahrungslösungen</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
