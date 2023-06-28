@@ -55,7 +55,7 @@ class CreateNewUser implements CreatesNewUsers
             // });
             if ($tokenValid) {
                 $createArray['current_team_id'] = $tokenValid['team_id'];
-                $createArray['tenant_id'] = $tokenValid['tenant_id'];
+               
             }
             return tap(User::create($createArray), function (User $user) {
                 $this->createTeam($user);
@@ -82,7 +82,7 @@ class CreateNewUser implements CreatesNewUsers
         if (Hash::check($invitation->email, $token)) {
             return [
                 'team_id' => $invitation->team_id,
-                'tenant_id' => $invitation->tenant_id,
+                
             ];
         }
     }
