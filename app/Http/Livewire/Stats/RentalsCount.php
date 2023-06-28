@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Rental;
 use App\Models\Rentals;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class RentalsCount extends Component
 {
@@ -20,14 +21,15 @@ class RentalsCount extends Component
 
     public function updateStat()
     {
-        $user = auth()->user(); // get the current authenticated user
-
-    $this->rentalsCount = Rental::where('created_at', '>=', now()->subDays($this->selectedDays))
-                                  ->whereHas('system', function ($query) use ($user) {
-                                      $query->where('tenant_id', $user->id);
-                                  })
-                                  ->count();
+        $user = Auth::user(); // Get the current authenticated user
+    
+        $this->rentalsCount = Rental::where('created_at', '>=', now()->subDays($this->selectedDays))
+                                    ->whereHas('system', function ($query) use ($user) {
+                                        $query->where('team_id', $user->currentTeam->id); // Use team_id instead of tenant_id
+                                    })
+                                    ->count();
     }
+    
     public function render()
     {
         return view('livewire.stats.rentals-count');

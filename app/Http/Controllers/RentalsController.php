@@ -124,7 +124,7 @@ class RentalsController extends Controller
     } catch (\Exception $exception) {
         return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
     }
-    $start_time = Carbon::now();
+    $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
     $durationUnit = $plan->duration_unit;
     
     if ($durationUnit === 'days') {
@@ -197,7 +197,7 @@ public function save(Request $request, Plan $plan)
     $system = System::findOrFail($validatedData['system_id']);
     $box = Box::findOrFail($validatedData['box_id']);
     $plan = Plan::findOrFail($validatedData['rental_period']);
-    $start_time = Carbon::now();
+    $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
     $durationUnit = $plan->duration_unit;
 
     if ($durationUnit === 'days') {

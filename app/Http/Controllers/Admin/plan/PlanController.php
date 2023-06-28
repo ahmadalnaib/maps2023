@@ -17,75 +17,60 @@ class PlanController extends Controller
 
     public function index()
     {
-        $tenant = Auth::user();
-        // $plans = Plan::with(['system', 'doors']) // Eager load the locker and doors relationships
-        //     ->where('tenant_id', $tenant->id)
-        //     ->latest()
-        //     ->paginate(8);
+        $user = Auth::user();
+        $plans = Plan::with(['policy'])
+            ->where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
+            ->latest()
+            ->paginate(8);
 
-        $plans=Plan::with(['policy'])
-        ->where('tenant_id', $tenant->id)
-             ->latest()
-             ->paginate(8);
-
-            // dd($plans[1]->doors);
-
-   
-     return view('admin.plan.index',compact('plans'));
+        return view('admin.plan.index', compact('plans'));
     }
 
     public function create()
     {
-        $tenant = Auth::user();
-        $policies = Policy::where('tenant_id', $tenant->id)
-        ->latest()
-        ->get();
-      
-        return view('admin.plan.create',compact('policies'));
+        $user = Auth::user();
+        $policies = Policy::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
+            ->latest()
+            ->get();
+
+        return view('admin.plan.create', compact('policies'));
     }
 
-    public function store(PlanRequest  $request)
+    public function store(PlanRequest $request)
     {
-       
-        $plan= Plan::create([
-            "name" =>$request->name,
-            "number_of_days"=>$request->number_of_days,
-            "duration_unit" => $request->duration_unit,
+        $user = Auth::user();
+        $plan = Plan::create([
+            'name' => $request->name,
+            'number_of_days' => $request->number_of_days,
+            'duration_unit' => $request->duration_unit,
             'price' => $request->price,
-            "policy_id"=>$request->policy_id,
-            'tenant_id' => auth()->user()->tenant_id,
-           
-         
-        
-         
+            'policy_id' => $request->policy_id,
+            'team_id' => $user->currentTeam->id, // Use team_id instead of tenant_id
         ]);
-      
 
         return redirect()->route('admin.plan.index');
     }
 
     public function edit(Plan $plan)
     {
-        $tenant = Auth::user();
-        $policies = Policy::where('tenant_id', $tenant->id)
+        $user = Auth::user();
+        $policies = Policy::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
             ->latest()
             ->get();
 
-      
-        return view('admin.plan.edit', compact('plan','policies'));
+        return view('admin.plan.edit', compact('plan', 'policies'));
     }
 
-    public function update(PlanRequest  $request, Plan $plan)
+    public function update(PlanRequest $request, Plan $plan)
     {
         $plan->update([
-            "name" =>$request->name,
-            "number_of_days"=>$request->number_of_days,
-            "duration_unit" => $request->duration_unit, 
+            'name' => $request->name,
+            'number_of_days' => $request->number_of_days,
+            'duration_unit' => $request->duration_unit,
             'price' => $request->price,
-            "policy_id"=>$request->policy_id,
-            
+            'policy_id' => $request->policy_id,
         ]);
-      
+
         return redirect()->route('admin.plan.index');
     }
 

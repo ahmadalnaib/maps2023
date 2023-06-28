@@ -12,10 +12,10 @@ class BoxTypeController extends Controller
 {
     public function index()
     {
-        $tenant = Auth::user();
-          $boxTypes = BoxType::where('tenant_id', $tenant->id)
-        ->latest()
-        ->paginate(8);
+        $user = Auth::user();
+        $boxTypes = BoxType::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
+            ->latest()
+            ->paginate(8);
         return view('admin.boxtypes.index', compact('boxTypes'));
     }
 
@@ -27,9 +27,9 @@ class BoxTypeController extends Controller
 
     public function store(BoxTypeRequest $request)
     {
+        $user = Auth::user();
         $boxType = BoxType::create([
-            'tenant_id' => auth()->user()->tenant_id,
-          
+            'team_id' => $user->currentTeam->id, // Use team_id instead of tenant_id
             'name' => $request->name,
             'depth' => $request->depth,
             'width' => $request->width,
@@ -41,7 +41,6 @@ class BoxTypeController extends Controller
         ]);
 
         return redirect()->route('admin.boxtype.index')->with('message', 'Box type created successfully!');
-
     }
 
 
@@ -55,7 +54,6 @@ class BoxTypeController extends Controller
     public function update(BoxTypeRequest $request, BoxType $type)
     {
         $type->update([
-            
             'name' => $request->name,
             'depth' => $request->depth,
             'width' => $request->width,
@@ -67,7 +65,6 @@ class BoxTypeController extends Controller
         ]);
 
         return redirect()->route('admin.boxtype.index')->with('message', 'Box type updated successfully!');
-
     }
 
     public function destroy(BoxType $type)

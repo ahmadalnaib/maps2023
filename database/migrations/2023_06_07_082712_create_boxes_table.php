@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('boxes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->unsignedBigInteger('tenant_id')->index();
+            $table->foreignId('team_id');
             $table->string('number');
             $table->unsignedBigInteger('box_type_id');
             $table->string('plan_id',255);

@@ -24,6 +24,7 @@ class SystemResource extends JsonResource
         return [
             'id'=>$this->id,
             'tenant_id'=>$this->tenant_id,
+            'team_id'=>$this->team_id,
             'place_id'=>$this->place_id,
             'system_name'=>$this->system_name,
             'place_name' => $this->place ? $this->place->name : null,

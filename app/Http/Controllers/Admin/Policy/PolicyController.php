@@ -13,13 +13,12 @@ class PolicyController extends Controller
 
     public function index()
     {
-        $tenant = Auth::user();
-        $policies = Policy::where('tenant_id', $tenant->id)
-        ->latest()
-        ->paginate(8);
+        $user = Auth::user();
+        $policies = Policy::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
+            ->latest()
+            ->paginate(8);
 
-   
-     return view('admin.policy.index',compact('policies'));
+        return view('admin.policy.index', compact('policies'));
     }
 
     public function create()
@@ -30,17 +29,18 @@ class PolicyController extends Controller
 
     public function store(Request $request)
     {
-        //
         $request->validate([
-            'name'=>'required',
-         ]);
- 
-        Policy::create([
-           'name'=>request('name'), 
-           'tenant_id' => auth()->user()->tenant_id,
-          
+            'name' => 'required',
         ]);
-        return  redirect()->route('admin.policy.index')->with('message','Policy wurde aktualisiert 🎉')->with('timeout', 3000);
+
+        Policy::create([
+            'name' => $request->name,
+            'team_id' => Auth::user()->currentTeam->id, // Use team_id instead of tenant_id
+        ]);
+
+        return redirect()->route('admin.policy.index')
+            ->with('message', 'Policy created successfully')
+            ->with('timeout', 3000);
     }
 
     public function edit($policy)
@@ -50,18 +50,19 @@ class PolicyController extends Controller
         return view('admin.policy.edit', compact('policy'));
     }
 
-    public function update(Request $request,Policy $policy)
+    public function update(Request $request, Policy $policy)
     {
         $request->validate([
             'name' => 'required',
         ]);
 
         $policy->update([
-            "name" => $request->name,
-         
-            
+            'name' => $request->name,
         ]);
-        return redirect()->route('admin.policy.index')->with('message', 'Policy updated successfully')->with('timeout', 3000);
+
+        return redirect()->route('admin.policy.index')
+            ->with('message', 'Policy updated successfully')
+            ->with('timeout', 3000);
     }
 
     public function destroy(Policy $policy)

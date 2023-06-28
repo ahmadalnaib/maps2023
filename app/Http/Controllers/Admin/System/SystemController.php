@@ -14,52 +14,52 @@ class SystemController extends Controller
 {
     
 
-      public function index()
-      {
-          $tenant = Auth::user();
-          $systems = System::where('tenant_id', $tenant->id)
-          ->latest()
-          ->paginate(8);
+    public function index()
+    {
+        $user = Auth::user();
+        $systems = System::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
+            ->latest()
+            ->paginate(8);
+
+        return view('admin.system.index', compact('systems'));
+    }
   
-     
-       return view('admin.system.index',compact('systems'));
-      }
-  
-      public function create()
-      {
-          $tenant = Auth::user();
-          $chosenPlaces = System::where('tenant_id', $tenant->id)->pluck('place_id')->toArray();
-          $places = Place::where('tenant_id', $tenant->id)
-              ->whereNotIn('id', $chosenPlaces)
-              ->latest()
-              ->get();
-          return view('admin.system.create', compact('places'));
-      }
+    public function create()
+    {
+        $user = Auth::user();
+        $chosenPlaces = System::where('team_id', $user->currentTeam->id)->pluck('place_id')->toArray();
+        $places = Place::where('team_id', $user->currentTeam->id)
+            ->whereNotIn('id', $chosenPlaces)
+            ->latest()
+            ->get();
+
+        return view('admin.system.create', compact('places'));
+    }
       
   
-      public function store(SystemRequest $request)
-      {
-            System::create([
-              'system_name' => $request->system_name,
-          
-              'place_id' => $request->place_id,
-              'tenant_id' => auth()->user()->tenant_id,
-          ]);
-      
-          return redirect()->route('admin.system.index')->with('message', 'System wurde aktualisiert 🎉')->with('timeout', 3000);
-      }
-      
+    public function store(SystemRequest $request)
+    {
+        System::create([
+            'system_name' => $request->system_name,
+            'place_id' => $request->place_id,
+            'team_id' => Auth::user()->currentTeam->id, // Use team_id instead of tenant_id
+        ]);
+
+        return redirect()->route('admin.system.index')
+            ->with('message', 'System created successfully')
+            ->with('timeout', 3000);
+    }
   
   
-      public function edit(System $system)
-      {
-          $tenant = Auth::user();
-          $places = Place::where('tenant_id', $tenant->id)
-              ->latest()
-              ->get();
-  
-          return view('admin.system.edit', compact('system', 'places'));
-      }
+    public function edit(System $system)
+    {
+        $user = Auth::user();
+        $places = Place::where('team_id', $user->currentTeam->id)
+            ->latest()
+            ->get();
+
+        return view('admin.system.edit', compact('system', 'places'));
+    }
   
   
       public function update(SystemRequest $request, System $system)

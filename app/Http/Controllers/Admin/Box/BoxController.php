@@ -17,45 +17,44 @@ class BoxController extends Controller
 
     public function index()
     {
+        $teamId = Auth::user()->currentTeam->id;
+        $boxes = Box::query()
+            ->select('id', 'number', 'system_id', 'box_type_id', 'team_id')
+            ->with('user:id', 'system:id,system_name', 'plans:id,name', 'boxtype:id,name')
+            ->where('team_id', $teamId)
+            ->latest()
+            ->paginate(8);
 
-       $tenant = Auth::user();
-       $boxes = Box::query()
-       ->select('id','number','system_id','box_type_id','tenant_id')->with('user:id','system:id,system_name','plans:id,name','boxtype:id,name')
-        ->where('tenant_id', $tenant->id)
-        ->latest()
-        ->paginate(8);
-
-
-  
-    return view('admin.box.index',compact('boxes'));
+        return view('admin.box.index', compact('boxes'));
     }
 
     public function create()
     {
-       $tenant = Auth::user();
-       $systems = System::where('tenant_id', $tenant->id)
-       ->latest()
-       ->get();
-       $plans = Plan::where('tenant_id', $tenant->id)
-       ->latest()
-       ->get();
+        $teamId = Auth::user()->currentTeam->id;
+        $systems = System::where('team_id', $teamId)
+            ->latest()
+            ->get();
+        $plans = Plan::where('team_id', $teamId)
+            ->latest()
+            ->get();
 
-       $boxTypes = BoxType::where('tenant_id', $tenant->id)
-       ->latest()
-       ->get();
-   return view('admin.box.create', compact('systems', 'plans', 'boxTypes'));
-     
+        $boxTypes = BoxType::where('team_id', $teamId)
+            ->latest()
+            ->get();
+
+        return view('admin.box.create', compact('systems', 'plans', 'boxTypes'));
     }
 
     public function store(BoxRequest $request)
     {
+        $teamId = Auth::user()->currentTeam->id;
+    
         $box = Box::create([
             'number' => $request->number,
             'system_id' => $request->system_id,
-            'box_type_id'=>$request->box_type_id,
+            'box_type_id' => $request->box_type_id,
+            'team_id' => $teamId,
             'plan_id' => implode(',', $request->plan_id),
-
-           
         ]);
         $box->plans()->attach($request->plan_id); // Assuming you have a plan_id field in the request
     
@@ -65,32 +64,35 @@ class BoxController extends Controller
 
     public function edit(Box $box)
     {
-        $tenant = Auth::user();
-        $systems = System::where('tenant_id', $tenant->id)
+        $teamId = Auth::user()->currentTeam->id;
+        $systems = System::where('team_id', $teamId)
             ->latest()
             ->get();
-        
-        $plans = Plan::where('tenant_id', $tenant->id)
+
+        $plans = Plan::where('team_id', $teamId)
             ->latest()
             ->get();
-    
-        $boxTypes = BoxType::where('tenant_id', $tenant->id)
+
+        $boxTypes = BoxType::where('team_id', $teamId)
             ->latest()
             ->get();
-    
+
         return view('admin.box.edit', compact('box', 'systems', 'plans', 'boxTypes'));
     }
     
 
     public function update(BoxRequest $request, Box $box)
     {
+        $teamId = Auth::user()->currentTeam->id;
+
         $box->update([
             'number' => $request->number,
             'system_id' => $request->system_id,
-            'box_type_id'=>$request->box_type_id,
+            'box_type_id' => $request->box_type_id,
+            'team_id' => $teamId,
         ]);
         $box->plans()->sync($request->plan_id); // Sync the selected plan IDs
-    
+
         return redirect()->route('admin.box.index')->with('message', 'box wurde aktualisiert 🎉')->with('timeout', 3000);
     }
     

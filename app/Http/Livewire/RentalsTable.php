@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Rental;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 class RentalsTable extends Component
 {
@@ -26,13 +27,13 @@ class RentalsTable extends Component
 
         
 
-        $user = auth()->user(); // Get the current authenticated user
+        $user = Auth::user(); // Get the current authenticated user
 
         $rentals = Rental::whereHas('system', function ($query) use ($user) {
-                $query->where('tenant_id', $user->id);
+                $query->where('team_id', $user->currentTeam->id); // Use team_id instead of tenant_id
             })
             ->orWhereHas('box', function ($query) use ($user) {
-                $query->where('tenant_id', $user->id);
+                $query->where('team_id', $user->currentTeam->id); // Use team_id instead of tenant_id
             })
             ->orderBy('created_at', 'desc')
             ->paginate(10);

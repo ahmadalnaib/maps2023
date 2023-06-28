@@ -18,6 +18,7 @@ class BoxResource extends JsonResource
         return [
             'id' => $this->id,
             'tenant_id' => $this->tenant_id,
+            'team_id'=>$this->team_id,
             'number' => $this->number,
             'box_type_id' => $this->box_type_id,
             'plans' => PlanResource::collection($this->whenLoaded('plans')),

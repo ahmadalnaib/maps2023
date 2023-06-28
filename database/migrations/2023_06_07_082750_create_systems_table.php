@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('systems', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('team_id');
             $table->unsignedBigInteger('tenant_id')->index();
             $table->unsignedBigInteger('place_id');
             $table->string('system_name');
