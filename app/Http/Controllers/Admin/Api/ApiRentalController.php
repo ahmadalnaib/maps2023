@@ -49,11 +49,16 @@ class ApiRentalController extends Controller
     }
 
     public function getBySystem(Request $request, $systemUuid)
-{
-    $rentals = RentalResource::collection(Rental::where('system_id', $systemUuid)->get());
-
-    return $rentals->response()->setStatusCode(200);
-}
+    {
+        $currentDateTime = now(); // Get the current date and time
+    
+        $rentals = RentalResource::collection(Rental::where('system_id', $systemUuid)
+            ->where('end_time', '>', $currentDateTime)
+            ->get());
+    
+        return $rentals->response()->setStatusCode(200);
+    }
+    
 
 
     

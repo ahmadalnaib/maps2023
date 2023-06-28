@@ -35,7 +35,7 @@ class CreateNewUser implements CreatesNewUsers
         $tenant=Tenant::create([
         'name'=>$input['name'],
         ]);
-   $token = request()->query()['token'];
+   $token = request()->query()['token']  ?? '';
   
    $tokenValid = $this->checkTokenAgainstTeams($token);
 //   $tokenValid = true;
@@ -49,25 +49,46 @@ class CreateNewUser implements CreatesNewUsers
                 
                 
             ];
-            if ($tokenValid) {$createArray['team_id'] = $tokenValid->team_id;}
+            // if ($tokenValid) {$createArray['current_team_id'] = $tokenValid->current_team_id;}
+            // return tap(User::create($createArray), function (User $user) {
+            //     $this->createTeam($user);
+            // });
+            if ($tokenValid) {
+                $createArray['current_team_id'] = $tokenValid['team_id'];
+                $createArray['tenant_id'] = $tokenValid['tenant_id'];
+            }
             return tap(User::create($createArray), function (User $user) {
                 $this->createTeam($user);
-            });
         });
+    });
     }
 
 
-    protected function checkTokenAgainstTeams(string $token){
-        $invitations = TeamInvitation::all();
-        foreach ($invitations as $invitation){
-            var_dump($invitation->email);
-            var_dump($token);
-            if ( \Hash::make($invitation->email) === $token ){
-                return $invitation;
-            }
+    // protected function checkTokenAgainstTeams(string $token){
+    //     $invitations = TeamInvitation::all();
+    //     foreach ($invitations as $invitation){
+    //         var_dump($invitation->email);
+    //         var_dump($token);
+    //         if ( \Hash::make($invitation->email) === $token ){
+    //             return $invitation;
+    //         }
+    //     }
+    //     return false;
+    // }
+    protected function checkTokenAgainstTeams(string $token)
+{
+    $invitations = TeamInvitation::all();
+    foreach ($invitations as $invitation) {
+        if (Hash::check($invitation->email, $token)) {
+            return [
+                'team_id' => $invitation->team_id,
+                'tenant_id' => $invitation->tenant_id,
+            ];
         }
-        return false;
     }
+    return false;
+}
+
     /**
      * Create a personal team for the user.
      */

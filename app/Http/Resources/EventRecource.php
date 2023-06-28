@@ -19,7 +19,7 @@ class EventRecource extends JsonResource
             'user_id'=>$this->user_id,
             'system_id'=>$this->system_id,
             'box_id'=>$this->box_id,
-            'rental_id'=>$this->rental_id,
+            'rental_uuid'=>$this->rental_uuid,
             'event_id'=>$this->event_id,
             'priority'=>$this->priority,
             'message'=>$this->message,

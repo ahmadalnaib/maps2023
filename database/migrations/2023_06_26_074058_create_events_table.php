@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime('date_time');
             $table->foreignUuid('system_id')->nullable();
             $table->foreignUuid('box_id')->nullable();
-            $table->unsignedBigInteger('rental_id')->nullable();
+            $table->uuid('rental_uuid')->nullable();
             $table->text('data')->nullable();
 
 

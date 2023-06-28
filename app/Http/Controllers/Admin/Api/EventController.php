@@ -17,7 +17,7 @@ class EventController extends Controller
             'user_id' => '',
             'system_id' => 'required',
             'box_id' => '',
-            'rental_id' => '',
+            'rental_uuid' => '',
             'event_id' => 'required',
             'priority'=>'required',
             'message' => 'required',
