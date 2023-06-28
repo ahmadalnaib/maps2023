@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\Validator;
 
 class PlaceAdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
         
         $tenant = Auth::user();
-        $places = Place::where('tenant_id', $tenant->id)
+        // $places = Place::where('tenant_id', $tenant->id)
+        $places=Place::where('team_id',$request->user()->currentTeam->id)
             ->latest()
             ->paginate(8);
         
