@@ -6,7 +6,7 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-            @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'delete'))
+            @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'create'))
             <a href="{{route('admin.box.create')}}" type="button" class="py-2.5 px-5 mr-2 mb-10 text-sm font-medium text-white  focus:outline-none bg-slate-500 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">{{__('box.Create new Box')}}</a>
             @endif
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
@@ -64,17 +64,18 @@
                
               
                 <td class="px-6 py-4 flex  flex-wrap">
+                    @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'update'))
                     <a href="{{route('admin.box.edit',$box)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">{{__('place.Edit')}}</a>
-                   
-    
-        
+                  @endif 
+                  
+                  @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'delete'))
                   
                         <form action="{{route('admin.box.destroy',$box)}}" method="post">
                             @csrf
                             @method('delete')
                             <button onclick="return confirm('Sind Sie sicher, dass du diesen Beitrag löschen möchtest? Es gibt keinen Weg zurück. 😯')"    class="font-medium text-red-600 dark:text-red-500 hover:underline m-2" type="submit">{{__('place.delete')}}</button>
                         </form>
-                      
+                      @endif
                     
                 </td>
             </tr>

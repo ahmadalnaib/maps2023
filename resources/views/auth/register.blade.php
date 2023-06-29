@@ -36,7 +36,7 @@
                 <div class="mt-4">
                     <x-label for="terms">
                         <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
+                            <x-checkbox name="terms" id="terms" required  title="Lütfen işaretli yerleri doldurunuz"/>
 
                             <div class="ml-2">
                      {{__('reg.I agree with the')}}    <a class="text-blue-700" target="__blank" href="{{url('terms/AGB_lockport.online.pdf')}}">{{__('reg.terms and conditions') }} </a>
@@ -47,7 +47,7 @@
                 <div class="mt-4">
                     <x-label for="terms">
                         <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
+                            <x-checkbox name="terms" id="terms" required  />
 
                             <div class="ml-2">
                      {{__('reg.I agree with the')}}    <a class="text-blue-700" target="__blank" href="{{url('privacy/Datenschutzerklärung_lockport.pdf')}}">{{__('reg.Data Protection') }} </a>

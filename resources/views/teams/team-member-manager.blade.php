@@ -65,7 +65,7 @@
 
                 <x-slot name="actions">
                     <x-action-message class="mr-3" on="saved">
-                        {{ __('team.Added.') }}
+                        {{ __('team.Added') }}
                     </x-action-message>
 
                     <x-button>

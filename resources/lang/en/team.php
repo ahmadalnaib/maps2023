@@ -21,6 +21,14 @@ return[
     'Leave Team'=>'Leave Team',
     'Are you sure you would like to leave this team?'=>'Are you sure you would like to leave this team?',
     'Remove Team Member'=>'Remove Team Member',
-    'Are you sure you would like to remove this person from the team?'=>'Are you sure you would like to remove this person from the team?'
+    'Are you sure you would like to remove this person from the team?'=>'Are you sure you would like to remove this person from the team?',
+    'You have been invited to join the :team team!'=>'You have been invited to join the :team team!',
+    'If you do not have an account, you may create one by clicking the button below. After creating an account, you may click the invitation acceptance button in this email to accept the team invitation:'=>'If you do not have an account, you may create one by clicking the button below. After creating an account, you may click the invitation acceptance button in this email to accept the team invitation:',
+    'Create Account'=>'Create Account',
+    'Saved.'=>'Saved.',
+    'Save'=>'Save',
+    'Team Settings'=>'Team Settings',
+    'Manage Team'=>'Team bearbeiten'
+    
 
 ];
