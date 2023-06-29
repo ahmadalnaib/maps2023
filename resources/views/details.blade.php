@@ -198,7 +198,7 @@
 
     let map = L.map('mapid', {
         center: [latitude, longitude],
-        zoom: 6
+        zoom: 18
     });
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
     let greenIcon = L.icon({

@@ -1,7 +1,7 @@
 <?php
 
 return[
-    "Privacy Policy"=>"Datenschutzerklärung",
+    "Privacy Policy"=>"Datenschutzhinweise",
     "Terms &amp; Conditions"=>'AGB',
     'Imprint'=>'Impressum'
 ];

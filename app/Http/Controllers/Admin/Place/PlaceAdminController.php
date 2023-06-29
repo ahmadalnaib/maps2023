@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Place;
 
 use App\Models\Place;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\PlaceRequest;
 use App\Http\Controllers\Controller;
@@ -93,6 +94,14 @@ class PlaceAdminController extends Controller
         $place->address = $request->input('address');
         $place->longitude = $request->input('longitude');
         $place->latitude = $request->input('latitude');
+
+     // Generate a unique slug
+     $slug = Str::slug($request->input('name'));
+     $count = Place::where('slug', $slug)->where('id', '!=', $place->id)->count();
+     if ($count > 0) {
+         $slug .= '-' . uniqid();
+     }
+     $place->slug = $slug;
 
         if ($request->hasFile('image')) {
             $imageName = time() . '.' . $request->image->extension();

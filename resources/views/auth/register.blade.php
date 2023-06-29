@@ -44,6 +44,17 @@
                         </div>
                     </x-label>
                 </div>
+                <div class="mt-4">
+                    <x-label for="terms">
+                        <div class="flex items-center">
+                            <x-checkbox name="terms" id="terms" required />
+
+                            <div class="ml-2">
+                     {{__('reg.I agree with the')}}    <a class="text-blue-700" target="__blank" href="{{url('privacy/Datenschutzerklärung_lockport.pdf')}}">{{__('reg.Data Protection') }} </a>
+                            </div>
+                        </div>
+                    </x-label>
+                </div>
             @endif
 
             <div class="flex items-center justify-end mt-4">
