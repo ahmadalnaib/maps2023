@@ -144,7 +144,7 @@
                     <div class="mt-5">
                         <h3 class="mb-4 text-2xl">{{ __('details.Address') }}</h3>
                         <div id="mapid" style="height: 350px"></div>
-                        <input type="hidden" id="name" value="{{ $place->name }}">
+                        <input type="hidden" id="name" value="{{ $place->address }}">
                         <input type="hidden" id="latitude" value="{{ $place->latitude }}">
                         <input type="hidden" id="longitude" value="{{ $place->longitude }}">
                     </div>
