@@ -39,7 +39,7 @@ class PolicyController extends Controller
         ]);
 
         return redirect()->route('admin.policy.index')
-            ->with('message', 'Policy created successfully')
+            ->with('message', 'Richtlinie erfolgreich erstellt')
             ->with('timeout', 3000);
     }
 
@@ -61,7 +61,7 @@ class PolicyController extends Controller
         ]);
 
         return redirect()->route('admin.policy.index')
-            ->with('message', 'Policy updated successfully')
+            ->with('message', 'Politik erfolgreich aktualisiert')
             ->with('timeout', 3000);
     }
 
@@ -70,7 +70,7 @@ class PolicyController extends Controller
       
         $policy->delete();
 
-        return redirect()->route('admin.policy.index')->with('message', 'Policy deleted successfully')->with('timeout', 3000);
+        return redirect()->route('admin.policy.index')->with('message', 'Richtlinie erfolgreich gelöscht')->with('timeout', 3000);
     }
 
 

@@ -63,7 +63,7 @@ class PlaceAdminController extends Controller
             $request->user()->places()->create($request->all());
         }
        
-        return redirect()->route('admin.place.index')->with('message', 'Place was created successfully 🎉')->with('timeout', 3000);
+        return redirect()->route('admin.place.index')->with('message', 'Standorte erfolgreich erstellt  🎉')->with('timeout', 3000);
     }
 }
 
@@ -102,13 +102,13 @@ class PlaceAdminController extends Controller
 
         $place->update($data);
 
-        return redirect()->route('admin.place.index')->with('message', 'Place was updated successfully 🎉')->with('timeout', 3000);
+        return redirect()->route('admin.place.index')->with('message', 'Standorte wurde erfolgreich aktualisiert 🎉')->with('timeout', 3000);
     }
 
     public function destroy(Place $place)
     {
         $place->delete();
 
-        return redirect()->route('admin.place.index')->with('message', 'Place was deleted 🗑');
+        return redirect()->route('admin.place.index')->with('message', 'Standorte erfolgreich gelöscht  🗑');
     }
 }

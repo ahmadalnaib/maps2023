@@ -48,7 +48,7 @@ class PlanController extends Controller
             'team_id' => $user->currentTeam->id, // Use team_id instead of tenant_id
         ]);
 
-        return redirect()->route('admin.plan.index');
+        return redirect()->route('admin.plan.index')->with('message', 'Buchung Period erfolgreich erstellt 🎉')->with('timeout', 3000);
     }
 
     public function edit(Plan $plan)
@@ -71,13 +71,13 @@ class PlanController extends Controller
             'policy_id' => $request->policy_id,
         ]);
 
-        return redirect()->route('admin.plan.index');
+        return redirect()->route('admin.plan.index')->with('message', 'Buchung Period wurde erfolgreich aktualisiert 🎉')->with('timeout', 3000);;
     }
 
     public function destroy(Plan $plan)
     {
         $plan->delete();
 
-        return redirect()->route('admin.plan.index');
+        return redirect()->route('admin.plan.index')->with('message', 'Buchung Perioderfolgreich gelöscht')->with('timeout', 3000);;
     }
 }

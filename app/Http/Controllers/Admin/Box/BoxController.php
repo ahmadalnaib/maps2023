@@ -58,7 +58,7 @@ class BoxController extends Controller
         ]);
         $box->plans()->attach($request->plan_id); // Assuming you have a plan_id field in the request
     
-        return redirect()->route('admin.box.index')->with('message', 'Box wurde aktualisiert 🎉')->with('timeout', 3000);
+        return redirect()->route('admin.box.index')->with('message', 'Fach erfolgreich erstellt🎉')->with('timeout', 3000);
     }
     
 
@@ -93,7 +93,7 @@ class BoxController extends Controller
         ]);
         $box->plans()->sync($request->plan_id); // Sync the selected plan IDs
 
-        return redirect()->route('admin.box.index')->with('message', 'box wurde aktualisiert 🎉')->with('timeout', 3000);
+        return redirect()->route('admin.box.index')->with('message', 'Fach wurde aktualisiert 🎉')->with('timeout', 3000);
     }
     
 
@@ -102,6 +102,6 @@ class BoxController extends Controller
         $this->authorize('delete',$box);
         $box->delete();
 
-        return redirect()->route('admin.box.index')->with('message','Box wurde delete 🎉')->with('timeout', 3000);;
+        return redirect()->route('admin.box.index')->with('message','Fach erfolgreich gelöscht ')->with('timeout', 3000);;
     }
 }

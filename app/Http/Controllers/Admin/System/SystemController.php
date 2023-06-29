@@ -46,7 +46,7 @@ class SystemController extends Controller
         ]);
 
         return redirect()->route('admin.system.index')
-            ->with('message', 'System created successfully')
+            ->with('message', 'Anglage erfolgreich erstellt')
             ->with('timeout', 3000);
     }
   
@@ -70,7 +70,7 @@ class SystemController extends Controller
               'place_id' => $request->place_id,
           ]);
       
-          return redirect()->route('admin.system.index')->with('message', 'System wurde update 🎉')->with('timeout', 3000);
+          return redirect()->route('admin.system.index')->with('message', 'Anglage erfolgreich aktualisiert 🎉')->with('timeout', 3000);
       }
       
   
@@ -79,6 +79,6 @@ class SystemController extends Controller
       {
           $system->delete();
   
-          return redirect()->route('admin.system.index')->with('message','system wurde gelöscht 🗑');
+          return redirect()->route('admin.system.index')->with('message','Anlage erfolgreich gelöscht 🗑');
       }
 }

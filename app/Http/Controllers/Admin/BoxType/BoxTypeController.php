@@ -40,7 +40,7 @@ class BoxTypeController extends Controller
             'big' => $request->big,
         ]);
 
-        return redirect()->route('admin.boxtype.index')->with('message', 'Box type created successfully!');
+        return redirect()->route('admin.boxtype.index')->with('message', 'Fach Typen erfolgreich erstellt 🎉')->with('timeout', 3000);
     }
 
 
@@ -64,14 +64,14 @@ class BoxTypeController extends Controller
             'big' => $request->big,
         ]);
 
-        return redirect()->route('admin.boxtype.index')->with('message', 'Box type updated successfully!');
+        return redirect()->route('admin.boxtype.index')->with('message', 'Fach Typen wurde  aktualisiert 🎉')->with('timeout', 3000);
     }
 
     public function destroy(BoxType $type)
     {
         $type->delete();
 
-        return redirect()->route('admin.boxtype.index')->with('message', 'Box type deleted successfully!');
+        return redirect()->route('admin.boxtype.index')->with('message', 'Fach Typen erfolgreich gelöscht')->with('timeout', 3000);
     }
 
     
