@@ -18,6 +18,9 @@ class CreateUser extends Component
     public $role;
     public $email;
     public $password;
+
+    public $address;
+    public $phone_number;
     public $isLoading = false;
 
     protected $rules = [
@@ -25,6 +28,8 @@ class CreateUser extends Component
         'role' => 'required|in:admin,user',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:8',
+        'address' => 'required',
+        'phone_number' => 'required',
     ];
 
     public function render()
@@ -56,7 +61,10 @@ class CreateUser extends Component
         $user->name = $this->name;
         $user->tenant_id = $tenant->id; 
         $user->role = $this->role;
+      
         $user->email = $this->email;
+        $user->address = $this->address;
+        $user->phone_number = $this->phone_number;
         $user->password = Hash::make($this->password);
         $user->save();
 
@@ -77,6 +85,8 @@ class CreateUser extends Component
         $this->role = '';
         $this->email = '';
         $this->password = '';
+        $this->address = '';
+        $this->phone_number = '';
     }
     
 }

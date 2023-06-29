@@ -13,6 +13,18 @@
                 class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
+        <div class="flex flex-col">
+            <label for="address" class="text-gray-700">address</label>
+            <input type="address" wire:model="address" id="address" placeholder="address"
+                class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            @error('address') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
+        <div class="flex flex-col">
+            <label for="phone_number" class="text-gray-700">phone_number</label>
+            <input type="phone_number" wire:model="phone_number" id="phone_number" placeholder="phone_number"
+                class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            @error('phone_number') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
 
         <div class="flex flex-col">
             <label for="role" class="text-gray-700">Role</label>

@@ -32,6 +32,8 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+            'address' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
         ])->validate();
 
         $tenant=Tenant::create([
@@ -48,13 +50,12 @@ class CreateNewUser implements CreatesNewUsers
                 'tenant_id'=>$tenant->id,
                 'role'=> $tokenValid ? 'admin': 'basic',
                 'password' => Hash::make($input['password']),
+                'address' => $input['address'],
+                'phone_number' => $input['phone_number'],
                 
                 
             ];
-            // if ($tokenValid) {$createArray['current_team_id'] = $tokenValid->current_team_id;}
-            // return tap(User::create($createArray), function (User $user) {
-            //     $this->createTeam($user);
-            // });
+          
             if ($tokenValid) {
                 $createArray['current_team_id'] = $tokenValid['team_id'];
                
@@ -67,17 +68,7 @@ class CreateNewUser implements CreatesNewUsers
     }
 
 
-    // protected function checkTokenAgainstTeams(string $token){
-    //     $invitations = TeamInvitation::all();
-    //     foreach ($invitations as $invitation){
-    //         var_dump($invitation->email);
-    //         var_dump($token);
-    //         if ( \Hash::make($invitation->email) === $token ){
-    //             return $invitation;
-    //         }
-    //     }
-    //     return false;
-    // }
+
     protected function checkTokenAgainstTeams(string $token)
 {
     $invitations = TeamInvitation::all();
