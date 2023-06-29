@@ -5,7 +5,7 @@
     
             <div class="relative  mt-12 space-y-5">
                 <!-- Question 1 -->
-                <div x-data="{ show: false }" class="relative overflow-hidden border-2 border-gray-200 rounded-lg select-none hover:bg-white">
+                <div x-data="{ show: true }" class="relative overflow-hidden border-2 border-gray-200 rounded-lg select-none hover:bg-white">
                     <h4 @click="show=!show" class="flex items-center justify-between text-lg font-medium text-gray-700 cursor-pointer sm:text-xl px-7 py-7 hover:text-gray-800">
                         <span>{!! $faq->question_one !!}</span>
                         <svg class="w-6 h-6 transition-all duration-200 ease-out transform rotate-0" :class="{ '-rotate-45' : show }" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
