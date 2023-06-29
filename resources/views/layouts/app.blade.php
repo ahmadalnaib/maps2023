@@ -25,7 +25,7 @@
     <meta name="keywords" content="@yield('keywords')">
 
 
-    <title>Lockport - Sichere Fahrradschließfachvermietung: Bequeme Aufbewahrungslösungen</title>
+    <title>Lockport - Buchungsportal für sichere Fachvermietung für einfache und flexible Aufbewahrung von Gepäck und Fahrrädern. Teste uns!</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

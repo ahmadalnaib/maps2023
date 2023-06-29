@@ -39,10 +39,7 @@
                             <x-checkbox name="terms" id="terms" required />
 
                             <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+                     {{__('reg.I agree with the')}}    <a class="text-blue-700" target="__blank" href="{{url('terms/AGB_lockport.online.pdf')}}">{{__('reg.terms and conditions') }} </a>
                             </div>
                         </div>
                     </x-label>

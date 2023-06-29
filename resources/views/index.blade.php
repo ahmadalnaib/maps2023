@@ -2,11 +2,11 @@
 
   @section('og-title', 'Lockport')
   @section('og-type', 'website')
-  @section('og-description', 'Sichere Fahrradschließfachvermietung für bequeme Aufbewahrung. Einfach. Bequem. Flexibel. Testen Sie uns!')
+  @section('og-description', 'Buchungsportal für sichere Fachvermietung für einfache und flexible Aufbewahrung von Gepäck und Fahrrädern. Teste uns!')
   @section('og-url', url()->current())
   @section('og-image', url('fav/apple-touch-icon.png'))
-  @section('description', 'Sichere Fahrradschließfachvermietung für bequeme Aufbewahrung. Einfach. Bequem. Flexibel. Testen Sie uns!')
-  @section('keywords','Sichere Fahrradschließfachvermietung, bequeme Aufbewahrung, Fahrradschließfach mieten, sichere Fahrradlagerung, flexible Lösungen, Testen Sie uns!' )
+  @section('description', 'Buchungsportal für sichere Fachvermietung für einfache und flexible Aufbewahrung von Gepäck und Fahrrädern. Teste uns!')
+  @section('keywords','Buchungsportal für sichere Fachvermietung, Fahrradschließfach mieten, Fahrradboxen mieten, Gepäckaufbewahrung, Schließfach mieten' )
   
   
     <x-slot name="header">
