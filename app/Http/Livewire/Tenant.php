@@ -18,6 +18,8 @@ class Tenant extends Component
         'email' => '',
         'role' => '',
         'password' => '',
+        'address' => '',
+        'phone_number' => '',
     ];
     protected $queryString = ['search',  'sortAsc', 'sortField'];
 
@@ -26,6 +28,8 @@ class Tenant extends Component
         'user.email' => 'required|email',
         'user.role' => 'required|in:admin,user',
         'user.password' => 'required|string|min:8',
+        'user.address'=>'required',
+        'user.phone_number'=>'required'
     ];
 
     public function sortBy($field)
@@ -53,6 +57,8 @@ class Tenant extends Component
             'email' => $user->email,
             'role' => $user->role,
             'password' => $user->password,
+            'address'=>$user->address,
+            'phone_number'=>$user->phone_number
         ];
         $this->resetValidation();
     }
@@ -71,6 +77,8 @@ class Tenant extends Component
         $user->email = $this->user['email'];
         $user->role = $this->user['role'];
         $user->password = $this->user['password'];
+        $user->address = $this->user['address'];
+        $user->phone_number = $this->user['phone_number'];
         $user->save();
 
         $this->editUserId = null;
@@ -79,6 +87,8 @@ class Tenant extends Component
             'email' => '',
             'role' => '',
             'password' => '',
+            'address' => '',
+            'phone_number' => '',
         ];
     }
     public function deleteUser($userId)

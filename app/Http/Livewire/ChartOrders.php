@@ -23,19 +23,19 @@ class ChartOrders extends Component
         $user = auth()->user(); // get the current authenticated user
 
         $this->thisYearOrders = Rental::whereHas('system', function ($query) use ($user) {
-                                       $query->where('tenant_id', $user->id);
+                                       $query->where('team_id',$user->currentTeam->id);
                                    })
                                    ->getYearOrders($this->selectedYear)
                                    ->groupByMonth();
     
         $this->lastYearOrders = Rental::whereHas('system', function ($query) use ($user) {
-                                       $query->where('tenant_id', $user->id);
+                                       $query->where('team_id',$user->currentTeam->id);
                                    })
                                    ->getYearOrders($this->selectedYear - 1)
                                    ->groupByMonth();
 
         $this->rentals = Rental::whereHas('system', function ($query) use ($user) {
-                                    $query->where('tenant_id', $user->id);
+                                    $query->where('team_id',$user->currentTeam->id);
                                  })->get();
     
         $this->emit('updateTheChart');

@@ -48,7 +48,8 @@ return[
   "Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices."=>"Bitte gib dein Passwort ein.",
   'Password'=>'Passwort',
   'Cancel'=>'Abbrechen',
-  'Done'=>'Erledigt'
+  'Done'=>'Erledigt',
+  'For your security, please confirm your password to continue.'=>'Bestätige zur Sicherheit dein Passwort.'
 
 
 

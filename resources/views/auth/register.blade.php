@@ -22,13 +22,14 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
             <div class="mt-2">
-                <x-label for="adress" value="{{ __('login.address ') }}" />
+                <x-label for="adress" value="{{ __('reg.address') }}" />
                 <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" />
             </div>
             <div class="mt-2">
-                <x-label for="phone_number" value="{{ __('login.phone number') }}" />
+                <x-label for="phone_number" value="{{ __('reg.mobile number') }}" />
                 <x-input id="phone_number" class="block mt-1 w-full" type="number" name="phone_number" :value="old('phone_number')" required autocomplete="phone_number" />
             </div>
+
 
             <div class="mt-2">
                 <x-label for="password" value="{{ __('reg.Password') }}" />

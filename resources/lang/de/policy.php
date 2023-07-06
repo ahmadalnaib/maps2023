@@ -1,7 +1,7 @@
 <?php
 
 return[
-    "Create New Policy"=>"Erstellen Neue Richtlinie",
+    "Create New Policy"=>"Neue Richtlinie erstellen",
     "Policy name"=>"Name der Richtlinie",
     "Action"=>"Aktion",
     "Edit"=>"Bearbeiten",

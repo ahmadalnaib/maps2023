@@ -13,6 +13,11 @@ class Login extends Model
     use HasFactory,BelongsToTenant ;
     protected $guarded = [];
 
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
  
 
 

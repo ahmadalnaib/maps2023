@@ -92,4 +92,12 @@ public function scopeGetYearOrders(Builder $query,$year)
 }
 
 
+public static function search($query)
+{
+    return empty($query) ? static::query()
+        : static::where('system_id', 'like', '%'.$query.'%')
+           ;
+}
+
+
 }

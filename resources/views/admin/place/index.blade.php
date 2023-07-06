@@ -54,14 +54,17 @@
                 </th>
               
                 <td class="px-6 py-4 flex  flex-wrap">
+                    @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'update'))
                     <a href="{{route('admin.place.edit',$place)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">{{__('place.Edit')}}</a>
                    
-    
+    @endif
+    @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'delete'))
                         <form action="{{route('admin.place.destroy',$place)}}" method="post">
                             @csrf
                             @method('delete')
                             <button onclick="return confirm('Sind Sie sicher, dass du diesen Beitrag löschen möchtest? Es gibt keinen Weg zurück. 😯')"    class="font-medium text-red-600 dark:text-red-500 hover:underline m-2" type="submit">{{__('place.delete')}}</button>
                         </form>
+                        @endif
                     
                 </td>
             </tr>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Plan;
+use App\Models\Team;
 use App\Models\User;
 use App\Models\Rental;
 use App\Models\System;
@@ -41,6 +42,18 @@ class Box extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('number', 'like', '%'.$query.'%')
+               ;
     }
    
 }

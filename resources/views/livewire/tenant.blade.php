@@ -20,7 +20,7 @@
                 </div>
             
                 <a href="{{route('createuser')}}" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">
-                    Add New Tenent
+                   {{__('super.Add New Tenent')}}
                 </a>
             </div>
             
@@ -45,7 +45,7 @@
                                 class="px-6 py-3 text-left">
                                 <div class="flex items-center">
                                     <button wire:click="sortBy('email')"
-                                        class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</button>
+                                        class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">E-Mail</button>
                                     <x-sort-icon
                                         field="email"
                                         :sortField="$sortField"
@@ -56,17 +56,17 @@
                             
                             <th
                             class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Email Verified
+                           {{__('super.Email Verified')}}
                         </th>
                         <th
                         class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Role
+                   {{__('super.role')}}
                     </th>
                     <th class="px-6 py-3 bg-gray-50"></th>
                  
                             <th
                                 class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Actions
+                               {{__('super.ACTIONS')}}
                             </th>
                             <th class="px-6 py-3 bg-gray-50"></th>
                         </tr>
@@ -91,7 +91,7 @@
                                 <div class="text-sm leading-5 text-gray-900">{{ $user->email }}</div>
                             </td>
                             <td class="w-4/12 px-6 py-4 whitespace-no-wrap">
-                                <div class="text-sm leading-5 text-gray-900">{{ $user->email_verified_at }}</div>
+                                <div class="text-sm leading-5 text-gray-900">{{ $user->email_verified_at   ?? 'Not verified'   }}</div>
                             </td>
                             <td class="w-4/12 px-6 py-4 whitespace-no-wrap">
                                 <div class="text-sm leading-5 text-gray-900">{{ $user->role }}</div>
@@ -100,14 +100,14 @@
                             </td>
                             
                             <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                                <a href="#" wire:click="editUser({{ $user->id }})" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                <a href="#" wire:click="editUser({{ $user->id }})" class="text-indigo-600 hover:text-indigo-900">  {{__('place.Edit')}}</a>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap">
                                
                                 <button wire:click="deleteUser({{ $user->id }})"
-                                    onclick="return confirm('Are you sure you want to delete this user?')"
+                                    onclick="return confirm('Sind Sie sicher, dass du diesen Beitrag löschen möchtest? Es gibt keinen Weg zurück.')"
                                     class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-red-100 text-red-800">
-                                    Delete
+                                    {{__('place.delete')}}
                                 </button>
                               
                             </td>

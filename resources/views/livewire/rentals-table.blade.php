@@ -14,7 +14,9 @@
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-indigo-500 uppercase tracking-wider">{{__('rental.Valid from')}}</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-indigo-500 uppercase tracking-wider">{{__('rental.Booked until')}}</th>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-indigo-500 uppercase tracking-wider">{{__('rental.Price')}}</th>
-                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-indigo-500 uppercase tracking-wider">{{__('admin.Created At')}}</th>
+                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-indigo-500 uppercase tracking-wider">Pincode</th>
+              
+              
                 <!-- Add more table columns as needed -->
             </tr>
         </thead>
@@ -60,8 +62,12 @@
                    
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->created_at }}
+                  
+                        
+                        {{ $rental->pincode }}
+                   
                 </td>
+              
                 <!-- Add more table cells for other rental attributes -->
             </tr>
             @endforeach

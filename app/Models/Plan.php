@@ -21,10 +21,6 @@ class Plan extends Model
         return $this->hasMany(Rental::class);
     }
 
-    public function policy()
-    {
-        return $this->belongsTo(Policy::class);
-    }
   
     public function boxType()
     {

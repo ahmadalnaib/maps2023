@@ -17,11 +17,9 @@
                     @if (Auth::check() && Auth::user()->role === 'super')
                  
                     <x-nav-link href="{{route('super')}}" >
-                        super
+                        Dashboard
                     </x-nav-link>
-                    <x-nav-link href="{{route('team.index')}}" >
-                        teams
-                    </x-nav-link>
+                  
                     @endif
 
                     @if (Auth::check() && Auth::user()->role === 'admin' )
@@ -32,9 +30,7 @@
                     <x-nav-link href="{{route('admin.place.index')}}">
                          {{__('place.Places')}}
                     </x-nav-link>
-                    <x-nav-link href="{{route('admin.policy.index')}}">
-                    {{__('policy.policy')}}
-                   </x-nav-link>
+                  
                     <x-nav-link href="{{route('admin.system.index')}}">
                       {{__('locker.Locker name')}}
                    </x-nav-link>
@@ -168,12 +164,7 @@
                             </x-dropdown-link>
                            
                          
-                            @if (Auth::check() && Auth::user()->role === 'super')
-                            <x-dropdown-link href="{{ route('category.admin.index') }}">
-                                {{ __('Statas') }}
-                            </x-dropdown-link>
-                          
-                            @endif
+                         
                           
                           
 
@@ -245,9 +236,7 @@
                     <x-responsive-nav-link href="{{route('admin.place.index')}}">
                          {{__('place.Places')}}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link href="{{route('admin.policy.index')}}">
-                    {{__('policy.policy')}}
-                   </x-responsive-nav-link>
+                 
                     <x-responsive-nav-link href="{{route('admin.system.index')}}">
                         System
                    </x-responsive-nav-link>

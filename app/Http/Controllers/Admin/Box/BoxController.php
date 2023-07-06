@@ -102,6 +102,6 @@ class BoxController extends Controller
         $this->authorize('delete',$box);
         $box->delete();
 
-        return redirect()->route('admin.box.index')->with('message','Fach erfolgreich gelöscht ')->with('timeout', 3000);;
+        return redirect()->route('admin.box.index')->with('message','Fach erfolgreich gelöscht ')->with('timeout', 3000);
     }
 }

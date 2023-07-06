@@ -1,7 +1,7 @@
 <?php
 
 return[
-    "Plan"=>" Booking period ",
+    "Plan"=>"Booking period",
     "Create New Plan"=>"Create new booking period ",
     "Plan name"=>"Booking period",
     "Number of Days"=>"Days/Hours",

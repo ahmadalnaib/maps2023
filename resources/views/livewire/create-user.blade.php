@@ -8,29 +8,29 @@
         </div>
 
         <div class="flex flex-col">
-            <label for="email" class="text-gray-700">Email</label>
-            <input type="email" wire:model="email" id="email" placeholder="Email"
+            <label for="email" class="text-gray-700">E-Mail</label>
+            <input type="email" wire:model="email" id="email" 
                 class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
-        <div class="flex flex-col">
-            <label for="address" class="text-gray-700">address</label>
-            <input type="address" wire:model="address" id="address" placeholder="address"
+         <div class="flex flex-col">
+            <label for="address" class="text-gray-700">{{__('super.address')}}</label>
+            <input type="address" wire:model="address" id="address" p
                 class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             @error('address') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="flex flex-col">
-            <label for="phone_number" class="text-gray-700">phone_number</label>
-            <input type="phone_number" wire:model="phone_number" id="phone_number" placeholder="phone_number"
+            <label for="phone_number" class="text-gray-700">{{__('super.phone number')}}</label>
+            <input type="phone_number" wire:model="phone_number" id="phone_number" 
                 class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             @error('phone_number') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
         <div class="flex flex-col">
-            <label for="role" class="text-gray-700">Role</label>
+            <label for="role" class="text-gray-700">{{__('super.role')}}</label>
             <div class="space-x-4">
                 <label>
-                    <input type="radio" wire:model="role" value="admin" class="form-radio text-indigo-600">
+                    <input type="radio" wire:model="role" value="admin" class="form-radio text-indigo-600" >
                     <span class="ml-2 text-gray-700">Admin</span>
                 </label>
                 <label>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="flex flex-col">
-            <label for="password" class="text-gray-700">Password</label>
+            <label for="password" class="text-gray-700">{{__('super.Password')}}</label>
             <input type="password" wire:model="password" id="password" placeholder="Password"
                 class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             @error('password') <span class="text-red-500">{{ $message }}</span> @enderror
@@ -60,7 +60,7 @@
                     </path>
                 </svg>
             </span>
-            Create User
+           {{__('super.Create User')}}
         </button>
     </form>
 

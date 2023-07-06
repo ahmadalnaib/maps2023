@@ -18,7 +18,6 @@ class CreateUser extends Component
     public $role;
     public $email;
     public $password;
-
     public $address;
     public $phone_number;
     public $isLoading = false;
@@ -61,7 +60,6 @@ class CreateUser extends Component
         $user->name = $this->name;
         $user->tenant_id = $tenant->id; 
         $user->role = $this->role;
-      
         $user->email = $this->email;
         $user->address = $this->address;
         $user->phone_number = $this->phone_number;
@@ -84,9 +82,9 @@ class CreateUser extends Component
         $this->tenant_id = '';
         $this->role = '';
         $this->email = '';
-        $this->password = '';
         $this->address = '';
         $this->phone_number = '';
+        $this->password = '';
     }
     
 }

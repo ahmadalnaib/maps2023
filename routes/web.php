@@ -7,6 +7,7 @@ use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DownloadData;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HowController;
 use App\Http\Controllers\TermController;
@@ -70,15 +71,11 @@ Route::get('/change-language/{locale}',[LocaleController::class,'switch'])->name
 
 // admin users
 Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index')->middleware(['auth', 'role:super']);
+Route::delete('admin/users/{user}',[UsersAdminController::class,'destroy'])->name('admin.user.destroy')->middleware(['auth', 'verified', 'role:super']);
 
 
-// admin -- policies
-Route::get('admin/policy',[PolicyController::class,'index'])->name('admin.policy.index')->middleware(['auth', 'verified', 'role:admin']);
-Route::get('admin/policy/create',[PolicyController::class,'create'])->name('admin.policy.create')->middleware(['auth', 'verified', 'role:admin']);
-Route::post('admin/policy/store',[PolicyController::class,'store'])->name('admin.policy.store')->middleware(['auth', 'verified', 'role:admin']);
-Route::get('admin/policy/{policy}',[PolicyController::class,'edit'])->name('admin.policy.edit')->middleware(['auth', 'verified', 'role:admin']);
-Route::put('admin/policy/{policy}',[PolicyController::class,'update'])->name('admin.policy.update')->middleware(['auth', 'verified', 'role:admin']);
-Route::delete('admin/policy/{policy}',[PolicyController::class,'destroy'])->name('admin.policy.destroy')->middleware(['auth', 'verified', 'role:admin']);
+
+
 
 
 
@@ -142,8 +139,8 @@ Route::post('/rentals/purchase/{plan}', [RentalsController::class,'purchase'])->
 
 // routes/web.php
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
+    'auth',
+    
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
@@ -166,7 +163,9 @@ Route::get('/invoices', [BasicController::class, 'index'])
     ->middleware(['auth', 'verified', 'role:basic']);
 
 
-Route::get('/invoices/{rental}/generate', [BasicController::class,'generateInvoice'])->name('invoices.generate')->middleware(['auth', 'verified', 'role:basic']);;
+Route::get('/invoices/{rental}/generate', [BasicController::class,'generateInvoice'])->name('invoices.generate')->middleware(['auth', 'verified', 'role:basic']);
+
+Route::get('/data/generate', [DownloadData::class,'generateData'])->name('data.generate')->middleware(['auth', 'verified', 'role:basic']);
 
 
 Route::get('/admin/category',[CategoryController::class,'index'])->name('category.admin.index')
@@ -175,14 +174,16 @@ Route::get('/admin/category/create',[CategoryController::class,'create'])->name(
 Route::post('/admin/category/store',[CategoryController::class,'store'])->name('category.admin.store')->middleware(['auth', 'role:super']);
 Route::get('/admin/{category}',[CategoryController::class,'edit'])->name('category.admin.edit')
 ->middleware(['auth', 'role:super']);
-Route::put('/admin/{category}',[CategoryController::class,'update'])->name('category.admin.update')->middleware(['auth', 'role:super']);
+Route::put('/admin/{category}/update',[CategoryController::class,'update'])->name('category.admin.update')->middleware(['auth', 'role:super']);
 Route::delete('/admin/{category}',[CategoryController::class,'destroy'])->name('category.admin.destroy')->middleware(['auth', 'role:super']);
 
 
 
 
 
-
+Route::get('/impressum', function () {
+    return view('impressum');
+})->name('impressum');
 
 
 
@@ -230,9 +231,10 @@ Route::view('/team', 'team')->name('team.index')->middleware(['auth', 'role:supe
 Route::view('/tenant', 'tenant')->name('tenant')->middleware(['auth', 'role:super']);
 Route::view('/userlogin', 'loginUser')->name('userLogin')->middleware(['auth', 'role:super']);
 Route::view('/createuser', 'createuser')->name('createuser')->middleware(['auth', 'role:super']);
-
-
-Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation')->middleware(['auth', 'role:super']);
+Route::view('/supersystem', 'superSystem')->name('supersystem')->middleware(['auth', 'role:super']);
+Route::view('/superrental', 'superRental')->name('superrental')->middleware(['auth', 'role:super']);
+Route::view('/superbox', 'superBox')->name('superbox')->middleware(['auth', 'role:super']);
+Route::get('/leave-impersonation',[ImpersonationController::class,'leave'])->name('leave-impersonation');
 
 // admin -- place
 
@@ -251,16 +253,6 @@ Route::get('/{place:uuid}/{slug}',[PlaceController::class,'show'])->name('place.
 Route::post('/rent', [RentalsController::class,'rent'])->name('rent')->middleware('auth');
 
 Route::post('/rentals/save', [RentalsController::class, 'save'])->name('rentals.save')->middleware('auth');
-
-
-
-
-
-
-
-
-
-
 
 
 

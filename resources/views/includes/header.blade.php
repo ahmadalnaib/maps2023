@@ -11,7 +11,7 @@
       <p class="w-full max-w-4xl mx-auto text-xl text-left text-gray-500 md:text-2xl md:text-center">{{__('index.find suitable lockers with address or postal code')}}</p>
       <p class="w-full max-w-5xl mx-auto text-xl text-left text-gray-500 md:text-2xl md:text-center">{{__('index.Lockers for left-luggage and bikes are available on different locations')}}</p>
       <form action="{{route('search')}}" method="post">
-        @csrf
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="flex flex-col w-full mx-auto space-y-5 md:space-y-0 md:space-x-5 md:flex-row">
         <input type="text" id="address" name="address" class="flex-1 w-full px-5 py-5 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-2xl  border border-gray-300 rounded-lg focus:ring-4 focus:border-red-700 focus:ring-red-600 focus:ring-opacity-50 focus:outline-none bg-gray-100" data-primary="blue-600" data-rounded="rounded-lg" placeholder="{{__('index.Enter Address or Postcode')}}">
 

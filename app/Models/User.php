@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Login;
 use App\Models\Locker;
 use App\Models\Rental;
+use App\Models\System;
 use App\Scopes\TenantScope;
 use Laravel\Cashier\Billable;
 use App\Traits\BelongsToTenant;
@@ -74,9 +75,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\Place');
     }
 
-    public function lockers()
+    public function systems()
 {
-    return $this->hasMany(Locker::class);
+    return $this->hasMany(System::class);
 }
 
     public function bookmarks()
@@ -91,7 +92,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
 
-    
 
     public function role()
     {

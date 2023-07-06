@@ -18,8 +18,7 @@ class PlanController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $plans = Plan::with(['policy'])
-            ->where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
+        $plans = Plan::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
             ->latest()
             ->paginate(8);
 
@@ -28,12 +27,9 @@ class PlanController extends Controller
 
     public function create()
     {
-        $user = Auth::user();
-        $policies = Policy::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
-            ->latest()
-            ->get();
+     
 
-        return view('admin.plan.create', compact('policies'));
+        return view('admin.plan.create');
     }
 
     public function store(PlanRequest $request)
@@ -44,7 +40,6 @@ class PlanController extends Controller
             'number_of_days' => $request->number_of_days,
             'duration_unit' => $request->duration_unit,
             'price' => $request->price,
-            'policy_id' => $request->policy_id,
             'team_id' => $user->currentTeam->id, // Use team_id instead of tenant_id
         ]);
 
@@ -53,12 +48,8 @@ class PlanController extends Controller
 
     public function edit(Plan $plan)
     {
-        $user = Auth::user();
-        $policies = Policy::where('team_id', $user->currentTeam->id) // Use team_id instead of tenant_id
-            ->latest()
-            ->get();
-
-        return view('admin.plan.edit', compact('plan', 'policies'));
+     
+        return view('admin.plan.edit', compact('plan'));
     }
 
     public function update(PlanRequest $request, Plan $plan)
@@ -68,7 +59,6 @@ class PlanController extends Controller
             'number_of_days' => $request->number_of_days,
             'duration_unit' => $request->duration_unit,
             'price' => $request->price,
-            'policy_id' => $request->policy_id,
         ]);
 
         return redirect()->route('admin.plan.index')->with('message', 'Buchung Period wurde erfolgreich aktualisiert 🎉')->with('timeout', 3000);;

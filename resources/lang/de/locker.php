@@ -1,10 +1,10 @@
 <?php
 
 return[
-    "Create New Locker"=>"Neues Anlage erstellen",
+    "Create New Locker"=>"Neue Anlage erstellen",
     "Locker name"=>"Anlagen",
     "Place name"=>"Standort",
-    "Add New Locker"=>"Neues Anlage hinzufügen",
+    "Add New Locker"=>"Neue Anlage hinzufügen",
     "Choose Place"=>"Ort auswählen",
     "Locker"=>"Anlagen",
     "Lockers"=>"Anlagen",

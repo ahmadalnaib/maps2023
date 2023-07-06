@@ -1,7 +1,7 @@
 <x-admin>
   <x-slot name="header" >
     <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
-     Pages
+     {{__('super.Pages')}}
     </h2>
 </x-slot>
   <div class="py-4">
@@ -10,8 +10,8 @@
     <table class="min-w-full divide-y divide-gray-200">
       <thead class="bg-gray-100">
         <tr>
-          <th class="py-3 px-4 text-left text-gray-700">Page Name</th>
-          <th class="py-3 px-4 text-left text-gray-700">Visit Page</th>
+          <th class="py-3 px-4 text-left text-gray-700">{{__('super.Page Name')}}</th>
+          <th class="py-3 px-4 text-left text-gray-700">{{__('super.view')}}</th>
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
@@ -25,7 +25,7 @@
         </tr>
 
         <tr>
-          <td class="py-3 px-4">preis Plan</td>
+          <td class="py-3 px-4">Preis</td>
           <td class="py-3 px-4"><a href="{{route('price.edit')}}"><span class="text-red-800 text-4xl">&#8594;</span></a></td>
         </tr>
         <tr>

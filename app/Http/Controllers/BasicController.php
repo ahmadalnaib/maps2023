@@ -57,7 +57,7 @@ class BasicController extends Controller
         $pdf->render();
     
         // Generate a unique filename for the PDF
-        $filename = 'invoice_' . $rental->id . '.pdf';
+        $filename = 'Rechnung_' . $rental->id . '.pdf';
     
         // Save the PDF file to the desired location
        // Stream the PDF as a response for download
@@ -65,6 +65,6 @@ class BasicController extends Controller
     
         // You can perform any additional actions like sending the invoice via email here
     
-        return redirect()->back()->with('success', 'Invoice generated successfully.');
+        return redirect()->back()->with('message', 'Rechnung erfolgreich erstellt.');
     }
 }

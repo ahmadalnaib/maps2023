@@ -1,7 +1,7 @@
 <div>
     <div class="grid grid-cols-6 mb-4">
         <div class="col-span-6 sm:col-span-1 pr-2">
-            <label for="location" class="block text-sm leading-5 font-medium text-gray-700">Per Page</label>
+            <label for="location" class="block text-sm leading-5 font-medium text-gray-700">{{__('super.Per Page')}}</label>
             <select wire:model="perPage" id="location"
                 class="mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
                 <option>10</option>
@@ -12,10 +12,10 @@
 
         @if ($super)
             <div class="col-span-6 sm:col-span-2 pr-2">
-                <label for="tenant" class="block text-sm leading-5 font-medium text-gray-700">Tenant</label>
+                <label for="tenant" class="block text-sm leading-5 font-medium text-gray-700">{{__('super.Users')}}</label>
                 <select wire:model="selectedTenant" id="tenant"
                     class="mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
-                    <option value="">Choose a Tenant</option>
+                    <option value="">{{__('super.Choose a User')}}</option>
                     @foreach ($tenants as $key => $tenant)
                         <option value="{{ $key }}">{{ $tenant }}</option>
                     @endforeach
@@ -24,7 +24,7 @@
         @endif
 
         <div class="col-span-6 {{ $super == true ? 'sm:col-span-3' : 'sm:col-span-5' }}">
-            {{-- <input wire:model="search" label="Search" placeholder="Search Users..."/> --}}
+            <input class=" border  text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-6" wire:model="search" label="Search" placeholder="{{__('super.Search Users...')}}"/>
         </div>
     </div>
     <div class="flex flex-col">
@@ -33,21 +33,7 @@
                 class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
                 <table class="min-w-full">
                     <thead>
-                        {{-- <tr>
-                        <x-th label="Name" value="name" :canSort="true" :sortField="$sortField" :sortAsc="$sortAsc" />
-                        <x-th label="Title" value="title" :canSort="true" :sortField="$sortField" :sortAsc="$sortAsc" />
-                        <x-th label="Status" value="status" :canSort="false" :sortField="$sortField" :sortAsc="$sortAsc" />
-                        <x-th label="Role" value="role" :canSort="true" :sortField="$sortField" :sortAsc="$sortAsc" />
-                        <x-th label="Application" value="application" :canSort="false" :sortField="$sortField" :sortAsc="$sortAsc" />
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50">
-                            <span class="flex rounded-md justify-end">
-                                <a href="{{route('users.create')}}" type="button"
-                                   class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs leading-4 font-medium rounded text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                                    Add Team Member
-                                </a>
-                            </span>
-                        </th>
-                    </tr> --}}
+                      
                     </thead>
                     <tbody class="bg-white">
                         @foreach ($users as $user)
@@ -63,7 +49,7 @@
                                                     class="text-sm leading-5 font-medium text-gray-900">{{ $user->name }}</span>
                                                 @if ($super)
                                                     <a wire:click="impersonate({{ $user->id }})" href="#"
-                                                        class="text-xs text-indigo-600 ml-1">Impersonate</a>
+                                                        class="text-xs text-indigo-600 ml-1">{{__('super.Impersonate')}}</a>
                                                 @endif
                                             </div>
                                             <div class="text-sm leading-5 text-gray-500">{{ $user->email }}</div>
@@ -71,31 +57,26 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    {{-- <div class="text-sm leading-5 text-gray-900">{{$user->title}}</div>
-                                <div class="text-sm leading-5 text-gray-500">{{$user->department}}</div> --}}
+                                   
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                    {{-- @if ($user->status)
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Active
-                                    </span>
-                                @else
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                                        Inactive
-                                    </span>
-                                @endif --}}
+                                 
                                 </td>
+                          @php
+                                $roleColors = [
+                                    'basic' => 'slate-500',
+                                    'admin' => 'indigo-500',
+                                    'super' => 'red-500',
+                                ];
+                                $defaultColor = 'gray-500';
+                                $roleColor = $roleColors[$user->role] ?? $defaultColor;
+                            @endphp
                                 <td
-                                    class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                                    class="px-2 py-2 whitespace-no-wrap border-b border-gray-200 text-sm  rounded  text-{{ $roleColor }}"">
                                     {{ $user->role }}
                                 </td>
 
-                                <td
-                                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                </td>
+                             
                             </tr>
                         @endforeach
                     </tbody>

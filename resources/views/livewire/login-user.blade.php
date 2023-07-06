@@ -29,7 +29,7 @@
                             <th
                                 class="px-6 py-3 text-left">
                                 <div class="flex items-center">
-                                    <button wire:click="sortBy('user_id')" class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">User ID</button>
+                                    <button wire:click="sortBy('user_id')" class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">E-Mail</button>
                                     <x-sort-icon
                                         field="user_id"
                                         :sortField="$sortField"
@@ -57,11 +57,7 @@
                         </th>
                  
                  
-                            <th
-                                class="px-6 py-3 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Actions
-                            </th>
-                            
+                          
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -75,28 +71,18 @@
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm leading-5 font-medium text-gray-900">
-                                            {{ $login->user_id }}
+                                            {{ $login->user->email ?? 'Der Benutzer ist nicht verfügbar'}}
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="w-4/12 px-6 py-4 whitespace-no-wrap">
-                                <div class="text-sm leading-5 text-gray-900">{{ $login->created_at }}</div>
+                                <div class="text-sm leading-5 text-gray-900 bg-green-300 inline-block p-2 rounded">{{ $login->created_at }}</div>
                             </td>
                            
                          
                             
-                            <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                            <td class="px-6 py-4 whitespace-no-wrap">
-                               
-                                <span
-                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-red-100 text-red-800">
-                                    Delete
-                                </span>
-                              
-                            </td>
+                        
                          
                         </tr>
                         @endforeach

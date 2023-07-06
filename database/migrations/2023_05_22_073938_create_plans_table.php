@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('policy_id');
             $table->foreignId('team_id');
             $table->text('name');
             $table->integer('number_of_days');

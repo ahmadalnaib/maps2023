@@ -41,7 +41,7 @@
                                 class="px-6 py-3 text-left">
                                 <div class="flex items-center">
                                     <button wire:click="sortBy('email')"
-                                        class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</button>
+                                        class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">E-Mail</button>
                                     <x-sort-icon
                                         field="email"
                                         :sortField="$sortField"
@@ -52,17 +52,17 @@
                             
                             <th
                             class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                            Email Verified
+                        {{__('super.Email Verified')}}
                         </th>
                         <th
                         class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                        Role
+                        {{__('super.role')}}
                     </th>
                     <th class="px-6 py-3 bg-gray-50"></th>
                  
                             <th
                                 class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                Actions
+                              {{__('super.ACTIONS')}}
                             </th>
                             <th class="px-6 py-3 bg-gray-50"></th>
                         </tr>
@@ -87,7 +87,7 @@
                                 <div class="text-sm leading-5 text-gray-900">{{ $user->email }}</div>
                             </td>
                             <td class="w-4/12 px-6 py-4 whitespace-no-wrap">
-                                <div class="text-sm leading-5 text-gray-900">{{ $user->email_verified_at }}</div>
+                                <div class="text-sm leading-5 text-gray-900">{{ $user->email_verified_at ?? 'Not verified'  }}</div>
                             </td>
                             <td class="w-4/12 px-6 py-4 whitespace-no-wrap">
                                 <div class="text-sm leading-5 text-gray-900">{{ $user->role }}</div>
@@ -95,15 +95,17 @@
                             <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium"> 
                             </td>
                             
-                            <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                            {{-- <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
+                            </td> --}}
                             <td class="px-6 py-4 whitespace-no-wrap">
-                               
-                                <span
-                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-red-100 text-red-800">
-                                    Delete
-                                </span>
+                             
+
+                                <form action="{{route('admin.user.destroy',$user)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button onclick="return confirm('Sind Sie sicher, dass du diesen Beitrag löschen möchtest? Es gibt keinen Weg zurück. 😯')"    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium leading-4 bg-red-100 text-red-800" type="submit">{{__('place.delete')}}</button>
+                                </form>
                               
                             </td>
                          

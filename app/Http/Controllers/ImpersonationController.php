@@ -12,19 +12,17 @@ class ImpersonationController extends Controller
 
     public function leave()
     {
-
-        if(!session()->has('impersonate')){
+        if (!session()->has('impersonate')) {
             abort(403);
         }
-     
-        auth()->login(User::withoutGlobalScope(TenantScope::class)->find(session('impersonate')));
+    
+        $originalUserId = session('impersonate');
         session()->forget('impersonate');
-
-        // auth()->logout();
-        // auth()->loginUsingId(session('impersonate'));
-
+    
+        auth()->logout();
+        auth()->loginUsingId($originalUserId);
+    
         return redirect('/');
-
-
     }
+    
 }

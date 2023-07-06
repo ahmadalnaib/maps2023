@@ -11,6 +11,16 @@
           <input type="email" wire:model="user.email" id="email" placeholder="Email"
               class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
       </div>
+      <div class="flex flex-col">
+        <label for="address" class="text-gray-700">Adress</label>
+        <input type="text" wire:model="user.address" id="address" placeholder="Adress"
+            class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+    </div>
+    <div class="flex flex-col">
+        <label for="phone_number" class="text-gray-700">Phone number</label>
+        <input type="phone_number" wire:model="user.phone_number" id="phone_number" placeholder="Email"
+            class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+    </div>
 
       <div class="flex flex-col">
           <label for="role" class="text-gray-700">Role</label>

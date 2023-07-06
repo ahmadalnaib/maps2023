@@ -1,5 +1,5 @@
 <x-app-layout>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container mx-auto my-12 px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <!-- Rental Details -->
@@ -165,6 +165,7 @@
 <!-- Set up a container element for the button -->
 
 <script>
+    let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     paypal.Buttons({
         // Sets up the transaction when a payment button is clicked
         createOrder: (data, actions) => {
@@ -176,6 +177,7 @@
                 }),
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken 
                 }
             }).then(function(res) {
                 return res.json();
@@ -196,6 +198,7 @@
                 }),
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken 
                 }
             }).then(function(res) {
                 return res.json();

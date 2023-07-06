@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Users;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UsersAdminController extends Controller
 {
@@ -13,4 +14,14 @@ class UsersAdminController extends Controller
     {
         return view('admin.users.index');
     }
+
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('admin.user.index')->with('message','User erfolgreich gelöscht ')->with('timeout', 3000);
+    }
+
+
 }

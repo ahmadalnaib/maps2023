@@ -2,7 +2,7 @@
 
 return[
     "Boxes"=>"Fach",
-    "Create new Box"=>"Neuen Fach erstellen",
+    "Create new Box"=>"Neues Fach erstellen",
     "Box Number"=>"Fach-Nummer",
     "Box Plans"=>"Fach Buchungs-Periode",
     "Box Type"=>"Fach-Typen",
