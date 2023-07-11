@@ -45,7 +45,9 @@ return[
     'Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.'=>'Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
 
     'Cancel'=>'Cancel',
-    'For your security, please confirm your password to continue.'=>'For your security, please confirm your password to continue.'
+    'For your security, please confirm your password to continue.'=>'For your security, please confirm your password to continue.',
+    "Store these recovery codes in a secure password manager.They can be used to recover access to your account if your two factor authentication device is lost."=>"Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost."
+    
     
 
 

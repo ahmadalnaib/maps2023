@@ -71,7 +71,7 @@ class FaqAdminController extends Controller
         $update = $faq->update($data);
 
 
-    return back()->with('success_message', 'Announcement was updated!');
+    return back()->with('success_message', 'Faq wurde aktualisiert 🎉');
 
     }
 

@@ -20,7 +20,14 @@ class PlaceController extends Controller
     public function show(Place $place)
     {
 
-    $system = $place->systems()->with(['boxes'])->get()->first();
+    // $system = $place->systems()->with(['boxes'])->get()->first();
+    $system = $place->systems()
+    ->with(['boxes' => function ($query) {
+        $query->orderBy('number');
+    }])
+    ->get()
+    ->first();
+
     $plansByBox = [];
     $firstFloorBoxes = [];
     $secondFloorBoxes = [];

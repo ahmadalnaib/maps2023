@@ -49,10 +49,11 @@ return[
   'Password'=>'Passwort',
   'Cancel'=>'Abbrechen',
   'Done'=>'Erledigt',
-  'For your security, please confirm your password to continue.'=>'Bestätige zur Sicherheit dein Passwort.'
+  'For your security, please confirm your password to continue.'=>'Bestätige zur Sicherheit dein Passwort.',
 
 
 
+  "Store these recovery codes in a secure password manager.They can be used to recover access to your account if your two factor authentication device is lost."=>'Speichern Sie diese Wiederherstellungscodes in einem sicheren Passwort-Manager. Sie können verwendet werden, um den Zugang zu Ihrem Konto wiederherzustellen, wenn Ihr Zwei-Faktor-Authentifizierungsgerät verloren geht.'
 
 
 

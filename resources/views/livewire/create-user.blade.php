@@ -14,10 +14,38 @@
             @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
          <div class="flex flex-col">
-            <label for="address" class="text-gray-700">{{__('super.address')}}</label>
-            <input type="address" wire:model="address" id="address" p
+            <label for="street" class="text-gray-700">{{ __('reg.street') }}</label>
+            <input type="street" wire:model="street" id="street" 
                 class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             @error('address') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
+         <div class="flex flex-col">
+            <label for="street_number" class="text-gray-700">{{ __('reg.street_number') }}</label>
+            <input type="street_number" wire:model="street_number" id="street_number" 
+                class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            @error('street_number') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
+         <div class="flex flex-col">
+            <label for="street" class="text-gray-700">{{ __('reg.postcode') }}</label>
+            <input type="postcode" wire:model="postcode" id="postcode" 
+                class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            @error('postcode') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
+         <div class="flex flex-col">
+            <label for="city" class="text-gray-700">{{ __('reg.city') }}</label>
+            <input type="city" wire:model="city" id="city" 
+                class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            @error('city') <span class="text-red-500">{{ $message }}</span> @enderror
+        </div>
+        <div>
+            <label for="country">{{ __('reg.country') }}</label>
+            <select class="block mt-1 w-full border border-gray-300  rounded-md" wire:model="country_id" id="country_id">
+                <option value="">{{ __('reg.country') }}</option>
+                @foreach ($countries as $country)
+                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                @endforeach
+            </select>
+            @error('country_id') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
         <div class="flex flex-col">
             <label for="phone_number" class="text-gray-700">{{__('super.phone number')}}</label>

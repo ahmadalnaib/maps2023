@@ -58,6 +58,7 @@
             <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-input-error for="name" class="mt-2" />
         </div>
+ 
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
@@ -80,6 +81,32 @@
                     </p>
                 @endif
             @endif
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="city" value="{{ __('reg.city') }}" />
+            <x-input id="city" type="text" class="mt-1 block w-full" wire:model.defer="state.city" autocomplete="city" />
+            <x-input-error for="city" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="postcode" value="{{ __('reg.postcode') }}" />
+            <x-input id="postcode" type="text" class="mt-1 block w-full" wire:model.defer="state.postcode" autocomplete="postcode" />
+            <x-input-error for="postcode" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="street" value="{{ __('reg.street') }}" />
+            <x-input id="street" type="text" class="mt-1 block w-full" wire:model.defer="state.street" autocomplete="street" />
+            <x-input-error for="street" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="street_number" value="{{ __('reg.street_number') }}" />
+            <x-input id="street_number" type="text" class="mt-1 block w-full" wire:model.defer="state.street_number" autocomplete="street_number" />
+            <x-input-error for="street_number" class="mt-2" />
+        </div>
+      
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="phone_number" value="{{ __('reg.mobile number') }}" />
+            <x-input id="phone_number" type="text" class="mt-1 block w-full" wire:model.defer="state.phone_number" autocomplete="phone_number" />
+            <x-input-error for="phone_number" class="mt-2" />
         </div>
     </x-slot>
 

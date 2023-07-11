@@ -3,7 +3,7 @@
     <x-slot name="header" >
        
         <div class="bg-indigo-500 border-t border-b border-blue-500 text-white px-4 py-3 rounded" role="alert">
-            <a href="https://www.lockport.online/de" class="font-bold">{{__('rental.Neues Fach buchen')}}	<span class="font-bold">&#8594</span> </a>
+            <a href="{{route('home')}}" class="font-bold">{{__('rental.Neues Fach buchen')}}	<span class="font-bold">&#8594</span> </a>
         
           </div>
     </x-slot>
@@ -34,6 +34,28 @@
                         <td class="p-2 font-semibold">{{__('basic.Username:')}}</td>
                         <td class="p-2">{{ $rental->user->name }}</td>
                     </tr>
+                    <tr>
+                        <td class="p-2 font-semibold">{{ __('reg.street') }}</td>
+                        <td class="p-2">{{ $rental->user->street }}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 font-semibold">{{ __('reg.street_number') }}</td>
+                        <td class="p-2">{{ $rental->user->street_number }}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 font-semibold">{{ __('reg.postcode') }}</td>
+                        <td class="p-2">{{ $rental->user->postcode }}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 font-semibold">{{ __('reg.city') }}</td>
+                        <td class="p-2">{{ $rental->user->city }}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-2 font-semibold">{{ __('reg.country') }}</td>
+                        <td class="p-2">  {{ __('reg.Germany') }}</td>
+                    </tr>
+                   <hr>
+              
                    
                     <tr>
                         <td class="p-2 font-semibold">{{__('basic.System Name:')}}</td>

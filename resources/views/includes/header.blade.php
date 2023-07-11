@@ -35,16 +35,14 @@
 
 </div></section>
 
-<div class="m-auto text-center mb-5 mt-20">
+<div class="container mx-auto mt-20">
   <div class="category mt-5">
     <ul class="flex flex-wrap">
       @foreach ($categories as $category)
-       <li class="py-2 mx-2 my-1">
-        <a href="{{route('category.show',$category->slug)}}" class="bg-red-300 hover:bg-gray-100 text-dark p-2 rounded-md m-1">{{$category->title}}</a>
-       </li>
+        <li class="py-2 mx-2 my-1 w-full sm:w-full md:w-auto flex justify-center">
+          <a href="{{ route('category.show', $category->slug) }}" class="bg-red-300 hover:bg-gray-100 text-dark p-2 rounded-md m-1">{{ $category->title }}</a>
+        </li>
       @endforeach
-        
-     
     </ul>
   </div>
 </div>

@@ -73,8 +73,14 @@
         <div class="invoice-section">
             <div class="section-left">
                 <h4>Rechnung an:</h4>
-                <p>Name: {{$rental->user->name}}</p>
-                <p>Email: {{$rental->user->email}}</p>
+                <p>{{ __('Name') }}: {{$rental->user->name}}</p>
+                <p>{{ __('login.Email') }}: {{$rental->user->email}}</p>
+                <p>{{ __('reg.street') }}: {{$rental->user->street}}</p>
+                <p>{{ __('reg.street_number') }}: {{$rental->user->street_number}}</p>
+                <p>{{ __('reg.postcode') }}: {{$rental->user->postcode}}</p>
+                <p>{{ __('reg.city') }}: {{$rental->user->city}}</p>
+                <p>{{ __('reg.country') }}: {{ __('reg.Germany') }}</p>
+              
             </div>
             <div class="section-right">
                 <h4>Rechnung von:</h4>

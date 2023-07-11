@@ -64,7 +64,7 @@
             @if ($showingRecoveryCodes)
                 <div class="mt-4 max-w-xl text-sm text-gray-600">
                     <p class="font-semibold">
-                        {{ __('pro.Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.') }}
+                        {{ __('pro.Store these recovery codes in a secure password manager.They can be used to recover access to your account if your two factor authentication device is lost.') }}
                     </p>
                 </div>
 

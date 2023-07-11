@@ -2,14 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Team;
 use App\Models\User;
 use App\Models\Tenant;
+use App\Models\Country;
 use Livewire\Component;
 use App\Mail\WelcomeEmail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use App\Models\Team;
 
 class CreateUser extends Component
 {
@@ -18,8 +19,12 @@ class CreateUser extends Component
     public $role;
     public $email;
     public $password;
-    public $address;
+    public $street;
+    public $street_number;
+    public $postcode;
+    public $city;
     public $phone_number;
+    public $country_id;
     public $isLoading = false;
 
     protected $rules = [
@@ -27,13 +32,18 @@ class CreateUser extends Component
         'role' => 'required|in:admin,user',
         'email' => 'required|email|unique:users',
         'password' => 'required|min:8',
-        'address' => 'required',
+        'street' => 'required',
+        'street_number' =>'required',
+        'postcode' => 'required',
+        'city' => 'required',
+        'country_id' => 'required',
         'phone_number' => 'required',
     ];
 
     public function render()
     {
-        return view('livewire.create-user');
+        $countries = Country::all();
+        return view('livewire.create-user',compact('countries'));
     }
 
     protected function createTeam(User $user): void
@@ -61,7 +71,11 @@ class CreateUser extends Component
         $user->tenant_id = $tenant->id; 
         $user->role = $this->role;
         $user->email = $this->email;
-        $user->address = $this->address;
+        $user->street = $this->street;
+        $user->street_number = $this->street_number;
+        $user->postcode = $this->postcode;
+        $user->city = $this->city;
+        $user->country_id = $this->country_id;
         $user->phone_number = $this->phone_number;
         $user->password = Hash::make($this->password);
         $user->save();
@@ -82,7 +96,11 @@ class CreateUser extends Component
         $this->tenant_id = '';
         $this->role = '';
         $this->email = '';
-        $this->address = '';
+        $this->street = '';
+        $this->street_number = '';
+        $this->postcode = '';
+        $this->city = '';
+        $this->country_id = '';
         $this->phone_number = '';
         $this->password = '';
     }

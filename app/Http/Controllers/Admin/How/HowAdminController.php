@@ -63,7 +63,7 @@ class HowAdminController extends Controller
         $update = $how->update($data);
 
 
-    return back()->with('success_message', 'Announcement was updated!');
+    return back()->with('success_message', 'Text wurde aktualisiert 🎉');
 
     }
 

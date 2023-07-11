@@ -7,6 +7,6 @@ return[
   'Remember me'=>'Passwort merken',
   'Forgot your password?'=>'Passwort vergessen?',
   'Log in'=>'Einloggen',
-  "Whoops! Something went wrong."=>"Whoops! Etwas ist schied gelaufn",
+  "Whoops! Something went wrong."=>"Whoops! Etwas ist schief gelaufen",
   "Email"=>"E-Mail"
 ];

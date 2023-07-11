@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Invoice</title>
+    <title>Rechnung</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -111,6 +111,26 @@
                     <tr>
                         <td>Email:</td>
                         <td>{{$rental->user->email}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.street') }}:</td>
+                        <td>{{$rental->user->street}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.street_number') }}:</td>
+                        <td>{{$rental->user->street_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.postcode') }}:</td>
+                        <td>{{$rental->user->postcode}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.city') }}:</td>
+                        <td>{{$rental->user->city}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.country') }}:</td>
+                        <td>{{ __('reg.Germany') }}</td>
                     </tr>
                     <tr>
                         <td>Anlage:</td>

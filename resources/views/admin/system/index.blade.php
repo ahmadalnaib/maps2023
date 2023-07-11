@@ -7,7 +7,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
 
-            @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'create'))
+            {{-- @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'create')) --}}
+            @if (session()->has('impersonate')) 
             <a href="{{route('admin.system.create')}}" type="button" class="py-2.5 px-5 mr-2 mb-10 text-sm font-medium text-white focus:outline-none bg-slate-500 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">{{__('locker.Create New Locker')}}</a>
             @endif
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
@@ -49,7 +50,8 @@
                     <a href="{{route('admin.system.edit',$system)}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline m-2">{{__('place.Edit')}}</a>
                    
     @endif
-    @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'delete'))
+    {{-- @if(auth()->user()->hasTeamPermission(auth()->user()->currentTeam,'delete')) --}}
+    @if (session()->has('impersonate')) 
                         <form action="{{route('admin.system.destroy',$system)}}" method="post">
                             @csrf
                             @method('delete')

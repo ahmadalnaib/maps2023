@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\Country;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -18,7 +19,11 @@ class Tenant extends Component
         'email' => '',
         'role' => '',
         'password' => '',
-        'address' => '',
+        'street' => '',
+        'street_number'=>'',
+        'postcode'=>'',
+        'city'=>'',
+        'country_id'=>'',
         'phone_number' => '',
     ];
     protected $queryString = ['search',  'sortAsc', 'sortField'];
@@ -28,9 +33,14 @@ class Tenant extends Component
         'user.email' => 'required|email',
         'user.role' => 'required|in:admin,user',
         'user.password' => 'required|string|min:8',
-        'user.address'=>'required',
+        'user.street'=>'required',
+        'user.street_number'=>'required',
+        'user.postcode'=>'required',
+        'user.city'=>'required',
+         'user.country_id'=>'required',
         'user.phone_number'=>'required'
     ];
+
 
     public function sortBy($field)
     {
@@ -57,7 +67,11 @@ class Tenant extends Component
             'email' => $user->email,
             'role' => $user->role,
             'password' => $user->password,
-            'address'=>$user->address,
+            'street'=>$user->street,
+            'street_number'=>$user->street_number,
+            'postcode'=>$user->postcode,
+            'city'=>$user->city,
+            'country_id'=>$user->country_id,
             'phone_number'=>$user->phone_number
         ];
         $this->resetValidation();
@@ -77,7 +91,11 @@ class Tenant extends Component
         $user->email = $this->user['email'];
         $user->role = $this->user['role'];
         $user->password = $this->user['password'];
-        $user->address = $this->user['address'];
+        $user->street = $this->user['street'];
+        $user->street_number = $this->user['street_number'];
+        $user->postcode = $this->user['postcode'];
+        $user->city = $this->user['city'];
+        $user->country_id = $this->user['country_id'];
         $user->phone_number = $this->user['phone_number'];
         $user->save();
 
@@ -87,7 +105,12 @@ class Tenant extends Component
             'email' => '',
             'role' => '',
             'password' => '',
-            'address' => '',
+            'street' => '',
+            'street_number' => '',
+            'postcode' => '',
+            'city' => '',
+            'country_id' => '',
+           
             'phone_number' => '',
         ];
     }
@@ -102,6 +125,7 @@ class Tenant extends Component
 
     public function render()
     {
+        
 
         if ($this->editUserId) {
             $user = User::findOrFail($this->editUserId);

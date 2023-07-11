@@ -8,6 +8,11 @@ return[
     'Reset Password'=>'Passwort zurücksetzen',
     'Data Protection'=>"I confirm that I have read the privacy notice",
     'mobile number'=>'mobile number',
-    'address'=>'address'
+    'street'=>'Street',
+    "street_number"=>'Street number',
+    'postcode'=>'Postcode',
+    'city'=>'City',
+    "country"=>"Country",
+    "Germany"=>"Germany"
 
 ];

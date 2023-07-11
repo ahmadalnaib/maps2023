@@ -113,8 +113,24 @@
                         <td>{{$user->email}}</td>
                     </tr>
                     <tr>
-                        <td>Adresse:</td>
-                        <td>{{$user->address}}</td>
+                        <td>{{ __('reg.street') }}:</td>
+                        <td>{{$user->street}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.street_number') }}:</td>
+                        <td>{{$user->street_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.postcode') }}:</td>
+                        <td>{{$user->postcode}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.city') }}:</td>
+                        <td>{{$user->city}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ __('reg.country') }}:</td>
+                        <td>{{ __('reg.Germany') }}</td>
                     </tr>
                     <tr>
                         <td>Telefon:</td>

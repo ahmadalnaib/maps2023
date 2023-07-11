@@ -32,7 +32,11 @@ class CreateNewUser implements CreatesNewUsers
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-            'address' => ['required', 'string', 'max:255'],
+            'street' => ['required', 'string', 'max:255'],
+            'street_number' => ['required'],
+            'postcode' => ['required'],
+            'city' => ['required', 'string', 'max:255'],
+            'country_id' => ['required'],
             'phone_number' => ['required', 'string', 'max:255'],
         ])->validate();
 
@@ -50,7 +54,11 @@ class CreateNewUser implements CreatesNewUsers
                 'tenant_id'=>$tenant->id,
                 'role'=> $tokenValid ? 'admin': 'basic',
                 'password' => Hash::make($input['password']),
-                'address' => $input['address'],
+                'street' => $input['street'],
+                'street_number' => $input['street_number'],
+                'postcode' => $input['postcode'],
+                'city' => $input['city'],
+                'country_id'=>$input['country_id'],
                 'phone_number' => $input['phone_number'],
                 
                 

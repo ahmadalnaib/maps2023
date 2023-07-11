@@ -31,7 +31,7 @@ return[
   'Per Page'=>'Pro Seite',
   'Users'=>'Benutzer',
   'Choose a User'=>'Benutzer auswählen',
-  'Impersonate'=>'Imitieren',
+  'Impersonate'=>'Impersonate',
   'Search Users...'=>'Benutzer suchen...',
   'systemname'=>'Anlagen',
   'systemteam'=>'Team'

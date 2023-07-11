@@ -7,6 +7,7 @@ use App\Models\Login;
 use App\Models\Locker;
 use App\Models\Rental;
 use App\Models\System;
+use App\Models\Country;
 use App\Scopes\TenantScope;
 use Laravel\Cashier\Billable;
 use App\Traits\BelongsToTenant;
@@ -89,6 +90,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Rental::class);
     }
+
+
 
 
 

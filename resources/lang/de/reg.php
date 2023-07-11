@@ -10,6 +10,11 @@ return[
   "terms and conditions"=>"Allgemeinen Geschäfts- und Nutzungsbedingungen zu.",
   'Data Protection'=>"Ich bestätige, dass ich die Datenschutzhinweise gelesen habe",
   'mobile number'=>'Mobilnummer',
-  'address'=>'Adresse'
+  'street'=>'Straße',
+  "street_number"=>'Hausnummer',
+  'postcode'=>'Postleitzahl',
+  'city'=>'Ort',
+  "country"=>"Land",
+  "Germany"=>"Deutschland"
 
 ];
