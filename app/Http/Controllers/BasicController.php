@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Dompdf\Dompdf;
-use Dompdf\Options;
 
+use Dompdf\Options;
 use App\Models\Rental;
 use Illuminate\Http\Request;
+use App\Notifications\RentalEnd;
+use App\Jobs\NotifyExpiringRentals;
+use Illuminate\Support\Facades\Auth;
 
 class BasicController extends Controller
 {
@@ -27,8 +31,7 @@ class BasicController extends Controller
     {
         $user = auth()->user();
         $rentals = Rental::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
-
-      
+   
         return view ('basic.rental' ,compact('rentals'));
     }
 

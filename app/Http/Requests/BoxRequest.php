@@ -25,6 +25,7 @@ class BoxRequest extends FormRequest
             //
             'number' => 'required',
             'system_id' => 'required|exists:systems,id',
+            // 'status' => 'required|boolean',
           
         ];
     }

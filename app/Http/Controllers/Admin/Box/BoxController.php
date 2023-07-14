@@ -19,7 +19,7 @@ class BoxController extends Controller
     {
         $teamId = Auth::user()->currentTeam->id;
         $boxes = Box::query()
-            ->select('id', 'number', 'system_id', 'box_type_id', 'team_id')
+            ->select('id', 'number', 'system_id', 'box_type_id', 'team_id','status')
             ->with('user:id', 'system:id,system_name', 'plans:id,name', 'boxtype:id,name')
             ->where('team_id', $teamId)
             ->latest()
@@ -90,6 +90,7 @@ class BoxController extends Controller
             'system_id' => $request->system_id,
             'box_type_id' => $request->box_type_id,
             'team_id' => $teamId,
+            'status' => $request->has('status')
         ]);
         $box->plans()->sync($request->plan_id); // Sync the selected plan IDs
 

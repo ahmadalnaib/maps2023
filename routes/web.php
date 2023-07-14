@@ -254,6 +254,9 @@ Route::post('/rent', [RentalsController::class,'rent'])->name('rent')->middlewar
 
 Route::post('/rentals/save', [RentalsController::class, 'save'])->name('rentals.save')->middleware('auth');
 
+// Route::get('/rentals/{rental}/extension', [RentalsController::class, 'rentalExtension'])->name('rentals.extension');
+Route::get('/rentals/{rental}/extension', [RentalsController::class, 'rentalExtension'])->name('rentals.extension');
+
 
 
 });

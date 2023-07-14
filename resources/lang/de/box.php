@@ -10,5 +10,6 @@ return[
     "Choose Plan"=>"Buchungs-Periode auswählen",
     "Choose Box Type"=>'Fach-Typ wählen',
     'there_are_no_products'=>'Es gibt keine Fach',
-    'there_are_no_products'=>'Es gibt keine Fach'
+    'there_are_no_products'=>'Es gibt keine Fach',
+    "Box Status"=>"Fach Zustand"
 ];

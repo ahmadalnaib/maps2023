@@ -1,5 +1,11 @@
 <div>
     <input type="text" wire:model.debounce.300ms="search" placeholder="{{__('admin.Search Rentals...')}}" class="border border-gray-300 rounded px-4 py-2 mb-4">
+      <!-- Add Export Button -->
+      <div class="mb-4">
+        <button wire:click="exportToExcel" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Export nach Excel
+        </button>
+    </div>
 
     <table class="min-w-full divide-y divide-slate-200 ">
         <!-- Table header -->

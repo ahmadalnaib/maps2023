@@ -17,14 +17,16 @@
                             @php
                                 $isRented = $box->rentals->isNotEmpty();
                                 $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
-                                $cursorClass = $isRented  ? '' : 'cursor-pointer';
+                                $cursorClass = $isRented  ? 'cursor-not-allowed' : 'cursor-pointer';
                                 
                                 $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-4' : 'bg-green-500');
+                                $status = $box->status ? true : false;
+                                $disabledClass = $status ? '' : 'bg-zinc-500 cursor-not-allowed';
                             @endphp
                             @if ($box && $box->boxType)
                                 <li data-box-id="{{ $box->id }}"
-                                    class="first-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}"
-                                    @if ($isRented) disabled @endif>
+                                    class="first-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }} {{ $disabledClass }}"
+                                    @if ($isRented || !$status) disabled @endif>
                                     {{ $box->number }}
 
                                     @if ($box && $box->boxType && $box->boxType->ebike_option)
@@ -50,11 +52,13 @@
                                 $cursorClass = $isRented ? '' : 'cursor-pointer';
                                 
                                 $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-4' : 'bg-green-500');
+                                $status = $box->status ? true : false;
+                                $disabledClass = $status ? '' : 'bg-zinc-500 cursor-not-allowed';
                             @endphp
                             @if ($box && $box->boxType)
                                 <li data-box-id="{{ $box->id }}"
-                                    class="second-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}"
-                                    @if ($isRented) disabled @endif>
+                                    class="second-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }} {{ $disabledClass }}"
+                                    @if ($isRented || !$status) disabled @endif>
                                     {{ $box->number }}
 
                                     @if ($box && $box->boxType && $box->boxType->ebike_option)
@@ -70,8 +74,9 @@
         
                 @if (
                     $system->boxes->filter(function ($box) {
-                            return $box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast();
+                            return $box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast() ;
                         })->count() > 0)
+                          
                     <form action="{{ route('rent') }}" method="post">
                         @csrf
                         <input class="" type="hidden" name="system_id" value="{{ $system->id }}">
@@ -81,12 +86,16 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 onchange="updatePlanOptions(this.value)">
                                 @foreach ($system->boxes as $box)
-                                    @if ($box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast())
+                                @if($box->status)
+                                    @if ($box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast() ) 
+                                 
                                         <option value="{{ $box->id }}" data-box-id="{{ $box->id }}"
                                             @if (old('box_id') == $box->id) selected @endif>
-                                            {{ __('details.Locker') }}- {{ $box->number }}
+                                            {{ __('details.Locker') }} - {{ $box->number }}
 
                                         </option>
+                                        
+                                    @endif
                                     @endif
                                 @endforeach
                             </select>
@@ -105,7 +114,7 @@
                             <div class="py-2 flex items-center justify-center  space-x-5 flex-wrap">
                                 <div class="w-4 h-4 bg-green-500 rounded-full mr-1"></div> {{ __('details.Free') }}
                                 <div class="w-4 h-4 bg-red-500 rounded-full mr-1"></div> {{ __('details.Booked') }}
-                                <div class="w-4 h-4 bg-gray-400 rounded-full mr-1"></div>
+                                <div class="w-4 h-4 bg-zinc-500 rounded-full mr-1"></div>
                                 {{ __('details.Not available') }}
                                 <div><img class="mr-1" src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
                                 {{ __('details.Charge') }}
@@ -136,6 +145,7 @@
                         {{ __("details.We're sorry, but there are currently no locker doors available for rent. Please check back later or contact our customer service for further assistance.") }}
                     </p>
                 @endif
+             
 
             </div>
             <div class="rounded-md">
@@ -157,19 +167,7 @@
                         </div>
                     </div>
                     <hr>
-                    {{-- <div class="p-3">
-                        @auth
-
-                            <a href="{{ route('report.create') }}"
-                                class="border border-red-600 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
-                                <span class=""><i class="fa fa-exclamation-triangle"></i></span> Rorbot
-                            </a>
-                        @else --}}
-                            {{-- <a href="{{route('login')}}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded mr-3 p-1">
-              <span class=""><i class="fa bookmark-o  fa-lg"></i></span> Bookmark
-            </a> --}}
-                        {{-- @endauth
-                    </div> --}}
+                   
                 </div>
 
             </div>
@@ -238,15 +236,26 @@
     updateRentalPeriodOptions();
 
     // Add click event listener to each box item
-    boxItems.forEach(box => {
-        box.addEventListener('click', () => {
-            if (!box.classList.contains('bg-red-500')) {
-                const selectedBoxId = box.dataset.boxId;
-                boxSelect.value = selectedBoxId;
-                updateRentalPeriodOptions();
-            }
-        });
+    // boxItems.forEach(box => {
+    //     box.addEventListener('click', () => {
+    //         if (!box.classList.contains('bg-red-500')) {
+    //             const selectedBoxId = box.dataset.boxId;
+    //             boxSelect.value = selectedBoxId;
+    //             updateRentalPeriodOptions();
+    //         }
+    //     });
+    // });
+    // Add click event listener to each box item
+boxItems.forEach(box => {
+    box.addEventListener('click', () => {
+        if (!box.classList.contains('bg-red-500') && !box.classList.contains('bg-zinc-500')) {
+            const selectedBoxId = box.dataset.boxId;
+            boxSelect.value = selectedBoxId;
+            updateRentalPeriodOptions();
+        }
     });
+});
+
 
 
     function validateForm() {

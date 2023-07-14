@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->timestamps();
+        Schema::table('rentals', function (Blueprint $table) {
+            //
+            $table->boolean('notifiedsms')->default(false);
         });
     }
 
@@ -23,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('countries');
+        Schema::table('rentals', function (Blueprint $table) {
+            //
+            $table->dropColumn('notifiedsms');
+        });
     }
 };

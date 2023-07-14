@@ -251,6 +251,51 @@ public function save(Request $request, Plan $plan)
 }
 
 
+public function rentalExtension(Request $request, Rental $rental)
+{
+    // Validate the rental belongs to the authenticated user
+    if ($rental->user_id !== auth()->id()) {
+        abort(403, 'Unauthorized');
+    }
+
+    // Calculate the new end time based on the rental's current plan
+    $currentEndTime = $rental->end_time;
+    $plan = $rental->plan;
+    $durationUnit = $plan->duration_unit;
+    $extensionDuration = $plan->number_of_days; // You can adjust the extension duration as needed
+
+    // Calculate the new end time based on the duration unit
+    if ($durationUnit === 'days') {
+        $newEndTime = $currentEndTime->addDays($extensionDuration);
+    } elseif ($durationUnit === 'hours') {
+        $newEndTime = $currentEndTime->addHours($extensionDuration);
+    } else {
+        // Handle unknown duration_unit or default behavior if needed
+        $newEndTime = $currentEndTime->addDays($extensionDuration);
+    }
+// Calculate the price for the extension period
+$extensionPrice = $plan->price; // You can adjust the price calculation if needed
+
+// try {
+//     $user = $request->user();
+//     $user->createOrGetStripeCustomer();
+//     $user->charge($extensionPrice * 100, [
+//         'metadata' => [
+//             'rental_id' => $rental->id,
+//             'extension_duration' => $extensionDuration,
+//         ]
+//     ]); // * 100 because Stripe deals with cents
+// } catch (\Exception $exception) {
+//     return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
+// }
+
+    // Update the rental's end time and save the changes
+    $rental->end_time = $newEndTime;
+    $rental->save();
+
+    // Perform any additional actions or redirects as needed
+    return redirect()->route('invoices.index')->with('message', 'Miete erfolgreich erworben.');
+}
 
  
 }

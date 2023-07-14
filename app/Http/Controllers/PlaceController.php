@@ -39,7 +39,7 @@ class PlaceController extends Controller
             }else{
                 $secondFloorBoxes[] = $box->id;
             }
-            if ($box->rentals->isNotEmpty() && $box->rentals->last()->end_time->isPast() || $box->rentals->isEmpty()) {
+            if ($box->rentals->isNotEmpty() && $box->rentals->last()->end_time->isPast() || $box->rentals->isEmpty()|| $box->status) {
 
                 $plansByBox[$box->id] = $box->plans;
             }

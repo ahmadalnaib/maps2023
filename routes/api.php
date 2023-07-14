@@ -47,6 +47,7 @@ Route::get('/users/email-verified', [UserController::class, 'emailVerifiedUsers'
 Route::get('/users/not-email-verified', [UserController::class, 'notEmailVerifiedUsers']);
 
 
+Route::post('/boxes', [BoxController::class, 'store']);
 Route::get('/boxes/{box}', [BoxController::class, 'show']);
 
 

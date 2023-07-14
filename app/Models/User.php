@@ -117,5 +117,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
+    public function routeNotificationForVonage($notification)
+    {
+        return $this->phone_number;
+    }
+
    
 }

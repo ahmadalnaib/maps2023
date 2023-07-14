@@ -29,6 +29,9 @@
                     <th scope="col" class="px-6 py-3">
                  {{__('box.Box Type')}}
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                 {{__('box.Box Status')}}
+                    </th>
              
                    
              
@@ -59,7 +62,10 @@
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {{$box->boxtype->name ?? 'Error'}}
                 </th>
-
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                  <span class="p-1 rounded-md text-white {{ $box->status ? 'bg-green-500' : 'bg-zinc-500' }}"> {{ $box->status ? 'Aktiv' : 'Deaktiviert' }}</span>  
+                </th>
+                
             
              
                
