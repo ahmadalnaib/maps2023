@@ -111,11 +111,8 @@
                   <button class="text-blue-500 hover:underline" onclick="toggleRentalDetails({{ $rental->id }})">
                  {{__('basic.Show Details')}}
                   </button>
-                  <a href="{{ route('rentals.extension', $rental->id) }}" class="ml-4 px-4 py-2 bg-indigo-500 text-white rounded hover:bg-blue-600">
-                    {{__('Rental Extension')}}
-                </a>
               
-                  <a href="{{route('invoices.generate',$rental)}}" class="ml-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" >
+                  <a href="{{route('invoices.generate',$rental)}}" class="ml-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-blue-600" >
                  {{__('basic.Generate Invoice')}}
                 </a>
                 

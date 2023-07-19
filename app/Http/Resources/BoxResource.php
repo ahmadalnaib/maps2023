@@ -24,7 +24,8 @@ class BoxResource extends JsonResource
             'plans' => PlanResource::collection($this->whenLoaded('plans')),
             'system_id' => $this->system_id,
             'api_id' => $this->api_id,
-            'status'=>$this->status
+            'status'=>$this->status,
+            'plan_names' => $this->plans->pluck('name'),
           
         ];
     }

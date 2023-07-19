@@ -147,8 +147,8 @@
 
             <hr>
             <div class="data">{{__('download.Booking information')}}</div>
+            @if (count($rentals) > 0)    
             @foreach ($rentals as $rental)
-                
           
             <div class="invoice-details">
               <table>
@@ -196,14 +196,17 @@
                       
                 </tbody>
             </table>
+            
             </div>
 
             @endforeach
-           
+            @else
+            <p class="text-gray-500 italic">{{__('basic.You have no orders at the moment.')}}</p>
+            @endif
          
         
                
-    
+            <hr>
       
           
               <div class="footer">

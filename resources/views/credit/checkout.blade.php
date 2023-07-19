@@ -89,7 +89,7 @@
               }
           ).then(function (result) {
               if (result.error) {
-                  toastr.error('المعطيات التي قمت بإدخالها تحتوي على أخطاء! راجعها وحاول مرة أخرى.')
+                  toastr.error('Error processing payment')
                   $('button.pay').removeAttr('disabled')
               } else {
                   paymentMethod = result.setupIntent.payment_method

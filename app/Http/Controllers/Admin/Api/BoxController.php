@@ -17,6 +17,12 @@ class BoxController extends Controller
       $this->middleware('auth:api');
   }
 
+  public function index()
+  {
+      $boxes =BoxResource::collection(Box::all());
+      return $boxes->response()->setStatusCode(200);
+  }
+
   public function store(Request $request)
   {
     $validatedData = $request->validate([
@@ -29,6 +35,7 @@ class BoxController extends Controller
         'system_id'=>'required',
         'api_id' => '',
         'status' => '',
+      
        
        
     

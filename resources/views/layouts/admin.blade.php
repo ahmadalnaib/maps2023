@@ -87,7 +87,7 @@
                                 {{ session('message') }}
                             </div>
                         @elseif(session()->has('warning'))
-                            <div class="bg-red-200 text-red-800 px-3 py-2 rounded">
+                            <div class="bg-red-200 text-red-800 px-3 py-2 rounded all-err">
                                 <strong> {{ session()->get('warning') }}</strong>
                             </div>
                         @endif
@@ -106,12 +106,20 @@
     @livewireScripts
 
     <script>
-        setTimeout(function() {
-            document.querySelector('.all-succ').remove();
-        }, {{ session('timeout', 3000) }});
-        setTimeout(function() {
-            document.querySelector('.all-err').remove();
-        }, {{ session('timeout', 5000) }});
+ setTimeout(function() {
+    let element = document.querySelector('.all-succ');
+    if (element !== null) {
+        element.remove();
+    }
+}, {{ session('timeout', 3000) }});
+
+setTimeout(function() {
+    let element = document.querySelector('.all-err');
+    if (element !== null) {
+        element.remove();
+    }
+}, {{ session('timeout', 5000) }});
+
 
 
         $('form').submit(function (event) {
