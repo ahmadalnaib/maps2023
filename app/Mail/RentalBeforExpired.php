@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RentalExpired extends Mailable
+class RentalBeforExpired extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,7 @@ class RentalExpired extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Deine Miete ist abgelaufen ',
+            subject: 'Deine Miete läuft ab',
         );
     }
 
@@ -39,7 +39,7 @@ class RentalExpired extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.rental_expired',
+            view: 'emails.rental_befor_expired',
             with: [
                 'rental' => $this->rental,
             ],

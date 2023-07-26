@@ -8,75 +8,85 @@
 
             <div class="text-center border p-4 rounded-md">
 
-              <div class="flex flex-wrap">
-                <div class="w-full md:w-full">
-                  <ul class="list-none p-0">
-                    @foreach ($system->boxes as $box)
-                        @if (in_array($box->id, $firstFloorBoxes))
-                            
-                            @php
-                                $isRented = $box->rentals->isNotEmpty();
-                                $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
-                                $cursorClass = $isRented  ? 'cursor-not-allowed' : 'cursor-pointer';
-                                
-                                $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-4' : 'bg-green-500');
-                                $status = $box->status ? true : false;
-                                $disabledClass = $status ? '' : 'bg-zinc-500 cursor-not-allowed';
-                            @endphp
-                            @if ($box && $box->boxType)
-                                <li data-box-id="{{ $box->id }}"
-                                    class="first-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }} {{ $disabledClass }}"
-                                    @if ($isRented || !$status) disabled @endif>
-                                    {{ $box->number }}
+                <div class="flex flex-wrap">
+                    <div class="w-full md:w-full">
+                        <ul class="list-none p-0">
+                            @foreach ($system->boxes as $box)
+                                @if (in_array($box->id, $firstFloorBoxes))
+                                    @php
+                                         $isRented = $box->rentals->isNotEmpty();
+                                        //  dd($isRented);
+                                        $box_Rental_uuid = $box->rental_uuid ? true : false;
+                                        $isEndTimePassed = $box_Rental_uuid ;
+                                        //  dd( $box_Rental_uuid);
+                                        $cursorClass = $box_Rental_uuid ? 'cursor-not-allowed' : 'cursor-pointer';
+                                        $bgColorClass = $box_Rental_uuid ?  'bg-red-500'  : 'bg-green-500' ;
+                                        $boxIsBig =$box->boxType->big ? 'p-4' : '';
+                                        $status = $box->status ? true : false;
+                                        $isDefective = $box->defective ? true : false;
+                                        $box_Rental_uuid = $box->rental_uuid ? true : false;
+                                        $disabledClass = !$status || $isDefective  ? 'bg-zinc-500 cursor-not-allowed' : '';
+                                    @endphp
+                                    @if ($box && $box->boxType)
+                                        <li data-box-id="{{ $box->id }}"
+                                            class="first-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}  {{ $boxIsBig }} {{ $disabledClass }}"
+                                            @if (!$status || $isDefective || $box_Rental_uuid) disabled @endif>
+                                            {{ $box->number }}
 
-                                    @if ($box && $box->boxType && $box->boxType->ebike_option)
-                                        <div><img src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
+                                            @if ($box && $box->boxType && $box->boxType->ebike_option)
+                                                <div><img src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
+                                            @endif
+
+                                        </li>
                                     @endif
-
-                                </li>
-                            @endif
-                        @endif
-                    @endforeach
-                  </ul>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-              </div>
                 <div class="w-full md:w-full">
-                  <ul class="list-none p-0">
+                    <ul class="list-none p-0">
 
-                    @foreach ($system->boxes as $box)
-                        @if (in_array($box->id, $secondFloorBoxes))
-                            
-                            @php
-                                $isRented = $box->rentals->isNotEmpty();
-                                $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
-                                $cursorClass = $isRented ? '' : 'cursor-pointer';
-                                
-                                $bgColorClass = $isRented ? ($isEndTimePassed ? 'bg-green-500' : 'bg-red-500') : ($box->boxType->big ? 'bg-green-500 p-4' : 'bg-green-500');
-                                $status = $box->status ? true : false;
-                                $disabledClass = $status ? '' : 'bg-zinc-500 cursor-not-allowed';
-                            @endphp
-                            @if ($box && $box->boxType)
-                                <li data-box-id="{{ $box->id }}"
-                                    class="second-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }} {{ $disabledClass }}"
-                                    @if ($isRented || !$status) disabled @endif>
-                                    {{ $box->number }}
+                        @foreach ($system->boxes as $box)
+                            @if (in_array($box->id, $secondFloorBoxes))
+                                @php
+                                    // $isRented = $box->rentals->isNotEmpty();
+                                    $box_Rental_uuid = $box->rental_uuid ? true : false;
+                                    $isEndTimePassed = $box_Rental_uuid;
+                                    $cursorClass = $box_Rental_uuid ? '' : 'cursor-pointer';
+                                    
+                                    $bgColorClass = $box_Rental_uuid ?  'bg-red-500'  : 'bg-green-500' ;
+                                        $boxIsBig =$box->boxType->big ? 'p-4' : '';
+                                    $status = $box->status ? true : false;
+                                    $isDefective = $box->defective ? true : false;
+                                  
+                                    // var_dump($isRented, !$status, $isDefective);
+                                    // dd();
+                                    $disabledClass = !$status || $isDefective ? 'bg-zinc-500 cursor-not-allowed' : '';
+                                @endphp
+                                @if ($box && $box->boxType)
+                                    <li data-box-id="{{ $box->id }}"
+                                        class="second-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }} {{ $disabledClass }} {{  $boxIsBig }}"
+                                        @if ( !$status || $isDefective || $box_Rental_uuid) disabled @endif>
+                                        {{ $box->number }}
 
-                                    @if ($box && $box->boxType && $box->boxType->ebike_option)
-                                        <div><img src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
-                                    @endif
+                                        @if ($box && $box->boxType && $box->boxType->ebike_option)
+                                            <div><img src="{{ asset('/images/charge.svg') }}" alt="Charge"></div>
+                                        @endif
 
-                                </li>
+                                    </li>
+                                @endif
                             @endif
-                        @endif
-                    @endforeach
-                </ul>
-              </div>
-        
-                @if (
-                    $system->boxes->filter(function ($box) {
-                            return $box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast() ;
-                        })->count() > 0)
-                          
+                        @endforeach
+                    </ul>
+                </div>
+             
+
+
+                @if(   $system->boxes->filter(function ($box) {
+                    return $box->rental_uuid == null ;
+                })->count() > 0)
+           
                     <form action="{{ route('rent') }}" method="post">
                         @csrf
                         <input class="" type="hidden" name="system_id" value="{{ $system->id }}">
@@ -86,16 +96,17 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 onchange="updatePlanOptions(this.value)">
                                 @foreach ($system->boxes as $box)
-                                @if($box->status)
-                                    @if ($box->rentals->isEmpty() || $box->rentals->last()->end_time->isPast() ) 
                                  
-                                        <option value="{{ $box->id }}" data-box-id="{{ $box->id }}"
-                                            @if (old('box_id') == $box->id) selected @endif>
-                                            {{ __('details.Locker') }} - {{ $box->number }}
 
-                                        </option>
-                                        
-                                    @endif
+                                    @if ($box->status && !$box->defective && !$box->rental_uuid)
+                                    
+                                      
+                                            <option value="{{ $box->id }}" data-box-id="{{ $box->id }}"
+                                                @if (old('box_id') == $box->id) selected @endif>
+                                                {{ __('details.Locker') }} - {{ $box->number }}
+
+                                            </option>
+                                      
                                     @endif
                                 @endforeach
                             </select>
@@ -128,7 +139,7 @@
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="link-checkbox"
                                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ __('details.I agree with the') }}
-                                    <a target="__blank" href="{{url('terms/AGB_lockport.online.pdf')}}"
+                                    <a target="__blank" href="{{ url('terms/AGB_lockport.online.pdf') }}"
                                         class="text-blue-600 dark:text-blue-500 hover:underline">{{ __('details.terms and conditions') }}</a>.</label>
                             </div>
 
@@ -145,7 +156,7 @@
                         {{ __("details.We're sorry, but there are currently no locker doors available for rent. Please check back later or contact our customer service for further assistance.") }}
                     </p>
                 @endif
-             
+
 
             </div>
             <div class="rounded-md">
@@ -167,7 +178,7 @@
                         </div>
                     </div>
                     <hr>
-                   
+
                 </div>
 
             </div>
@@ -200,7 +211,7 @@
     });
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
     let greenIcon = L.icon({
-        iconUrl: '{{ asset("images/icons/bike-map.svg") }}',
+        iconUrl: '{{ asset('images/icons/bike-map.svg') }}',
         iconSize: [40, 95], // size of the icon
         shadowSize: [50, 64], // size of the shadow
         iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
@@ -246,15 +257,15 @@
     //     });
     // });
     // Add click event listener to each box item
-boxItems.forEach(box => {
-    box.addEventListener('click', () => {
-        if (!box.classList.contains('bg-red-500') && !box.classList.contains('bg-zinc-500')) {
-            const selectedBoxId = box.dataset.boxId;
-            boxSelect.value = selectedBoxId;
-            updateRentalPeriodOptions();
-        }
+    boxItems.forEach(box => {
+        box.addEventListener('click', () => {
+            if (!box.classList.contains('bg-red-500') && !box.classList.contains('bg-zinc-500')) {
+                const selectedBoxId = box.dataset.boxId;
+                boxSelect.value = selectedBoxId;
+                updateRentalPeriodOptions();
+            }
+        });
     });
-});
 
 
 

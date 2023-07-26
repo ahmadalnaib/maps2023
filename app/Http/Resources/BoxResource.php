@@ -25,7 +25,10 @@ class BoxResource extends JsonResource
             'system_id' => $this->system_id,
             'api_id' => $this->api_id,
             'status'=>$this->status,
-            'plan_names' => $this->plans->pluck('name'),
+            'plan_ids' => $this->plans->pluck('id'),
+            'occupied' => $this->occupied,
+            'defective' => $this->defective,
+            'rental_uuid' => $this->rental_uuid,
           
         ];
     }

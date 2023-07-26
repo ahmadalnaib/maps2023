@@ -20,7 +20,7 @@
                 <div class="mt-4">
                     <!-- Modal content goes here -->
                     <div class="mt-4">
-                        <p class="text-sm text-gray-500"><strong>Email:</strong> info@locktec.com</p>
+                        <p class="text-sm text-gray-500"><strong>Email:</strong> lockport@locktec.net</p>
                         <p class="text-sm text-gray-500"><strong>Mobile:</strong>0049 9261 60 75 90</p>
                     </div>
                     

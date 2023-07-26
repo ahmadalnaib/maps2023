@@ -160,7 +160,7 @@
 
 <!-- Replace "test" with your own sandbox Business account app client ID -->
 <script
-    src="https://www.paypal.com/sdk/js?client-id=AVkELTVSTm95KMgxyRhuxuWInYolxp9SBPaGYkEYJYF_A2F6PBzwdXsPNeEvQolhV1eMhYb8smdNX3ct&currency=EUR">
+    src="https://www.paypal.com/sdk/js?client-id=ARd_ANnrVEGySRB13S8F44we_CpSae6bqtcnZbDg_Nh4aMVMkCWIXLngwuKbpW0vv1Zsvk8k3hqwQUqu&currency=EUR">
 </script>
 <!-- Set up a container element for the button -->
 

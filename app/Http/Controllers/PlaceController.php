@@ -34,12 +34,15 @@ class PlaceController extends Controller
 
     if ($system && isset($system->boxes)) {
         foreach ($system->boxes as $box) {
+            $isDefective = $box->defective ? true: false;
+            $box_Rental_uuid = $box->rental_uuid ? true : false;
+            
             if ($box->boxType->first_floor_option){
                 $firstFloorBoxes[] = $box->id;
             }else{
                 $secondFloorBoxes[] = $box->id;
             }
-            if ($box->rentals->isNotEmpty() && $box->rentals->last()->end_time->isPast() || $box->rentals->isEmpty()|| $box->status) {
+            if ( $box->status &&  !$isDefective && !$box_Rental_uuid) {
 
                 $plansByBox[$box->id] = $box->plans;
             }

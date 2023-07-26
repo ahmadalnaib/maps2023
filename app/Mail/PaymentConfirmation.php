@@ -57,8 +57,8 @@ class PaymentConfirmation extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath(storage_path('app/tmp/invoice.pdf'))
-            ->as('invoice.pdf')
+            Attachment::fromPath(storage_path('app/tmp/rechnung.pdf'))
+            ->as('rechnung.pdf')
             ->withMime('application/pdf'),
         ];
     }

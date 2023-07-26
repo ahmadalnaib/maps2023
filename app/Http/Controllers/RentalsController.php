@@ -13,6 +13,7 @@ use App\Models\Rental;
 use App\Models\System;
 use Illuminate\Http\Request;
 use App\Mail\PaymentConfirmation;
+
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Crypt;
 
@@ -158,6 +159,12 @@ class RentalsController extends Controller
       
         // Add any other relevant fields you have in your Rental model
     ]);
+
+    $box = Box::findOrFail($boxId);
+    $box->rental_uuid = $rental->uuid;
+    $box->occupied = true;
+    $box->save();
+
      // Generate the PDF file
      $dompdf = new Dompdf();
      $dompdf->loadHtml(view('emails.payment_confirmation', ['rental' => $rental])->render());
@@ -166,7 +173,7 @@ class RentalsController extends Controller
      $pdfContents = $dompdf->output();
 
      // Save the PDF file to a temporary location
-     $pdfPath = storage_path('app/tmp/invoice.pdf');
+     $pdfPath = storage_path('app/tmp/rechnung.pdf');
      file_put_contents($pdfPath, $pdfContents);
      // Send the pin code email
   
@@ -226,6 +233,9 @@ public function save(Request $request, Plan $plan)
         'created_at' => Carbon::now(),
     ]);
 
+  
+  
+
      $dompdf = new Dompdf();
      $dompdf->loadHtml(view('emails.payment_confirmation', ['rental' => $rental])->render());
 
@@ -233,7 +243,7 @@ public function save(Request $request, Plan $plan)
      $pdfContents = $dompdf->output();
 
      // Save the PDF file to a temporary location
-     $pdfPath = storage_path('app/tmp/invoice.pdf');
+     $pdfPath = storage_path('app/tmp/rechnung.pdf');
      file_put_contents($pdfPath, $pdfContents);
      // Send the pin code email
   
@@ -245,6 +255,14 @@ public function save(Request $request, Plan $plan)
 
 
     $rental->save();
+
+ 
+    // Save rental_uuid in the boxes table
+    $box = Box::findOrFail($validatedData['box_id']);
+    $box->rental_uuid = $rental->uuid;
+    $box->occupied = true;
+    $box->save();
+
 
     // Perform any additional actions or redirects as needed
     return redirect()->route('invoices.index')->with('message', 'Miete erfolgreich erworben.');

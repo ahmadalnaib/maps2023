@@ -47,7 +47,10 @@ Route::get('/users/email-verified', [UserController::class, 'emailVerifiedUsers'
 Route::get('/users/not-email-verified', [UserController::class, 'notEmailVerifiedUsers']);
 
 Route::get('/boxes', [BoxController::class, 'index']);
-Route::post('/boxes', [BoxController::class, 'store']);
+//  Route::post('/boxes', [BoxController::class, 'store']);
+Route::post('/boxes/bulk', [BoxController::class, 'storeBulk']);
+
+Route::put('/boxesapi/{box}', [BoxController::class, 'update']);
 Route::get('/boxes/{box}', [BoxController::class, 'show']);
 
 

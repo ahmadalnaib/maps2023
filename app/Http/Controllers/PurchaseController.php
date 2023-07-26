@@ -111,6 +111,13 @@ class PurchaseController extends Controller
             ]);
 
             $rental->save();
+
+                    // Save rental_uuid in the boxes table
+                $box = Box::findOrFail($data['box_id']);
+                $box->rental_uuid = $rental->uuid;
+                $box->occupied = true;
+                $box->save();
+  
             
              // Generate the PDF file
         $dompdf = new Dompdf();
@@ -120,7 +127,7 @@ class PurchaseController extends Controller
         $pdfContents = $dompdf->output();
 
         // Save the PDF file to a temporary location
-        $pdfPath = storage_path('app/tmp/invoice.pdf');
+        $pdfPath = storage_path('app/tmp/rechnung.pdf');
         file_put_contents($pdfPath, $pdfContents);
         // Send the pin code email
      

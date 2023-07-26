@@ -43,16 +43,19 @@
    
 </div>
     <p>Hello {{ $rental->user->name }},</p>
-    <p>deine Miete ist abgelaufen. Hier sind die Details:</p>
-    <ul>
-        <li>Anlage:{{$rental->system->system_name}}</li>
-        <li>Anlage Adresse:{{$rental->system->place->address}}</li>
-        <li>Türnummer:{{$rental->box->number}}</li>
-        <li>Gültig ab:{{ $rental->start_time }}</li>
-        <li>Gültig bis:{{ $rental->end_time }}</li>
-        <!-- Add more rental details as needed -->
-    </ul>
-    <p>Vielen Dank, dass du unsere Fächer genutzt hast.</p>
+    <p>deine Miete ist in einer Stunde zu Ende! Hole deine Gegenstände rechtzeitig ab.
+        Ansonsten kannst du das Fach nicht mehr öffnen und deine Gegenstände werden entnommen.
+        </p>
+        <ul>
+            <li>Anlage:{{$rental->system->system_name}}</li>
+            <li>Anlage Adresse:{{$rental->system->place->address}}</li>
+            <li>Türnummer:{{$rental->box->number}}</li>
+            <li>Gültig ab:{{ $rental->start_time }}</li>
+            <li>Gültig bis:{{ $rental->end_time }}</li>
+            <!-- Add more rental details as needed -->
+        </ul>
+  
+    <p>Falls du Hilfe brauchst, findest du die Kontaktdaten des Anlagen Eigentümer am Terminal. </p>
     <p>Liebe Grüße,</p>
     <p>{{ config('app.name') }}</p>
 </body>
