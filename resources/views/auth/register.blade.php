@@ -89,7 +89,7 @@
                             <x-checkbox name="terms" id="terms" required  />
 
                             <div class="ml-2">
-                 <a class="text-blue-700" target="__blank" href="{{url('privacy/Datenschutzerklärung_lockport.pdf')}}">{{__('reg.Data Protection') }} </a>
+                 <a class="text-blue-700" target="__blank" href="{{url('privacy/Datenschutzhinweise.pdf')}}">{{__('reg.Data Protection') }} </a>
                             </div>
                         </div>
                     </x-label>

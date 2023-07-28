@@ -33,8 +33,9 @@ class SendRentalExpiredEmail implements ShouldQueue
         
    
 
-        $endLimit = \Carbon\Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
-            $rentals = Rental::where('end_time', '<=', $endLimit)
+        // $endLimit = \Carbon\Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+        $endLimit = Carbon::now('UTC');
+            $rentals = Rental::where('end_time', '<', $endLimit)
                             ->where('notified', false)
                             ->get();
 

@@ -50,8 +50,8 @@
             <li>Anlage:{{$rental->system->system_name}}</li>
             <li>Anlage Adresse:{{$rental->system->place->address}}</li>
             <li>Türnummer:{{$rental->box->number}}</li>
-            <li>Gültig ab:{{ $rental->start_time }}</li>
-            <li>Gültig bis:{{ $rental->end_time }}</li>
+            <li>Gültig ab:{{ \Carbon\Carbon::parse($rental->start_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</li>
+            <li>Gültig bis:{{ \Carbon\Carbon::parse($rental->end_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</li>
             <!-- Add more rental details as needed -->
         </ul>
   

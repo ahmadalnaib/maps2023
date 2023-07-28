@@ -13,7 +13,7 @@ return[
   "Pay with Card"=>"Pay with Card",
   "Pay with PayPal"=>"Pay with PayPal",
   "Cardholder Name"=>"Cardholder Name",
-  "Pay"=>"Pay",
+  "Pay"=>"Order with costs for",
   "Cancel"=>"Cancel",
   "The data you entered contains errors! Review it and try again"=>"The data you entered contains errors! Review it and try again",
   'The payment was successful.'=>'Die Zahlung war erfolgreich.',

@@ -76,7 +76,8 @@ class PurchaseController extends Controller
    
              $plan = Plan::findOrFail($data['rental_period']);
              $price = $plan->price;
-             $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+            //  $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+            $start_time = Carbon::now('UTC');
            
              $durationUnit = $plan->duration_unit;
 

@@ -185,14 +185,13 @@
                   </tr>
                   <tr>
                     <td class="p-2 font-semibold">{{__('rental.Valid from')}}</td>
-                    <td class="p-2">{{ $rental->start_time }}</td>
+                    <td class="p-2">{{ \Carbon\Carbon::parse($rental->start_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</td>
                 </tr>
                 <tr>
                     <td class="p-2 font-semibold">{{__('rental.Booked until')}}</td>
-                    <td class="p-2">{{ $rental->end_time }}</td>
+                    <td class="p-2">{{ \Carbon\Carbon::parse($rental->end_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</td>
                 </tr>
-                <td class="p-2 font-semibold">Erstellt am</td>
-                <td class="p-2">{{ $rental->created_at }}</td>
+               
                       
                 </tbody>
             </table>

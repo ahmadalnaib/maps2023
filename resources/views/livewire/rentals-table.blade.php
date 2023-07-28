@@ -53,12 +53,12 @@
                    
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">
-                    {{ $rental->start_time }}
+                    {{ \Carbon\Carbon::parse($rental->start_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap ">
                    
 
-                        {{ $rental->end_time }}
+                    {{ \Carbon\Carbon::parse($rental->end_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}
                  
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap">

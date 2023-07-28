@@ -25,7 +25,7 @@ class Rental extends JsonResource
             'plan_id'=>$this->plan_id,
             'duration'=>$this->duration,
             'start_time' => date("Y-m-d H:i:s", strtotime($this->start_time)),
-        'end_time' => date("Y-m-d H:i:s", strtotime($this->end_time)),
+            'end_time' => date("Y-m-d H:i:s", strtotime($this->end_time)),
             'price'=>$this->price,
             'pincode'=>$this->pincode,
 

@@ -146,11 +146,11 @@
                     </tr>
                     <tr>
                         <td>Gültig ab:</td>
-                        <td>{{$rental->start_time}}</td>
+                        <td>{{ \Carbon\Carbon::parse($rental->start_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     <tr>
                         <td>Gültig bis:</td>
-                        <td>{{$rental->end_time}}</td>
+                        <td>{{ \Carbon\Carbon::parse($rental->end_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</td>
                     </tr>
                     <tr>
                         <td>Mietgebühr:</td>

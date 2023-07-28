@@ -17,10 +17,15 @@
                                          $isRented = $box->rentals->isNotEmpty();
                                         //  dd($isRented);
                                         $box_Rental_uuid = $box->rental_uuid ? true : false;
-                                        $isEndTimePassed = $box_Rental_uuid ;
+                                        $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
                                         //  dd( $box_Rental_uuid);
-                                        $cursorClass = $box_Rental_uuid ? 'cursor-not-allowed' : 'cursor-pointer';
-                                        $bgColorClass = $box_Rental_uuid ?  'bg-red-500'  : 'bg-green-500' ;
+                                        $cursorClass = $box_Rental_uuid || (!$isEndTimePassed && $isRented) ? 'cursor-not-allowed' : 'cursor-pointer';
+                                        // $bgColorClass = $box_Rental_uuid ?  'bg-red-500'  : 'bg-green-500' ;
+                                        if ($box_Rental_uuid || (!$isEndTimePassed && $isRented)) {
+                                    $bgColorClass = 'bg-red-500';
+                                } else {
+                                    $bgColorClass = 'bg-green-500';
+                                }
                                         $boxIsBig =$box->boxType->big ? 'p-4' : '';
                                         $status = $box->status ? true : false;
                                         $isDefective = $box->defective ? true : false;
@@ -30,7 +35,7 @@
                                     @if ($box && $box->boxType)
                                         <li data-box-id="{{ $box->id }}"
                                             class="first-floor inline-block m-0 py-12  border-2 rounded-md text-center box-item p-4 {{ $bgColorClass }} {{ $cursorClass }}  {{ $boxIsBig }} {{ $disabledClass }}"
-                                            @if (!$status || $isDefective || $box_Rental_uuid) disabled @endif>
+                                            @if (!$status || $isDefective || $box_Rental_uuid ) disabled @endif>
                                             {{ $box->number }}
 
                                             @if ($box && $box->boxType && $box->boxType->ebike_option)
@@ -50,12 +55,16 @@
                         @foreach ($system->boxes as $box)
                             @if (in_array($box->id, $secondFloorBoxes))
                                 @php
-                                    // $isRented = $box->rentals->isNotEmpty();
+                                    $isRented = $box->rentals->isNotEmpty();
                                     $box_Rental_uuid = $box->rental_uuid ? true : false;
-                                    $isEndTimePassed = $box_Rental_uuid;
-                                    $cursorClass = $box_Rental_uuid ? '' : 'cursor-pointer';
+                                    $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
+                                    $cursorClass = $box_Rental_uuid || (!$isEndTimePassed && $isRented) ? 'cursor-not-allowed' : 'cursor-pointer';
                                     
-                                    $bgColorClass = $box_Rental_uuid ?  'bg-red-500'  : 'bg-green-500' ;
+                                    if ($box_Rental_uuid || (!$isEndTimePassed && $isRented)) {
+                                    $bgColorClass = 'bg-red-500';
+                                } else {
+                                    $bgColorClass = 'bg-green-500';
+                                }
                                         $boxIsBig =$box->boxType->big ? 'p-4' : '';
                                     $status = $box->status ? true : false;
                                     $isDefective = $box->defective ? true : false;
@@ -83,8 +92,8 @@
              
 
 
-                @if(   $system->boxes->filter(function ($box) {
-                    return $box->rental_uuid == null ;
+                @if($system->boxes->filter(function ($box) {
+                    return $box->rental_uuid == null   ;
                 })->count() > 0)
            
                     <form action="{{ route('rent') }}" method="post">
@@ -98,7 +107,7 @@
                                 @foreach ($system->boxes as $box)
                                  
 
-                                    @if ($box->status && !$box->defective && !$box->rental_uuid)
+                                    @if (($box->status && !$box->defective && !$box->rental_uuid )  && (!$box->rentals->last() || $box->rentals->last()->end_time->isPast()))
                                     
                                       
                                             <option value="{{ $box->id }}" data-box-id="{{ $box->id }}"

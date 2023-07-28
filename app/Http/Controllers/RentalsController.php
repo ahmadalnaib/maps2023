@@ -32,7 +32,8 @@ class RentalsController extends Controller
         $box = Box::findOrFail($validatedData['box_id']);
         $plan = Plan::findOrFail($validatedData['rental_period']);
         $durationUnit = $plan->duration_unit;
-        $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+        // $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+        $start_time = Carbon::now();
 
         if ($durationUnit === 'days') {
             // Calculate end time based on plan's number of days
@@ -67,8 +68,8 @@ class RentalsController extends Controller
             'system' => $system,
             'address' => $system->address,
             'box' => $box,
-            'start_time' => $start_time,
-            'end_time' => $end_time,
+            'start_time' => $start_time->tz('Europe/Berlin'),
+            'end_time' => $end_time->tz('Europe/Berlin'),
             'plan'=>$plan,
             'intent'=>$intent,
             'duration_unit' => $durationUnit,
@@ -125,7 +126,8 @@ class RentalsController extends Controller
     } catch (\Exception $exception) {
         return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
     }
-    $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+    // $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+    $start_time = Carbon::now('UTC');
     $durationUnit = $plan->duration_unit;
     
     if ($durationUnit === 'days') {
@@ -204,7 +206,8 @@ public function save(Request $request, Plan $plan)
     $system = System::findOrFail($validatedData['system_id']);
     $box = Box::findOrFail($validatedData['box_id']);
     $plan = Plan::findOrFail($validatedData['rental_period']);
-    $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+    // $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+    $start_time = Carbon::now('UTC');
     $durationUnit = $plan->duration_unit;
 
     if ($durationUnit === 'days') {

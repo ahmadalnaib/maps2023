@@ -3,11 +3,29 @@
 <head>
     <title>Rechnung für Miete</title>
     <style>
+        @font-face{
+
+        font-family:'Open Sans';
+
+        font-style:normal;
+
+        font-weight:normal;
+
+        src:url(http://themes.googleusercontent.com/static/fonts/opensans/v8/cJZKeOuBrn4kERxqtaUH3aCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+
+        }
         @page {
-    margin: 0.5cm; /* You can adjust this value as needed */
+    margin: 1.5cm; 
+    font-family: Open Sans !important;
 }
-        /* Add your custom CSS styles for the invoice here */
-        /* For example: */
+
+html{
+    font-family: Open Sans !important; 
+}
+body{
+    font-family: Open Sans !important;
+}
+       
         .invoice-container {
             width: 100%;
             max-width: 800px;
@@ -145,8 +163,9 @@
      
      
         <div>
-          <h4>RECHNUNG <span class="space">NR.</span><span class="space2"> lp {{ $rental->id }}</span> <span class="space3"> {{ now()->format('Y-m-d') }}</span></h4>  
-         <p><span class="text-bold">Deine Buchung:</span> <span class="space2">{{ $rental->start_time}}</span></p>
+          <h4>RECHNUNG <span class="space">NR.</span><span class="space2">LP-{{ $rental->id }}</span>
+             <span class="space3"> {{ \Carbon\Carbon::parse($rental->start_time)->format('Y-m-d')}}</span></h4>  
+         <p><span class="text-bold">Buchung-Nr:</span> <span class="">{{ $rental->id}}</span> vom {{$rental->start_time}}</p>
           
         </div>
 
@@ -157,12 +176,13 @@
       $vatAmount = $rental->price - $originalPrice;
       @endphp
       <div>
+        {{-- <p><span class="text-bold">Produktbezeichnung:</span>{{$rental->duration}}</p> --}}
+        <p><span class="text-bold">Produktbezeichnung:</span>{{$rental->duration}}</p>
         <p><span class="text-bold">Anlage:</span>{{$rental->system->system_name}}</p>
-        <p><span class="text-bold">Anlage Adresse:</span>{{$rental->system->place->address}}</p>
-        <p><span class="text-bold">Planname:</span>{{$rental->duration }}</p>
-        <p><span class="text-bold">Türnummer:</span>{{$rental->box->number}}</p>
-        <p><span class="text-bold">Rechnungsbetrag netto:</span>{{ number_format($originalPrice, 2) }} &euro;</p>
-        <p><span class="text-bold">Betrag:</span>online bezahlt</p>
+        <p><span class="text-bold">Anlagenadresse:</span>{{$rental->system->place->address}}</p>
+        <p><span class="text-bold">Box:</span>{{$rental->box->number}}</p>
+        <p><span class="text-bold">Leistungszeitraum:</span>{{$rental->start_time }} - {{$rental->end_time}}</p>
+      
      
       </div>
     
@@ -173,17 +193,41 @@
         </div>
         <div class="section-right">
           <div class="border-bottm">
-            <h4>+ {{ $vatRate }} % MwSt</h4>
-            <p>{{ number_format($vatAmount, 2) }} &euro;</p>
+            <table>
+                <tr>
+                    <td>
+                        <h4>Rechnungsbetrag netto:</h4>
+                    </td>
+                    <td>
+                 {{ number_format($originalPrice, 2) }} &euro;
+               </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>+ {{ $vatRate }} % MwSt</h4>
+                    </td>
+                    <td>{{ number_format($vatAmount, 2) }} &euro;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Gesamtbetrag brutto:</h4>
+                    </td>
+                    <td>{{$rental->price}} &euro;</td>
+                </tr>
+            </table>
+          
 
           </div>
-          <div class="border-bottm">
-            <h4>Gesamtbetrag:</h4>
-            <p>{{$rental->price }} &euro;</p>
-
-          </div>
+     
         </div>
     </div>
+    <div class="border-bottm">
+          
+        <p>Während des Leistungszeitraums kannst du mit deinem PIN deine Box an der Anlage öffnen.</p>
+        <p>Du findest den PIN im persönlichen Bereich deines Online Portal oder in der E-Mail.</p>
+        <p>Den Rechnungsbetrag haben wir bereits vollständig dankend erhalten.</p>
+
+      </div>
     <div class="border-bottm">
       <p>Vielen Dank für deine Nutzung. Wenn du Hilfe benötigst, kontaktiere und gerne.<a href="mailto:lockport@locktec.net">lockport@locktec.net</a>.</p>
   </div>

@@ -12,7 +12,7 @@ return[
     "System Address:"=>"Anlage-Adresse:",
     "Box Number:"=>"Fach:",
     "Show Details"=>'Details anzeigen',
-    "Generate Invoice"=>"Rechnung erstellen",
+    "Generate Invoice"=>"Rechnung anzeigen",
     "Close"=>"Schließen",
     'You have no orders at the moment.'=>'Aktuell hast du keine Fächer gebucht.',
     "Pincode:"=>"Pincode:"
