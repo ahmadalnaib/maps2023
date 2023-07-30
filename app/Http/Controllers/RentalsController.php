@@ -44,6 +44,7 @@ class RentalsController extends Controller
         }
         // Calculate price based on plan's price
         $price = $plan->price;
+        $total = $price;
         $intent=auth()->user()->createSetupIntent();
 
     
@@ -71,6 +72,7 @@ class RentalsController extends Controller
             'start_time' => $start_time->tz('Europe/Berlin'),
             'end_time' => $end_time->tz('Europe/Berlin'),
             'plan'=>$plan,
+            'total' => $total,
             'intent'=>$intent,
             'duration_unit' => $durationUnit,
          
@@ -80,19 +82,19 @@ class RentalsController extends Controller
 
 
 
-     public function creditCheckout(Request $request)
-     {
-        $intent = auth()->user()->createSetupIntent();
-        $user = auth()->user();
-        $price = $plan->price;
-        $total = $price; // Set total equal to the plan price
-              return view('credit.checkout',compact('intent','total'));
+    //  public function creditCheckout(Request $request)
+    //  {
+    //     $intent = auth()->user()->createSetupIntent();
+    //     $user = auth()->user();
+    //     $price = $plan->price;
+    //     $total = $price; // Set total equal to the plan price
+    //           return view('credit.checkout',compact('intent','total'));
  
-     }
+    //  }
 
  
  
-     public function purchase(Request $request, Plan $plan, )
+     public function purchase(Request $request, Plan $plan)
 {
 
             $user = $request->user();
@@ -107,10 +109,10 @@ class RentalsController extends Controller
             // Validate the IDs and user authorization
             $system = System::findOrFail($systemId);
             $box = Box::findOrFail($boxId);
-            $price = $plan->price;
-            $total = $price;
+            $total = $plan->price;
+          
 
-         
+        
    
 
     try {
@@ -126,6 +128,8 @@ class RentalsController extends Controller
     } catch (\Exception $exception) {
         return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
     }
+
+    // dd($request->all());
     // $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
     $start_time = Carbon::now('UTC');
     $durationUnit = $plan->duration_unit;
@@ -153,7 +157,7 @@ class RentalsController extends Controller
                 'start_time' => $start_time,
                 'end_time' => $end_time,
                 'plan_id' => $plan->id,
-                'price' => $price,
+                'price' => $total,
                 'pincode' => $pincode,
                 'uuid' => Uuid::uuid4()->toString(),
                 'created_at' => Carbon::now(),

@@ -119,7 +119,7 @@
                                         <div class="mt-3 text-center">
                                             <button type="submit"
                                                 class="bg-red-500 text-white font-bold py-2 px-4 rounded"
-                                                id="pay-btn">{{ __('rental.Pay') }} {{ $plan->price }} &euro; <span
+                                                id="pay-btn">{{ __('rental.Pay') }} {{ $total }} &euro; <span
                                                     class="icon" hidden><i
                                                         class="fas fa-sync fa-spin"></i></span></button>
                                         </div>
@@ -262,6 +262,7 @@
                 $('#pay-btn').removeAttr('disabled')
             } else {
                 paymentMethod = result.setupIntent.payment_method
+               
                 $('.payment-method').val(paymentMethod)
                 $('.card-form').submit()
                 $('span.icon').removeAttr('hidden');
