@@ -103,18 +103,11 @@
                                     <form method="POST" action="{{ route('rentals.purchase', $plan) }}"
                                         class="card-form mt-3 mb-3">
                                         @csrf
-                                        <input type="hidden" name="payment_method" class="payment-method">
+                                       
                                         <input type="hidden" name="system_id" value="{{ encrypt($system->id) }}">
                                         <input type="hidden" name="box_id" value="{{ encrypt($box->id) }}">
 
-                                        <div class="mb-4">
-                                            <input class="StripeElement form-input px-4 py-3 rounded-lg w-full"
-                                                name="card_holder_name"
-                                                placeholder="{{ __('rental.Cardholder Name') }}">
-                                        </div>
-                                        <div>
-                                            <div id="card-element"></div>
-                                        </div>
+                                     
                                         <div id="card-errors" role="alert"></div>
                                         <div class="mt-3 text-center">
                                             <button type="submit"
@@ -217,59 +210,9 @@
 
 
 
-<script src="https://js.stripe.com/v3/"></script>
+
 <script>
-    let stripe = Stripe("{{ env('STRIPE_KEY') }}")
-    let elements = stripe.elements()
-    let style = {
-        base: {
-            color: '#32325d',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-                color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-    }
-    let card = elements.create('card', {
-        style: style
-    })
-    card.mount('#card-element')
-    let paymentMethod = null
-    $('.card-form').on('submit', function(e) {
-        $('#pay-btn').attr('disabled', true)
-        if (paymentMethod) {
-            return true
-        }
-        stripe.confirmCardSetup(
-            "{{ $intent->client_secret }}", {
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        name: $('.card_holder_name').val()
-                    }
-                }
-            }
-        ).then(function(result) {
-            if (result.error) {
-                toastr.error(
-                    '__("rental.The data you entered contains errors! Review it and try again")')
-                $('#pay-btn').removeAttr('disabled')
-            } else {
-                paymentMethod = result.setupIntent.payment_method
-                $('.payment-method').val(paymentMethod)
-                $('.card-form').submit()
-                $('span.icon').removeAttr('hidden');
-                $('#pay-btn').attr('disabled', true)
-            }
-        })
-        return false
-    })
+  
 
     const tabs = document.querySelectorAll('.tab');
     const tabContents = document.querySelectorAll('.tab-content');

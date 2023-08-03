@@ -109,23 +109,15 @@ class RentalsController extends Controller
             $box = Box::findOrFail($boxId);
             $price = $plan->price;
             $total = $price;
+            
 
          
    
 
-    try {
-        $user->createOrGetStripeCustomer();
-        $user->updateDefaultPaymentMethod($paymentMethod);
-        $user->charge($total * 100, $paymentMethod, [
-            'metadata' =>
-            ['system_id' => $systemId, 
-            'box_id' => $boxId,
-            'tenant_id '=> $user->tenant->id,
-            ]
-           ]); // * 100 because Stripe deals with cents
-    } catch (\Exception $exception) {
-        return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
-    }
+           return $payment= $request->user()->checkoutCharge($total *100, 'T-Shirt', 1);
+           dd($payment);
+
+
     // $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
     $start_time = Carbon::now('UTC');
     $durationUnit = $plan->duration_unit;

@@ -165,7 +165,7 @@ body{
         <div>
           <h4>RECHNUNG <span class="space">NR.</span><span class="space2">LP-{{ $rental->id }}</span>
              <span class="space3"> {{ \Carbon\Carbon::parse($rental->start_time)->format('Y-m-d')}}</span></h4>  
-         <p><span class="text-bold">Buchung-Nr:</span> <span class="">{{ $rental->id}}</span> vom {{$rental->start_time}}</p>
+      
           
         </div>
 
@@ -177,6 +177,7 @@ body{
       @endphp
       <div>
         {{-- <p><span class="text-bold">Produktbezeichnung:</span>{{$rental->duration}}</p> --}}
+        <p><span class="text-bold">Buchung-Nr:</span> <span class="">{{ $rental->id}}</span> vom {{$rental->start_time}}</p>
         <p><span class="text-bold">Produktbezeichnung:</span>{{$rental->duration}}</p>
         <p><span class="text-bold">Anlage:</span>{{$rental->system->system_name}}</p>
         <p><span class="text-bold">Anlagenadresse:</span>{{$rental->system->place->address}}</p>
