@@ -43,7 +43,7 @@
    
 </div>
     <p>Hello {{ $rental->user->name }},</p>
-    <p>deine Miete ist in einer Stunde zu Ende! Hole deine Gegenstände rechtzeitig ab.
+    <p>Deine Miete ist in 30 Minuten zu Ende.! Hole deine Gegenstände rechtzeitig ab.
         Ansonsten kannst du das Fach nicht mehr öffnen und deine Gegenstände werden entnommen.
         </p>
         <ul>

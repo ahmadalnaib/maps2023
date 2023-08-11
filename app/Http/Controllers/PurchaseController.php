@@ -33,15 +33,22 @@ class PurchaseController extends Controller
     public function createPayment(Request $request) {
 
         $data = json_decode($request->getContent(), true);
+  
         
 
  // Retrieve the plan based on the rental_period ID
         $plan = Plan::findOrFail($data['rental_period']);
+        $user = User::find($data['userId']);
+        $system = System::findOrFail($data['system_id']);
+        $box = Box::findOrFail($data['box_id']);
 
    
         
     // Calculate the total price based on the plan's price
     $total = $plan->price;
+
+
+
 
     
         
@@ -54,7 +61,8 @@ class PurchaseController extends Controller
                         'currency_code' => "EUR",
                         'value' => $total
                     ],
-                    'description' => 'Order Description'
+                    'description' => "User: " . $user->id . ", System: " . $system->id . ", Box: " . $box->id
+
                 ]
             ],
         ]);
@@ -85,6 +93,8 @@ class PurchaseController extends Controller
                 $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
             } elseif ($durationUnit === 'hours') {
                 $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+            } elseif ($durationUnit === 'minutes') {
+                $end_time = $start_time->copy()->addMinutes($plan->number_of_days)->subSecond();
             } else {
                 // Handle unknown duration_unit or default behavior if needed
                 $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();

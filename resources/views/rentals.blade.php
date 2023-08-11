@@ -100,19 +100,20 @@
 
                                 </div>
                                 <div class="tab-content mt-4 " id="card-tab" style="display:none">
-                                    <form method="POST" action="{{ route('rentals.purchase', $plan) }}"
+                                    <form method="POST" action="{{ route('rentals.checkout', $plan) }}"
                                         class="card-form mt-3 mb-3">
                                         @csrf
-                                       
+                                      
                                         <input type="hidden" name="system_id" value="{{ encrypt($system->id) }}">
                                         <input type="hidden" name="box_id" value="{{ encrypt($box->id) }}">
 
+                                       
                                      
-                                        <div id="card-errors" role="alert"></div>
+                                      
                                         <div class="mt-3 text-center">
                                             <button type="submit"
                                                 class="bg-red-500 text-white font-bold py-2 px-4 rounded"
-                                                id="pay-btn">{{ __('rental.Pay') }} {{ $total }} &euro; <span
+                                                id="pay-btn">{{ __('rental.Pay') }} {{ $plan->price }} &euro; <span
                                                     class="icon" hidden><i
                                                         class="fas fa-sync fa-spin"></i></span></button>
                                         </div>
@@ -165,8 +166,10 @@
             return fetch('/api/paypal/create-payment', {
                 method: 'POST',
                 body: JSON.stringify({
-                    'userId': "{{ auth()->user()->id }}",
-                    'rental_period': "{{ $plan->id }}"
+                    userId: "{{ auth()->user()->id }}",
+                    rental_period: "{{ $plan->id }}",
+                    system_id: "{{ $system->id }}",
+                    box_id: "{{ $box->id }}",
                 }),
                 headers: {
                     'Content-Type': 'application/json',
@@ -212,62 +215,7 @@
 
 
 <script>
-<<<<<<< HEAD
-  
-=======
-    let stripe = Stripe("{{ env('STRIPE_KEY') }}")
-    let elements = stripe.elements()
-    let style = {
-        base: {
-            color: '#32325d',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-                color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-    }
-    let card = elements.create('card', {
-        style: style
-    })
-    card.mount('#card-element')
-    let paymentMethod = null
-    $('.card-form').on('submit', function(e) {
-        $('#pay-btn').attr('disabled', true)
-        if (paymentMethod) {
-            return true
-        }
-        stripe.confirmCardSetup(
-            "{{ $intent->client_secret }}", {
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        name: $('.card_holder_name').val()
-                    }
-                }
-            }
-        ).then(function(result) {
-            if (result.error) {
-                toastr.error(
-                    '__("rental.The data you entered contains errors! Review it and try again")')
-                $('#pay-btn').removeAttr('disabled')
-            } else {
-                paymentMethod = result.setupIntent.payment_method
-               
-                $('.payment-method').val(paymentMethod)
-                $('.card-form').submit()
-                $('span.icon').removeAttr('hidden');
-                $('#pay-btn').attr('disabled', true)
-            }
-        })
-        return false
-    })
->>>>>>> aec3c068f5188962b08d9b64ea677338f1f291c0
+ 
 
     const tabs = document.querySelectorAll('.tab');
     const tabContents = document.querySelectorAll('.tab-content');

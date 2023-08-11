@@ -36,16 +36,18 @@ class RentalsController extends Controller
         $start_time = Carbon::now();
 
         if ($durationUnit === 'days') {
-            // Calculate end time based on plan's number of days
             $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
         } elseif ($durationUnit === 'hours') {
-            // Calculate end time based on plan's number of hours
             $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+        } elseif ($durationUnit === 'minutes') {
+            $end_time = $start_time->copy()->addMinutes($plan->number_of_days)->subSecond();
+        } else {
+            // Handle unknown duration_unit or default behavior if needed
+            $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
         }
         // Calculate price based on plan's price
         $price = $plan->price;
-        $total = $price;
-        $intent=auth()->user()->createSetupIntent();
+   
 
     
         // Create the rental record
@@ -72,8 +74,6 @@ class RentalsController extends Controller
             'start_time' => $start_time->tz('Europe/Berlin'),
             'end_time' => $end_time->tz('Europe/Berlin'),
             'plan'=>$plan,
-            'total' => $total,
-            'intent'=>$intent,
             'duration_unit' => $durationUnit,
          
             
@@ -82,134 +82,111 @@ class RentalsController extends Controller
 
 
 
-    //  public function creditCheckout(Request $request)
-    //  {
-    //     $intent = auth()->user()->createSetupIntent();
-    //     $user = auth()->user();
-    //     $price = $plan->price;
-    //     $total = $price; // Set total equal to the plan price
-    //           return view('credit.checkout',compact('intent','total'));
  
-    //  }
 
  
  
-     public function purchase(Request $request, Plan $plan)
-{
+//      public function purchase(Request $request, Plan $plan, )
+// {
 
-            $user = $request->user();
-            $paymentMethod = $request->input('payment_method');
-            $encryptedSystemId = $request->input('system_id');
-            $encryptedBoxId = $request->input('box_id');
+//             $user = $request->user();
+//             $paymentMethod = $request->input('payment_method');
+//             $encryptedSystemId = $request->input('system_id');
+//             $encryptedBoxId = $request->input('box_id');
             
-            // Decrypt the encrypted IDs
-            $systemId = Crypt::decrypt($encryptedSystemId);
-            $boxId = Crypt::decrypt($encryptedBoxId);
+//             // Decrypt the encrypted IDs
+//             $systemId = Crypt::decrypt($encryptedSystemId);
+//             $boxId = Crypt::decrypt($encryptedBoxId);
             
-            // Validate the IDs and user authorization
-            $system = System::findOrFail($systemId);
-            $box = Box::findOrFail($boxId);
-<<<<<<< HEAD
-            $price = $plan->price;
-            $total = $price;
-            
-=======
-            $total = $plan->price;
-          
->>>>>>> aec3c068f5188962b08d9b64ea677338f1f291c0
+//             // Validate the IDs and user authorization
+//             $system = System::findOrFail($systemId);
+//             $box = Box::findOrFail($boxId);
+//             $price = $plan->price;
+//             $total = $price;
 
-        
+         
    
 
-<<<<<<< HEAD
-           return $payment= $request->user()->checkoutCharge($total *100, 'T-Shirt', 1);
-           dd($payment);
-
-
-=======
-    try {
-        $user->createOrGetStripeCustomer();
-        $user->updateDefaultPaymentMethod($paymentMethod);
-        $user->charge($total * 100, $paymentMethod, [
-            'metadata' =>
-            ['system_id' => $systemId, 
-            'box_id' => $boxId,
-            'tenant_id '=> $user->tenant->id,
-            ]
-           ]); // * 100 because Stripe deals with cents
-    } catch (\Exception $exception) {
-        return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
-    }
-
-    // dd($request->all());
->>>>>>> aec3c068f5188962b08d9b64ea677338f1f291c0
-    // $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
-    $start_time = Carbon::now('UTC');
-    $durationUnit = $plan->duration_unit;
+//     try {
+//         $user->createOrGetStripeCustomer();
+//         $user->updateDefaultPaymentMethod($paymentMethod);
+//         $user->charge($total * 100, $paymentMethod, [
+//             'metadata' =>
+//             ['system_id' => $systemId, 
+//             'box_id' => $boxId,
+//             'tenant_id '=> $user->tenant->id,
+//             ]
+//            ]); // * 100 because Stripe deals with cents
+//     } catch (\Exception $exception) {
+//         return back()->with('error', 'Error processing payment: ' . $exception->getMessage());
+//     }
+//     // $start_time = Carbon::now('Europe/Berlin')->tz('Europe/Berlin');
+//     $start_time = Carbon::now('UTC');
+//     $durationUnit = $plan->duration_unit;
     
-    if ($durationUnit === 'days') {
-        $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
-    } elseif ($durationUnit === 'hours') {
-        $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
-    } else {
-        // Handle unknown duration_unit or default behavior if needed
-        $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
-    }
+//     if ($durationUnit === 'days') {
+//         $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+//     } elseif ($durationUnit === 'hours') {
+//         $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+//     } else {
+//         // Handle unknown duration_unit or default behavior if needed
+//         $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
+//     }
 
 
-    $tenantId = $user->tenant->id;
-    $pincode = mt_rand(100000000, 999999999);
+//     $tenantId = $user->tenant->id;
+//     $pincode = mt_rand(100000000, 999999999);
 
-      // Create a new rental record
-      $rental = Rental::create([
-        "tenant_id" => $tenantId,
-                "system_id" => $systemId,
-                "user_id" => $user->id,
-                'box_id' => $boxId,
-                'duration'=>$plan->name,
-                'start_time' => $start_time,
-                'end_time' => $end_time,
-                'plan_id' => $plan->id,
-                'price' => $total,
-                'pincode' => $pincode,
-                'uuid' => Uuid::uuid4()->toString(),
-                'created_at' => Carbon::now(),
-        // 'payment_method' => 'stripe', // or any other payment method identifier
+//       // Create a new rental record
+//       $rental = Rental::create([
+//         "tenant_id" => $tenantId,
+//                 "system_id" => $systemId,
+//                 "user_id" => $user->id,
+//                 'box_id' => $boxId,
+//                 'duration'=>$plan->name,
+//                 'start_time' => $start_time,
+//                 'end_time' => $end_time,
+//                 'plan_id' => $plan->id,
+//                 'price' => $price,
+//                 'pincode' => $pincode,
+//                 'uuid' => Uuid::uuid4()->toString(),
+//                 'created_at' => Carbon::now(),
+//         // 'payment_method' => 'stripe', // or any other payment method identifier
       
-        // Add any other relevant fields you have in your Rental model
-    ]);
+//         // Add any other relevant fields you have in your Rental model
+//     ]);
 
-    $box = Box::findOrFail($boxId);
-    $box->rental_uuid = $rental->uuid;
-    $box->occupied = true;
-    $box->save();
+//     $box = Box::findOrFail($boxId);
+//     $box->rental_uuid = $rental->uuid;
+//     $box->occupied = true;
+//     $box->save();
 
-     // Generate the PDF file
-     $dompdf = new Dompdf();
-     $dompdf->loadHtml(view('emails.payment_confirmation', ['rental' => $rental])->render());
+//      // Generate the PDF file
+//      $dompdf = new Dompdf();
+//      $dompdf->loadHtml(view('emails.payment_confirmation', ['rental' => $rental])->render());
 
-     $dompdf->render();
-     $pdfContents = $dompdf->output();
+//      $dompdf->render();
+//      $pdfContents = $dompdf->output();
 
-     // Save the PDF file to a temporary location
-     $pdfPath = storage_path('app/tmp/rechnung.pdf');
-     file_put_contents($pdfPath, $pdfContents);
-     // Send the pin code email
+//      // Save the PDF file to a temporary location
+//      $pdfPath = storage_path('app/tmp/rechnung.pdf');
+//      file_put_contents($pdfPath, $pdfContents);
+//      // Send the pin code email
   
 
-    Mail::to($rental->user->email)->send(new PaymentConfirmation($rental));
-     // Cleanup the temporary PDF file
-     unlink($pdfPath);
+//     Mail::to($rental->user->email)->send(new PaymentConfirmation($rental));
+//      // Cleanup the temporary PDF file
+//      unlink($pdfPath);
     
 
 
-    // Additional logic or redirects if needed
+//     // Additional logic or redirects if needed
 
-    return redirect()->route('invoices.index')->with('message', 'Miete erfolgreich erworben.');
+//     return redirect()->route('invoices.index')->with('message', 'Miete erfolgreich erworben.');
 
 
 
-}
+// }
 
 public function save(Request $request, Plan $plan)
 {
@@ -231,6 +208,8 @@ public function save(Request $request, Plan $plan)
         $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();
     } elseif ($durationUnit === 'hours') {
         $end_time = $start_time->copy()->addHours($plan->number_of_days)->subSecond();
+    } elseif ($durationUnit === 'minutes') {
+        $end_time = $start_time->copy()->addMinutes($plan->number_of_days)->subSecond();
     } else {
         // Handle unknown duration_unit or default behavior if needed
         $end_time = $start_time->copy()->addDays($plan->number_of_days)->subSecond();

@@ -177,12 +177,12 @@ body{
       @endphp
       <div>
         {{-- <p><span class="text-bold">Produktbezeichnung:</span>{{$rental->duration}}</p> --}}
-        <p><span class="text-bold">Buchung-Nr:</span> <span class="">{{ $rental->id}}</span> vom {{$rental->start_time}}</p>
+        <p><span class="text-bold">Buchung-Nr:</span> <span class="">{{ $rental->id}}</span> vom {{ \Carbon\Carbon::parse($rental->start_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</p>
         <p><span class="text-bold">Produktbezeichnung:</span>{{$rental->duration}}</p>
         <p><span class="text-bold">Anlage:</span>{{$rental->system->system_name}}</p>
         <p><span class="text-bold">Anlagenadresse:</span>{{$rental->system->place->address}}</p>
         <p><span class="text-bold">Box:</span>{{$rental->box->number}}</p>
-        <p><span class="text-bold">Leistungszeitraum:</span>{{$rental->start_time }} - {{$rental->end_time}}</p>
+        <p><span class="text-bold">Leistungszeitraum:</span>{{ \Carbon\Carbon::parse($rental->start_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }} - {{ \Carbon\Carbon::parse($rental->end_time)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}</p>
       
      
       </div>

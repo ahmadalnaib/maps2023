@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Api;
 use App\Models\Box;
 use Illuminate\Http\Request;
 use App\Http\Resources\BoxResource;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,6 +35,8 @@ class BoxController extends Controller
                '*.rental_uuid' => 'nullable|uuid',
                '*.box_id' => 'uuid'
     ]);
+    // Log::info('id of client: '. $request->ip());
+    // Log::info($request->httpHost() );
     if ($validatedData->fails()) {
         return response()->json(['error' => 'Validation failed', 'errors' => $validator->errors()], 422);
     }

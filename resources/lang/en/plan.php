@@ -4,7 +4,7 @@ return[
     "Plan"=>"Booking period",
     "Create New Plan"=>"Create new booking period ",
     "Plan name"=>"Booking period",
-    "Number of Days"=>"Days/Hours",
+    "Number of Days"=>"Days/Hours/Minutes",
     "Policy Name"=>"Policy Name",
     "Plan Price"=>"price",
     "Action"=>"Action",
@@ -14,6 +14,7 @@ return[
     'Duration Unit'=>'Duration Unit',
     'days'=>'days',
     'Hours'=>'Hours',
+    'Minutes'=>'Minutes',
     'there_are_no_products'=>'Thre are no plans'
 
 ];

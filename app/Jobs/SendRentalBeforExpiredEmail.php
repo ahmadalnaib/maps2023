@@ -33,13 +33,19 @@ class SendRentalBeforExpiredEmail implements ShouldQueue
     {
         //
         // $endLimit = Carbon::now('Europe/Berlin')->tz('Europe/Berlin')->addMinutes(59);
-         $endLimit = Carbon::now('UTC')->addMinutes(59);
+         $endLimit = Carbon::now('UTC')->addMinutes(29);
         $rentals = Rental::where('end_time', '<', $endLimit)
                         ->where('notifiedemail', false)
                         ->get();
-
+        // if (!$rentals){
+        //     Log::info('no rental found');
+        // }
         foreach ($rentals as $rental) {
             $user = $rental->user;
+            $system = $rental->system;
+            // if (!$system){
+            //     Log::info('system not found for id '.$rental->id);
+            // }
 
             if ($user) {
              Mail::to($user->email)->send(new RentalBeforExpired($rental));

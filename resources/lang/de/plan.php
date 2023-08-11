@@ -4,7 +4,7 @@ return[
     "Plan"=>"Buchungs-Periode",
     "Create New Plan"=>"Neue Buchungs-Periode erstellen",
     "Plan name"=>"Buchungs-Periode",
-    "Number of Days"=>"Tage/Stunden",
+    "Number of Days"=>"Tage/Stunden/Minuten",
     "Policy Name"=>"Name der Richtlinie",
     "Plan Price"=>"Preis",
     "Action"=>"Aktion",
@@ -14,6 +14,7 @@ return[
     'Duration Unit'=>'Dauer Einheit',
     'Days'=>'Tage',
     'Hours'=>'Stunden',
+    'Minutes'=>'Minuten',
     'there_are_no_products'=>'Es gibt keine Buchungs-Periode'
 
 ];

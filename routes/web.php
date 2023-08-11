@@ -23,6 +23,8 @@ use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Admin\Box\BoxController;
 use App\Http\Controllers\ImpersonationController;
+use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\RentalCheckoutController;
 use App\Http\Controllers\Admin\Plan\PlanController;
 use App\Http\Controllers\Admin\Faq\FaqAdminController;
 use App\Http\Controllers\Admin\How\HowAdminController;
@@ -31,6 +33,7 @@ use App\Http\Controllers\Admin\System\SystemController;
 use App\Http\Controllers\Admin\State\CategoryController;
 use App\Http\Controllers\Admin\Term\TermAdminController;
 use App\Http\Controllers\Admin\BoxType\BoxTypeController;
+use App\Http\Controllers\RentalCheckoutSuccessController;
 use App\Http\Controllers\Admin\Place\PlaceAdminController;
 use App\Http\Controllers\Admin\Price\PriceAdminController;
 use App\Http\Controllers\Admin\Users\UsersAdminController;
@@ -128,10 +131,15 @@ Route::delete('admin/plans/{plan}', [PlanController::class, 'destroy'])->name('a
 
 
 
-Route::get('/checkout',[RentalsController::class,'creditCheckout'])->name('credit.checkout');
-Route::post('/rentals/purchase/{plan}', [RentalsController::class,'purchase'])->name('rentals.purchase')->middleware('auth');
+
+// Route::post('/rentals/purchase/{plan}', [RentalsController::class,'purchase'])->name('rentals.purchase')->middleware('auth');
+
+Route::post('/rentals/purchase/{plan}', RentalCheckoutController::class)->name('rentals.checkout')->middleware('auth');
+
+Route::get('/rentals/purchase/success', RentalCheckoutSuccessController::class)->name('rentals.success')->middleware('auth');
 
 
+Route::post('/webhooks/stripe',StripeWebhookController::class);
 // Route::middleware(['auth', 'role:admin'])->group(function () {
 //     Route::get('admin/users',[UsersAdminController::class,'index'])->name('admin.user.index');
     

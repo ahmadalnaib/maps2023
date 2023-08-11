@@ -27,6 +27,8 @@
                         {{ __('plan.Days') }}</option>
                     <option value="hours" {{ $plan->duration_unit === 'hours' ? 'selected' : '' }}>
                         {{ __('plan.Hours') }}</option>
+                    <option value="minutes" {{ $plan->duration_unit === 'minutes' ? 'selected' : '' }}>
+                        {{ __('plan.Minutes') }}</option>
                 </select>
                 @error('duration_unit')
                 <span class="text-red-500">{{ $message }}</span>
