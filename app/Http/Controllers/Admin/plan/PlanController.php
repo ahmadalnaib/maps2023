@@ -39,7 +39,7 @@ class PlanController extends Controller
             'name' => $request->name,
             'number_of_days' => $request->number_of_days,
             'duration_unit' => $request->duration_unit,
-            'price' => $request->price,
+            'price' =>floatval($request->price),
             'team_id' => $user->currentTeam->id, // Use team_id instead of tenant_id
         ]);
 
@@ -58,7 +58,7 @@ class PlanController extends Controller
             'name' => $request->name,
             'number_of_days' => $request->number_of_days,
             'duration_unit' => $request->duration_unit,
-            'price' => $request->price,
+            'price' =>floatval($request->price),
         ]);
 
         return redirect()->route('admin.plan.index')->with('message', 'Buchung Period wurde erfolgreich aktualisiert 🎉')->with('timeout', 3000);;

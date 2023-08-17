@@ -56,6 +56,11 @@ return [
             'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
+        'system_updates' => [
+            'driver' => 'daily', // Use the desired log driver
+            'path' => storage_path('logs/system_updates.log'),
+            'level' => 'info', // Adjust log level as needed
+        ],
 
         'single' => [
             'driver' => 'single',

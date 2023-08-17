@@ -10,5 +10,6 @@ return[
     "Lockers"=>"Systems",
     "Address"=>"Address",
     "No available places to Create new Orte from."=>"No available places to Create new Orte from.",
-    'No System'=>'There are no systems'
+    'No System'=>'There are no systems',
+    "Last status"=>"Last status"
 ];

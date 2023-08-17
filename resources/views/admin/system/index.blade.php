@@ -23,6 +23,9 @@
                 <th scope="col" class="px-6 py-3">
                    {{__('locker.Place name')}}
                 </th>
+                <th scope="col" class="px-6 py-3">
+                   {{__('locker.Last status')}}
+                </th>
            
                 <th scope="col" class="px-6 py-3 ">
                     {{__('place.Action')}}
@@ -42,7 +45,13 @@
                 {{$system->place->name ?? "Error"}}
                 </th>
              
-               
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    @if ($system->last_status)
+                    {{ Carbon\Carbon::parse($system->last_status)->tz('Europe/Berlin')->format('Y-m-d H:i:s') }}
+                @else
+                    <div></div>
+                @endif
+                    </th>
                
               
                 <td class="px-6 py-4 flex  flex-wrap">

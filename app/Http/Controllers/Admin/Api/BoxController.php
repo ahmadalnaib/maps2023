@@ -37,23 +37,42 @@ class BoxController extends Controller
     ]);
     // Log::info('id of client: '. $request->ip());
     // Log::info($request->httpHost() );
+
     if ($validatedData->fails()) {
-        return response()->json(['error' => 'Validation failed', 'errors' => $validator->errors()], 422);
+        return response()->json(['error' => 'Validation failed', 'errors' => $validatedData->errors()], 422);
     }
  
       $boxes = [];
    
       foreach ($validatedData->getData() as $data) {
+        // Log::channel('system_updates')->info(json_encode($data,true));
         foreach ($data as $item){
         $box = Box::findOrFail($item['box_id']);
         $item['id'] = $item['box_id'];
         unset($item['box_id']);
         $box->update($item);
+        // Log::channel('system_updates')->info(json_encode($item,true));
+        $system = $box->system()->first();
+        if ($system) {
+          //collect in array and then do update
+          
+          //   $system->update(['last_status' => now()]);
+            $updatedSystemIds[$system->id] = $system;
+            //   Log::channel('system_updates')->info(json_encode($system,true));
+        }
+
           $boxes[] =$box;
+                //  Log::channel('system_updates')->info(json_encode($box,true));
         }
       }
    
-  
+    if ($updatedSystemIds){
+        foreach($updatedSystemIds as $system){
+          $system->update(['last_status' => now()]);
+          Log::channel('system_updates')->info('API call to update Systems ' .  $system->id . ' last_status at ' . now());
+
+        }
+      }
       $boxResources = BoxResource::collection($boxes);
   
       return $boxResources->response()->setStatusCode(201);

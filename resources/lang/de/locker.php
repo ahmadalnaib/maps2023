@@ -10,5 +10,6 @@ return[
     "Lockers"=>"Anlagen",
     "Address"=>"Adresse",
     "No available places to Create new Orte from."=>"Keine freien Plätze bitte neue Plätze anlegen ",
-    'No System'=>'Es gibt keine Anlagen'
+    'No System'=>'Es gibt keine Anlagen',
+    "Last status"=>"Letzter Status"
 ];

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Place;
+use Carbon\Carbon;
 use App\Models\Plan;
+use App\Models\Place;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
@@ -31,13 +32,18 @@ class PlaceController extends Controller
     $plansByBox = [];
     $firstFloorBoxes = [];
     $secondFloorBoxes = [];
+    $lastStatus = Carbon::parse($system->last_status);
+    $timeDifference = now()->diffInMinutes($lastStatus);
 
-    if ($system && isset($system->boxes)) {
+    if ($system && isset($system->boxes) && $timeDifference <= 1) {
         foreach ($system->boxes as $box) {
             $isRented = $box->rentals->isNotEmpty();
             $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
             $isDefective = $box->defective ? true: false;
             $box_Rental_uuid = $box->rental_uuid ? true : false;
+          
+          
+         
             
             if ($box->boxType->first_floor_option){
                 $firstFloorBoxes[] = $box->id;

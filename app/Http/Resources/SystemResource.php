@@ -30,7 +30,8 @@ class SystemResource extends JsonResource
             'place_name' => $this->place ? $this->place->name : null,
             'website_url' => $websiteUrl,
             'current_url'=> URL::to('/de/'. $this->place->name.'/'.$this->place->slug.''),
-            'currentTime'=>$currentTime
+            'currentTime'=>$currentTime,
+            'last_status'=>$this->last_status
            
 
         ];

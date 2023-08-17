@@ -24,7 +24,7 @@ class PlanRequest extends FormRequest
         return [
             'name' => 'required',
             'number_of_days' => 'required|integer',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0',
        
         
            
