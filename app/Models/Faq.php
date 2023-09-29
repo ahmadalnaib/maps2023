@@ -13,6 +13,6 @@ class Faq extends Model
     use HasFactory,HasTranslations ;
     protected $guarded=[];
 
-    public $translatable = ['question_one','answer_one','question_two','answer_two','question_three','answer_three','question_four','answer_four','question_five','answer_five','question_six','answer_six','question_seven','answer_seven','question_eight','answer_eight',];
+    public $translatable = ['question_one','answer_one','question_two','answer_two','question_three','answer_three','question_four','answer_four','question_five','answer_five','question_six','answer_six','question_seven','answer_seven','question_eight','answer_eight','question_nine','question_ten','question_eleven','answer_nine','answer_ten','answer_eleven'];
    
 }

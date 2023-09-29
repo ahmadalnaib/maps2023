@@ -130,6 +130,52 @@
         </textarea>
     </div>
 
+
+    <div>
+        <label for="question_nine"> Question nine({{ $key }})</label>
+        <textarea class="ckeditor" name="question_nine[{{ $key }}]" id="" cols="30" rows="10">
+            {{ old('question_nine.' . $key, $faq->getTranslation('question_nine', $key)) }}
+        </textarea>
+    </div>
+
+    <div>
+      <label for="answer_nine">Answer nine({{ $key }})</label>
+      <textarea class="ckeditor" name="answer_nine[{{ $key }}]" id="" cols="30" rows="10">
+          {{ old('answer_nine.' . $key, $faq->getTranslation('answer_nine', $key)) }}
+      </textarea>
+  </div>
+
+
+  
+
+  <div>
+    <label for="question_ten"> Question ten({{ $key }})</label>
+    <textarea class="ckeditor" name="question_ten[{{ $key }}]" id="" cols="30" rows="10">
+        {{ old('question_ten.' . $key, $faq->getTranslation('question_ten', $key)) }}
+    </textarea>
+</div>
+
+<div>
+  <label for="answer_ten">Answer ten({{ $key }})</label>
+  <textarea class="ckeditor" name="answer_ten[{{ $key }}]" id="" cols="30" rows="10">
+      {{ old('answer_ten.' . $key, $faq->getTranslation('answer_ten', $key)) }}
+  </textarea>
+</div>
+
+<div>
+    <label for="question_eleven"> Question eleven({{ $key }})</label>
+    <textarea class="ckeditor" name="question_eleven[{{ $key }}]" id="" cols="30" rows="10">
+        {{ old('question_eleven.' . $key, $faq->getTranslation('question_eleven', $key)) }}
+    </textarea>
+</div>
+
+<div>
+  <label for="answer_eleven">Answer eleven({{ $key }})</label>
+  <textarea class="ckeditor" name="answer_eleven[{{ $key }}]" id="" cols="30" rows="10">
+      {{ old('answer_eleven.' . $key, $faq->getTranslation('answer_eleven', $key)) }}
+  </textarea>
+</div>
+
                
                       </div>
                   </div>

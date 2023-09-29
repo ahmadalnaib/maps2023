@@ -3,11 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\Rental;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\RentalsExport;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\RentalsExport;
+use App\Models\AdditionalRental;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RentalsTable extends Component
 {
@@ -54,9 +55,12 @@ class RentalsTable extends Component
             })
             ->orderBy('created_at', 'desc')
             ->paginate(10);
+
+            $additionalRentals = AdditionalRental::whereIn('rental_uuid', $rentals->pluck('uuid')->toArray())->get();
     
         return view('livewire.rentals-table', [
             'rentals' => $rentals,
+            'additionalRentals' => $additionalRentals,
         ]);
     }
     

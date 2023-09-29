@@ -19,7 +19,7 @@
           </div> 
         </div>
        
-    <div class="bg-slate-100 p-20">
+    {{-- <div class="bg-slate-100 p-20">
     <div class="container my-12 mx-auto md:px-12 p-5">
       <h1 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl mb-4">{{__('index.Premium Lockers')}}</h1>
             <div class="m-8">
@@ -54,7 +54,7 @@
           </div>
         </div>
     </div>
-  </div>
+  </div> --}}
     <div class="container my-12 mx-auto md:px-12 p-5">
       
       <h1 class="w-full mx-auto text-4xl font-extrabold leading-none text-left text-gray-900 sm:text-5xl md:text-7xl">{{__('index.Recently Added')}}</h1>

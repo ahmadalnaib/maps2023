@@ -127,13 +127,13 @@
                                 </div>
                                 <div class="tab-content mt-4 tab-active" style="display:none" id="free-tab">
                                     <div class="text-center">
-                                        <form action="{{ route('rentals.save', $plan) }}" method="POST">
+                                        <form action="{{ route('rentals.save', $plan) }}" method="POST" onsubmit="disableButton(this);">
                                             @csrf
                                             <input type="hidden" name="system_id" value="{{ $system->id }}">
                                             <input type="hidden" name="box_id" value="{{ $box->id }}">
                                             <input type="hidden" name="rental_period" value="{{ $plan->id }}">
                                             <button class="bg-red-500 text-white font-bold py-2 px-4 rounded"
-                                                type="submit">{{ __('rental.Pay') }} {{ $plan->price }} &#8364</button>
+                                                type="submit" id="submitButton">{{ __('rental.Pay') }} {{ $plan->price }} &#8364</button>
                                         </form>
 
                                     </div>
@@ -256,4 +256,16 @@
 
 
     });
+</script>
+<script>
+    function disableButton(form) {
+        let submitButton = $(form).find('#submitButton');
+        
+        if ($(form).hasClass('submitted')) {
+            event.preventDefault();
+        } else {
+            submitButton.html('<i class="fa fa-spinner fa-spin"></i> ');
+            $(form).addClass('submitted');
+        }
+    }
 </script>

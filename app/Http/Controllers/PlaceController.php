@@ -35,7 +35,8 @@ class PlaceController extends Controller
     $lastStatus = Carbon::parse($system->last_status);
     $timeDifference = now()->diffInMinutes($lastStatus);
 
-    if ($system && isset($system->boxes) && $timeDifference <= 1) {
+    // change the system to live to 15 min
+    if ($system && isset($system->boxes) && $timeDifference <= 15) {
         foreach ($system->boxes as $box) {
             $isRented = $box->rentals->isNotEmpty();
             $isEndTimePassed = $isRented && $box->rentals->last()->end_time->isPast();
@@ -55,7 +56,12 @@ class PlaceController extends Controller
                 $plansByBox[$box->id] = $box->plans;
             }
         } }else{
-            return view('placeNotCreated');
+            if (!$system || !isset($system->boxes)) {
+                return view('placeNotCreated'); // Display message for this condition
+            } elseif ($timeDifference > 15) {
+                return view('systemdisconnect');
+            }
+           
 
         }
     

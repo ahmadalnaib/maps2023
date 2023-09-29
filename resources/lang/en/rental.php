@@ -18,5 +18,7 @@ return[
   "The data you entered contains errors! Review it and try again"=>"The data you entered contains errors! Review it and try again",
   'The payment was successful.'=>'Die Zahlung war erfolgreich.',
   'Neues Fach buchen'=>'Book new locker',
+  'Additional Rental'=>'Additional Rental',
+  'Booking time'=>'Booking time',
 
 ];

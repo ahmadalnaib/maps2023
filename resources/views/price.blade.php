@@ -11,7 +11,7 @@
                 <a href="{{route('register')}}" class="inline-block w-full px-5 py-4 font-bold text-center text-white bg-black md:w-auto">{{__('nav.Booking')}}</a>
             </div>
         </div>
-        <div class="absolute top-0 right-0 hidden w-1/3 h-full md:block">
+        <div class="absolute top-0 right-0 hidden w-1/2 h-full md:block">
             <img class="object-cover w-full h-full" src="{{ asset('/images/howpage/bike.jpg') }}">
         </div>
     </section>

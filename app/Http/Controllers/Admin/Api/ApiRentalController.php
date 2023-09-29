@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Models\Rental;
 use Illuminate\Http\Request;
+use App\Models\AdditionalRental;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Rental as RentalResource;
+
 class ApiRentalController extends Controller
 {
     //
@@ -41,12 +44,55 @@ class ApiRentalController extends Controller
             'pincode' => 'required',
         ]);
 
-        $rental = Rental::create($validatedData);
+       
+        $rental = Rental::updateOrCreate(
+            ['uuid' => $validatedData['uuid']],
+            $validatedData
+        );
 
         $rentalResource = new RentalResource($rental);
 
         return $rentalResource->response()->setStatusCode(201);
     }
+
+
+    public function extendRental(Request $request, $rentalUuid)
+    {
+        $validatedData = $request->validate([
+            'user_id' => '',
+            'end_time' => 'required',
+            'price' => 'required',
+        ]);
+    
+        $rental = Rental::where('uuid', $rentalUuid)->firstOrFail();
+        $rental->end_time = $validatedData['end_time'];
+        $rental->save();
+
+    
+        $additionalRental = AdditionalRental::create([
+            'user_id' => $validatedData['user_id'],
+            'rental_uuid' => $rental->uuid,
+            'end_time' => $validatedData['end_time'],
+            'price' => $validatedData['price'],
+            'datetime' => now(),
+        ]);
+      $formattedDatetime = date("Y-m-d H:i:s", strtotime($additionalRental->datetime));
+        return response()->json([
+            'message' => 'Rental extended successfully',
+            'rental_uuid' => $rental->uuid,
+            'user_id' => $validatedData['user_id'],
+            'end_time' => $validatedData['end_time'],
+            'price' => $validatedData['price'],
+            'datetime' => $formattedDatetime,
+        ], 201);
+        
+    }
+    
+  
+   
+
+
+   
 
     public function getBySystem(Request $request, $systemUuid)
     {

@@ -11,6 +11,7 @@ use App\Models\Locker;
 use App\Models\System;
 use App\Models\Duration;
 use App\Traits\BelongsToTenant;
+use App\Models\AdditionalRental;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -97,6 +98,11 @@ public static function search($query)
     return empty($query) ? static::query()
         : static::where('system_id', 'like', '%'.$query.'%')
            ;
+}
+
+public function additionalRentals()
+{
+    return $this->hasMany(AdditionalRental::class, 'rental_uuid', 'uuid');
 }
 
 

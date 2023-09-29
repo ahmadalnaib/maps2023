@@ -31,6 +31,9 @@ Route::post('/paypal/execute-payment',[PurchaseController::class,'executePayment
 
 Route::get('/rentals', [ApiRentalController::class, 'index']);
 Route::post('/rentals', [ApiRentalController::class, 'store']); 
+Route::post('/rentals/{uuid}/extend', [ApiRentalController::class, 'extendRental']);
+
+
 Route::get('/rentals/system/{systemUuid}', [ApiRentalController::class, 'getBySystem']);
 
 Route::post('/events', [EventController::class, 'store']); 

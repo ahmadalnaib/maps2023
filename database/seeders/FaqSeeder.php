@@ -45,9 +45,24 @@ class FaqSeeder extends Seeder
 
             'question_eight' => json_encode( ['de' => "Keine Registrierungs-Mail erhalten " , 'en'=>"No registration E-mail received "]),
             'answer_eight' => json_encode( ['de' => "Es kann einige Minuten dauern bis du eine E-Mail erhälst. Prüfe bitte auch deinen Spam-Ordner. " , 'en'=>"It may take a few minutes before you receive an E-mail. Please also check your spam folder. "]),
+
+            'question_nine' => json_encode( ['de' => "Sind meine Gegenstände oder mein Fahrrad automatisch versichert " , 'en'=>"Are my items or my bicycle automatically insured?"]),
+            'answer_nine' => json_encode( ['de' => "Nein, die Gegenstände oder dein Fahrrad sind nicht versichert. Es wird nicht für gestohlene Gegenstände oder anderweitige Beschädigungen gehaftet.
+
+            Empfehlung: Prüfe deine bestehende Versicherung." , 'en'=>"No, the items or your bike are not insured. There is no liability for stolen items or other damage.
+
+            Recommendation: Check your existing insurance."]),
+
+            'question_ten' => json_encode( ['de' => "Kann ich die Tür während der Mietdauer öfters öffnen?" , 'en'=>"Can I open the door more often during the rental period?"]),
+            'answer_ten' => json_encode( ['de' => "Ja du kannst die Tür während deiner Mietdauer öfters öffnen." , 'en'=>"Yes, you can open the door more often during your rental period. "]),
            
            
-           
+            'question_eleven' => json_encode( ['de' => "Was passiert wenn ich meine Gegenstände/Fahrrad nicht rechtzeitige abhole?" , 'en'=>"What happens if I do not collect my items/bicycle on time?"]),
+            'answer_eleven' => json_encode( ['de' => "Die ist je nach Anlagenvermieter unterschiedlich. Entweder du bezahlst an der Anlage nach oder du musst dich beim Anlagenvermieter melden.
+
+            Je nach Überschreitung, kann es sein, dass deine Gegenstände/Fahrrad entnommen worden sind." , 'en'=>"This varies depending on the system rental company. Either you pay at the facility or you have to report to the system rental company.
+
+            Depending on the delay, it is possible that your items/bicycle will be taken away. "]),
            
          
            
